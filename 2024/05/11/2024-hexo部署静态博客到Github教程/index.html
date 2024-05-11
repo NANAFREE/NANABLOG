@@ -14,7 +14,7 @@
 <meta property="og:description" content="维护博客，写博客，本身就是一件有意义的事情，在这个过程中，对自己的收获最大，这就像是以前的人们写笔记，不断总结，让自己变得更好。 一开始总是会感到迷茫，不知道写什么，我觉得任何你想要分享的内容都可以，给他人带来启发，亦或者帮助他人解答困惑。 如果你未来或者现在已经打算从事互联网相关的行业，那么博客必然能为你带来更多的帮助，总结自己的技术，既能够让自己理解更加深刻，再忘记的时候也能快速找到，这种不断">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-05-11T11:22:08.000Z">
-<meta property="article:modified_time" content="2024-05-11T11:22:50.001Z">
+<meta property="article:modified_time" content="2024-05-11T11:37:51.337Z">
 <meta property="article:author" content="Lain">
 <meta property="article:tag" content="教程">
 <meta name="twitter:card" content="summary">
@@ -145,8 +145,25 @@
 <h1 id="3-创建博客"><a href="#3-创建博客" class="headerlink" title="3.创建博客"></a>3.创建博客</h1><p>使用hexo init创建Hexo工具</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init &#x27;输入你的blog文件夹名称&#x27;</span><br></pre></td></tr></table></figure>
 
+<p>打开_config.yml更改deploy</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span>     <span class="comment">#仓库链接</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br><span class="line">  <span class="attr">message:</span> <span class="string">&#x27;hello blog&#x27;</span> <span class="comment">#msg</span></span><br></pre></td></tr></table></figure>
 
+<p>下载deploy插件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 
+<p>创建一个新文章</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new &#x27;blog name&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>在本地渲染运行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>确保没有问题后，上传到github</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>打开Settings的Pages，将Branch改为main然后save保存。</p>
+<p>刷新等待，打开连接查看博客。</p>
 
       
     </div>
