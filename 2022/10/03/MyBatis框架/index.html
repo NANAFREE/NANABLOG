@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<title>部署MyBatis框架 | Bocchi the blog&#39;s</title>
+
+
+<link rel="stylesheet" href="/Blackcat-loveBlog/styles/main.css">
+
+
+    <meta name="generator" content="Hexo 7.2.0"></head>
+    <body>
+        <div class="container">
+            <header>
+<div class="main">
+<div class="title">
+    <a href="#" class="logo">Bocchi the blog&#39;s</a>
+</div>
+<div class="site-nav">
+    <ul id="menu" class="menu">
+    
+        <li class="menu-item text-underline">
+            <a href="/Blackcat-loveBlog/">Home</a>
+        </li>
+    
+        <li class="menu-item text-underline">
+            <a href="/Blackcat-loveBlog/archives">Archives</a>
+        </li>
+    
+        <li class="menu-item text-underline">
+            <a href="/Blackcat-loveBlog/about/about">About</a>
+        </li>
+            
+    </ul>
+</div>
+</div>
+</header>
+            <main class="main">
+                <section class="posts clearfix">
+<div class="post-wrapper">
+    <article class="post article-entry">
+    <div class="post-title">
+        部署MyBatis框架
+    </div>
+    <p class="sub">Oct 03 2022</p>
+    <div class="post-content">
+        <h1 id="MyBatis框架笔记"><a href="#MyBatis框架笔记" class="headerlink" title="MyBatis框架笔记"></a>MyBatis框架笔记</h1><h2 id="核心要素"><a href="#核心要素" class="headerlink" title="核心要素"></a>核心要素</h2><h3 id="1-XML配置文件"><a href="#1-XML配置文件" class="headerlink" title="1. XML配置文件"></a>1. XML配置文件</h3><p>MyBatis的配置文件，通常包括数据源、映射文件的路径等信息。</p>
+<h3 id="2-映射文件"><a href="#2-映射文件" class="headerlink" title="2. 映射文件"></a>2. 映射文件</h3><p>映射文件定义了数据库表与Java对象的映射关系，包括SQL语句、参数映射等。</p>
+<h3 id="3-SqlSessionFactory"><a href="#3-SqlSessionFactory" class="headerlink" title="3. SqlSessionFactory"></a>3. SqlSessionFactory</h3><p>SqlSessionFactory是MyBatis的核心接口，用于创建SqlSession实例，通常在应用程序中只需要一个实例。</p>
+<h3 id="4-SqlSession"><a href="#4-SqlSession" class="headerlink" title="4. SqlSession"></a>4. SqlSession</h3><p>SqlSession是数据库会话，用于执行SQL语句，提交事务等操作。它类似于JDBC中的Connection。</p>
+<h3 id="5-Mapper接口"><a href="#5-Mapper接口" class="headerlink" title="5. Mapper接口"></a>5. Mapper接口</h3><p>Mapper接口定义了操作数据库的方法，通常与映射文件中的SQL语句相对应。</p>
+<h2 id="常用的语句"><a href="#常用的语句" class="headerlink" title="常用的语句"></a>常用的语句</h2><p>以下是一些MyBatis中常用的SQL语句：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>语句示例</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>查询</td>
+<td><code>SELECT * FROM users</code></td>
+<td>查询数据库中的所有用户</td>
+</tr>
+<tr>
+<td>插入</td>
+<td><code>INSERT INTO users VALUES (...)</code></td>
+<td>向数据库中插入新的用户</td>
+</tr>
+<tr>
+<td>更新</td>
+<td><code>UPDATE users SET ... WHERE ...</code></td>
+<td>更新数据库中符合条件的用户信息</td>
+</tr>
+<tr>
+<td>删除</td>
+<td><code>DELETE FROM users WHERE ...</code></td>
+<td>删除数据库中符合条件的用户</td>
+</tr>
+</tbody></table>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>MyBatis的实现原理基于Java反射和动态SQL的概念。它通过XML配置文件中的映射关系将Java对象与数据库表关联，然后动态生成SQL语句，执行数据库操作。MyBatis还提供了缓存机制，可以提高查询性能。</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h4 id="导包"><a href="#导包" class="headerlink" title="导包"></a>导包</h4><p>需要导入log4j-1.2.17.jar</p>
+<p>mybatis-3.5.1.jar</p>
+<p>mysql-connector-java-8.0.19.jar</p>
+<h4 id="声明文件"><a href="#声明文件" class="headerlink" title="声明文件"></a>声明文件</h4><h5 id="database-properties"><a href="#database-properties" class="headerlink" title="database.properties"></a>database.properties</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">driver=com.mysql.cj.jdbc.Driver</span><br><span class="line">url=jdbc:mysql://127.0.0.1:3306/cvs_db?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false&amp;serverTimezone=UTC&amp;zeroDateTimeBehavior=convertToNull</span><br><span class="line">user=root</span><br><span class="line">password=123</span><br></pre></td></tr></table></figure>
+
+<h5 id="log4j-properties"><a href="#log4j-properties" class="headerlink" title="log4j.properties"></a>log4j.properties</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">log4j.rootLogger=DEBUG,CONSOLE,file</span><br><span class="line">#log4j.rootLogger=ERROR,ROLLING_FILE</span><br><span class="line">log4j.logger.cn.cvs.dao=debug</span><br><span class="line">log4j.logger.com.ibatis=debug </span><br><span class="line">log4j.logger.com.ibatis.common.jdbc.SimpleDataSource=debug </span><br><span class="line">log4j.logger.com.ibatis.common.jdbc.ScriptRunner=debug </span><br><span class="line">log4j.logger.com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate=debug </span><br><span class="line">log4j.logger.java.sql.Connection=debug </span><br><span class="line">log4j.logger.java.sql.Statement=debug </span><br><span class="line">log4j.logger.java.sql.PreparedStatement=debug </span><br><span class="line">log4j.logger.java.sql.ResultSet=debug </span><br><span class="line">log4j.logger.org.tuckey.web.filters.urlrewrite.UrlRewriteFilter=debug</span><br><span class="line"></span><br><span class="line">######################################################################################</span><br><span class="line"># Console Appender  \u65E5\u5FD7\u5728\u63A7\u5236\u8F93\u51FA\u914D\u7F6E</span><br><span class="line">######################################################################################</span><br><span class="line">log4j.appender.CONSOLE=org.apache.log4j.ConsoleAppender</span><br><span class="line">log4j.appender.Threshold=error</span><br><span class="line">log4j.appender.CONSOLE.Target=System.out</span><br><span class="line">log4j.appender.CONSOLE.layout=org.apache.log4j.PatternLayout</span><br><span class="line">log4j.appender.CONSOLE.layout.ConversionPattern= [%p] %d %c - %m%n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">######################################################################################</span><br><span class="line"># DailyRolling File  \u6BCF\u5929\u4EA7\u751F\u4E00\u4E2A\u65E5\u5FD7\u6587\u4EF6\uFF0C\u6587\u4EF6\u540D\u683C\u5F0F:log2009-09-11</span><br><span class="line">######################################################################################</span><br><span class="line">log4j.appender.file=org.apache.log4j.DailyRollingFileAppender</span><br><span class="line">log4j.appender.file.DatePattern=yyyy-MM-dd</span><br><span class="line">log4j.appender.file.File=log.log</span><br><span class="line">log4j.appender.file.Append=true</span><br><span class="line">log4j.appender.file.Threshold=error</span><br><span class="line">log4j.appender.file.layout=org.apache.log4j.PatternLayout</span><br><span class="line">log4j.appender.file.layout.ConversionPattern=%d&#123;yyyy-M-d HH:mm:ss&#125;%x[%5p](%F:%L) %m%n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">log4j.logger.com.opensymphony.xwork2=error  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h5 id="mybatis-config-xml"><a href="#mybatis-config-xml" class="headerlink" title="mybatis-config.xml"></a>mybatis-config.xml</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">configuration</span> <span class="keyword">PUBLIC</span> <span class="string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span> <span class="string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--   引入数据库参数--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span> <span class="attr">resource</span>=<span class="string">&quot;database.properties&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    设置运行行为--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">settings</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">&quot;logImpl&quot;</span> <span class="attr">value</span>=<span class="string">&quot;LOG4J&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    配置MyBatis框架的运行环境--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">environments</span> <span class="attr">default</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">environment</span> <span class="attr">id</span>=<span class="string">&quot;development&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">transactionManager</span> <span class="attr">type</span>=<span class="string">&quot;JDBC&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">transactionManager</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">dataSource</span> <span class="attr">type</span>=<span class="string">&quot;POOLED&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--                导入数据库连接所需要的信息--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--                使用的JDBC--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driver&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;driver&#125;&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--                连接的路径--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;url&#125;&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--                数据库账号 这里要注意 所有的name 都是不可变的--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;user&#125;&quot;</span>/&gt;</span></span><br><span class="line"><span class="comment">&lt;!--                数据库密码--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;password&#125;&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    配置sql映射文件--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        第一个 Dao--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mapper</span> <span class="attr">resource</span>=<span class="string">&quot;com/company/dao/UserMapper.xml&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        第二个 Dao--&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+    </div>
+    </article>
+</div>
+
+    <div class="_toc">
+        <strong class="toc-title">
+        Contents
+        </strong>
+        <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MyBatis%E6%A1%86%E6%9E%B6%E7%AC%94%E8%AE%B0"><span class="toc-text">MyBatis框架笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E8%A6%81%E7%B4%A0"><span class="toc-text">核心要素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-XML%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">1. XML配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%98%A0%E5%B0%84%E6%96%87%E4%BB%B6"><span class="toc-text">2. 映射文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-SqlSessionFactory"><span class="toc-text">3. SqlSessionFactory</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-SqlSession"><span class="toc-text">4. SqlSession</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Mapper%E6%8E%A5%E5%8F%A3"><span class="toc-text">5. Mapper接口</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E8%AF%AD%E5%8F%A5"><span class="toc-text">常用的语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-text">实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%8C%85"><span class="toc-text">导包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E6%96%87%E4%BB%B6"><span class="toc-text">声明文件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#database-properties"><span class="toc-text">database.properties</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#log4j-properties"><span class="toc-text">log4j.properties</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#mybatis-config-xml"><span class="toc-text">mybatis-config.xml</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+        </div>
+    </div>
+
+</section>
+
+
+    <nav class="post-nav">
+        
+            <div class="page-tags">
+                
+                    <a href="/Blackcat-loveBlog/tags/%E6%A1%86%E6%9E%B6/">框架</a>
+                
+            </div>
+        
+    </nav>
+
+
+
+    <nav class="paginator clearfix">
+        
+            <a class="prev" href="/Blackcat-loveBlog/2023/10/03/Maven/">
+                <i class="iconfont icon-left"></i>
+                <span class="prev-text">部署Maven</span>
+            </a>
+        
+        
+            <a class="next" href="/Blackcat-loveBlog/2022/10/03/SSM%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/">
+                
+                <span class="prev-text">SSM开发框架部署</span>
+                <i class="iconfont icon-right"></i>
+            </a>
+        
+    </nav>
+
+
+            </main>
+            <div class="copyright">
+  <div class="text">Powered By
+    <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/zjx137/hexo-theme-Tsu">Tsu</a> &copy 2019
+  </div>
+</div>
+
+        </div>
+    <div class="back-to-top" id="back-to-top">
+            <i class="iconfont icon-up"></i>
+    </div>
+        
+    <!-- hexo injector body_end start --><script data-pjax src="https://registry.npmmirror.com/oh-my-live2d/latest/files"></script><script>const oml2d = OML2D.loadOml2d({libraryUrls:{"complete":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/complete.js","cubism2":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism2.js","cubism5":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism5.js"},mobileDisplay:true,models:[{"path":"/Blackcat-loveBlog/live2d/波奇酱2.0/波奇酱2.0.model3.json","mobilePosition":[0,0],"mobileScale":0.1,"mobileStageStyle":{"width":180,"height":250},"motionPreloadStrategy":"IDLE","position":[-100,-100],"scale":0.15,"stageStyle":{"width":250,"height":250}},{"path":"/Blackcat-loveBlog/live2d/liang_vts/liang.model3.json","scale":0.12,"position":[0,60],"stageStyle":{"width":250},"mobileScale":0.1,"mobilePosition":[0,0],"mobileStageStyle":{"width":180}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
+  return axios.get('https://v1.hitokoto.cn?c=i')
+    .then(function (response) {
+      return response.data.hitokoto ;
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+}
+}}});</script><!-- hexo injector body_end end --></body>
+    
+<script src="/Blackcat-loveBlog/js/jquery-3.3.1.min.js"></script>
+
+    
+<script src="/Blackcat-loveBlog/js/back-to-top.js"></script>
+
+    
+<script src="/Blackcat-loveBlog/js/scroll.js"></script>
+
+    <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": { 
+        preferredFont: "TeX", 
+        availableFonts: ["STIX","TeX"], 
+        linebreaks: { automatic:true }, 
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) 
+    },
+    tex2jax: { 
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ], 
+        processEscapes: true, 
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {  
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
+        Macros: { href: "{}" } 
+    },
+    messageStyle: "none"
+    }); 
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+</html>

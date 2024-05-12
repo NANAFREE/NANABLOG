@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<title>Vue学习笔记 | Bocchi the blog&#39;s</title>
+
+
+<link rel="stylesheet" href="/Blackcat-loveBlog/styles/main.css">
+
+
+    <meta name="generator" content="Hexo 7.2.0"></head>
+    <body>
+        <div class="container">
+            <header>
+<div class="main">
+<div class="title">
+    <a href="#" class="logo">Bocchi the blog&#39;s</a>
+</div>
+<div class="site-nav">
+    <ul id="menu" class="menu">
+    
+        <li class="menu-item text-underline">
+            <a href="/Blackcat-loveBlog/">Home</a>
+        </li>
+    
+        <li class="menu-item text-underline">
+            <a href="/Blackcat-loveBlog/archives">Archives</a>
+        </li>
+    
+        <li class="menu-item text-underline">
+            <a href="/Blackcat-loveBlog/about/about">About</a>
+        </li>
+            
+    </ul>
+</div>
+</div>
+</header>
+            <main class="main">
+                <section class="posts clearfix">
+<div class="post-wrapper">
+    <article class="post article-entry">
+    <div class="post-title">
+        Vue学习笔记
+    </div>
+    <p class="sub">Dec 13 2023</p>
+    <div class="post-content">
+        <h3 id="1-什么是Vue"><a href="#1-什么是Vue" class="headerlink" title="1. 什么是Vue"></a>1. 什么是Vue</h3><p>Vue.js是一款流行的JavaScript框架，用于构建用户界面和单页面应用程序（SPA）。它具有轻量级、灵活和易学的特点，同时提供了诸多功能强大的工具。</p>
+<h3 id="2-指令修饰符"><a href="#2-指令修饰符" class="headerlink" title="2. 指令修饰符"></a>2. 指令修饰符</h3><p>指令修饰符是用于改变指令行为的特殊后缀，例如<code>.prevent</code>用于阻止默认事件、<code>.stop</code>用于停止事件冒泡等。</p>
+<h3 id="3-容器"><a href="#3-容器" class="headerlink" title="3. 容器"></a>3. 容器</h3><p>Vue中的容器指的是用来包裹和组织页面内容的元素，例如<code>&lt;div&gt;</code>、<code>&lt;section&gt;</code>等。</p>
+<h3 id="4-基本构建"><a href="#4-基本构建" class="headerlink" title="4. 基本构建"></a>4. 基本构建</h3><p>Vue应用的基本构建包括创建Vue实例、数据绑定、指令的使用以及组件的构建和使用。</p>
+<h4 id="4-1-示例"><a href="#4-1-示例" class="headerlink" title="4.1 示例"></a>4.1 示例</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;app&quot;</span>&gt;</span></span><br><span class="line">  &#123;&#123; message &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">var</span> app = <span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">  <span class="attr">el</span>: <span class="string">&#x27;#app&#x27;</span>,</span></span><br><span class="line"><span class="language-javascript">  <span class="attr">data</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">message</span>: <span class="string">&#x27;Hello Vue!&#x27;</span></span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">&#125;);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="5-脚手架"><a href="#5-脚手架" class="headerlink" title="5. 脚手架"></a>5. 脚手架</h3><p>脚手架是用来快速搭建Vue项目的工具，例如Vue CLI。</p>
+<h3 id="6-创建脚手架"><a href="#6-创建脚手架" class="headerlink" title="6. 创建脚手架"></a>6. 创建脚手架</h3><p>创建Vue脚手架可以通过Vue CLI工具来实现，通过命令行输入<code>vue create &lt;project-name&gt;</code>即可创建一个新的Vue项目。</p>
+<h3 id="7-脚手架结构理解"><a href="#7-脚手架结构理解" class="headerlink" title="7. 脚手架结构理解"></a>7. 脚手架结构理解</h3><p>一个Vue脚手架项目通常包含<code>public</code>、<code>src</code>、<code>node_modules</code>等文件夹，其中<code>src</code>文件夹包含项目的源代码。</p>
+<h3 id="8-将一切组件化"><a href="#8-将一切组件化" class="headerlink" title="8. 将一切组件化"></a>8. 将一切组件化</h3><p>Vue鼓励将页面上的各个部分抽象为组件，以便于复用和维护。</p>
+<h3 id="9-局部和全局定义"><a href="#9-局部和全局定义" class="headerlink" title="9. 局部和全局定义"></a>9. 局部和全局定义</h3><p>Vue组件可以在全局范围内注册，也可以在其他组件内部进行局部注册。</p>
+<h3 id="10-父传子-子传父-数据"><a href="#10-父传子-子传父-数据" class="headerlink" title="10. 父传子 子传父 数据"></a>10. 父传子 子传父 数据</h3><p>在Vue中，父组件通过props向子组件传递数据，子组件则通过$emit向父组件发送事件。</p>
+<h3 id="11-打包传递-prom-串子"><a href="#11-打包传递-prom-串子" class="headerlink" title="11. 打包传递 prom 串子"></a>11. 打包传递 prom 串子</h3><p>这部分内容可能需要进一步说明，是否指代组件间通信？</p>
+<h3 id="12-路由"><a href="#12-路由" class="headerlink" title="12. 路由"></a>12. 路由</h3><p>Vue Router是Vue.js官方的路由管理器，用于构建SPA应用的路由系统。</p>
+<h3 id="13-子路由-一级路由-二级路由-路由页面展示"><a href="#13-子路由-一级路由-二级路由-路由页面展示" class="headerlink" title="13. 子路由 一级路由 二级路由 路由页面展示"></a>13. 子路由 一级路由 二级路由 路由页面展示</h3><p><img src="/Blackcat-loveBlog/png/vue.png"></p>
+<p>Vue Router支持嵌套路由，可以实现一级路由下的子路由，或者更深层次的嵌套。</p>
+<p>index.js:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">VueRouter</span> <span class="keyword">from</span> <span class="string">&quot;vue-router&quot;</span>;</span><br><span class="line"><span class="comment">// 导入Vue页面</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Article</span> <span class="keyword">from</span> <span class="string">&quot;../views/Article.vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ArticleDetail</span> <span class="keyword">from</span> <span class="string">&quot;../views/ArticleDetail.vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Collect</span> <span class="keyword">from</span> <span class="string">&quot;../views/Collect.vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Layout</span> <span class="keyword">from</span> <span class="string">&quot;../views/Layout.vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Like</span> <span class="keyword">from</span> <span class="string">&quot;../views/Like.vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">User</span> <span class="keyword">from</span> <span class="string">&quot;../views/User.vue&quot;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">VueRouter</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">VueRouter</span>(&#123;</span><br><span class="line">  <span class="attr">routes</span>: [</span><br><span class="line">    <span class="comment">// 一级路由</span></span><br><span class="line">    &#123;<span class="attr">path</span>:<span class="string">&#x27;/&#x27;</span>,<span class="attr">component</span>:<span class="title class_">Layout</span>,</span><br><span class="line">    <span class="comment">// 二级路由</span></span><br><span class="line">    <span class="attr">children</span>:[</span><br><span class="line">      &#123;<span class="attr">path</span>:<span class="string">&#x27;/article&#x27;</span>,<span class="attr">component</span>:<span class="title class_">Article</span>&#125;,</span><br><span class="line">      &#123;<span class="attr">path</span>:<span class="string">&#x27;/collect&#x27;</span>,<span class="attr">component</span>:<span class="title class_">Collect</span>&#125;,</span><br><span class="line">      &#123;<span class="attr">path</span>:<span class="string">&#x27;/like&#x27;</span>,<span class="attr">component</span>:<span class="title class_">Like</span>&#125;,</span><br><span class="line">      &#123;<span class="attr">path</span>:<span class="string">&#x27;/user&#x27;</span>,<span class="attr">component</span>:<span class="title class_">User</span>&#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;<span class="attr">path</span>:<span class="string">&#x27;./articleDetail&#x27;</span>,<span class="attr">component</span>:<span class="title class_">ArticleDetail</span>&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</span><br></pre></td></tr></table></figure>
+
+<p>使用路由的方式:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;h5-wrapper&quot;&gt;</span><br><span class="line">    &lt;div class=&quot;content&quot;&gt;</span><br><span class="line">      &lt;!-- 展示路由 --&gt;</span><br><span class="line">      &lt;router-view&gt;&lt;/router-view&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;nav class=&quot;tabbar&quot;&gt;</span><br><span class="line">      &lt;!-- 使用路由 --&gt;</span><br><span class="line">      &lt;!-- 当点击链接的时候会 匹配 index.js里绑定好的路由链接然后展示在上方的router-view --&gt;</span><br><span class="line">      &lt;router-link to=&quot;/article&quot;&gt;面经&lt;/router-link&gt;</span><br><span class="line">      &lt;router-link to=&quot;/collect&quot;&gt;收藏&lt;/router-link&gt;</span><br><span class="line">      &lt;router-link to=&quot;/like&quot;&gt;喜欢&lt;/router-link&gt;</span><br><span class="line">      &lt;router-link to=&quot;/user&quot;&gt;我的&lt;/router-link&gt;</span><br><span class="line">    &lt;/nav&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="14-路由传值"><a href="#14-路由传值" class="headerlink" title="14. 路由传值"></a>14. 路由传值</h3><p>在Vue Router中可以通过路由参数或路由元信息进行路由间的数据传递。</p>
+<p>路由动态传参接收</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">$route</span>.<span class="property">params</span>.值名</span><br></pre></td></tr></table></figure>
+
+<p>路由动态传参</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">push</span>(值名);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">articleDetail是路由路径 id是要传递的值 </span><br><span class="line"><span class="variable language_">this</span>.<span class="property">$router</span>.<span class="title function_">push</span>(&#123; <span class="attr">path</span>:<span class="string">`/articleDetail/<span class="subst">$&#123;id&#125;</span>`</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="15-插槽"><a href="#15-插槽" class="headerlink" title="15.插槽"></a>15.插槽</h3><p>Vue.js 2 中的插槽（slot）是一种强大的特性，它允许你在父组件中插入内容到子组件中。插槽使得组件的结构更加灵活，可以根据需要插入不同的内容。下面是一个简单的例子来说明Vue.js 2中插槽的使用方法：</p>
+<p>首先，在父组件中定义一个带有插槽的子组件。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- ParentComponent.vue --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ChildComponent</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 这里是插槽的内容 --&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是插槽中的内容<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ChildComponent</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">import</span> <span class="title class_">ChildComponent</span> <span class="keyword">from</span> <span class="string">&#x27;./ChildComponent.vue&#x27;</span></span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">  <span class="attr">components</span>: &#123;</span></span><br><span class="line"><span class="language-javascript">    <span class="title class_">ChildComponent</span></span></span><br><span class="line"><span class="language-javascript">  &#125;</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然后，在子组件中通过<code>&lt;slot&gt;</code>标签指定插槽的位置。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- ChildComponent.vue --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>子组件<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">slot</span>&gt;</span><span class="tag">&lt;/<span class="name">slot</span>&gt;</span> <span class="comment">&lt;!-- 这里定义了插槽 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span><br><span class="line"><span class="language-javascript">  <span class="attr">name</span>: <span class="string">&#x27;ChildComponent&#x27;</span></span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>&lt;slot&gt;</code> 标签表示插槽的位置。当在父组件中使用 <code>&lt;ChildComponent&gt;</code> 时，插槽中的内容会被替换成父组件中的内容。</p>
+<p>最终的渲染结果会是这样：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h2</span>&gt;</span>子组件<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是插槽中的内容<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这就是Vue.js 2中插槽的简单介绍和使用方法。通过使用插槽，你可以轻松地在父组件中传递内容到子组件中，并且使得组件的结构更加灵活。</p>
+
+    </div>
+    </article>
+</div>
+
+    <div class="_toc">
+        <strong class="toc-title">
+        Contents
+        </strong>
+        <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFVue"><span class="toc-text">1. 什么是Vue</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%8C%87%E4%BB%A4%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">2. 指令修饰符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%B9%E5%99%A8"><span class="toc-text">3. 容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%9F%BA%E6%9C%AC%E6%9E%84%E5%BB%BA"><span class="toc-text">4. 基本构建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-%E7%A4%BA%E4%BE%8B"><span class="toc-text">4.1 示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E8%84%9A%E6%89%8B%E6%9E%B6"><span class="toc-text">5. 脚手架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%88%9B%E5%BB%BA%E8%84%9A%E6%89%8B%E6%9E%B6"><span class="toc-text">6. 创建脚手架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E8%84%9A%E6%89%8B%E6%9E%B6%E7%BB%93%E6%9E%84%E7%90%86%E8%A7%A3"><span class="toc-text">7. 脚手架结构理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E5%B0%86%E4%B8%80%E5%88%87%E7%BB%84%E4%BB%B6%E5%8C%96"><span class="toc-text">8. 将一切组件化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-%E5%B1%80%E9%83%A8%E5%92%8C%E5%85%A8%E5%B1%80%E5%AE%9A%E4%B9%89"><span class="toc-text">9. 局部和全局定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-%E7%88%B6%E4%BC%A0%E5%AD%90-%E5%AD%90%E4%BC%A0%E7%88%B6-%E6%95%B0%E6%8D%AE"><span class="toc-text">10. 父传子 子传父 数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-%E6%89%93%E5%8C%85%E4%BC%A0%E9%80%92-prom-%E4%B8%B2%E5%AD%90"><span class="toc-text">11. 打包传递 prom 串子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-%E8%B7%AF%E7%94%B1"><span class="toc-text">12. 路由</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-%E5%AD%90%E8%B7%AF%E7%94%B1-%E4%B8%80%E7%BA%A7%E8%B7%AF%E7%94%B1-%E4%BA%8C%E7%BA%A7%E8%B7%AF%E7%94%B1-%E8%B7%AF%E7%94%B1%E9%A1%B5%E9%9D%A2%E5%B1%95%E7%A4%BA"><span class="toc-text">13. 子路由 一级路由 二级路由 路由页面展示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-%E8%B7%AF%E7%94%B1%E4%BC%A0%E5%80%BC"><span class="toc-text">14. 路由传值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-%E6%8F%92%E6%A7%BD"><span class="toc-text">15.插槽</span></a></li></ol>
+        </div>
+    </div>
+
+</section>
+
+
+    <nav class="post-nav">
+        
+            <div class="page-tags">
+                
+                    <a href="/Blackcat-loveBlog/tags/Vue/">Vue</a>
+                
+            </div>
+        
+    </nav>
+
+
+
+    <nav class="paginator clearfix">
+        
+            <a class="prev" href="/Blackcat-loveBlog/2023/12/16/%E5%85%B3%E4%BA%8EShields%E5%BE%BD%E7%AB%A0%E7%9A%84%E4%BD%BF%E7%94%A8/">
+                <i class="iconfont icon-left"></i>
+                <span class="prev-text">关于Shields徽章的使用</span>
+            </a>
+        
+        
+            <a class="next" href="/Blackcat-loveBlog/2023/12/13/Vue3%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                
+                <span class="prev-text">Vue3学习笔记</span>
+                <i class="iconfont icon-right"></i>
+            </a>
+        
+    </nav>
+
+
+            </main>
+            <div class="copyright">
+  <div class="text">Powered By
+    <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/zjx137/hexo-theme-Tsu">Tsu</a> &copy 2019
+  </div>
+</div>
+
+        </div>
+    <div class="back-to-top" id="back-to-top">
+            <i class="iconfont icon-up"></i>
+    </div>
+        
+    <!-- hexo injector body_end start --><script data-pjax src="https://registry.npmmirror.com/oh-my-live2d/latest/files"></script><script>const oml2d = OML2D.loadOml2d({libraryUrls:{"complete":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/complete.js","cubism2":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism2.js","cubism5":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism5.js"},mobileDisplay:true,models:[{"path":"/Blackcat-loveBlog/live2d/波奇酱2.0/波奇酱2.0.model3.json","mobilePosition":[0,0],"mobileScale":0.1,"mobileStageStyle":{"width":180,"height":250},"motionPreloadStrategy":"IDLE","position":[-100,-100],"scale":0.15,"stageStyle":{"width":250,"height":250}},{"path":"/Blackcat-loveBlog/live2d/liang_vts/liang.model3.json","scale":0.12,"position":[0,60],"stageStyle":{"width":250},"mobileScale":0.1,"mobilePosition":[0,0],"mobileStageStyle":{"width":180}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
+  return axios.get('https://v1.hitokoto.cn?c=i')
+    .then(function (response) {
+      return response.data.hitokoto ;
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+}
+}}});</script><!-- hexo injector body_end end --></body>
+    
+<script src="/Blackcat-loveBlog/js/jquery-3.3.1.min.js"></script>
+
+    
+<script src="/Blackcat-loveBlog/js/back-to-top.js"></script>
+
+    
+<script src="/Blackcat-loveBlog/js/scroll.js"></script>
+
+    <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": { 
+        preferredFont: "TeX", 
+        availableFonts: ["STIX","TeX"], 
+        linebreaks: { automatic:true }, 
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) 
+    },
+    tex2jax: { 
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ], 
+        processEscapes: true, 
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {  
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
+        Macros: { href: "{}" } 
+    },
+    messageStyle: "none"
+    }); 
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+</html>

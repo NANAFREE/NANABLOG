@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<title>自动化python学习笔记 | Bocchi the blog&#39;s</title>
+
+
+<link rel="stylesheet" href="/Blackcat-loveBlog/styles/main.css">
+
+
+    <meta name="generator" content="Hexo 7.2.0"></head>
+    <body>
+        <div class="container">
+            <header>
+<div class="main">
+<div class="title">
+    <a href="#" class="logo">Bocchi the blog&#39;s</a>
+</div>
+<div class="site-nav">
+    <ul id="menu" class="menu">
+    
+        <li class="menu-item text-underline">
+            <a href="/Blackcat-loveBlog/">Home</a>
+        </li>
+    
+        <li class="menu-item text-underline">
+            <a href="/Blackcat-loveBlog/archives">Archives</a>
+        </li>
+    
+        <li class="menu-item text-underline">
+            <a href="/Blackcat-loveBlog/about/about">About</a>
+        </li>
+            
+    </ul>
+</div>
+</div>
+</header>
+            <main class="main">
+                <section class="posts clearfix">
+<div class="post-wrapper">
+    <article class="post article-entry">
+    <div class="post-title">
+        自动化python学习笔记
+    </div>
+    <p class="sub">Jan 25 2024</p>
+    <div class="post-content">
+        <p>自动化python</p>
+<h1 id="通过id自动化填写信息"><a href="#通过id自动化填写信息" class="headerlink" title="通过id自动化填写信息"></a>通过id自动化填写信息</h1><p>导包</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br></pre></td></tr></table></figure>
+
+<p>创建浏览器实例</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driver= webdriver.Edge()</span><br></pre></td></tr></table></figure>
+
+<p>寻找元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element = driver.find_element_by_id(<span class="string">&quot;user&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>填写元素</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.send_keys(<span class="string">&quot;admin&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>睡眠3秒</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sleep(<span class="string">&quot;3&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>退出浏览器</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
+
+<h1 id="通过Class-or-name-自动化填写信息"><a href="#通过Class-or-name-自动化填写信息" class="headerlink" title="通过Class or name 自动化填写信息"></a>通过Class or name 自动化填写信息</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">drive = webdriver.Edge()</span><br><span class="line">drive.get(<span class="string">&quot;E:\python\A.html&quot;</span>)</span><br><span class="line"></span><br><span class="line">element = drive.find_element_by_name(<span class="string">&quot;user&quot;</span>)</span><br><span class="line">element.send_keys(<span class="string">&quot;admin&quot;</span>)</span><br><span class="line"></span><br><span class="line">element = drive.find_element_by_name(<span class="string">&quot;pwd&quot;</span>)</span><br><span class="line">element.send_keys(<span class="string">&quot;123456&quot;</span>)</span><br><span class="line"></span><br><span class="line">element = drive.find_element_by_class_name(<span class="string">&quot;phone&quot;</span>)</span><br><span class="line">element.send_keys(<span class="string">&quot;15109635964&quot;</span>)</span><br><span class="line"></span><br><span class="line">element = drive.find_element_by_class_name(<span class="string">&quot;email&quot;</span>)</span><br><span class="line">element.send_keys(<span class="string">&quot;431690197@qq.com&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sleep(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">drive.quit()</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+    </article>
+</div>
+
+    <div class="_toc">
+        <strong class="toc-title">
+        Contents
+        </strong>
+        <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9A%E8%BF%87id%E8%87%AA%E5%8A%A8%E5%8C%96%E5%A1%AB%E5%86%99%E4%BF%A1%E6%81%AF"><span class="toc-text">通过id自动化填写信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%9A%E8%BF%87Class-or-name-%E8%87%AA%E5%8A%A8%E5%8C%96%E5%A1%AB%E5%86%99%E4%BF%A1%E6%81%AF"><span class="toc-text">通过Class or name 自动化填写信息</span></a></li></ol>
+        </div>
+    </div>
+
+</section>
+
+
+    <nav class="post-nav">
+        
+            <div class="page-tags">
+                
+                    <a href="/Blackcat-loveBlog/tags/python/">python</a>
+                
+            </div>
+        
+    </nav>
+
+
+
+    <nav class="paginator clearfix">
+        
+            <a class="prev" href="/Blackcat-loveBlog/2024/01/25/Spring-shiro-mybatis-lombok%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">
+                <i class="iconfont icon-left"></i>
+                <span class="prev-text">Spring+shiro+mybatis+lombok项目部署</span>
+            </a>
+        
+        
+            <a class="next" href="/Blackcat-loveBlog/2024/01/22/Shiro%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                
+                <span class="prev-text">Shiro框架学习笔记</span>
+                <i class="iconfont icon-right"></i>
+            </a>
+        
+    </nav>
+
+
+            </main>
+            <div class="copyright">
+  <div class="text">Powered By
+    <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/zjx137/hexo-theme-Tsu">Tsu</a> &copy 2019
+  </div>
+</div>
+
+        </div>
+    <div class="back-to-top" id="back-to-top">
+            <i class="iconfont icon-up"></i>
+    </div>
+        
+    <!-- hexo injector body_end start --><script data-pjax src="https://registry.npmmirror.com/oh-my-live2d/latest/files"></script><script>const oml2d = OML2D.loadOml2d({libraryUrls:{"complete":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/complete.js","cubism2":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism2.js","cubism5":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism5.js"},mobileDisplay:true,models:[{"path":"/Blackcat-loveBlog/live2d/波奇酱2.0/波奇酱2.0.model3.json","mobilePosition":[0,0],"mobileScale":0.1,"mobileStageStyle":{"width":180,"height":250},"motionPreloadStrategy":"IDLE","position":[-100,-100],"scale":0.15,"stageStyle":{"width":250,"height":250}},{"path":"/Blackcat-loveBlog/live2d/liang_vts/liang.model3.json","scale":0.12,"position":[0,60],"stageStyle":{"width":250},"mobileScale":0.1,"mobilePosition":[0,0],"mobileStageStyle":{"width":180}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
+  return axios.get('https://v1.hitokoto.cn?c=i')
+    .then(function (response) {
+      return response.data.hitokoto ;
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+}
+}}});</script><!-- hexo injector body_end end --></body>
+    
+<script src="/Blackcat-loveBlog/js/jquery-3.3.1.min.js"></script>
+
+    
+<script src="/Blackcat-loveBlog/js/back-to-top.js"></script>
+
+    
+<script src="/Blackcat-loveBlog/js/scroll.js"></script>
+
+    <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": { 
+        preferredFont: "TeX", 
+        availableFonts: ["STIX","TeX"], 
+        linebreaks: { automatic:true }, 
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) 
+    },
+    tex2jax: { 
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ], 
+        processEscapes: true, 
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {  
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
+        Macros: { href: "{}" } 
+    },
+    messageStyle: "none"
+    }); 
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<title>液金偏移检测软件 | Bocchi the blog&#39;s</title>
+
+
+<link rel="stylesheet" href="/Blackcat-loveBlog/styles/main.css">
+
+
+    <meta name="generator" content="Hexo 7.2.0"></head>
+    <body>
+        <div class="container">
+            <header>
+<div class="main">
+<div class="title">
+    <a href="#" class="logo">Bocchi the blog&#39;s</a>
+</div>
+<div class="site-nav">
+    <ul id="menu" class="menu">
+    
+        <li class="menu-item text-underline">
+            <a href="/Blackcat-loveBlog/">Home</a>
+        </li>
+    
+        <li class="menu-item text-underline">
+            <a href="/Blackcat-loveBlog/archives">Archives</a>
+        </li>
+    
+        <li class="menu-item text-underline">
+            <a href="/Blackcat-loveBlog/about/about">About</a>
+        </li>
+            
+    </ul>
+</div>
+</div>
+</header>
+            <main class="main">
+                <section class="posts clearfix">
+<div class="post-wrapper">
+    <article class="post article-entry">
+    <div class="post-title">
+        液金偏移检测软件
+    </div>
+    <p class="sub">Dec 22 2023</p>
+    <div class="post-content">
+        <p>说是液金偏移检测软件，其实也只是通过监控不同的核心温度温差来做一个是否偏移的判断</p>
+<p><strong>oshi</strong>是一个用于获取系统信息的Java库，可以用来获取关于硬件、操作系统和进程的详细信息。它提供了一组简单易用的API，使得获取系统信息变得非常方便。</p>
+<p>oshi库的主要功能包括：</p>
+<ol>
+<li>获取硬件信息：包括CPU、内存、磁盘、网络接口等硬件相关信息。</li>
+<li>获取操作系统信息：包括操作系统类型、版本、文件系统等信息。</li>
+<li>获取进程信息：包括进程列表、资源利用率、线程数等信息。</li>
+</ol>
+<p>通过oshi库，你可以轻松地编写Java代码来获取系统的各种信息，从而实现一些系统管理、性能监控或诊断工具等应用程序。oshi库还在不断更新和改进中，以适应不同操作系统和硬件平台的需求。</p>
+<p>总之，oshi库为Java开发者提供了一个强大且易用的工具，用于获取系统信息并进行相应处理。</p>
+<p>首先，你需要在Maven或Gradle中添加oshi库的依赖项。</p>
+<p>对于Maven项目，可以在 <code>pom.xml</code> 文件中添加以下依赖项：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.oshi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>oshi-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.7.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>对于Gradle项目，可以在 <code>build.gradle</code> 文件中添加以下依赖项：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    implementation <span class="string">&#x27;com.github.oshi:oshi-core:5.7.4&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后，你可以使用以下代码示例来获取CPU温度信息：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> oshi.SystemInfo;</span><br><span class="line"><span class="keyword">import</span> oshi.hardware.CentralProcessor;</span><br><span class="line"><span class="keyword">import</span> oshi.hardware.Sensors;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">SystemInfo</span> <span class="variable">systemInfo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SystemInfo</span>();</span><br><span class="line">        <span class="type">CentralProcessor</span> <span class="variable">processor</span> <span class="operator">=</span> systemInfo.getHardware().getProcessor();</span><br><span class="line">        <span class="type">Sensors</span> <span class="variable">sensors</span> <span class="operator">=</span> systemInfo.getHardware().getSensors();</span><br><span class="line"></span><br><span class="line">        <span class="type">double</span> <span class="variable">cpuTemperature</span> <span class="operator">=</span> sensors.getCpuTemperature();</span><br><span class="line">        System.out.println(<span class="string">&quot;CPU温度: &quot;</span> + cpuTemperature + <span class="string">&quot;°C&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码将使用oshi库获取CPU温度信息，并将其打印到控制台上。记得处理可能的异常情况，比如未能获取到CPU温度的情况。</p>
+<p>在上一个示例中，我展示了如何使用oshi来获取整个CPU的温度，如果你想获取每一个CPU核心的温度，你可以使用以下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> oshi.SystemInfo;</span><br><span class="line"><span class="keyword">import</span> oshi.hardware.CentralProcessor;</span><br><span class="line"><span class="keyword">import</span> oshi.hardware.CentralProcessor.TickType;</span><br><span class="line"><span class="keyword">import</span> oshi.hardware.HardwareAbstractionLayer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">SystemInfo</span> <span class="variable">systemInfo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SystemInfo</span>();</span><br><span class="line">        <span class="type">HardwareAbstractionLayer</span> <span class="variable">hardware</span> <span class="operator">=</span> systemInfo.getHardware();</span><br><span class="line">        <span class="type">CentralProcessor</span> <span class="variable">processor</span> <span class="operator">=</span> hardware.getProcessor();</span><br><span class="line"></span><br><span class="line">        <span class="type">double</span>[] temperatures = processor.getTemperatures();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; temperatures.length; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Core &quot;</span> + i + <span class="string">&quot; 温度: &quot;</span> + temperatures[i] + <span class="string">&quot;°C&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这段代码中，我们使用 <code>processor.getTemperatures()</code> 方法获取到每个CPU核心的温度，并将其打印出来。这样你就能够查看每个CPU核心的温度了。</p>
+<h3 id="返回结果是0"><a href="#返回结果是0" class="headerlink" title="返回结果是0"></a>返回结果是0</h3><p>很多PC机的硬件生产商一般都不会把CPU的温度、风扇转速、电压值向WMI开放，但是我们获取CPU的性能数据就是通过向WMI请求返回值的，这就造成请求下发但是不能返回值，返回的性能值都是 0 </p>
+<p>解决办法：目前只能通过一个window插件获取到CPU的温度，其他参数还是不能获取到 </p>
+<p>插件下载地址：<a target="_blank" rel="noopener" href="https://openhardwaremonitor.org/">https://openhardwaremonitor.org/</a><br>————————————————<br>版权声明：本文为CSDN博主「请干了这碗鸡汤」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_23296327/article/details/104685687">https://blog.csdn.net/qq_23296327/article/details/104685687</a></p>
+
+    </div>
+    </article>
+</div>
+
+    <div class="_toc">
+        <strong class="toc-title">
+        Contents
+        </strong>
+        <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C%E6%98%AF0"><span class="toc-text">返回结果是0</span></a></li></ol>
+        </div>
+    </div>
+
+</section>
+
+
+    <nav class="post-nav">
+        
+            <div class="page-tags">
+                
+            </div>
+        
+    </nav>
+
+
+
+    <nav class="paginator clearfix">
+        
+            <a class="prev" href="/Blackcat-loveBlog/2023/12/26/SpringBoot-Redis%E6%95%B4%E5%90%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                <i class="iconfont icon-left"></i>
+                <span class="prev-text">SpringBoot_Redis整合学习笔记</span>
+            </a>
+        
+        
+            <a class="next" href="/Blackcat-loveBlog/2023/12/22/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+                
+                <span class="prev-text">linux常用命令</span>
+                <i class="iconfont icon-right"></i>
+            </a>
+        
+    </nav>
+
+
+            </main>
+            <div class="copyright">
+  <div class="text">Powered By
+    <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/zjx137/hexo-theme-Tsu">Tsu</a> &copy 2019
+  </div>
+</div>
+
+        </div>
+    <div class="back-to-top" id="back-to-top">
+            <i class="iconfont icon-up"></i>
+    </div>
+        
+    <!-- hexo injector body_end start --><script data-pjax src="https://registry.npmmirror.com/oh-my-live2d/latest/files"></script><script>const oml2d = OML2D.loadOml2d({libraryUrls:{"complete":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/complete.js","cubism2":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism2.js","cubism5":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism5.js"},mobileDisplay:true,models:[{"path":"/Blackcat-loveBlog/live2d/波奇酱2.0/波奇酱2.0.model3.json","mobilePosition":[0,0],"mobileScale":0.1,"mobileStageStyle":{"width":180,"height":250},"motionPreloadStrategy":"IDLE","position":[-100,-100],"scale":0.15,"stageStyle":{"width":250,"height":250}},{"path":"/Blackcat-loveBlog/live2d/liang_vts/liang.model3.json","scale":0.12,"position":[0,60],"stageStyle":{"width":250},"mobileScale":0.1,"mobilePosition":[0,0],"mobileStageStyle":{"width":180}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
+  return axios.get('https://v1.hitokoto.cn?c=i')
+    .then(function (response) {
+      return response.data.hitokoto ;
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+}
+}}});</script><!-- hexo injector body_end end --></body>
+    
+<script src="/Blackcat-loveBlog/js/jquery-3.3.1.min.js"></script>
+
+    
+<script src="/Blackcat-loveBlog/js/back-to-top.js"></script>
+
+    
+<script src="/Blackcat-loveBlog/js/scroll.js"></script>
+
+    <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": { 
+        preferredFont: "TeX", 
+        availableFonts: ["STIX","TeX"], 
+        linebreaks: { automatic:true }, 
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) 
+    },
+    tex2jax: { 
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ], 
+        processEscapes: true, 
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {  
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
+        Macros: { href: "{}" } 
+    },
+    messageStyle: "none"
+    }); 
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+</html>

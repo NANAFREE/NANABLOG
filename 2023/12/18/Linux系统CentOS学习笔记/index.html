@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<title>Linux系统CentOS学习笔记 | Bocchi the blog&#39;s</title>
+
+
+<link rel="stylesheet" href="/Blackcat-loveBlog/styles/main.css">
+
+
+    <meta name="generator" content="Hexo 7.2.0"></head>
+    <body>
+        <div class="container">
+            <header>
+<div class="main">
+<div class="title">
+    <a href="#" class="logo">Bocchi the blog&#39;s</a>
+</div>
+<div class="site-nav">
+    <ul id="menu" class="menu">
+    
+        <li class="menu-item text-underline">
+            <a href="/Blackcat-loveBlog/">Home</a>
+        </li>
+    
+        <li class="menu-item text-underline">
+            <a href="/Blackcat-loveBlog/archives">Archives</a>
+        </li>
+    
+        <li class="menu-item text-underline">
+            <a href="/Blackcat-loveBlog/about/about">About</a>
+        </li>
+            
+    </ul>
+</div>
+</div>
+</header>
+            <main class="main">
+                <section class="posts clearfix">
+<div class="post-wrapper">
+    <article class="post article-entry">
+    <div class="post-title">
+        Linux系统CentOS学习笔记
+    </div>
+    <p class="sub">Dec 18 2023</p>
+    <div class="post-content">
+        <p><img src="/Blackcat-loveBlog/png/linux.jpg"></p>
+<h2 id="Linux操作系统目录结构"><a href="#Linux操作系统目录结构" class="headerlink" title="Linux操作系统目录结构"></a>Linux操作系统目录结构</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/ (根目录)</span><br><span class="line">├── bin (二进制文件) - 存放系统启动和运行所需的基本命令</span><br><span class="line">├── boot (引导文件) - 存放用于系统引导的文件</span><br><span class="line">├── dev (设备文件) - 包含系统所需的设备文件，如硬盘、键盘等</span><br><span class="line">├── etc (配置文</span><br><span class="line">件) - 存放系统的配置文件</span><br><span class="line">├── home (用户主目录) - 存放用户个人文件的根目录</span><br><span class="line">├── lib (库文件) - 包含系统运行时所需的共享库文件</span><br><span class="line">├── media (可移动介质挂载点) - 用来挂载可移动介质的目录，如光盘、U盘等</span><br><span class="line">├── mnt (临时挂载目录) - 用来临时挂载其他文件系统的目录</span><br><span class="line">├── opt (可选应用软件包) - 存放可选的应用软件包的安装目录</span><br><span class="line">├── proc (进程信息) - 包含系统内存的映射文件，用于查看系统和进程信息</span><br><span class="line">├── root (超级用户目录) - 超级用户（root）的个人文件目录</span><br><span class="line">├── sbin (系统二进制文件) - 存放系统管理员使用的系统管理命令</span><br><span class="line">├── tmp (临时文件) - 存放临时文件的目录</span><br><span class="line">├── usr (用户文件) - 包含用户级应用程序和文件的目录</span><br><span class="line">└── var (变化文件) - 包含经常变化的文件，如日志和邮件等</span><br></pre></td></tr></table></figure>
+
+<h2 id="基础操作指令"><a href="#基础操作指令" class="headerlink" title="基础操作指令"></a>基础操作指令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ls</td>
+<td>列出目录内容</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>切换目录</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>显示当前目录</td>
+</tr>
+<tr>
+<td>cat</td>
+<td>查看或连接文件</td>
+</tr>
+<tr>
+<td>cp</td>
+<td>复制文件或目录</td>
+</tr>
+<tr>
+<td>mv ‘旧名字’ ‘新名字’ or mv ‘文件名’ ‘移动的路径’</td>
+<td>移动&#x2F;重命名文件或目录</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>删除文件或目录</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>rmdir</td>
+<td>删除目录</td>
+</tr>
+<tr>
+<td>touch ‘文件名’</td>
+<td>创建空文件</td>
+</tr>
+<tr>
+<td>grep</td>
+<td>在文件中查找指定文本</td>
+</tr>
+<tr>
+<td>ps</td>
+<td>显示当前进程</td>
+</tr>
+<tr>
+<td>top</td>
+<td>显示系统当前资源占用情况</td>
+</tr>
+<tr>
+<td>kill</td>
+<td>终止进程</td>
+</tr>
+</tbody></table>
+<h3 id="查看ip"><a href="#查看ip" class="headerlink" title="查看ip"></a>查看ip</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<h3 id="进入根目录"><a href="#进入根目录" class="headerlink" title="进入根目录"></a>进入根目录</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /</span><br></pre></td></tr></table></figure>
+
+<h3 id="切换root"><a href="#切换root" class="headerlink" title="切换root"></a>切换root</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br></pre></td></tr></table></figure>
+
+<h3 id="切换普通用户"><a href="#切换普通用户" class="headerlink" title="切换普通用户"></a>切换普通用户</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su hellomv</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看当前用户"><a href="#查看当前用户" class="headerlink" title="查看当前用户"></a>查看当前用户</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">whoami</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="查看文件权限"><a href="#查看文件权限" class="headerlink" title="查看文件权限"></a>查看文件权限</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l</span><br></pre></td></tr></table></figure>
+
+<p><code>ls -l</code>是Linux和Unix系统中的一个命令，用于列出当前目录下的文件和目录，并显示它们的详细属性。</p>
+<ul>
+<li><code>ls</code>：列出目录内容。</li>
+<li><code>-l</code>：长格式显示，包括文件权限、所有者、组、文件大小、修改日期等详细信息。</li>
+</ul>
+<p>例如，当你执行<code>ls -l</code>命令时，可能会看到类似以下的输出：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span>rw<span class="operator">-</span>r<span class="comment">--r--  1 user group  1234 Oct 23 10:00 filename.txt</span></span><br></pre></td></tr></table></figure>
+
+<p>这表示：</p>
+<ul>
+<li><pre><code>-rw-r--r--
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">：文件权限，其中</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+-
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">表示这是一个普通文件，</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+rw-r--r--
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  表示权限。</span><br><span class="line"></span><br><span class="line">  - 第一个字符表示文件类型（`-`表示普通文件，`d`表示目录）。</span><br><span class="line">  - 接下来的三个字符表示所有者的权限（r代表可读，w代表可写，x代表可执行）。</span><br><span class="line">  - 接下来的三个字符表示组的权限。</span><br><span class="line">  - 最后的三个字符表示其他用户的权限。</span><br><span class="line"></span><br><span class="line">- `1`：硬链接数量。</span><br><span class="line"></span><br><span class="line">- `user`：文件所有者。</span><br><span class="line"></span><br><span class="line">- `group`：文件所属组。</span><br><span class="line"></span><br><span class="line">- `1234`：文件大小（以字节为单位）。</span><br><span class="line"></span><br><span class="line">- `Oct 23 10:00`：文件的最后修改时间</span><br><span class="line"></span><br><span class="line">### 显示后五条数据 </span><br><span class="line"></span><br><span class="line">**tip:**study是文件名</span><br><span class="line"></span><br><span class="line">```sh</span><br><span class="line">tail -5 study</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<h3 id="显示前五条数据"><a href="#显示前五条数据" class="headerlink" title="显示前五条数据"></a>显示前五条数据</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">head</span> -5 study</span><br></pre></td></tr></table></figure>
+
+<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf <span class="string">&#x27;文件名&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用Vi"><a href="#使用Vi" class="headerlink" title="使用Vi"></a>使用Vi</h2><table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">i</td>
+<td align="center">进入插入模式，从当前光标位置开始输入文件内容。</td>
+</tr>
+<tr>
+<td align="center">a</td>
+<td align="center">进入插入模式，从当前光标位置的下一个字符开始输入文件内容。</td>
+</tr>
+<tr>
+<td align="center">o</td>
+<td align="center">进入插入模式，在当前光标位置插入新的一行，从行首开始输入文件内容。</td>
+</tr>
+<tr>
+<td align="center">ESC</td>
+<td align="center">退出插入模式，进入命令行模式。</td>
+</tr>
+<tr>
+<td align="center">h</td>
+<td align="center">将光标向左移动一格。</td>
+</tr>
+<tr>
+<td align="center">j</td>
+<td align="center">将光标向下移动一格。</td>
+</tr>
+<tr>
+<td align="center">k</td>
+<td align="center">将光标向上移动一页。</td>
+</tr>
+<tr>
+<td align="center">l</td>
+<td align="center">将光标向右移动一格。</td>
+</tr>
+<tr>
+<td align="center">ctrl+b</td>
+<td align="center">将屏幕向后移动一页。</td>
+</tr>
+<tr>
+<td align="center">ctrl+f</td>
+<td align="center">将屏幕向前移动一页。</td>
+</tr>
+<tr>
+<td align="center">ctrl+u</td>
+<td align="center">将屏幕向后移动半页。</td>
+</tr>
+<tr>
+<td align="center">ctrl+d</td>
+<td align="center">将屏幕向前移动半页。</td>
+</tr>
+<tr>
+<td align="center">x</td>
+<td align="center">删除光标所在位置的后面一个字符。</td>
+</tr>
+<tr>
+<td align="center">X</td>
+<td align="center">删除光标所在位置的前面一个字符。</td>
+</tr>
+</tbody></table>
+<p>请注意，这些命令都是在命令行模式下使用的。如果您想在插入模式下使用某些命令，请先按<code>ESC</code>键退出插入模式，然后输入相应的命令。</p>
+<p>此外，退出vi编辑器的方法有：</p>
+<ol>
+<li><strong>:q</strong>：退出vi编辑器。</li>
+<li><strong>:wq</strong>：保存文件并退出vi编辑器。</li>
+<li>**:q!**：不保存文件并退出vi编辑器。</li>
+</ol>
+<h3 id="编辑文件"><a href="#编辑文件" class="headerlink" title="编辑文件"></a>编辑文件</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi [文件名]</span><br></pre></td></tr></table></figure>
+
+<p>回车后可以看到文件内容，此时按 i 或者 a 进入编辑模式</p>
+<p>此时可以正常编辑</p>
+<p>编辑完成后按 esc可以退出编辑</p>
+<h3 id="显示当前行行号"><a href="#显示当前行行号" class="headerlink" title="显示当前行行号"></a>显示当前行行号</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:nu</span><br></pre></td></tr></table></figure>
+
+<h3 id="显示所有行号"><a href="#显示所有行号" class="headerlink" title="显示所有行号"></a>显示所有行号</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:<span class="built_in">set</span> nu</span><br></pre></td></tr></table></figure>
+
+<h3 id="保存退出使用"><a href="#保存退出使用" class="headerlink" title="保存退出使用"></a>保存退出使用</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure>
+
+<h3 id="退出使用"><a href="#退出使用" class="headerlink" title="退出使用"></a>退出使用</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:q</span><br></pre></td></tr></table></figure>
+
+<h3 id="保存使用"><a href="#保存使用" class="headerlink" title="保存使用"></a>保存使用</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:w</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+    </article>
+</div>
+
+    <div class="_toc">
+        <strong class="toc-title">
+        Contents
+        </strong>
+        <div class="toc-content">
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-text">Linux操作系统目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4"><span class="toc-text">基础操作指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Bip"><span class="toc-text">查看ip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E6%A0%B9%E7%9B%AE%E5%BD%95"><span class="toc-text">进入根目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2root"><span class="toc-text">切换root</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7"><span class="toc-text">切换普通用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%BD%93%E5%89%8D%E7%94%A8%E6%88%B7"><span class="toc-text">查看当前用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="toc-text">查看文件权限</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E5%89%8D%E4%BA%94%E6%9D%A1%E6%95%B0%E6%8D%AE"><span class="toc-text">显示前五条数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%8E%8B"><span class="toc-text">解压</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Vi"><span class="toc-text">使用Vi</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E8%BE%91%E6%96%87%E4%BB%B6"><span class="toc-text">编辑文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E8%A1%8C%E8%A1%8C%E5%8F%B7"><span class="toc-text">显示当前行行号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E6%89%80%E6%9C%89%E8%A1%8C%E5%8F%B7"><span class="toc-text">显示所有行号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98%E9%80%80%E5%87%BA%E4%BD%BF%E7%94%A8"><span class="toc-text">保存退出使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%80%E5%87%BA%E4%BD%BF%E7%94%A8"><span class="toc-text">退出使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98%E4%BD%BF%E7%94%A8"><span class="toc-text">保存使用</span></a></li></ol></li></ol>
+        </div>
+    </div>
+
+</section>
+
+
+    <nav class="post-nav">
+        
+            <div class="page-tags">
+                
+            </div>
+        
+    </nav>
+
+
+
+    <nav class="paginator clearfix">
+        
+            <a class="prev" href="/Blackcat-loveBlog/2023/12/18/linux%E4%B8%AD%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/">
+                <i class="iconfont icon-left"></i>
+                <span class="prev-text">linux中安装软件</span>
+            </a>
+        
+        
+            <a class="next" href="/Blackcat-loveBlog/2023/12/16/%E5%85%B3%E4%BA%8EShields%E5%BE%BD%E7%AB%A0%E7%9A%84%E4%BD%BF%E7%94%A8/">
+                
+                <span class="prev-text">关于Shields徽章的使用</span>
+                <i class="iconfont icon-right"></i>
+            </a>
+        
+    </nav>
+
+
+            </main>
+            <div class="copyright">
+  <div class="text">Powered By
+    <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/zjx137/hexo-theme-Tsu">Tsu</a> &copy 2019
+  </div>
+</div>
+
+        </div>
+    <div class="back-to-top" id="back-to-top">
+            <i class="iconfont icon-up"></i>
+    </div>
+        
+    <!-- hexo injector body_end start --><script data-pjax src="https://registry.npmmirror.com/oh-my-live2d/latest/files"></script><script>const oml2d = OML2D.loadOml2d({libraryUrls:{"complete":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/complete.js","cubism2":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism2.js","cubism5":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism5.js"},mobileDisplay:true,models:[{"path":"/Blackcat-loveBlog/live2d/波奇酱2.0/波奇酱2.0.model3.json","mobilePosition":[0,0],"mobileScale":0.1,"mobileStageStyle":{"width":180,"height":250},"motionPreloadStrategy":"IDLE","position":[-100,-100],"scale":0.15,"stageStyle":{"width":250,"height":250}},{"path":"/Blackcat-loveBlog/live2d/liang_vts/liang.model3.json","scale":0.12,"position":[0,60],"stageStyle":{"width":250},"mobileScale":0.1,"mobilePosition":[0,0],"mobileStageStyle":{"width":180}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
+  return axios.get('https://v1.hitokoto.cn?c=i')
+    .then(function (response) {
+      return response.data.hitokoto ;
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+}
+}}});</script><!-- hexo injector body_end end --></body>
+    
+<script src="/Blackcat-loveBlog/js/jquery-3.3.1.min.js"></script>
+
+    
+<script src="/Blackcat-loveBlog/js/back-to-top.js"></script>
+
+    
+<script src="/Blackcat-loveBlog/js/scroll.js"></script>
+
+    <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": { 
+        preferredFont: "TeX", 
+        availableFonts: ["STIX","TeX"], 
+        linebreaks: { automatic:true }, 
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) 
+    },
+    tex2jax: { 
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ], 
+        processEscapes: true, 
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {  
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
+        Macros: { href: "{}" } 
+    },
+    messageStyle: "none"
+    }); 
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+</html>
