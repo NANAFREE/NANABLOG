@@ -44,6 +44,25 @@
     
         <article class="post article-entry">
             <div class="post-title">
+                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">GdScript学习笔记</a>
+            </div>
+            <p class="sub">Mar 29 2024</p>
+            <div class="post-content">
+                
+                    <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>GdScript是一个弱类型语言，所以比较自由，在学习本语言前，建议学习一门强类型语言，在入门时更加容易上手和理解。</p>
+<h2 id="周期"><a href="#周期" class="headerlink" title="周期"></a>周期</h2><p>_init() 初始化调用</p>
+<p>_ready() 开始调用一次</p>
+<p>_process(delta) 每帧调用 delta参数是定义间隔 比如你要每三帧执行一次那么 delta就更改成3</p>
+<h2 id="发现"><a href="#发现" class="headerlink" title="发现"></a>发现</h2><p>在Godot中，我发现通过写脚本，可以控制你导入的素材属性，比如写一个方法改变素材的位置，你在界面化中可以更改属性参数来改变，在脚本中，可以调用素材属性方法来改变，两者唯一不同是，拖拽的改法只能在当前使用，而写到脚本中后，每次调用脚本都可以改变位置，通过写一个复杂的方法，来实现人物的位置移动，然后通过调用素材的帧动画，来实现人物显示和移动，说白了，就是播放和停止，移动和返回，使用脚本快速完成游戏框架的构建，并且为了以后的优化和补丁，写一个Mod系统，直接使用脚本调用配置文件就可以完成增加人物或者是武器即可，在脚本中将所有的怪物生成，人物，武器数值不要固定化，有一个配置文件专门保存数据，每次只需要导入相应的类和方法读取就可以。</p>
+<h2 id="代码优化"><a href="#代码优化" class="headerlink" title="代码优化"></a>代码优化</h2><p>通过查看性能统计 Profile 、监视器 Monitor、内存管理 free，可以快速发现某些史山代码，然后减少调用次数，或者回收方法，来让内存恢复。</p>
+<h2 id="着色器"><a href="#着色器" class="headerlink" title="着色器"></a>着色器</h2><p>使用着色器可以对一个精灵进行一些改变</p>
+<h3 id="顶点着色器"><a href="#顶点着色器" class="headerlink" title="顶点着色器"></a>顶点着色器</h3><h3 id="片段着色器"><a href="#片段着色器" class="headerlink" title="片段着色器"></a>片段着色器</h3>
+                
+            </div>
+        </article>
+    
+        <article class="post article-entry">
+            <div class="post-title">
                 <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2024/03/06/libGDX%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/">libGDX开发笔记</a>
             </div>
             <p class="sub">Mar 06 2024</p>
@@ -510,19 +529,6 @@
 
 <h1 id="通过Class-or-name-自动化填写信息"><a href="#通过Class-or-name-自动化填写信息" class="headerlink" title="通过Class or name 自动化填写信息"></a>通过Class or name 自动化填写信息</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> time <span class="keyword">import</span> sleep</span><br><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">drive = webdriver.Edge()</span><br><span class="line">drive.get(<span class="string">&quot;E:\python\A.html&quot;</span>)</span><br><span class="line"></span><br><span class="line">element = drive.find_element_by_name(<span class="string">&quot;user&quot;</span>)</span><br><span class="line">element.send_keys(<span class="string">&quot;admin&quot;</span>)</span><br><span class="line"></span><br><span class="line">element = drive.find_element_by_name(<span class="string">&quot;pwd&quot;</span>)</span><br><span class="line">element.send_keys(<span class="string">&quot;123456&quot;</span>)</span><br><span class="line"></span><br><span class="line">element = drive.find_element_by_class_name(<span class="string">&quot;phone&quot;</span>)</span><br><span class="line">element.send_keys(<span class="string">&quot;15109635964&quot;</span>)</span><br><span class="line"></span><br><span class="line">element = drive.find_element_by_class_name(<span class="string">&quot;email&quot;</span>)</span><br><span class="line">element.send_keys(<span class="string">&quot;431690197@qq.com&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">sleep(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">drive.quit()</span><br></pre></td></tr></table></figure>
 
-
-                
-            </div>
-        </article>
-    
-        <article class="post article-entry">
-            <div class="post-title">
-                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2024/01/22/Shiro%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Shiro框架学习笔记</a>
-            </div>
-            <p class="sub">Jan 22 2024</p>
-            <div class="post-content">
-                
-                    <p>Apache Shiro 是 Java 的一个安全框架。目前，使用 Apache Shiro 的人越来越多，因为它相当简单，对比 Spring Security，可能没有 Spring Security 做的功能强大，但是在实际工作时可能并不需要那么复杂的东西，所以使用小而简单的 Shiro 就足够了。对于它俩到底哪个好，这个不必纠结，能更简单的解决项目问题就好了。</p>
 
                 
             </div>
