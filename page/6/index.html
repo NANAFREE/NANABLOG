@@ -33,6 +33,10 @@
         <li class="menu-item text-underline">
             <a href="/Blackcat-loveBlog/about/about">About</a>
         </li>
+    
+        <li class="menu-item text-underline">
+            <a href="/Blackcat-loveBlog/friends/friends">Menu.友链</a>
+        </li>
             
     </ul>
 </div>
@@ -41,6 +45,207 @@
             <main class="main">
                 <section class="posts clearfix">
     <div class="posts-wrapper">
+    
+        <article class="post article-entry">
+            <div class="post-title">
+                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2022/09/03/Spring%E6%A1%86%E6%9E%B6/">Spring学习笔记</a>
+            </div>
+            <p class="sub">Sep 03 2022</p>
+            <div class="post-content">
+                
+                    <h2 id="Spring框架简介"><a href="#Spring框架简介" class="headerlink" title="Spring框架简介"></a>Spring框架简介</h2><p>Spring框架是一个开源的Java应用程序框架，主要用于构建企业级应用程序。它提供了全面的基础设施支持，包括两个核心功能：控制反转（IoC）和面向切面编程（AOP）。</p>
+<ol>
+<li><strong>控制反转（IoC）</strong>：<ul>
+<li><strong>定义</strong>：IoC是一种设计模式，它将应用程序中对象的创建、依赖关系的管理交给了容器，而不是由开发者手动管理。</li>
+<li><strong>Spring实现</strong>：Spring的IoC容器负责创建和管理应用程序组件，将Bean的依赖关系自动注入，开发者只需要声明依赖关系，而不需要手动实例化对象。</li>
+<li><strong>优点</strong>：简化了代码，减少了耦合度，提高了灵活性和可维护性。</li>
+</ul>
+</li>
+<li><strong>面向切面编程（AOP）</strong>：<ul>
+<li><strong>定义</strong>：AOP是一种编程范式，允许开发者在程序执行的特定点（称为连接点）上插入代码，从而实现与核心业务逻辑分离的关注点（如日志、事务管理等）。</li>
+<li><strong>Spring实现</strong>：Spring提供了AOP模块，可以通过定义切面、连接点、通知等来实现AOP编程，使得关注点的代码可以独立于业务逻辑进行管理和维护。</li>
+<li><strong>优点</strong>：提高了代码的模块化程度，降低了代码重复，增强了可维护性和扩展性。</li>
+</ul>
+</li>
+</ol>
+<p>Spring框架的这两个核心功能使得开发者可以更专注于业务逻辑的实现，而无需过多关心对象的创建、依赖关系和横切关注点的处理。这样可以大大提高开发效率，减少了重复性的工作，同时也使得代码更加清晰、可维护和可扩展。</p>
+<h2 id="Spring框架概览"><a href="#Spring框架概览" class="headerlink" title="Spring框架概览"></a>Spring框架概览</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Spring框架</strong></td>
+<td>一个开源的Java应用程序框架，用于构建企业级应用程序。它提供了全面的基础设施支持，包括IoC和AOP。</td>
+</tr>
+<tr>
+<td><strong>IoC容器</strong></td>
+<td>Inversion of Control（控制反转）容器，负责管理应用程序组件的生命周期和依赖关系。</td>
+</tr>
+<tr>
+<td><strong>AOP</strong></td>
+<td>Aspect-Oriented Programming（面向切面编程），用于将横切关注点（如日志记录、安全性）与应用程序的核心业务逻辑分离开来。</td>
+</tr>
+</tbody></table>
+<h2 id="Spring-IoC（控制反转）"><a href="#Spring-IoC（控制反转）" class="headerlink" title="Spring IoC（控制反转）"></a>Spring IoC（控制反转）</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>IoC容器</strong></td>
+<td>Spring的IoC容器负责创建和管理应用程序组件。常见的IoC容器包括<code>BeanFactory</code>和<code>ApplicationContext</code>。</td>
+</tr>
+<tr>
+<td><strong>Bean</strong></td>
+<td>在Spring中，Bean是被IoC容器管理的Java对象。可以使用<code>@Component</code>注解或XML配置来定义Bean。</td>
+</tr>
+<tr>
+<td><strong>依赖注入（DI）</strong></td>
+<td>通过DI，Spring容器将Bean的依赖关系自动注入到Bean中，而不是由Bean自己创建依赖对象。</td>
+</tr>
+<tr>
+<td><strong>@Autowired注解</strong></td>
+<td>用于自动装配Bean之间的依赖关系。可以用于构造函数、属性或方法上。</td>
+</tr>
+<tr>
+<td><strong>@ComponentScan注解</strong></td>
+<td>用于启用自动扫描并注册标记为<code>@Component</code>的Bean。</td>
+</tr>
+<tr>
+<td><strong>@Configuration注解</strong></td>
+<td>用于定义Java类作为配置类，声明Bean定义和Bean之间的依赖关系。</td>
+</tr>
+<tr>
+<td><strong>@Bean注解</strong></td>
+<td>在配置类中使用，用于定义Bean的创建和初始化方法。</td>
+</tr>
+</tbody></table>
+<h2 id="Spring-AOP（面向切面编程）"><a href="#Spring-AOP（面向切面编程）" class="headerlink" title="Spring AOP（面向切面编程）"></a>Spring AOP（面向切面编程）</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>切面（Aspect）</strong></td>
+<td>用于定义横切关注点，如日志记录、性能监控。</td>
+</tr>
+<tr>
+<td><strong>连接点（Join Point）</strong></td>
+<td>在应用程序执行过程中，可以插入切面的点。例如，方法调用、异常抛出等。</td>
+</tr>
+<tr>
+<td><strong>通知（Advice）</strong></td>
+<td>切面在连接点上执行的代码块，包括<code>@Before</code>、<code>@After</code>、<code>@Around</code>等。</td>
+</tr>
+<tr>
+<td><strong>切点（Pointcut）</strong></td>
+<td>定义一组连接点，切面会在这些连接点上执行通知。</td>
+</tr>
+<tr>
+<td><strong>@Aspect注解</strong></td>
+<td>用于定义切面，包括切点和通知。</td>
+</tr>
+<tr>
+<td><strong>@Before注解</strong></td>
+<td>在连接点之前执行通知的注解。</td>
+</tr>
+<tr>
+<td><strong>@After注解</strong></td>
+<td>在连接点之后执行通知的注解。</td>
+</tr>
+<tr>
+<td><strong>@Around注解</strong></td>
+<td>包围连接点执行的通知，可以控制连接点的执行流程。</td>
+</tr>
+</tbody></table>
+<p>以上是Spring框架的主要概念和常用注解，它们可以帮助您实现IoC和AOP，以构建更可维护和可扩展的Java应用程序。</p>
+<h1 id="IoC详细步骤"><a href="#IoC详细步骤" class="headerlink" title="IoC详细步骤"></a>IoC详细步骤</h1><h2 id="0-导入Spring坐标"><a href="#0-导入Spring坐标" class="headerlink" title="0.导入Spring坐标"></a>0.导入Spring坐标</h2><p>也就是在xml里导入Spring位置，否则无法建立Spring文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-context<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 使用这个版本是因为这个版本相对稳定 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.2.10.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-定义应用组件"><a href="#1-定义应用组件" class="headerlink" title="1. 定义应用组件"></a>1. 定义应用组件</h2><p>定义应用中的各种组件，例如服务、数据访问对象（DAO）、业务逻辑等。</p>
+<h2 id="2-配置组件"><a href="#2-配置组件" class="headerlink" title="2. 配置组件"></a>2. 配置组件</h2><p>将组件的配置信息放入配置文件，通常使用XML或注解。配置文件包含类名、依赖关系等信息。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- applicationContext.xml --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userService&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.example.UserService&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userDao&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.example.UserDao&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-创建IoC容器"><a href="#3-创建IoC容器" class="headerlink" title="3. 创建IoC容器"></a>3. 创建IoC容器</h2><p>在应用启动时，创建IoC容器。在这个例子中，使用Spring IoC容器。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 应用启动类</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyApp</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">ApplicationContext</span> <span class="variable">context</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ClassPathXmlApplicationContext</span>(<span class="string">&quot;applicationContext.xml&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-组件的注册"><a href="#4-组件的注册" class="headerlink" title="4. 组件的注册"></a>4. 组件的注册</h2><p>将定义的组件注册到IoC容器中，容器会根据配置信息实例化和管理这些组件。</p>
+<h2 id="5-依赖注入"><a href="#5-依赖注入" class="headerlink" title="5. 依赖注入"></a>5. 依赖注入</h2><p>通过构造函数或属性注入，解决组件之间的依赖关系。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- applicationContext.xml --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userService&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.example.UserService&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;userDao&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;userDao&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;userDao&quot;</span> <span class="attr">class</span>=<span class="string">&quot;com.example.UserDao&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// UserService.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> UserDao userDao;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Setter for dependency injection</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setUserDao</span><span class="params">(UserDao userDao)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.userDao = userDao;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-获取组件"><a href="#6-获取组件" class="headerlink" title="6. 获取组件"></a>6. 获取组件</h2><p>在应用程序中，通过IoC容器获取需要的组件实例，而不是手动创建。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// MyApp.java</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MyApp</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">ApplicationContext</span> <span class="variable">context</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ClassPathXmlApplicationContext</span>(<span class="string">&quot;applicationContext.xml&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Get UserService instance from IoC container</span></span><br><span class="line">        <span class="type">UserService</span> <span class="variable">userService</span> <span class="operator">=</span> context.getBean(<span class="string">&quot;userService&quot;</span>, UserService.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-使用组件"><a href="#7-使用组件" class="headerlink" title="7. 使用组件"></a>7. 使用组件</h2><p>使用获取到的组件实例来执行业务逻辑。</p>
+<h2 id="8-销毁组件"><a href="#8-销毁组件" class="headerlink" title="8. 销毁组件"></a>8. 销毁组件</h2><p>IoC容器负责管理组件的生命周期，包括销毁和释放资源。</p>
+<h3 id="示例表格"><a href="#示例表格" class="headerlink" title="示例表格"></a>示例表格</h3><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>描述</th>
+<th>代码示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>定义应用组件</td>
+<td>UserService, UserDao</td>
+</tr>
+<tr>
+<td>2</td>
+<td>配置组件</td>
+<td>applicationContext.xml</td>
+</tr>
+<tr>
+<td>3</td>
+<td>创建IoC容器</td>
+<td><code>ApplicationContext context = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td>组件的注册</td>
+<td><code>&lt;bean id=&quot;userService&quot; class=&quot;com.example.UserService&quot; /&gt;</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>依赖注入</td>
+<td><code>&lt;property name=&quot;userDao&quot; ref=&quot;userDao&quot; /&gt;</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>获取组件</td>
+<td><code>UserService userService = context.getBean(&quot;userService&quot;, UserService.class);</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td>使用组件</td>
+<td><code>userService.doSomething();</code></td>
+</tr>
+<tr>
+<td>8</td>
+<td>销毁组件</td>
+<td>IoC容器管理生命周期</td>
+</tr>
+</tbody></table>
+<p>这个表格展示了IoC的步骤，以及每个步骤的描述和相关示例代码。</p>
+<h1 id="DI-依赖注入-详细步骤"><a href="#DI-依赖注入-详细步骤" class="headerlink" title="DI(依赖注入)详细步骤"></a>DI(依赖注入)详细步骤</h1><p>在传统的Java编程中，对象之间通常是通过创建和管理对象的实例来解决依赖关系，这种方式存在代码复杂度高、对象之间的依赖关系紧密耦合，难以维护和测试等问题。而DI是一种通过外部注入对象的依赖关系来解决对象之间依赖关系的方法，它<strong>降低了代码复杂度</strong>、降低了对象之间的<strong>耦合性</strong>，方便了对象的单元测试和集成测试。</p>
+<p>此外，DI和IOC（Inversion of Control）是两个密不可分的概念，它们是同一个概念的不同角度描述。其中，IOC是一种设计模式，通过将对象的创建和管理交由容器负责，实现了对象之间的解耦和复用；而DI是IOC的一种具体实现方式，通过将依赖关系外置，实现了对象之间的解耦和复用。因此，可以说DI是IOC的一种实现方式。</p>
+<p>在我看来，DI在IOC的基础上实现了更多功能，减缓代码中的数据，降低耦合度，无需new对象。</p>
+
+                
+            </div>
+        </article>
     
         <article class="post article-entry">
             <div class="post-title">
@@ -1158,7 +1363,7 @@
         </div>
     <div class="tags">
     <h3 class="tags-title">Tags</h3>
-    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" rel="tag">年终总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/Dos/" rel="tag">Dos</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/GdScript/" rel="tag">GdScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/Go/" rel="tag">Go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/JQuery/" rel="tag">JQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/JS/" rel="tag">JS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/%E6%A1%86%E6%9E%B6/" rel="tag">框架</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li></ul>
+    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" rel="tag">年终总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/Dos/" rel="tag">Dos</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/GdScript/" rel="tag">GdScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/Go/" rel="tag">Go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/JS/" rel="tag">JS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/JQuery/" rel="tag">JQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">1</span></li></ul>
 </div>
     </div>
 </div>

