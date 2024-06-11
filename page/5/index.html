@@ -48,6 +48,37 @@
     
         <article class="post article-entry">
             <div class="post-title">
+                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2023/12/16/%E5%85%B3%E4%BA%8EShields%E5%BE%BD%E7%AB%A0%E7%9A%84%E4%BD%BF%E7%94%A8/">关于Shields徽章的使用</a>
+            </div>
+            <p class="sub">Dec 16 2023</p>
+            <div class="post-content">
+                
+                    <p><img src="/Blackcat-loveBlog/png/shields.jpg"></p>
+<p>在github或者gitee中使用徽章来编写说明文档可以让文档的可读性和整体观感大幅度提升，制作过程也比较简单</p>
+<p>首先打开官方网站</p>
+<p>这里使用的是shields</p>
+<p> 网址:<a target="_blank" rel="noopener" href="https://shields.io/">https://shields.io/</a></p>
+<p>进入后根据官方说明文档的提示快速制作一个徽章</p>
+<p>格式为msg-release-color</p>
+<p>如果需要使用空格需要替换为下划线_</p>
+<p>比如制作一个hello world的版本说明</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello_world-1.2.1_release-blue</span><br></pre></td></tr></table></figure>
+
+<p>效果:</p>
+<img alt="Static Badge" src="https://img.shields.io/badge/hello_world-1.2.1_release-blue">
+
+<p>如果要替换颜色就更改color</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hello_world-1.2.1_release-red</span><br></pre></td></tr></table></figure>
+
+<img alt="Static Badge" src="https://img.shields.io/badge/hello_world-1.2.1_release-red">
+
+
+                
+            </div>
+        </article>
+    
+        <article class="post article-entry">
+            <div class="post-title">
                 <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2023/12/13/Vue/">Vue学习笔记</a>
             </div>
             <p class="sub">Dec 13 2023</p>
@@ -2124,128 +2155,6 @@
 
 <p>在这其中，通过使用${stu.sname}可以调用Java代码，用来插入需要的信息</p>
 <h1 id="12-Ajax和jQuery"><a href="#12-Ajax和jQuery" class="headerlink" title="12.Ajax和jQuery"></a>12.Ajax和jQuery</h1><p>下午编写笔记</p>
-
-                
-            </div>
-        </article>
-    
-        <article class="post article-entry">
-            <div class="post-title">
-                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2023/10/03/Maven/">部署Maven</a>
-            </div>
-            <p class="sub">Oct 03 2023</p>
-            <div class="post-content">
-                
-                    <h2 id="Maven配置"><a href="#Maven配置" class="headerlink" title="Maven配置"></a>Maven配置</h2><h4 id="1-下载包"><a href="#1-下载包" class="headerlink" title="1.下载包"></a>1.下载包</h4><p>下载 apache-maven-3.8.1-bin.zip 解压</p>
-<h4 id="2-配置环境变量"><a href="#2-配置环境变量" class="headerlink" title="2.配置环境变量"></a>2.配置环境变量</h4><h4 id="3-修改配置文件"><a href="#3-修改配置文件" class="headerlink" title="3.修改配置文件"></a>3.修改配置文件</h4><p>在conf-settings.xml里配置你的仓库路径</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.2.0&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd&quot;</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- localRepository</span></span><br><span class="line"><span class="comment">   | The path to the local repository maven will use to store artifacts.</span></span><br><span class="line"><span class="comment">   |</span></span><br><span class="line"><span class="comment">   | Default: $&#123;user.home&#125;/.m2/repository</span></span><br><span class="line"><span class="comment">  --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>D:\maven\apache-maven-3.8.1\repository<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span>  替换成你要配置的路径</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>tip:注意，repository文件夹需要自己创建</p>
-<p>然后增加一个阿里云下载</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>maven-default-http-blocker<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>external:http:*<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>Pseudo repository to mirror external repositories initially using HTTP.<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://0.0.0.0/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">blocked</span>&gt;</span>true<span class="tag">&lt;/<span class="name">blocked</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">mirror</span>&gt;</span>	</span><br><span class="line">		<span class="tag">&lt;<span class="name">id</span>&gt;</span>alimaven<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>central<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>aliyun maven<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/repositories/central/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="4-IDEA绑定Maven"><a href="#4-IDEA绑定Maven" class="headerlink" title="4.IDEA绑定Maven"></a>4.IDEA绑定Maven</h4><p>在创建Maven框架项目的时候会弹出路径选择，选择你<strong>环境配置</strong>的那个Maven</p>
-<h4 id="5-IDEA选包"><a href="#5-IDEA选包" class="headerlink" title="5.IDEA选包"></a>5.IDEA选包</h4><p>选择你要创建的包项目 wepapp or String boot</p>
-<h4 id="6-Artifact-Coordinates修改"><a href="#6-Artifact-Coordinates修改" class="headerlink" title="6.Artifact Coordinates修改"></a>6.Artifact Coordinates修改</h4><p>GroupId:根目录</p>
-<p>ArtifactId:每次创建的名称</p>
-<p>version:版本号</p>
-<h4 id="7-在Maven项目的详细设置窗口增加一个Properties"><a href="#7-在Maven项目的详细设置窗口增加一个Properties" class="headerlink" title="7.在Maven项目的详细设置窗口增加一个Properties"></a>7.在Maven项目的详细设置窗口增加一个Properties</h4><p>groupId:<strong>archetypeCatalog</strong></p>
-<p>com.<strong>bqdn:internal</strong></p>
-<h4 id="8-完成"><a href="#8-完成" class="headerlink" title="8.完成"></a>8.完成</h4><p>等待下载 如有报错 点击刷新</p>
-<h4 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h4><p><code>pom.xml</code>是Maven项目的核心配置文件，用于描述项目的构建信息、依赖管理、插件配置等。下面是一个简单的表格，介绍了一些常见的<code>pom.xml</code>节点及其描述：</p>
-<table>
-<thead>
-<tr>
-<th align="center">节点名称</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>project</code></td>
-<td align="center">根节点，用于定义Maven项目的全局配置。</td>
-</tr>
-<tr>
-<td align="center"><code>modelVersion</code></td>
-<td align="center">项目模型的版本号。</td>
-</tr>
-<tr>
-<td align="center"><code>groupId</code></td>
-<td align="center">项目所属的组ID。</td>
-</tr>
-<tr>
-<td align="center"><code>artifactId</code></td>
-<td align="center">项目ID。</td>
-</tr>
-<tr>
-<td align="center"><code>version</code></td>
-<td align="center">项目版本号。</td>
-</tr>
-<tr>
-<td align="center"><code>packaging</code></td>
-<td align="center">项目的打包方式，如<code>jar</code>、<code>war</code>等。</td>
-</tr>
-<tr>
-<td align="center"><code>name</code></td>
-<td align="center">项目的名称。</td>
-</tr>
-<tr>
-<td align="center"><code>url</code></td>
-<td align="center">项目的URL地址。</td>
-</tr>
-<tr>
-<td align="center"><code>properties</code></td>
-<td align="center">项目属性配置，可以在这里定义自定义属性。</td>
-</tr>
-<tr>
-<td align="center"><code>dependencies</code></td>
-<td align="center">项目的依赖列表，用于描述项目所依赖的库及其版本号。</td>
-</tr>
-<tr>
-<td align="center"><code>dependencyManagement</code></td>
-<td align="center">依赖管理节点，用于集中配置项目中所有依赖的版本号和传递性依赖关系。</td>
-</tr>
-<tr>
-<td align="center"><code>build</code></td>
-<td align="center">构建配置节点，用于定义项目的构建过程、插件配置等。</td>
-</tr>
-<tr>
-<td align="center"><code>sourceDirectory</code></td>
-<td align="center">项目的源代码目录。</td>
-</tr>
-<tr>
-<td align="center"><code>outputDirectory</code></td>
-<td align="center">编译输出目录。</td>
-</tr>
-<tr>
-<td align="center"><code>testSourceDirectory</code></td>
-<td align="center">测试源代码目录。</td>
-</tr>
-<tr>
-<td align="center"><code>testOutputDirectory</code></td>
-<td align="center">测试编译输出目录。</td>
-</tr>
-<tr>
-<td align="center"><code>plugins</code></td>
-<td align="center">插件列表，用于定义项目构建过程中使用的插件及其配置。</td>
-</tr>
-<tr>
-<td align="center"><code>pluginManagement</code></td>
-<td align="center">插件管理节点，用于集中配置项目中所有插件的版本号和配置。</td>
-</tr>
-<tr>
-<td align="center"><code>profiles</code></td>
-<td align="center">配置文件节点，用于定义不同环境下的项目配置，如开发、测试、生产等。</td>
-</tr>
-<tr>
-<td align="center"><code>activeProfiles</code></td>
-<td align="center">激活的配置文件列表，用于指定在构建过程中要使用的配置文件。</td>
-</tr>
-</tbody></table>
-<h4 id="路径解析"><a href="#路径解析" class="headerlink" title="路径解析"></a>路径解析</h4><p>静态文件放在<strong>webapp</strong>下方</p>
-<p>在src创建Java文件夹 用来<strong>实际</strong>运行JAVA WEB 项目</p>
-<p>在src创建Test文件夹 用来<strong>测试</strong>运行JAVA 项目</p>
-<p>在pom.xml导包 无需在webapp下方创建lib文件夹 因为之前设置的阿里云导包目录和Url路径，Maven会自动在阿里云下载相关包</p>
-<p>在src创建 <strong>配置</strong>文件夹</p>
 
                 
             </div>
