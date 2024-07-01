@@ -48,6 +48,250 @@
     
         <article class="post article-entry">
             <div class="post-title">
+                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">springcloud学习笔记</a>
+            </div>
+            <p class="sub">Jan 03 2024</p>
+            <div class="post-content">
+                
+                    <p><img src="/Blackcat-loveBlog/png/springcloud.png"></p>
+<p>Spring Cloud是一个基于Spring Boot的微服务架构，它提供了一整套的开发工具包，包括服务治理、服务注册与发现、负载均衡、数据监控、REST API发布等，基本涵盖了分布式框架所需要的所有功能。</p>
+<p>使用Spring Cloud的原因主要有以下几点：</p>
+<ol>
+<li>简化开发：Spring Cloud利用Spring Boot的开发便利性，简化了分布式系统基础设施的开发。它提供了一系列的工具，如配置管理、服务发现、断路器、路由、微代理、事件总线等，这些都可以用Spring Boot的开发风格做到一键启动和部署。</li>
+<li>易于维护：Spring Cloud的各个组件都是高度抽象和封装的，这使得它在处理复杂系统时能够提供更清晰、更易于维护的代码结构。</li>
+<li>快速部署：由于Spring Cloud是基于微服务架构的，因此每个服务都可以独立地进行开发和部署，这大大提高了开发效率和系统的可扩展性。</li>
+<li>高度可扩展：由于微服务架构的特点，Spring Cloud可以轻松地扩展服务以处理更多的流量或增加更多的功能，而不会影响整个系统的稳定性。</li>
+<li>安全性高：Spring Cloud提供了强大的安全保障，包括服务认证、访问控制和数据加密等功能，可以有效地保护系统的安全性和隐私性。</li>
+</ol>
+<h1 id="部署Spring-Cloud项目"><a href="#部署Spring-Cloud项目" class="headerlink" title="部署Spring Cloud项目"></a>部署Spring Cloud项目</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>首先创建一个Spring Cloud项目，本次部署环境为</p>
+<p>IDEA.2023</p>
+<p>JAVA 1.8</p>
+<p>java 21 (这个版本是用来创建 创建完成后降级)</p>
+<p>apache-maven-3.8.1-bin</p>
+<p>有关Macen的部署和使用不再赘述</p>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p>如果是使用的是官方源创建<a target="_blank" rel="noopener" href="https://start.spring.io/">https://start.spring.io</a></p>
+<p>可能会提示JDK版本太低，这时候你可以选择使用阿里云源创建，里面有低版本的配置</p>
+<p>阿里云源:<a target="_blank" rel="noopener" href="https://start.aliyun.com/">https://start.aliyun.com/</a></p>
+<p>注意:使用低版本部署可能会出现pom.xml里没有parent</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.0.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这种情况建议使用高版本创建然后降级使用</p>
+<p>创建完成后进入配置依赖勾选<strong>lombok</strong>，然后确保你的IDEA里下载了<strong>lombok插件</strong>一般<strong>默认自带</strong></p>
+<p>创建完成后正式进入部署环节</p>
+<p>tip:可以删除不需要的文件夹来让项目整体更容易阅读，推荐<strong>删除父模块的src文件夹</strong></p>
+<p><img src="/Blackcat-loveBlog/png/cloud1.png"></p>
+<p>一个SpringCloud项目可能具有多个模块，右键你的父模块可以同时创建多个子模块</p>
+<p>比如我们创建一个eureka模块</p>
+<p>同样的创建操作，这次不需要勾选<strong>lombok</strong></p>
+<p>创建完成后再父模块的pom里需要进行修改</p>
+<p>首先就是将你刚刚创建的子模块链接到父模块</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    模块导入--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modules</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">module</span>&gt;</span>spring-eureka<span class="tag">&lt;/<span class="name">module</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">modules</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用Cloud微服务框架"><a href="#使用Cloud微服务框架" class="headerlink" title="使用Cloud微服务框架"></a>使用Cloud微服务框架</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencyManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-dependencies<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring-cloud.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">type</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>import<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencyManagement</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>通过在父pom里添加dependencyManagement声明依赖的管理策略来实现搭建Cloud</p>
+<p><code>&lt;dependencyManagement&gt;</code> 是 Maven 的一个配置元素，用于声明项目依赖的管理策略。这个元素通常出现在 Maven 项目的 <code>pom.xml</code> 文件的 <code>&lt;dependencies&gt;</code> 元素之前。</p>
+<p>通过 <code>&lt;dependencyManagement&gt;</code>，您可以定义一组通用的依赖项，这些依赖项将应用于项目中的所有模块（如果这些模块没有定义自己的依赖项）。这使得您可以在多个模块之间共享相同的依赖版本，从而确保整个项目的一致性。</p>
+<p>然后你需要修改一些配置让项目能准确识别</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">父模块的pom</span><br><span class="line"><span class="comment">&lt;!--    父亲--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.0.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    自己--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.example<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springcloud<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>springcloud<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>springcloud<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    这里需要加pom--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>pom<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        使用cloud需要导入相关--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">spring-cloud.version</span>&gt;</span>Hoxton.SR1<span class="tag">&lt;/<span class="name">spring-cloud.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>一下是这些代码的说明,方便理解</p>
+<ol>
+<li><strong>父依赖管理</strong> (<code>&lt;parent&gt;</code>)：<ul>
+<li><code>&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</code>: 指定父依赖的组ID，这里是Spring Boot的组ID。</li>
+<li><code>&lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;</code>: 指定父依赖的构件ID，这是一个Spring Boot的父POM文件，它包含了所有Spring Boot项目的默认设置。</li>
+<li><code>&lt;version&gt;2.2.0.RELEASE&lt;/version&gt;</code>: 指定父依赖的版本号。</li>
+<li><code>&lt;relativePath/&gt;</code>: 父POM文件的位置。这里为空意味着Maven将尝试在仓库中查找该父POM文件。</li>
+</ul>
+</li>
+<li><strong>项目信息</strong> (<code>&lt;groupId&gt;</code>, <code>&lt;artifactId&gt;</code>, <code>&lt;version&gt;</code>, <code>&lt;name&gt;</code>, <code>&lt;description&gt;</code>)：<ul>
+<li><code>&lt;groupId&gt;com.example&lt;/groupId&gt;</code>: 指定项目所属的组织或公司的标识符。</li>
+<li><code>&lt;artifactId&gt;springcloud&lt;/artifactId&gt;</code>: 指定项目的名称。</li>
+<li><code>&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</code>: 指定项目的版本号，这里的“SNAPSHOT”表示这是一个开发快照版本。</li>
+<li><code>&lt;name&gt;springcloud&lt;/name&gt;</code>: 项目的名称。</li>
+<li><code>&lt;description&gt;springcloud&lt;/description&gt;</code>: 对项目的简短描述。</li>
+</ul>
+</li>
+<li><strong>项目包装类型</strong> (<code>&lt;packaging&gt;</code>)：<ul>
+<li>这里指定了项目的包装类型为<code>pom</code>，意味着这是一个POM项目，而不是一个JAR或WAR项目。POM项目主要用于组织和管理其他项目。</li>
+</ul>
+</li>
+<li><strong>项目属性</strong> (<code>&lt;properties&gt;</code>)：<ul>
+<li><code>&lt;java.version&gt;1.8&lt;/java.version&gt;</code>: 指定项目使用的Java版本，这里是Java 1.8（也称为Java 8）。</li>
+<li><code>&lt;spring-cloud.version&gt;Hoxton.SR1&lt;/spring-cloud.version&gt;</code>: 指定Spring Cloud的版本号，这里使用的是Hoxton.SR1版本。</li>
+</ul>
+</li>
+</ol>
+<p>这段代码主要定义了一个Spring Boot项目及其相关的依赖关系和项目信息。通过这种方式，Maven可以知道如何构建、测试和打包这个项目，以及如何解析和管理项目的依赖关系。对于新手来说，理解这些内容将有助于更好地理解如何使用Maven来管理Java项目。</p>
+<p>做完这一步，你已经成功配置了Cloud的项目，现在我们来测试使用一下子模块</p>
+<p>之前我们已经创建了一个子模块叫做<strong>eureka</strong></p>
+<p>通过在子模块的pom.xml里修改和增加一些说明，来完善项目</p>
+<h2 id="配置子模块eureka"><a href="#配置子模块eureka" class="headerlink" title="配置子模块eureka"></a>配置子模块eureka</h2><p>修改子模块pom.xml的parent</p>
+<p>将parent里的内容修改为父模块的自己,只需要添加前三个即可</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.example<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springcloud<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样链接父模块的pom后可以实现依赖公用，只需要在父模块的Pom导入依赖，全项目都可以使用共同依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">子模块的pom</span><br><span class="line"><span class="comment">&lt;!--连接父元素--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.example<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springcloud<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--自己的pom--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-eureka<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.0.1-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>spring-eureka<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">description</span>&gt;</span>spring-eureka<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    java版本--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>添加子模块依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--        注册中心 eureka 服务依赖--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-server<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>使用注册中心可以方便管理我们的项目配置完成后可以使用端口浏览</p>
+<p>添加完成后在JAVA文件里添加相关配置信息即可</p>
+<p>使用yml配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="comment">#访问端口号</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8081</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">eureka-server</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://localhost:8081/eureka</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这段代码是一个YAML格式的配置文件，通常用于配置Spring Boot应用程序的参数。该文件配置了一个Eureka服务注册中心的服务器设置。下面是对每一部分的解释：</p>
+<ol>
+<li><strong>server</strong>:<ul>
+<li>port: 8081<ul>
+<li>这一行指定了服务器监听的端口号为8081。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>spring</strong>:<ul>
+<li>application<ul>
+<li>name: eureka-server<ul>
+<li>这一部分定义了Spring Boot应用程序的名称为”eureka-server”。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>eureka</strong>:<ul>
+<li>client<ul>
+<li>service-url<ul>
+<li>defaultZone: <a target="_blank" rel="noopener" href="http://localhost:8081/eureka">http://localhost:8081/eureka</a><ul>
+<li>这一部分定义了Eureka客户端的服务URL。在这里，服务将在本地机器的8081端口上注册，并使用基础URL “&#x2F;eureka”。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>为了方便新手理解：</p>
+<ul>
+<li><strong>YAML</strong>: 这是一个常见的配置文件格式，用于存储配置数据。它使用缩进和冒号来区分键和值。</li>
+<li><strong>Spring Boot</strong>: 是一个用于创建独立、生产级的基于Spring的应用程序的框架。它简化了Spring应用程序的初始化和开发过程。</li>
+<li><strong>Eureka</strong>: 是Netflix开发的服务发现组件，用于定位运行在AWS云或其他云平台上的中间层服务，从而实现中间层服务的故障转移和负载均衡。</li>
+</ul>
+<p>总的来说，这个配置文件是用来设置一个Eureka服务注册中心的服务器，它将在本地的8081端口上运行，并使用默认的服务URL进行服务注册。</p>
+<h2 id="试运行"><a href="#试运行" class="headerlink" title="试运行"></a>试运行</h2><p>配置完成后再java里的SpringEurekaApplication里启动项目来访问服务</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#SpringEurekaApplication.java</span><br><span class="line"><span class="keyword">package</span> com.example.springeureka;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableEurekaServer</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringEurekaApplication</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(SpringEurekaApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里需要添加**@EnableEurekaServer**后才能正常访问</p>
+<h2 id="配置子模块consumer"><a href="#配置子模块consumer" class="headerlink" title="配置子模块consumer"></a>配置子模块consumer</h2><p>创建子模块consumer和配置上一个子模块过程一样，修改parent 修改对应版本JDK，增加相关依赖</p>
+<p><strong>注意</strong>：如果出现报错问题，请随时检查你的maven配置问题，绝大多数代码正确报错都是因为Maven下载依赖失败</p>
+<h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8082</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://localhost:8081/eureka</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">spring-consumer</span></span><br></pre></td></tr></table></figure>
+
+<p>和之前不一样的是，这次的端口号要发生改变，同样将这个模块注册到注册中心eureka,然后给新模块设置一个名字</p>
+<p>完成后启动注册中心模块，再启动consumer模块，可以看到新DS Replicas的出现，由于我们注册中心本身也会被注册，如果不想它被注册，可以增加两行代码也设置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">注册中心配置文件</span> <span class="string">eureka</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">8081</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">    <span class="attr">client:</span></span><br><span class="line">        <span class="attr">service-url:</span></span><br><span class="line">            <span class="attr">defaultZone:</span> <span class="string">http://localhost:8081/eureka</span></span><br><span class="line">        <span class="attr">fetch-registry:</span> <span class="literal">false</span></span><br><span class="line">        <span class="attr">register-with-eureka:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="配值子模块provider"><a href="#配值子模块provider" class="headerlink" title="配值子模块provider"></a>配值子模块provider</h2><h3 id="模块启动失败问题解决办法"><a href="#模块启动失败问题解决办法" class="headerlink" title="模块启动失败问题解决办法"></a>模块启动失败问题解决办法</h3><p>如果遇到模块启动失败，依赖添加后还是无法正常启动，请打开项目管理-模块-找到启动失败的模块-修改模块SDK</p>
+<p>即可解决依赖版本JDK冲突</p>
+<p><img src="/Blackcat-loveBlog/png/springcloud2.png"></p>
+<h2 id="熔断器hystrix"><a href="#熔断器hystrix" class="headerlink" title="熔断器hystrix"></a>熔断器hystrix</h2><p>使用熔断器可以在报错时截取并且输出规定好的内容方便让服务者知道问题错误出在哪里</p>
+<p>依赖（高版本会自带无需添加）:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--        容错器hystrix--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-hystrix<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>配置:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">feign:</span></span><br><span class="line">  <span class="attr">hystrix:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>创建的熔断器类:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springconsumer;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserFeignHystrix</span> <span class="keyword">implements</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">login</span><span class="params">(String username, String password)</span> &#123;</span><br><span class="line">        log.info(<span class="string">&quot;服务器抛锚&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Service类需要修改链接熔断器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springconsumer;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.openfeign.FeignClient;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestParam;</span><br><span class="line"></span><br><span class="line"><span class="meta">@FeignClient(value = &quot;spring-provider&quot;,fallback = UserFeignHystrix.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/login&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">login</span><span class="params">(<span class="meta">@RequestParam(&quot;username&quot;)</span> String username,<span class="meta">@RequestParam(&quot;password&quot;)</span>String password)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>主要在于这一句</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient(value = &quot;spring-provider&quot;,fallback = UserFeignHystrix.class)</span></span><br></pre></td></tr></table></figure>
+
+<p>链接的刚刚创建的类，如果方法出现问题，就会打印<strong>log</strong></p>
+<p>这样当你访问此类的时候就会被熔断</p>
+<h3 id="负载均衡器分担方式"><a href="#负载均衡器分担方式" class="headerlink" title="负载均衡器分担方式"></a>负载均衡器分担方式</h3><p>通过设置集群分担方式可以减轻负载，给多个集群平衡分担请求</p>
+<p>通过一些设置可以实现不同的分担方式，默认是轮播分担</p>
+<p>在启动类添加此方法修改分担方式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line">   <span class="keyword">public</span> RestTemplate <span class="title function_">restTemplate</span><span class="params">()</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>();</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="meta">@Bean</span></span><br><span class="line">   <span class="keyword">public</span> IRule <span class="title function_">randomRule</span><span class="params">()</span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RandomRule</span>();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>完整类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.springconsumer;</span><br><span class="line"><span class="keyword">import</span> com.netflix.loadbalancer.IRule;</span><br><span class="line"><span class="keyword">import</span> com.netflix.loadbalancer.RandomRule;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.SpringApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"><span class="keyword">import</span> org.springframework.cloud.openfeign.EnableFeignClients;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.client.RestTemplate;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableFeignClients</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringConsumerApplication</span> &#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> RestTemplate <span class="title function_">restTemplate</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> IRule <span class="title function_">randomRule</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RandomRule</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(SpringConsumerApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>官方介绍:</p>
+<p>要通过设置集群分担方式来减轻负载，可以使用负载均衡器来实现。负载均衡器是一种能够平衡多个服务器或集群之间负载的设备，它可以根据指定的策略将请求分发到不同的服务器，以确保各个服务器或集群负载均衡。负载均衡器可以通过多种算法进行请求分担，例如轮询、最少连接、IP哈希等。</p>
+<p>对于新手来说，可以通过以下步骤来理解和使用负载均衡器：</p>
+<ol>
+<li>了解负载均衡器的基本原理：新手可以先了解负载均衡器的工作原理，包括其作用、不同的负载均衡算法以及常见的应用场景。</li>
+<li>选择适合的负载均衡器：根据自己的需求和环境选择合适的负载均衡器，比如Nginx、HAProxy等，并学习其基本配置和使用方法。</li>
+<li>配置和部署负载均衡器：按照文档或教程的指导，配置和部署选定的负载均衡器，包括定义后端服务器、设置负载均衡策略等。</li>
+<li>测试和监控：在配置完成后，进行测试以确保负载均衡器能够正常工作，并设置监控系统来实时监测负载均衡器的性能和状态。</li>
+</ol>
+<p>通过以上步骤，新手可以逐步理解和应用负载均衡器来实现集群分担方式，从而减轻服务器负载并提高系统的可靠性和性能。</p>
+<h2 id="子模块gateway网关"><a href="#子模块gateway网关" class="headerlink" title="子模块gateway网关"></a>子模块gateway网关</h2><p>创建子模块，注意下一步后不要勾选任何依赖尤其是SpringWeb。</p>
+<p>添加依赖:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-gateway<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-netflix-eureka-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>配置文件yml:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">client:</span></span><br><span class="line">    <span class="attr">service-url:</span></span><br><span class="line">      <span class="attr">defaultZone:</span> <span class="string">http://localhost:8081/eureka</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">spring-gateway</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line">      <span class="attr">routes:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">cloud-user-consumer</span>    <span class="comment">#随便起名字</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">spring-consumer</span> <span class="comment">#服务名称</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/consumer/**</span>         <span class="comment">#访问路径</span></span><br><span class="line"><span class="comment">#         filters:</span></span><br><span class="line"><span class="comment">#           - StripPrefix=1            #过滤前缀</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>过滤前缀后就无法通过consumer访问其下的方法</p>
+<p>首先配置一个未被使用的端口号</p>
+<p>使用eureka注册</p>
+<p>使用spring-name设置名称</p>
+<p>使用cloud设置路由</p>
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>使用网关的路由转发后，可以通过设置好的路径直接访问到对应端口的方法</p>
+<p>转发前:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost:8082/toLogin?username=admin&amp;password=admin</span><br></pre></td></tr></table></figure>
+
+<p>转发后:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:8080/consumer/toLogin?username=admin&amp;password=admin</span><br></pre></td></tr></table></figure>
+
+<p>因为设置了路由，所以无需再修改端口号，只需要访问网关的端口然后网关再自动访问其他端口就可以</p>
+
+                
+            </div>
+        </article>
+    
+        <article class="post article-entry">
+            <div class="post-title">
+                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2023/12/31/2023%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">2023年终总结</a>
+            </div>
+            <p class="sub">Dec 31 2023</p>
+            <div class="post-content">
+                
+                    <p>再有几个小时就是2024年了，刚看完其他UP主做的年终总结，有了自己也要写一个的想法，便有了这篇文章。</p>
+<p>对我而言，我很在乎自己对于时间投入的产出比，在这个年纪，这是我们唯一的资产，所以最终总结为，这一年收获了什么，有什么遗憾，和下一年的目标。</p>
+<p>关于收获，这一年学会了更多有关编程的知识，对网络了解也提高了不少。</p>
+<p>看书方面，由于还是不够自律，看的零零散散，今年看完了瑞达利欧写的《原则》，让我明白，在做人做事上，原则的重要性会影响我们的一生，我们应该为自己设立三个原则，生活原则，工作原则，自身原则，并且不断改善原则，让原则顺其自然帮助你成长，一个好的习惯可以受益终生就是这个说法。</p>
+<p>另外在2022年看完了《小狗钱钱》后，就想去看后续的故事，所以今年看了《富爸爸和穷爸爸》,这是一个系列的书籍，一共有五本，目前只看了一本，教你如何理财，正确看待金钱，非常有价值的一本书，虽然发行的时间距离今天已经有很久，但里面的一些预测放在现在依然精准，教的一些理财方法也很有用，比如我们每个人都应该有一个自己的资产负债表，明确的列出我们所拥有的资产和负债，现金流，帮助我们看清自身经济的真实走向。</p>
+<p>剩下的书籍都是在手机上下载的电子书，阅读起来虽然没有实体书舒服，但不用花钱，就已经知足了。</p>
+<p>唯一看完的一本是《不上班也有钱》，这是第一次有一种被文字拉进去的感觉，看的时候几乎目不暇接，让人有不断翻下去的欲望，以往都是你需要思考，然后停留一会才继续看，但这本书却让我阅读的非常流畅，中间也有一些停顿的点，但一点也不晦涩。它讲述的内容和我目前正在迷茫的点也很吻合，在我目前看来，这几乎是最简单的理财方法了，并且可行，但我认为大部分人都难以做到。</p>
+<p>剩下的书籍过于难啃，都是一些技术类，很多看了一半后不想再看，亦或者看一点都花了大量的时间思考和吸收然后就搁置了。</p>
+<p>比如有一本书叫做《朋友圈的尖子生》，前面的内容非常有趣，但看了一半后后面突然变得乏味无比，可能是和自身境界突然有了很大偏差，环境不同，没有想看下去的欲望了。</p>
+<p>亦或者还有一本叫做《煤老板自述三十年》上面记录到看了60%多后，后面的也不想看了，原因在于我认为有一些和前面的内容高度重合，虽然故事本身不一样，但逻辑剧情起伏没有多大变化，这不怪书，而是世界运行逻辑就是如此，一个成功人，必然经历起伏的人生，但依然推荐这本书，因为真的挺好看的，之前和我爸聊天的时候我也总是会讲一些书中的内容，这就是那个年代很有代表性的一群人。</p>
+<p>有时候想要对自己看的书做一些笔记，方便之后再次阅读有新的感悟，所以我找到了一本书叫做《边写边思考的大脑整理笔记法》，其实它说的还挺对的，但看完后现在已经忘的差不多了。</p>
+<p>有时候在视频上刷到了罗翔老师讲刑法，想到了老师自己也有写一本书，所以就下载下来看了一点，叫做《圆圈正义》，不得不说，让我很受益，如果有时间我会继续看完的。剩下的书过于零散就不讲了。</p>
+<p>最后要将的一本书就是《马克思资本论》这是一本对我来说很重要的书，里面的知识过于干，对我而言很难吸收，但就算如此我也依然有决心想要看完这本书，这应该是我头一次思考很久的书，基本上每读一章就要思考很久，所以新的一年继续坚持读。</p>
+<p>因为学校电脑卡顿，购置了新的笔记本，很开心。</p>
+<p>计划写一本书，目前只完成了20%有六万字左右，希望有一天写完后能打印出来。</p>
+<p>遗憾方面，自己浪费了很多时间，不够自律，人机关系处理的也不够好，明明有很多计划，但是每当施行的时候总是因为懒惰半途而废。</p>
+<p>新的一年的目标，嗯….</p>
+<p>首先这一年我希望不要让计划停留在构思阶段，而是有所进展，并且每个月都罗列出计划表，鼓励和鞭策自己完成计划，或者出现纰漏后修改再继续执行。</p>
+<p>对之前所学的内容进行复习，可以有所新的领悟。</p>
+
+                
+            </div>
+        </article>
+    
+        <article class="post article-entry">
+            <div class="post-title">
                 <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2023/12/28/renpy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">renpy学习笔记</a>
             </div>
             <p class="sub">Dec 28 2023</p>
@@ -1619,524 +1863,6 @@
 </ol>
 <h4 id="通信模型"><a href="#通信模型" class="headerlink" title="通信模型"></a>通信模型</h4><h4 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h4><p>组件的出现可以让开发者快速开发出自己想要的功能，这些组件都是微信官方封装好的，可以直接调用</p>
 <h5 id="view"><a href="#view" class="headerlink" title="view"></a>view</h5><h5 id="image"><a href="#image" class="headerlink" title="image"></a>image</h5><h4 id="API"><a href="#API" class="headerlink" title="API"></a>API</h4><h4 id="事件传参和数据同步"><a href="#事件传参和数据同步" class="headerlink" title="事件传参和数据同步"></a>事件传参和数据同步</h4><h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><h4 id="API调用"><a href="#API调用" class="headerlink" title="API调用"></a>API调用</h4><h4 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a>全局配置</h4>
-                
-            </div>
-        </article>
-    
-        <article class="post article-entry">
-            <div class="post-title">
-                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2023/12/18/linux%E4%B8%AD%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/">linux中安装软件</a>
-            </div>
-            <p class="sub">Dec 18 2023</p>
-            <div class="post-content">
-                
-                    <h1 id="linux中安装软件"><a href="#linux中安装软件" class="headerlink" title="linux中安装软件"></a>linux中安装软件</h1><h3 id="一-linux常用命令"><a href="#一-linux常用命令" class="headerlink" title="一.linux常用命令"></a>一.linux常用命令</h3><p>​        查看ip ifconfig</p>
-<p>​		查看目录 ls  或者 ll </p>
-<p>​        查看当前所在目录pwd</p>
-<p>​        创建目录 mkdir</p>
-<p>​		移动文件或者修改文件名 mv    旧名字    新名字</p>
-<p>​        删除目录 rm </p>
-<p>​        创建文件 touch </p>
-<p>​        编辑文件(1) vim 或者vi  进入到文件中   </p>
-<p>​     				  (2)通过按i 或a 进入到编辑模式</p>
-<p>​					   (3)按esc </p>
-<p>​                       (4)输入:eq 保存并退出   或者:q!强制退出</p>
-<p>​       显示文件前几行: head -n  文件名</p>
-<p>​       显示后几行: tail -n 文件名</p>
-<p>​       切换用户: su</p>
-<p>​       查看当前用户 whoami</p>
-<p>​       查看进程 ps -ef </p>
-<p>​	   查看对应软件的进程 ps -ef | grep 软件名称</p>
-<p>​       杀死进程 kill -9 pid</p>
-<p>​       解压tar -zxvf  或者 tar -xvf</p>
-<h3 id="二-安装jdk"><a href="#二-安装jdk" class="headerlink" title="二.安装jdk"></a>二.安装jdk</h3><ol>
-<li><p>将下载好的软件上传到&#x2F;usr&#x2F;local&#x2F;java 中</p>
-</li>
-<li><p>解压软件 tar -zxvf  </p>
-</li>
-<li><p>重命名 mv   旧名字  新名字</p>
-</li>
-<li><p>查看是否安装jdk java -version 或者 rpm -qa | grep java(查看jdk进程)</p>
-<p>ps:使用 rpm -e –nodeps 或者 yum remove <em>openjdk</em>卸载</p>
-</li>
-<li><p>配置环境变量</p>
-<ul>
-<li><p>使用vim  &#x2F;etc&#x2F;profile</p>
-</li>
-<li><p>在结尾添加</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/local/java/jdk1.8</span><br><span class="line">	export PATH=$JAVA_HOME/bin:$PATH</span><br><span class="line">	export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>重新加载配置文件 source &#x2F;etc&#x2F;profile</p>
-</li>
-<li><p>查看是否安装成功</p>
-</li>
-</ol>
-<h3 id="三-安装mysql"><a href="#三-安装mysql" class="headerlink" title="三.安装mysql"></a>三.安装mysql</h3><ol>
-<li><p>上传文件到&#x2F;usr&#x2F;local&#x2F;mysql</p>
-<p>如果上传失败可能是因为你需要在ssh链接的时候就使用root账户链接，即使中途切换到root也无法上传成功，只能是一开始就是root</p>
-</li>
-<li><p>解压 tar -xvf </p>
-</li>
-<li><p>重命名mv mysql8</p>
-</li>
-<li><p>在mysql8目录中创建 mkdir data</p>
-</li>
-<li><p>创建组及用户</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd mysql</span><br><span class="line">useradd -g mysql mysql</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>用户授权 	chown -R mysql.mysql &#x2F;usr&#x2F;local&#x2F;mysql&#x2F;mysql8</p>
-</li>
-<li><p>初始化</p>
-<ul>
-<li>进入 bin 目录</li>
-<li>.&#x2F;mysqld –user&#x3D;mysql –basedir&#x3D;&#x2F;usr&#x2F;local&#x2F;mysql&#x2F;mysql8 –datadir&#x3D;&#x2F;usr&#x2F;local&#x2F;mysql&#x2F;mysql8&#x2F;data&#x2F; –initialize</li>
-<li>记住密码: ;8c9uMyUz#Vu</li>
-</ul>
-</li>
-<li><p>编辑my.cnf</p>
-<p>​	vim &#x2F;etc&#x2F;my.cnf 注释掉mysqld_safe和下面2条内容 修改basedir datadir socket信息</p>
-<p>​    </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">basedir=/usr/local/mysql/mysql8</span><br><span class="line">datadir=/usr/local/mysql/mysql8/data</span><br><span class="line">socket=/tmp/mysql.sock</span><br><span class="line">user=mysql</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>添加mysqld服务</p>
-<ul>
-<li>返回到mysql8目录</li>
-<li>输入cp -a .&#x2F;support-files&#x2F;mysql.server &#x2F;etc&#x2F;init.d&#x2F;mysql</li>
-</ul>
-</li>
-<li><p>授权及添加服务</p>
-<ul>
-<li>chmod +x &#x2F;etc&#x2F;init.d&#x2F;mysql</li>
-<li>chkconfig –add mysql</li>
-</ul>
-</li>
-<li><p>启动mysql服务 service mysql start</p>
-</li>
-<li><p>查看状态 service mysql status</p>
-</li>
-<li><p>将mysql命令添加到服务中 ln -s &#x2F;usr&#x2F;local&#x2F;mysql&#x2F;mysql8&#x2F;bin&#x2F;mysql &#x2F;usr&#x2F;bin</p>
-</li>
-<li><p>登录 mysql -uroot -p</p>
-</li>
-<li><p>修改密码</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;123456&#x27;;</span><br><span class="line"></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>远程连接</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#mysql 8.0</span><br><span class="line">use mysql;</span><br><span class="line">	update user set host=&#x27;%&#x27; where user=&#x27;root&#x27;;</span><br><span class="line"> </span><br><span class="line">	flush privileges;</span><br><span class="line"></span><br><span class="line">#mysql 5.0</span><br><span class="line">CREATE USER root@&#x27;%&#x27; IDENTIFIED BY &#x27;123456&#x27;;</span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;123456&#x27; WITH GRANT OPTION;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>开放端口</p>
-<p>开放后对应端口可以在本地管理数据库软件通过ip远程链接数据库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --add-port=8080/tcp --permanent</span><br><span class="line"></span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-
-<p> 如果需要本地去给mysql数据库添加数据表和数据，可以在本地使用数据库链接软件链接远程数据库，</p>
-</li>
-</ol>
-<p>主机改为数据库ip然后填写之前生成的密码，链接成功。</p>
-<p>然后就可以像之前操作本地数据库一样操作远程数据库了。</p>
-<h3 id="四-安装tomcat"><a href="#四-安装tomcat" class="headerlink" title="四.安装tomcat"></a>四.安装tomcat</h3><p>​		1.下载文件到 &#x2F;usr&#x2F;local&#x2F;tomcat中</p>
-<p>​        2.解压</p>
-<p>​        3.启动  进入tomcat的bin中 .&#x2F;startup.sh &amp;&amp; tail -f ..&#x2F;logs&#x2F;catalina.out</p>
-<p>启动成功后可以通过服务器ip:端口号 的方式访问到 tomcat官方页面</p>
-<p>注意检查tomcat启动的访问端口，如果无法访问成功可能是因为端口号未开放，需要使用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#开放端口</span><br><span class="line">firewall-cmd --add-port=端口号/tcp --permanent</span><br><span class="line">#刷新</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-
-<p>开放后再次重启tomcat即可访问成功</p>
-<h3 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h3><ol>
-<li><p>介绍(轻量级web服务器主要进行动静分离,反向代理,负载均衡)</p>
-</li>
-<li><p>常用命令</p>
-<ol>
-<li>去sbin目录中执行.&#x2F;nginx -v 查看版本</li>
-<li>.&#x2F;nginx -t 检查配置文件时候正确</li>
-<li>.&#x2F;nginx 启动</li>
-<li>ps -ef | grep nginx 查看进程</li>
-<li>.&#x2F;nginx -s reload 重写加载配置文件</li>
-</ol>
-</li>
-<li><p>配置环境变量可以直接启动</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/usr/local/nginx/sbin:$PATH:$&#123;JAVA_PATH&#125;</span><br><span class="line">source /etc/profile</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>配置文件</p>
-<ol>
-<li><p>全局块(nginx全局配置)</p>
-</li>
-<li><p>events块(网络相关配置)</p>
-</li>
-<li><p>http块</p>
-<ol>
-<li>http全局块</li>
-<li>server块(可以有多个)<ol>
-<li>server全局块</li>
-<li>location块(可以有多个)</li>
-</ol>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       80;//监听端口</span><br><span class="line">        server_name  www.ywxdlc.com;//域名</span><br><span class="line">		charset utf-8;//编码格式</span><br><span class="line">		</span><br><span class="line">	location / &#123;</span><br><span class="line">		root   /home/projects/travel/travel-ui; //静态资源根目录</span><br><span class="line">		try_files $uri $uri/ /index.html;</span><br><span class="line">		index  index.html index.htm; //默认加载页面</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-<li><p>反向代理</p>
-<p>客户直接方法代理服务器,代理服务器会请求服务器响应信息</p>
-</li>
-<li><p>负载均衡</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">upstream xiaxia&#123;</span><br><span class="line">	server 192.168.1:8080;</span><br><span class="line">	server 192.168.1:8082;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">        listen       80;//监听端口</span><br><span class="line">        server_name  www.ywxdlc.com;//域名</span><br><span class="line">		charset utf-8;//编码格式</span><br><span class="line">		</span><br><span class="line">	location / &#123;</span><br><span class="line">		root   /home/projects/travel/travel-ui; //静态资源根目录</span><br><span class="line">		try_files $uri $uri/ /index.html;</span><br><span class="line">		index  index.html index.htm; //默认加载页面</span><br><span class="line">		proxy_pass http://xiaxia; //与上面代理组保持一致</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="五-项目javaweb部署"><a href="#五-项目javaweb部署" class="headerlink" title="五.项目javaweb部署"></a>五.项目javaweb部署</h3><p>​		1.项目打war包</p>
-<p><img src="/Blackcat-loveBlog/png/QQ%E5%9B%BE%E7%89%8720230524175202.png"></p>
-<p><img src="/Blackcat-loveBlog/png/QQ%E5%9B%BE%E7%89%8720230524175259.png"></p>
-<p>项目打war包后可以部署在服务器中，打包时提示:模块缺少所需库’lib’ </p>
-<p>测试过程中将war包部署在tomcat后运行可以成功，不用担心</p>
-<p>war包可以在打包时候的界面里看到路径，一般是在你项目的out文件夹里可以找到。</p>
-<p>ps:打包的时候最好修改项目名称</p>
-<p>​    项目jdk版本要和linux保持一致</p>
-<p>​	连接linux数据库记得修改密码</p>
-<p>将war包上传到CentOS7服务器中的tomcat&#x2F;webapps里</p>
-<p>然后重新启动tomcat</p>
-<p>即可通过服务器ip:端口号&#x2F;war包名 的格式访问到</p>
-<p>例如:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.136.128:8080/manager</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="六-安装redis"><a href="#六-安装redis" class="headerlink" title="六.安装redis"></a>六.安装redis</h3><p>​	1.redis-server –service-install redis.windows.conf –loglevel verbose(添加window服务)</p>
-<ol>
-<li><p>创建目录&#x2F;usr&#x2F;local&#x2F;redis 上传文件</p>
-</li>
-<li><p>解压 tar -zxvf</p>
-</li>
-<li><p>安装 make PREFIX&#x3D;&#x2F;usr&#x2F;local&#x2F;redis&#x2F;redis-3.2.8 install</p>
-</li>
-<li><p>在redis3.2.8中创建etc目录 将 配置文件复制一份 cp redis.conf  etc</p>
-</li>
-<li><p>开启端口 </p>
-</li>
-<li><p>修改&#x2F;etc中的配置文件</p>
-<ul>
-<li>#bind 127.0.0.1 注释掉 </li>
-<li>daemonize yes 128行</li>
-<li>logfile “&#x2F;usr&#x2F;local&#x2F;redis&#x2F;redis-3.2.8&#x2F;log&#x2F;redis.log”   163行   ps:创建对应目录及文件</li>
-<li>dir &#x2F;usr&#x2F;local&#x2F;redis&#x2F;redis-3.2.8&#x2F;data&#x2F;redisdata        247行   ps:创建对应目录</li>
-<li>requirepass 123456    480行</li>
-</ul>
-</li>
-<li><p>监控redis日志在新的窗口中 tail -F &#x2F;usr&#x2F;local&#x2F;redis&#x2F;redis-3.2.8&#x2F;log&#x2F;redis.log</p>
-</li>
-<li><p>启动服务.&#x2F;redis-server ..&#x2F;etc&#x2F;redis.conf</p>
-</li>
-<li><p>启动客户端在bin目录中 .&#x2F;redis-cli</p>
-<h4 id="1-常用命令"><a href="#1-常用命令" class="headerlink" title="1.常用命令"></a>1.常用命令</h4><ol>
-<li>auth 认证</li>
-<li>quit 退出</li>
-<li>set  设置值   set test haha ex 10 nx</li>
-<li>get key</li>
-<li>exists 是否存在 输入一个key 返回0或者1 输入多个key 返回存在的个数</li>
-<li>keys 查找key值   通配符 ? 匹配一个字符     * 匹配n个字符  [ab] 选其一  [6^a]不要 6取反</li>
-<li>del 删除key</li>
-<li>rename 旧名字 新名字</li>
-<li>expire 设置超时</li>
-<li>ttl 返回剩余时间</li>
-<li>persist 设置为永久有效</li>
-<li>select 选择数据库</li>
-<li>flushdb 清空所选数据库的值</li>
-<li>flushall 清空所有数据库的值</li>
-</ol>
-<h4 id="2-使用jedis连接redis"><a href="#2-使用jedis连接redis" class="headerlink" title="2.使用jedis连接redis"></a>2.使用jedis连接redis</h4><ol>
-<li>导入jedis所需jar包</li>
-<li>写api</li>
-<li>测试</li>
-</ol>
-<h4 id="3-springboot整合redis"><a href="#3-springboot整合redis" class="headerlink" title="3.springboot整合redis"></a>3.springboot整合redis</h4><ol>
-<li><p>添加依赖</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;3.0.4&lt;/version&gt;</span><br><span class="line"> &lt;/dependency&gt;</span><br><span class="line">  &lt;!-- spring2.X集成redis所需common-pool2 如果上面引入的依赖是2.x则加--&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;commons-pool2&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;2.6.0&lt;/version&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>创建配置</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">    <span class="attr">redis:</span></span><br><span class="line">        <span class="attr">host:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">        <span class="attr">port:</span> <span class="number">6379</span></span><br><span class="line">        <span class="attr">database:</span> <span class="number">1</span></span><br><span class="line">        <span class="attr">timeout:</span> <span class="number">1800000</span></span><br><span class="line">        <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">        <span class="attr">lettuce:</span></span><br><span class="line">          <span class="attr">pool:</span></span><br><span class="line">            <span class="attr">max-active:</span> <span class="number">20</span></span><br><span class="line">            <span class="attr">max-wait:</span> <span class="number">-1</span></span><br><span class="line">            <span class="attr">max-idle:</span> <span class="number">5</span></span><br><span class="line">        	<span class="attr">min-idle:</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>添加工具类</p>
-<p>添加redisconfig</p>
-</li>
-<li><p>测试</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@resource</span><br><span class="line">private RedisTemplate redistemplate</span><br><span class="line">redistemplate.opsofvalue.set</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>redis无法序列化localtime</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;com.fasterxml.jackson.datatype&lt;/groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;jackson-datatype-jsr310&lt;/artifactId&gt;</span><br><span class="line">           &lt;version&gt;2.13.4&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h3 id="spring-cache"><a href="#spring-cache" class="headerlink" title="spring cache"></a>spring cache</h3><ol>
-<li><p>介绍</p>
-<p>基于注解实现缓存</p>
-</li>
-<li><p>常用注解</p>
-<p>@EnableCaching 开启注解</p>
-<p>@Cacheable 写在方法上 如果有数据存缓存中去,如果没有则保存在缓存中</p>
-<p>@CachePut 将方法的返回值放入缓存中</p>
-<p>@CacheEvict 将一条或者多条数据从缓存中删除</p>
-</li>
-<li><p>配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cache:</span><br><span class="line">    redis:</span><br><span class="line">      time-to-live: 1800000 //设置缓存时间</span><br><span class="line">     &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;spring-boot-starter-cache&lt;/artifactId&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line">      启动类上或者配置类上加注解EnableCaching</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li></li>
-</ol>
-<h3 id="安装zookper"><a href="#安装zookper" class="headerlink" title="安装zookper"></a>安装zookper</h3><ol>
-<li><p>在local下创建dubbo目录上传压缩包</p>
-</li>
-<li><p>解压</p>
-</li>
-<li><p>在解压的文件夹中创建data目录和log目录</p>
-</li>
-<li><p>进入conf下复制配置文件 cp zoo_sample.cfg zoo.cfg</p>
-</li>
-<li><p>进入zoo.config配置文件</p>
-<p>dataDir&#x3D;&#x2F;usr&#x2F;local&#x2F;dubbo&#x2F;apache-zookeeper-3.7.1-bin&#x2F;data<br>dataLogDir&#x3D;&#x2F;usr&#x2F;local&#x2F;dubbo&#x2F;apache-zookeeper-3.7.1-bin&#x2F;log</p>
-</li>
-<li><p>开启端口号</p>
-</li>
-<li><p>进入bin 启动服务  .&#x2F;zkServer.sh start</p>
-</li>
-<li><p>启动客户端 .&#x2F;zkCli.sh </p>
-</li>
-<li><p>welcome to zookper </p>
-</li>
-<li><p>安装dubboo admin 上传 启动 即可nohup java -jar dubbo-admin-server-0.2.0-SNAPSHOT.jar &amp;</p>
-</li>
-</ol>
-<h3 id="springboot整合dubbo"><a href="#springboot整合dubbo" class="headerlink" title="springboot整合dubbo"></a>springboot整合dubbo</h3><ol>
-<li><p>导入依赖</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">       &lt;groupId&gt;org.apache.dubbo&lt;/groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;dubbo-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">       &lt;version&gt;2.7.3&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">       &lt;groupId&gt;org.apache.dubbo&lt;/groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;dubbo&lt;/artifactId&gt;</span><br><span class="line">       &lt;version&gt;2.7.3&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;dependency&gt; &lt;!--zookeeper 注册中心客户端引入 curator客户端 --&gt;</span><br><span class="line">       &lt;groupId&gt;org.apache.dubbo&lt;/groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;dubbo-dependencies-zookeeper&lt;/artifactId&gt;</span><br><span class="line">       &lt;version&gt;2.7.3&lt;/version&gt;</span><br><span class="line">       &lt;type&gt;pom&lt;/type&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>写配置文件</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">dubbo:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">dubbo_provider</span></span><br><span class="line">  <span class="attr">registry:</span></span><br><span class="line">    <span class="attr">address:</span> <span class="string">zookeeper://192.168.116.141:2181</span></span><br><span class="line">    <span class="attr">timeout:</span> <span class="number">6000</span></span><br><span class="line">  <span class="attr">metadata-report:</span></span><br><span class="line">    <span class="attr">address:</span> <span class="string">zookeeper://192.168.116.141:2181</span></span><br><span class="line">  <span class="attr">protocol:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">dubbo</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">20880</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8081</span></span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>创建privider  在实现类中加@service注解 此注解dubbo提供</p>
-</li>
-<li><p>创建消费者 加@Reference 如果提供者和消费者调用的不是同一个接口需要使用@Reference(check &#x3D; false)</p>
-</li>
-</ol>
-</li>
-</ol>
-<p>​			 </p>
-<p>​			</p>
-<p>​	</p>
-
-                
-            </div>
-        </article>
-    
-        <article class="post article-entry">
-            <div class="post-title">
-                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2023/12/18/Linux%E7%B3%BB%E7%BB%9FCentOS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Linux系统CentOS学习笔记</a>
-            </div>
-            <p class="sub">Dec 18 2023</p>
-            <div class="post-content">
-                
-                    <p><img src="/Blackcat-loveBlog/png/linux.jpg"></p>
-<h2 id="Linux操作系统目录结构"><a href="#Linux操作系统目录结构" class="headerlink" title="Linux操作系统目录结构"></a>Linux操作系统目录结构</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/ (根目录)</span><br><span class="line">├── bin (二进制文件) - 存放系统启动和运行所需的基本命令</span><br><span class="line">├── boot (引导文件) - 存放用于系统引导的文件</span><br><span class="line">├── dev (设备文件) - 包含系统所需的设备文件，如硬盘、键盘等</span><br><span class="line">├── etc (配置文</span><br><span class="line">件) - 存放系统的配置文件</span><br><span class="line">├── home (用户主目录) - 存放用户个人文件的根目录</span><br><span class="line">├── lib (库文件) - 包含系统运行时所需的共享库文件</span><br><span class="line">├── media (可移动介质挂载点) - 用来挂载可移动介质的目录，如光盘、U盘等</span><br><span class="line">├── mnt (临时挂载目录) - 用来临时挂载其他文件系统的目录</span><br><span class="line">├── opt (可选应用软件包) - 存放可选的应用软件包的安装目录</span><br><span class="line">├── proc (进程信息) - 包含系统内存的映射文件，用于查看系统和进程信息</span><br><span class="line">├── root (超级用户目录) - 超级用户（root）的个人文件目录</span><br><span class="line">├── sbin (系统二进制文件) - 存放系统管理员使用的系统管理命令</span><br><span class="line">├── tmp (临时文件) - 存放临时文件的目录</span><br><span class="line">├── usr (用户文件) - 包含用户级应用程序和文件的目录</span><br><span class="line">└── var (变化文件) - 包含经常变化的文件，如日志和邮件等</span><br></pre></td></tr></table></figure>
-
-<h2 id="基础操作指令"><a href="#基础操作指令" class="headerlink" title="基础操作指令"></a>基础操作指令</h2><table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ls</td>
-<td>列出目录内容</td>
-</tr>
-<tr>
-<td>cd</td>
-<td>切换目录</td>
-</tr>
-<tr>
-<td>pwd</td>
-<td>显示当前目录</td>
-</tr>
-<tr>
-<td>cat</td>
-<td>查看或连接文件</td>
-</tr>
-<tr>
-<td>cp</td>
-<td>复制文件或目录</td>
-</tr>
-<tr>
-<td>mv ‘旧名字’ ‘新名字’ or mv ‘文件名’ ‘移动的路径’</td>
-<td>移动&#x2F;重命名文件或目录</td>
-</tr>
-<tr>
-<td>rm</td>
-<td>删除文件或目录</td>
-</tr>
-<tr>
-<td>mkdir</td>
-<td>创建目录</td>
-</tr>
-<tr>
-<td>rmdir</td>
-<td>删除目录</td>
-</tr>
-<tr>
-<td>touch ‘文件名’</td>
-<td>创建空文件</td>
-</tr>
-<tr>
-<td>grep</td>
-<td>在文件中查找指定文本</td>
-</tr>
-<tr>
-<td>ps</td>
-<td>显示当前进程</td>
-</tr>
-<tr>
-<td>top</td>
-<td>显示系统当前资源占用情况</td>
-</tr>
-<tr>
-<td>kill</td>
-<td>终止进程</td>
-</tr>
-</tbody></table>
-<h3 id="查看ip"><a href="#查看ip" class="headerlink" title="查看ip"></a>查看ip</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
-
-<h3 id="进入根目录"><a href="#进入根目录" class="headerlink" title="进入根目录"></a>进入根目录</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /</span><br></pre></td></tr></table></figure>
-
-<h3 id="切换root"><a href="#切换root" class="headerlink" title="切换root"></a>切换root</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br></pre></td></tr></table></figure>
-
-<h3 id="切换普通用户"><a href="#切换普通用户" class="headerlink" title="切换普通用户"></a>切换普通用户</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su hellomv</span><br></pre></td></tr></table></figure>
-
-<h3 id="查看当前用户"><a href="#查看当前用户" class="headerlink" title="查看当前用户"></a>查看当前用户</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">whoami</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="查看文件权限"><a href="#查看文件权限" class="headerlink" title="查看文件权限"></a>查看文件权限</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l</span><br></pre></td></tr></table></figure>
-
-<p><code>ls -l</code>是Linux和Unix系统中的一个命令，用于列出当前目录下的文件和目录，并显示它们的详细属性。</p>
-<ul>
-<li><code>ls</code>：列出目录内容。</li>
-<li><code>-l</code>：长格式显示，包括文件权限、所有者、组、文件大小、修改日期等详细信息。</li>
-</ul>
-<p>例如，当你执行<code>ls -l</code>命令时，可能会看到类似以下的输出：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span>rw<span class="operator">-</span>r<span class="comment">--r--  1 user group  1234 Oct 23 10:00 filename.txt</span></span><br></pre></td></tr></table></figure>
-
-<p>这表示：</p>
-<ul>
-<li><pre><code>-rw-r--r--
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">：文件权限，其中</span><br><span class="line"></span><br></pre></td></tr></table></figure>
--
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">表示这是一个普通文件，</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-rw-r--r--
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  表示权限。</span><br><span class="line"></span><br><span class="line">  - 第一个字符表示文件类型（`-`表示普通文件，`d`表示目录）。</span><br><span class="line">  - 接下来的三个字符表示所有者的权限（r代表可读，w代表可写，x代表可执行）。</span><br><span class="line">  - 接下来的三个字符表示组的权限。</span><br><span class="line">  - 最后的三个字符表示其他用户的权限。</span><br><span class="line"></span><br><span class="line">- `1`：硬链接数量。</span><br><span class="line"></span><br><span class="line">- `user`：文件所有者。</span><br><span class="line"></span><br><span class="line">- `group`：文件所属组。</span><br><span class="line"></span><br><span class="line">- `1234`：文件大小（以字节为单位）。</span><br><span class="line"></span><br><span class="line">- `Oct 23 10:00`：文件的最后修改时间</span><br><span class="line"></span><br><span class="line">### 显示后五条数据 </span><br><span class="line"></span><br><span class="line">**tip:**study是文件名</span><br><span class="line"></span><br><span class="line">```sh</span><br><span class="line">tail -5 study</span><br></pre></td></tr></table></figure>
-</code></pre>
-</li>
-</ul>
-<h3 id="显示前五条数据"><a href="#显示前五条数据" class="headerlink" title="显示前五条数据"></a>显示前五条数据</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">head</span> -5 study</span><br></pre></td></tr></table></figure>
-
-<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf <span class="string">&#x27;文件名&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="使用Vi"><a href="#使用Vi" class="headerlink" title="使用Vi"></a>使用Vi</h2><table>
-<thead>
-<tr>
-<th align="center">命令</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">i</td>
-<td align="center">进入插入模式，从当前光标位置开始输入文件内容。</td>
-</tr>
-<tr>
-<td align="center">a</td>
-<td align="center">进入插入模式，从当前光标位置的下一个字符开始输入文件内容。</td>
-</tr>
-<tr>
-<td align="center">o</td>
-<td align="center">进入插入模式，在当前光标位置插入新的一行，从行首开始输入文件内容。</td>
-</tr>
-<tr>
-<td align="center">ESC</td>
-<td align="center">退出插入模式，进入命令行模式。</td>
-</tr>
-<tr>
-<td align="center">h</td>
-<td align="center">将光标向左移动一格。</td>
-</tr>
-<tr>
-<td align="center">j</td>
-<td align="center">将光标向下移动一格。</td>
-</tr>
-<tr>
-<td align="center">k</td>
-<td align="center">将光标向上移动一页。</td>
-</tr>
-<tr>
-<td align="center">l</td>
-<td align="center">将光标向右移动一格。</td>
-</tr>
-<tr>
-<td align="center">ctrl+b</td>
-<td align="center">将屏幕向后移动一页。</td>
-</tr>
-<tr>
-<td align="center">ctrl+f</td>
-<td align="center">将屏幕向前移动一页。</td>
-</tr>
-<tr>
-<td align="center">ctrl+u</td>
-<td align="center">将屏幕向后移动半页。</td>
-</tr>
-<tr>
-<td align="center">ctrl+d</td>
-<td align="center">将屏幕向前移动半页。</td>
-</tr>
-<tr>
-<td align="center">x</td>
-<td align="center">删除光标所在位置的后面一个字符。</td>
-</tr>
-<tr>
-<td align="center">X</td>
-<td align="center">删除光标所在位置的前面一个字符。</td>
-</tr>
-</tbody></table>
-<p>请注意，这些命令都是在命令行模式下使用的。如果您想在插入模式下使用某些命令，请先按<code>ESC</code>键退出插入模式，然后输入相应的命令。</p>
-<p>此外，退出vi编辑器的方法有：</p>
-<ol>
-<li><strong>:q</strong>：退出vi编辑器。</li>
-<li><strong>:wq</strong>：保存文件并退出vi编辑器。</li>
-<li>**:q!**：不保存文件并退出vi编辑器。</li>
-</ol>
-<h3 id="编辑文件"><a href="#编辑文件" class="headerlink" title="编辑文件"></a>编辑文件</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi [文件名]</span><br></pre></td></tr></table></figure>
-
-<p>回车后可以看到文件内容，此时按 i 或者 a 进入编辑模式</p>
-<p>此时可以正常编辑</p>
-<p>编辑完成后按 esc可以退出编辑</p>
-<h3 id="显示当前行行号"><a href="#显示当前行行号" class="headerlink" title="显示当前行行号"></a>显示当前行行号</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:nu</span><br></pre></td></tr></table></figure>
-
-<h3 id="显示所有行号"><a href="#显示所有行号" class="headerlink" title="显示所有行号"></a>显示所有行号</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:<span class="built_in">set</span> nu</span><br></pre></td></tr></table></figure>
-
-<h3 id="保存退出使用"><a href="#保存退出使用" class="headerlink" title="保存退出使用"></a>保存退出使用</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure>
-
-<h3 id="退出使用"><a href="#退出使用" class="headerlink" title="退出使用"></a>退出使用</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:q</span><br></pre></td></tr></table></figure>
-
-<h3 id="保存使用"><a href="#保存使用" class="headerlink" title="保存使用"></a>保存使用</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:w</span><br></pre></td></tr></table></figure>
-
-
                 
             </div>
         </article>

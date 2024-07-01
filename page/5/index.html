@@ -48,6 +48,524 @@
     
         <article class="post article-entry">
             <div class="post-title">
+                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2023/12/18/linux%E4%B8%AD%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6/">linux中安装软件</a>
+            </div>
+            <p class="sub">Dec 18 2023</p>
+            <div class="post-content">
+                
+                    <h1 id="linux中安装软件"><a href="#linux中安装软件" class="headerlink" title="linux中安装软件"></a>linux中安装软件</h1><h3 id="一-linux常用命令"><a href="#一-linux常用命令" class="headerlink" title="一.linux常用命令"></a>一.linux常用命令</h3><p>​        查看ip ifconfig</p>
+<p>​		查看目录 ls  或者 ll </p>
+<p>​        查看当前所在目录pwd</p>
+<p>​        创建目录 mkdir</p>
+<p>​		移动文件或者修改文件名 mv    旧名字    新名字</p>
+<p>​        删除目录 rm </p>
+<p>​        创建文件 touch </p>
+<p>​        编辑文件(1) vim 或者vi  进入到文件中   </p>
+<p>​     				  (2)通过按i 或a 进入到编辑模式</p>
+<p>​					   (3)按esc </p>
+<p>​                       (4)输入:eq 保存并退出   或者:q!强制退出</p>
+<p>​       显示文件前几行: head -n  文件名</p>
+<p>​       显示后几行: tail -n 文件名</p>
+<p>​       切换用户: su</p>
+<p>​       查看当前用户 whoami</p>
+<p>​       查看进程 ps -ef </p>
+<p>​	   查看对应软件的进程 ps -ef | grep 软件名称</p>
+<p>​       杀死进程 kill -9 pid</p>
+<p>​       解压tar -zxvf  或者 tar -xvf</p>
+<h3 id="二-安装jdk"><a href="#二-安装jdk" class="headerlink" title="二.安装jdk"></a>二.安装jdk</h3><ol>
+<li><p>将下载好的软件上传到&#x2F;usr&#x2F;local&#x2F;java 中</p>
+</li>
+<li><p>解压软件 tar -zxvf  </p>
+</li>
+<li><p>重命名 mv   旧名字  新名字</p>
+</li>
+<li><p>查看是否安装jdk java -version 或者 rpm -qa | grep java(查看jdk进程)</p>
+<p>ps:使用 rpm -e –nodeps 或者 yum remove <em>openjdk</em>卸载</p>
+</li>
+<li><p>配置环境变量</p>
+<ul>
+<li><p>使用vim  &#x2F;etc&#x2F;profile</p>
+</li>
+<li><p>在结尾添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/local/java/jdk1.8</span><br><span class="line">	export PATH=$JAVA_HOME/bin:$PATH</span><br><span class="line">	export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>重新加载配置文件 source &#x2F;etc&#x2F;profile</p>
+</li>
+<li><p>查看是否安装成功</p>
+</li>
+</ol>
+<h3 id="三-安装mysql"><a href="#三-安装mysql" class="headerlink" title="三.安装mysql"></a>三.安装mysql</h3><ol>
+<li><p>上传文件到&#x2F;usr&#x2F;local&#x2F;mysql</p>
+<p>如果上传失败可能是因为你需要在ssh链接的时候就使用root账户链接，即使中途切换到root也无法上传成功，只能是一开始就是root</p>
+</li>
+<li><p>解压 tar -xvf </p>
+</li>
+<li><p>重命名mv mysql8</p>
+</li>
+<li><p>在mysql8目录中创建 mkdir data</p>
+</li>
+<li><p>创建组及用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd mysql</span><br><span class="line">useradd -g mysql mysql</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>用户授权 	chown -R mysql.mysql &#x2F;usr&#x2F;local&#x2F;mysql&#x2F;mysql8</p>
+</li>
+<li><p>初始化</p>
+<ul>
+<li>进入 bin 目录</li>
+<li>.&#x2F;mysqld –user&#x3D;mysql –basedir&#x3D;&#x2F;usr&#x2F;local&#x2F;mysql&#x2F;mysql8 –datadir&#x3D;&#x2F;usr&#x2F;local&#x2F;mysql&#x2F;mysql8&#x2F;data&#x2F; –initialize</li>
+<li>记住密码: ;8c9uMyUz#Vu</li>
+</ul>
+</li>
+<li><p>编辑my.cnf</p>
+<p>​	vim &#x2F;etc&#x2F;my.cnf 注释掉mysqld_safe和下面2条内容 修改basedir datadir socket信息</p>
+<p>​    </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">basedir=/usr/local/mysql/mysql8</span><br><span class="line">datadir=/usr/local/mysql/mysql8/data</span><br><span class="line">socket=/tmp/mysql.sock</span><br><span class="line">user=mysql</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>添加mysqld服务</p>
+<ul>
+<li>返回到mysql8目录</li>
+<li>输入cp -a .&#x2F;support-files&#x2F;mysql.server &#x2F;etc&#x2F;init.d&#x2F;mysql</li>
+</ul>
+</li>
+<li><p>授权及添加服务</p>
+<ul>
+<li>chmod +x &#x2F;etc&#x2F;init.d&#x2F;mysql</li>
+<li>chkconfig –add mysql</li>
+</ul>
+</li>
+<li><p>启动mysql服务 service mysql start</p>
+</li>
+<li><p>查看状态 service mysql status</p>
+</li>
+<li><p>将mysql命令添加到服务中 ln -s &#x2F;usr&#x2F;local&#x2F;mysql&#x2F;mysql8&#x2F;bin&#x2F;mysql &#x2F;usr&#x2F;bin</p>
+</li>
+<li><p>登录 mysql -uroot -p</p>
+</li>
+<li><p>修改密码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;123456&#x27;;</span><br><span class="line"></span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>远程连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#mysql 8.0</span><br><span class="line">use mysql;</span><br><span class="line">	update user set host=&#x27;%&#x27; where user=&#x27;root&#x27;;</span><br><span class="line"> </span><br><span class="line">	flush privileges;</span><br><span class="line"></span><br><span class="line">#mysql 5.0</span><br><span class="line">CREATE USER root@&#x27;%&#x27; IDENTIFIED BY &#x27;123456&#x27;;</span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO &#x27;root&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;123456&#x27; WITH GRANT OPTION;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>开放端口</p>
+<p>开放后对应端口可以在本地管理数据库软件通过ip远程链接数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --add-port=8080/tcp --permanent</span><br><span class="line"></span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<p> 如果需要本地去给mysql数据库添加数据表和数据，可以在本地使用数据库链接软件链接远程数据库，</p>
+</li>
+</ol>
+<p>主机改为数据库ip然后填写之前生成的密码，链接成功。</p>
+<p>然后就可以像之前操作本地数据库一样操作远程数据库了。</p>
+<h3 id="四-安装tomcat"><a href="#四-安装tomcat" class="headerlink" title="四.安装tomcat"></a>四.安装tomcat</h3><p>​		1.下载文件到 &#x2F;usr&#x2F;local&#x2F;tomcat中</p>
+<p>​        2.解压</p>
+<p>​        3.启动  进入tomcat的bin中 .&#x2F;startup.sh &amp;&amp; tail -f ..&#x2F;logs&#x2F;catalina.out</p>
+<p>启动成功后可以通过服务器ip:端口号 的方式访问到 tomcat官方页面</p>
+<p>注意检查tomcat启动的访问端口，如果无法访问成功可能是因为端口号未开放，需要使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#开放端口</span><br><span class="line">firewall-cmd --add-port=端口号/tcp --permanent</span><br><span class="line">#刷新</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<p>开放后再次重启tomcat即可访问成功</p>
+<h3 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h3><ol>
+<li><p>介绍(轻量级web服务器主要进行动静分离,反向代理,负载均衡)</p>
+</li>
+<li><p>常用命令</p>
+<ol>
+<li>去sbin目录中执行.&#x2F;nginx -v 查看版本</li>
+<li>.&#x2F;nginx -t 检查配置文件时候正确</li>
+<li>.&#x2F;nginx 启动</li>
+<li>ps -ef | grep nginx 查看进程</li>
+<li>.&#x2F;nginx -s reload 重写加载配置文件</li>
+</ol>
+</li>
+<li><p>配置环境变量可以直接启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export PATH=/usr/local/nginx/sbin:$PATH:$&#123;JAVA_PATH&#125;</span><br><span class="line">source /etc/profile</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>配置文件</p>
+<ol>
+<li><p>全局块(nginx全局配置)</p>
+</li>
+<li><p>events块(网络相关配置)</p>
+</li>
+<li><p>http块</p>
+<ol>
+<li>http全局块</li>
+<li>server块(可以有多个)<ol>
+<li>server全局块</li>
+<li>location块(可以有多个)</li>
+</ol>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       80;//监听端口</span><br><span class="line">        server_name  www.ywxdlc.com;//域名</span><br><span class="line">		charset utf-8;//编码格式</span><br><span class="line">		</span><br><span class="line">	location / &#123;</span><br><span class="line">		root   /home/projects/travel/travel-ui; //静态资源根目录</span><br><span class="line">		try_files $uri $uri/ /index.html;</span><br><span class="line">		index  index.html index.htm; //默认加载页面</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>反向代理</p>
+<p>客户直接方法代理服务器,代理服务器会请求服务器响应信息</p>
+</li>
+<li><p>负载均衡</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">upstream xiaxia&#123;</span><br><span class="line">	server 192.168.1:8080;</span><br><span class="line">	server 192.168.1:8082;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">        listen       80;//监听端口</span><br><span class="line">        server_name  www.ywxdlc.com;//域名</span><br><span class="line">		charset utf-8;//编码格式</span><br><span class="line">		</span><br><span class="line">	location / &#123;</span><br><span class="line">		root   /home/projects/travel/travel-ui; //静态资源根目录</span><br><span class="line">		try_files $uri $uri/ /index.html;</span><br><span class="line">		index  index.html index.htm; //默认加载页面</span><br><span class="line">		proxy_pass http://xiaxia; //与上面代理组保持一致</span><br><span class="line">        &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="五-项目javaweb部署"><a href="#五-项目javaweb部署" class="headerlink" title="五.项目javaweb部署"></a>五.项目javaweb部署</h3><p>​		1.项目打war包</p>
+<p><img src="/Blackcat-loveBlog/png/QQ%E5%9B%BE%E7%89%8720230524175202.png"></p>
+<p><img src="/Blackcat-loveBlog/png/QQ%E5%9B%BE%E7%89%8720230524175259.png"></p>
+<p>项目打war包后可以部署在服务器中，打包时提示:模块缺少所需库’lib’ </p>
+<p>测试过程中将war包部署在tomcat后运行可以成功，不用担心</p>
+<p>war包可以在打包时候的界面里看到路径，一般是在你项目的out文件夹里可以找到。</p>
+<p>ps:打包的时候最好修改项目名称</p>
+<p>​    项目jdk版本要和linux保持一致</p>
+<p>​	连接linux数据库记得修改密码</p>
+<p>将war包上传到CentOS7服务器中的tomcat&#x2F;webapps里</p>
+<p>然后重新启动tomcat</p>
+<p>即可通过服务器ip:端口号&#x2F;war包名 的格式访问到</p>
+<p>例如:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.136.128:8080/manager</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="六-安装redis"><a href="#六-安装redis" class="headerlink" title="六.安装redis"></a>六.安装redis</h3><p>​	1.redis-server –service-install redis.windows.conf –loglevel verbose(添加window服务)</p>
+<ol>
+<li><p>创建目录&#x2F;usr&#x2F;local&#x2F;redis 上传文件</p>
+</li>
+<li><p>解压 tar -zxvf</p>
+</li>
+<li><p>安装 make PREFIX&#x3D;&#x2F;usr&#x2F;local&#x2F;redis&#x2F;redis-3.2.8 install</p>
+</li>
+<li><p>在redis3.2.8中创建etc目录 将 配置文件复制一份 cp redis.conf  etc</p>
+</li>
+<li><p>开启端口 </p>
+</li>
+<li><p>修改&#x2F;etc中的配置文件</p>
+<ul>
+<li>#bind 127.0.0.1 注释掉 </li>
+<li>daemonize yes 128行</li>
+<li>logfile “&#x2F;usr&#x2F;local&#x2F;redis&#x2F;redis-3.2.8&#x2F;log&#x2F;redis.log”   163行   ps:创建对应目录及文件</li>
+<li>dir &#x2F;usr&#x2F;local&#x2F;redis&#x2F;redis-3.2.8&#x2F;data&#x2F;redisdata        247行   ps:创建对应目录</li>
+<li>requirepass 123456    480行</li>
+</ul>
+</li>
+<li><p>监控redis日志在新的窗口中 tail -F &#x2F;usr&#x2F;local&#x2F;redis&#x2F;redis-3.2.8&#x2F;log&#x2F;redis.log</p>
+</li>
+<li><p>启动服务.&#x2F;redis-server ..&#x2F;etc&#x2F;redis.conf</p>
+</li>
+<li><p>启动客户端在bin目录中 .&#x2F;redis-cli</p>
+<h4 id="1-常用命令"><a href="#1-常用命令" class="headerlink" title="1.常用命令"></a>1.常用命令</h4><ol>
+<li>auth 认证</li>
+<li>quit 退出</li>
+<li>set  设置值   set test haha ex 10 nx</li>
+<li>get key</li>
+<li>exists 是否存在 输入一个key 返回0或者1 输入多个key 返回存在的个数</li>
+<li>keys 查找key值   通配符 ? 匹配一个字符     * 匹配n个字符  [ab] 选其一  [6^a]不要 6取反</li>
+<li>del 删除key</li>
+<li>rename 旧名字 新名字</li>
+<li>expire 设置超时</li>
+<li>ttl 返回剩余时间</li>
+<li>persist 设置为永久有效</li>
+<li>select 选择数据库</li>
+<li>flushdb 清空所选数据库的值</li>
+<li>flushall 清空所有数据库的值</li>
+</ol>
+<h4 id="2-使用jedis连接redis"><a href="#2-使用jedis连接redis" class="headerlink" title="2.使用jedis连接redis"></a>2.使用jedis连接redis</h4><ol>
+<li>导入jedis所需jar包</li>
+<li>写api</li>
+<li>测试</li>
+</ol>
+<h4 id="3-springboot整合redis"><a href="#3-springboot整合redis" class="headerlink" title="3.springboot整合redis"></a>3.springboot整合redis</h4><ol>
+<li><p>添加依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">     &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">     &lt;artifactId&gt;spring-boot-starter-data-redis&lt;/artifactId&gt;</span><br><span class="line">     &lt;version&gt;3.0.4&lt;/version&gt;</span><br><span class="line"> &lt;/dependency&gt;</span><br><span class="line">  &lt;!-- spring2.X集成redis所需common-pool2 如果上面引入的依赖是2.x则加--&gt;</span><br><span class="line">  &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;commons-pool2&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;2.6.0&lt;/version&gt;</span><br><span class="line">  &lt;/dependency&gt;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>创建配置</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">    <span class="attr">redis:</span></span><br><span class="line">        <span class="attr">host:</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">        <span class="attr">port:</span> <span class="number">6379</span></span><br><span class="line">        <span class="attr">database:</span> <span class="number">1</span></span><br><span class="line">        <span class="attr">timeout:</span> <span class="number">1800000</span></span><br><span class="line">        <span class="attr">password:</span> <span class="number">123456</span></span><br><span class="line">        <span class="attr">lettuce:</span></span><br><span class="line">          <span class="attr">pool:</span></span><br><span class="line">            <span class="attr">max-active:</span> <span class="number">20</span></span><br><span class="line">            <span class="attr">max-wait:</span> <span class="number">-1</span></span><br><span class="line">            <span class="attr">max-idle:</span> <span class="number">5</span></span><br><span class="line">        	<span class="attr">min-idle:</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>添加工具类</p>
+<p>添加redisconfig</p>
+</li>
+<li><p>测试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@resource</span><br><span class="line">private RedisTemplate redistemplate</span><br><span class="line">redistemplate.opsofvalue.set</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>redis无法序列化localtime</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">           &lt;groupId&gt;com.fasterxml.jackson.datatype&lt;/groupId&gt;</span><br><span class="line">           &lt;artifactId&gt;jackson-datatype-jsr310&lt;/artifactId&gt;</span><br><span class="line">           &lt;version&gt;2.13.4&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="spring-cache"><a href="#spring-cache" class="headerlink" title="spring cache"></a>spring cache</h3><ol>
+<li><p>介绍</p>
+<p>基于注解实现缓存</p>
+</li>
+<li><p>常用注解</p>
+<p>@EnableCaching 开启注解</p>
+<p>@Cacheable 写在方法上 如果有数据存缓存中去,如果没有则保存在缓存中</p>
+<p>@CachePut 将方法的返回值放入缓存中</p>
+<p>@CacheEvict 将一条或者多条数据从缓存中删除</p>
+</li>
+<li><p>配置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cache:</span><br><span class="line">    redis:</span><br><span class="line">      time-to-live: 1800000 //设置缓存时间</span><br><span class="line">     &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;spring-boot-starter-cache&lt;/artifactId&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line">      启动类上或者配置类上加注解EnableCaching</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li></li>
+</ol>
+<h3 id="安装zookper"><a href="#安装zookper" class="headerlink" title="安装zookper"></a>安装zookper</h3><ol>
+<li><p>在local下创建dubbo目录上传压缩包</p>
+</li>
+<li><p>解压</p>
+</li>
+<li><p>在解压的文件夹中创建data目录和log目录</p>
+</li>
+<li><p>进入conf下复制配置文件 cp zoo_sample.cfg zoo.cfg</p>
+</li>
+<li><p>进入zoo.config配置文件</p>
+<p>dataDir&#x3D;&#x2F;usr&#x2F;local&#x2F;dubbo&#x2F;apache-zookeeper-3.7.1-bin&#x2F;data<br>dataLogDir&#x3D;&#x2F;usr&#x2F;local&#x2F;dubbo&#x2F;apache-zookeeper-3.7.1-bin&#x2F;log</p>
+</li>
+<li><p>开启端口号</p>
+</li>
+<li><p>进入bin 启动服务  .&#x2F;zkServer.sh start</p>
+</li>
+<li><p>启动客户端 .&#x2F;zkCli.sh </p>
+</li>
+<li><p>welcome to zookper </p>
+</li>
+<li><p>安装dubboo admin 上传 启动 即可nohup java -jar dubbo-admin-server-0.2.0-SNAPSHOT.jar &amp;</p>
+</li>
+</ol>
+<h3 id="springboot整合dubbo"><a href="#springboot整合dubbo" class="headerlink" title="springboot整合dubbo"></a>springboot整合dubbo</h3><ol>
+<li><p>导入依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">       &lt;groupId&gt;org.apache.dubbo&lt;/groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;dubbo-spring-boot-starter&lt;/artifactId&gt;</span><br><span class="line">       &lt;version&gt;2.7.3&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;dependency&gt;</span><br><span class="line">       &lt;groupId&gt;org.apache.dubbo&lt;/groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;dubbo&lt;/artifactId&gt;</span><br><span class="line">       &lt;version&gt;2.7.3&lt;/version&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br><span class="line">   &lt;dependency&gt; &lt;!--zookeeper 注册中心客户端引入 curator客户端 --&gt;</span><br><span class="line">       &lt;groupId&gt;org.apache.dubbo&lt;/groupId&gt;</span><br><span class="line">       &lt;artifactId&gt;dubbo-dependencies-zookeeper&lt;/artifactId&gt;</span><br><span class="line">       &lt;version&gt;2.7.3&lt;/version&gt;</span><br><span class="line">       &lt;type&gt;pom&lt;/type&gt;</span><br><span class="line">   &lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>写配置文件</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">dubbo:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">dubbo_provider</span></span><br><span class="line">  <span class="attr">registry:</span></span><br><span class="line">    <span class="attr">address:</span> <span class="string">zookeeper://192.168.116.141:2181</span></span><br><span class="line">    <span class="attr">timeout:</span> <span class="number">6000</span></span><br><span class="line">  <span class="attr">metadata-report:</span></span><br><span class="line">    <span class="attr">address:</span> <span class="string">zookeeper://192.168.116.141:2181</span></span><br><span class="line">  <span class="attr">protocol:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">dubbo</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">20880</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8081</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>创建privider  在实现类中加@service注解 此注解dubbo提供</p>
+</li>
+<li><p>创建消费者 加@Reference 如果提供者和消费者调用的不是同一个接口需要使用@Reference(check &#x3D; false)</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>​			 </p>
+<p>​			</p>
+<p>​	</p>
+
+                
+            </div>
+        </article>
+    
+        <article class="post article-entry">
+            <div class="post-title">
+                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2023/12/18/Linux%E7%B3%BB%E7%BB%9FCentOS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Linux系统CentOS学习笔记</a>
+            </div>
+            <p class="sub">Dec 18 2023</p>
+            <div class="post-content">
+                
+                    <p><img src="/Blackcat-loveBlog/png/linux.jpg"></p>
+<h2 id="Linux操作系统目录结构"><a href="#Linux操作系统目录结构" class="headerlink" title="Linux操作系统目录结构"></a>Linux操作系统目录结构</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/ (根目录)</span><br><span class="line">├── bin (二进制文件) - 存放系统启动和运行所需的基本命令</span><br><span class="line">├── boot (引导文件) - 存放用于系统引导的文件</span><br><span class="line">├── dev (设备文件) - 包含系统所需的设备文件，如硬盘、键盘等</span><br><span class="line">├── etc (配置文</span><br><span class="line">件) - 存放系统的配置文件</span><br><span class="line">├── home (用户主目录) - 存放用户个人文件的根目录</span><br><span class="line">├── lib (库文件) - 包含系统运行时所需的共享库文件</span><br><span class="line">├── media (可移动介质挂载点) - 用来挂载可移动介质的目录，如光盘、U盘等</span><br><span class="line">├── mnt (临时挂载目录) - 用来临时挂载其他文件系统的目录</span><br><span class="line">├── opt (可选应用软件包) - 存放可选的应用软件包的安装目录</span><br><span class="line">├── proc (进程信息) - 包含系统内存的映射文件，用于查看系统和进程信息</span><br><span class="line">├── root (超级用户目录) - 超级用户（root）的个人文件目录</span><br><span class="line">├── sbin (系统二进制文件) - 存放系统管理员使用的系统管理命令</span><br><span class="line">├── tmp (临时文件) - 存放临时文件的目录</span><br><span class="line">├── usr (用户文件) - 包含用户级应用程序和文件的目录</span><br><span class="line">└── var (变化文件) - 包含经常变化的文件，如日志和邮件等</span><br></pre></td></tr></table></figure>
+
+<h2 id="基础操作指令"><a href="#基础操作指令" class="headerlink" title="基础操作指令"></a>基础操作指令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ls</td>
+<td>列出目录内容</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>切换目录</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>显示当前目录</td>
+</tr>
+<tr>
+<td>cat</td>
+<td>查看或连接文件</td>
+</tr>
+<tr>
+<td>cp</td>
+<td>复制文件或目录</td>
+</tr>
+<tr>
+<td>mv ‘旧名字’ ‘新名字’ or mv ‘文件名’ ‘移动的路径’</td>
+<td>移动&#x2F;重命名文件或目录</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>删除文件或目录</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>rmdir</td>
+<td>删除目录</td>
+</tr>
+<tr>
+<td>touch ‘文件名’</td>
+<td>创建空文件</td>
+</tr>
+<tr>
+<td>grep</td>
+<td>在文件中查找指定文本</td>
+</tr>
+<tr>
+<td>ps</td>
+<td>显示当前进程</td>
+</tr>
+<tr>
+<td>top</td>
+<td>显示系统当前资源占用情况</td>
+</tr>
+<tr>
+<td>kill</td>
+<td>终止进程</td>
+</tr>
+</tbody></table>
+<h3 id="查看ip"><a href="#查看ip" class="headerlink" title="查看ip"></a>查看ip</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+
+<h3 id="进入根目录"><a href="#进入根目录" class="headerlink" title="进入根目录"></a>进入根目录</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /</span><br></pre></td></tr></table></figure>
+
+<h3 id="切换root"><a href="#切换root" class="headerlink" title="切换root"></a>切换root</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br></pre></td></tr></table></figure>
+
+<h3 id="切换普通用户"><a href="#切换普通用户" class="headerlink" title="切换普通用户"></a>切换普通用户</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su hellomv</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看当前用户"><a href="#查看当前用户" class="headerlink" title="查看当前用户"></a>查看当前用户</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">whoami</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="查看文件权限"><a href="#查看文件权限" class="headerlink" title="查看文件权限"></a>查看文件权限</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ls</span> -l</span><br></pre></td></tr></table></figure>
+
+<p><code>ls -l</code>是Linux和Unix系统中的一个命令，用于列出当前目录下的文件和目录，并显示它们的详细属性。</p>
+<ul>
+<li><code>ls</code>：列出目录内容。</li>
+<li><code>-l</code>：长格式显示，包括文件权限、所有者、组、文件大小、修改日期等详细信息。</li>
+</ul>
+<p>例如，当你执行<code>ls -l</code>命令时，可能会看到类似以下的输出：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator">-</span>rw<span class="operator">-</span>r<span class="comment">--r--  1 user group  1234 Oct 23 10:00 filename.txt</span></span><br></pre></td></tr></table></figure>
+
+<p>这表示：</p>
+<ul>
+<li><pre><code>-rw-r--r--
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">：文件权限，其中</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+-
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">表示这是一个普通文件，</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+rw-r--r--
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  表示权限。</span><br><span class="line"></span><br><span class="line">  - 第一个字符表示文件类型（`-`表示普通文件，`d`表示目录）。</span><br><span class="line">  - 接下来的三个字符表示所有者的权限（r代表可读，w代表可写，x代表可执行）。</span><br><span class="line">  - 接下来的三个字符表示组的权限。</span><br><span class="line">  - 最后的三个字符表示其他用户的权限。</span><br><span class="line"></span><br><span class="line">- `1`：硬链接数量。</span><br><span class="line"></span><br><span class="line">- `user`：文件所有者。</span><br><span class="line"></span><br><span class="line">- `group`：文件所属组。</span><br><span class="line"></span><br><span class="line">- `1234`：文件大小（以字节为单位）。</span><br><span class="line"></span><br><span class="line">- `Oct 23 10:00`：文件的最后修改时间</span><br><span class="line"></span><br><span class="line">### 显示后五条数据 </span><br><span class="line"></span><br><span class="line">**tip:**study是文件名</span><br><span class="line"></span><br><span class="line">```sh</span><br><span class="line">tail -5 study</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<h3 id="显示前五条数据"><a href="#显示前五条数据" class="headerlink" title="显示前五条数据"></a>显示前五条数据</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">head</span> -5 study</span><br></pre></td></tr></table></figure>
+
+<h3 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf <span class="string">&#x27;文件名&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="使用Vi"><a href="#使用Vi" class="headerlink" title="使用Vi"></a>使用Vi</h2><table>
+<thead>
+<tr>
+<th align="center">命令</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">i</td>
+<td align="center">进入插入模式，从当前光标位置开始输入文件内容。</td>
+</tr>
+<tr>
+<td align="center">a</td>
+<td align="center">进入插入模式，从当前光标位置的下一个字符开始输入文件内容。</td>
+</tr>
+<tr>
+<td align="center">o</td>
+<td align="center">进入插入模式，在当前光标位置插入新的一行，从行首开始输入文件内容。</td>
+</tr>
+<tr>
+<td align="center">ESC</td>
+<td align="center">退出插入模式，进入命令行模式。</td>
+</tr>
+<tr>
+<td align="center">h</td>
+<td align="center">将光标向左移动一格。</td>
+</tr>
+<tr>
+<td align="center">j</td>
+<td align="center">将光标向下移动一格。</td>
+</tr>
+<tr>
+<td align="center">k</td>
+<td align="center">将光标向上移动一页。</td>
+</tr>
+<tr>
+<td align="center">l</td>
+<td align="center">将光标向右移动一格。</td>
+</tr>
+<tr>
+<td align="center">ctrl+b</td>
+<td align="center">将屏幕向后移动一页。</td>
+</tr>
+<tr>
+<td align="center">ctrl+f</td>
+<td align="center">将屏幕向前移动一页。</td>
+</tr>
+<tr>
+<td align="center">ctrl+u</td>
+<td align="center">将屏幕向后移动半页。</td>
+</tr>
+<tr>
+<td align="center">ctrl+d</td>
+<td align="center">将屏幕向前移动半页。</td>
+</tr>
+<tr>
+<td align="center">x</td>
+<td align="center">删除光标所在位置的后面一个字符。</td>
+</tr>
+<tr>
+<td align="center">X</td>
+<td align="center">删除光标所在位置的前面一个字符。</td>
+</tr>
+</tbody></table>
+<p>请注意，这些命令都是在命令行模式下使用的。如果您想在插入模式下使用某些命令，请先按<code>ESC</code>键退出插入模式，然后输入相应的命令。</p>
+<p>此外，退出vi编辑器的方法有：</p>
+<ol>
+<li><strong>:q</strong>：退出vi编辑器。</li>
+<li><strong>:wq</strong>：保存文件并退出vi编辑器。</li>
+<li>**:q!**：不保存文件并退出vi编辑器。</li>
+</ol>
+<h3 id="编辑文件"><a href="#编辑文件" class="headerlink" title="编辑文件"></a>编辑文件</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi [文件名]</span><br></pre></td></tr></table></figure>
+
+<p>回车后可以看到文件内容，此时按 i 或者 a 进入编辑模式</p>
+<p>此时可以正常编辑</p>
+<p>编辑完成后按 esc可以退出编辑</p>
+<h3 id="显示当前行行号"><a href="#显示当前行行号" class="headerlink" title="显示当前行行号"></a>显示当前行行号</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:nu</span><br></pre></td></tr></table></figure>
+
+<h3 id="显示所有行号"><a href="#显示所有行号" class="headerlink" title="显示所有行号"></a>显示所有行号</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:<span class="built_in">set</span> nu</span><br></pre></td></tr></table></figure>
+
+<h3 id="保存退出使用"><a href="#保存退出使用" class="headerlink" title="保存退出使用"></a>保存退出使用</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:wq</span><br></pre></td></tr></table></figure>
+
+<h3 id="退出使用"><a href="#退出使用" class="headerlink" title="退出使用"></a>退出使用</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:q</span><br></pre></td></tr></table></figure>
+
+<h3 id="保存使用"><a href="#保存使用" class="headerlink" title="保存使用"></a>保存使用</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:w</span><br></pre></td></tr></table></figure>
+
+
+                
+            </div>
+        </article>
+    
+        <article class="post article-entry">
+            <div class="post-title">
                 <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2023/12/16/%E5%85%B3%E4%BA%8EShields%E5%BE%BD%E7%AB%A0%E7%9A%84%E4%BD%BF%E7%94%A8/">关于Shields徽章的使用</a>
             </div>
             <p class="sub">Dec 16 2023</p>
@@ -1244,917 +1762,6 @@
 
 <h2 id="在Web应用中连接和操作数据库"><a href="#在Web应用中连接和操作数据库" class="headerlink" title="在Web应用中连接和操作数据库"></a>在Web应用中连接和操作数据库</h2><p>在Web应用中连接和操作数据库与之前的示例类似，只是你需要结合前端和后端的知识来实现完整的功能。例如，你可以使用Flask与数据库进行交互，从前端收集用户输入，并将数据存储在数据库中。</p>
 <p>这些学习步骤和示例将帮助你了解高级主题和模块，以及可能涉及的Web开发方向。根据你的兴趣和需求，逐步探索这些领域将带来更深入的理解和技能。</p>
-
-                
-            </div>
-        </article>
-    
-        <article class="post article-entry">
-            <div class="post-title">
-                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2023/11/18/Git/">Git的基础使用</a>
-            </div>
-            <p class="sub">Nov 18 2023</p>
-            <div class="post-content">
-                
-                    <p>以下是关于Git中几个区域及其作用的表格，包括暂存区、工作区、本地仓库和远程仓库：</p>
-<table>
-<thead>
-<tr>
-<th align="center">区域</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">暂存区（Stage&#x2F;Index）</td>
-<td align="center">用于暂存待提交的更改。通过<code>git add</code>命令将文件添加到暂存区，可以将其标记为待提交的更改。</td>
-</tr>
-<tr>
-<td align="center">工作区（Working Directory）</td>
-<td align="center">用户在本地计算机上实际看到的目录和文件。工作区是Git仓库的根目录，其中包含所有版本控制下的文件。</td>
-</tr>
-<tr>
-<td align="center">本地仓库（Local Repository）</td>
-<td align="center">存储在用户计算机上的实际Git仓库。它包含所有提交的历史记录、分支、标签等信息。</td>
-</tr>
-<tr>
-<td align="center">远程仓库（Remote Repository）</td>
-<td align="center">存储在远程服务器上的Git仓库。通常用于与他人共享代码或备份代码。可以通过<code>git push</code>命令将本地仓库的更改推送到远程仓库。</td>
-</tr>
-</tbody></table>
-<p>这些区域在Git中扮演着不同的角色，它们协同工作以实现版本控制和协作。通过使用暂存区，用户可以临时保存多个版本的更改，并在准备好提交时将它们一起提交到本地仓库。工作区是用户实际看到和操作的文件和目录，而本地仓库则存储了整个Git仓库的历史记录和元数据。远程仓库用于与他人共享代码或备份代码，可以通过<code>git push</code>命令将本地仓库的更改推送到远程仓库。</p>
-<ol>
-<li><strong>工作区</strong>：从Git版本库解包出来的实际可编辑的文件，放在磁盘上供我们使用或修改，即我们能直接看到的项目目录。</li>
-<li><strong>暂存区</strong>：是一个文件，实际位于.git&#x2F;index，所以把暂存区也叫做索引（Index），保存了下次将要提交的文件列表信息。通过执行<code>git add</code>命令将工作区中的文件添加到暂存区。</li>
-<li><strong>本地仓库</strong>：存储在用户计算机上的实际Git仓库，包含所有提交的历史记录、分支、标签等信息。执行<code>git commit</code>命令将暂存区的文件提交到本地仓库。</li>
-<li><strong>远程仓库</strong>：存储在远程服务器上的Git仓库，通常用于与他人共享代码或备份代码。通过执行<code>git push</code>命令将本地仓库的更改推送到远程仓库。</li>
-</ol>
-<p>命令:</p>
-<p>克隆 远程仓库 </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span></span><br></pre></td></tr></table></figure>
-
-<p>检查本地仓库状态 </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
-
-<p>将工作区的修改添加到暂存区 </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add  &lt;file&gt;</span><br></pre></td></tr></table></figure>
-
-<p>将暂存区的修改提交到本地仓库 </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &lt;msg&gt;</span><br></pre></td></tr></table></figure>
-
-<p>将本地仓库提交到远程仓库 </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
-
-<p>查看日志</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> </span><br></pre></td></tr></table></figure>
-
-<p>tip:输入q退出</p>
-<p>查看提交记录</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
-
-<p>tip:使用此方式查看的文件Id比较短</p>
-<p>编写：</p>
-<p>在工作区撤销指定文件 </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- &lt;file&gt;</span><br></pre></td></tr></table></figure>
-
-<p>从暂存区撤销到工作区 </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset <span class="built_in">head</span> .  </span><br></pre></td></tr></table></figure>
-
-<p>tip:当你已经将代码add 到暂存区的时候 你想要撤回先要将代码从暂存区撤销回工作区 才能使用checkout撤销文件做出修改</p>
-<p>从本地仓库撤销已提交消息</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard</span><br></pre></td></tr></table></figure>
-
-<p>假设您有一个 Git 仓库，里面包含了一些提交记录，并且当前分支位于最新的提交上。现在，假设您误提交了一些代码并且想撤回这个提交。</p>
-<p>您可以使用 <code>git log</code> 命令查看提交记录，找到您想要撤回的提交的哈希值或引用，然后运行 <code>git reset --hard &lt;commit-hash&gt;</code> 命令撤回提交。在这个例子中，假设您要撤回最后一个提交，可以使用 <code>git reset --hard HEAD~1</code> 命令。</p>
-<p>这个命令的效果是将工作目录和索引恢复到上一个提交状态，并且丢弃所有在重置点之后进行的修改。任何未提交的更改都会被丢弃。</p>
-<p>回到之前的版本</p>
-<p>首先，使用 <code>git reflog</code> 命令可以查看提交历史记录以及每次操作对应的哈希值。这可以帮助你找到需要回退到的特定提交。接下来，你可以使用 <code>git revert --no-edit &lt;hash&gt;</code> 命令来撤销指定提交的更改，但不会打开编辑器以供编辑提交信息。</p>
-<p>例如，假设要回退到哈希值为 <code>&lt;hash&gt;</code> 的提交，你可以执行以下命令：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert --no-edit &lt;<span class="built_in">hash</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<p>这将会创建一个新的提交，内容是撤销了哈希值为 <code>&lt;hash&gt;</code> 的提交所引入的更改。该命令不会打开编辑器以进行提交信息的修改，而是使用默认的撤销提交信息。</p>
-<p>分支</p>
-<table>
-<thead>
-<tr>
-<th align="center">步骤</th>
-<th align="center">命令</th>
-<th align="center">描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">1</td>
-<td align="center"><code>git init</code></td>
-<td align="center">初始化一个Git仓库</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td align="center"><code>git branch</code></td>
-<td align="center">查看当前分支列表</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td align="center"><code>git branch &lt;branch-name&gt;</code></td>
-<td align="center">创建一个新的分支，名为<code>&lt;branch-name&gt;</code></td>
-</tr>
-<tr>
-<td align="center">4</td>
-<td align="center"><code>git checkout &lt;branch-name&gt;</code></td>
-<td align="center">切换到新创建的分支，名为<code>&lt;branch-name&gt;</code></td>
-</tr>
-<tr>
-<td align="center">5</td>
-<td align="center"><code>git merge &lt;branch-name&gt;</code></td>
-<td align="center">将当前分支与指定的<code>&lt;branch-name&gt;</code>分支合并</td>
-</tr>
-<tr>
-<td align="center">6</td>
-<td align="center"><code>git branch -d &lt;branch-name&gt;</code></td>
-<td align="center">删除名为<code>&lt;branch-name&gt;</code>的分支（如果合并后的分支已被删除）</td>
-</tr>
-<tr>
-<td align="center">7</td>
-<td align="center"><code>git branch -D &lt;branch-name&gt;</code></td>
-<td align="center">强制删除名为<code>&lt;branch-name&gt;</code>的分支（即使合并未完成）</td>
-</tr>
-<tr>
-<td align="center">8</td>
-<td align="center"><code>git push origin &lt;branch-name&gt;</code></td>
-<td align="center">将名为<code>&lt;branch-name&gt;</code>的分支推送到远程仓库（如果已关联）</td>
-</tr>
-</tbody></table>
-<p>创建本地仓库和远程仓库然后链接仓库进行操作</p>
-<p>使用 </p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add &lt;name&gt; &lt;url&gt;</span><br></pre></td></tr></table></figure>
-
-<p>关联远程仓库</p>
-<p>强制拉取远程仓库的数据</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull --allow-unrelated-histories</span><br></pre></td></tr></table></figure>
-
-<p>如果在强制拉取的时候报错则需要输入当前远程仓库名字和分支</p>
-<p>然后将本地仓库内容推送到远程仓库</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m &lt;msg&gt; </span><br><span class="line"><span class="comment">#origin 是你链接远程仓库时设置的名称 master是你要推送的分支</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-
-<p>tip:如果报错</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git push</span><br><span class="line">fatal: The current branch master has no upstream branch.</span><br><span class="line">To push the current branch and <span class="built_in">set</span> the remote as upstream, use</span><br><span class="line"></span><br><span class="line">    git push --set-upstream origin master</span><br><span class="line"></span><br><span class="line">To have this happen automatically <span class="keyword">for</span> branches without a tracking</span><br><span class="line">upstream, see <span class="string">&#x27;push.autoSetupRemote&#x27;</span> <span class="keyword">in</span> <span class="string">&#x27;git help config&#x27;</span>.</span><br></pre></td></tr></table></figure>
-
-<p>则是因为你没有设置你要推送的远程仓库名称和分支</p>
-<p>分支:</p>
-<p>不同的分支都是独立的，合并分支后才会统一，适合多线程操作</p>
-<p>创建分支</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch &lt;分支名称&gt; master</span><br></pre></td></tr></table></figure>
-
-<p>推送分支到远程仓库</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push - u origin &lt;分支名称&gt;</span><br></pre></td></tr></table></figure>
-
-<p>创建一个新分支到远程仓库</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin &lt;new branch name&gt;</span><br></pre></td></tr></table></figure>
-
-<p>删除远程仓库的分支</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete &lt;old-branch-name&gt;</span><br></pre></td></tr></table></figure>
-
-<p>删除本地分支</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d &lt;branch-name&gt;</span><br></pre></td></tr></table></figure>
-
-<p>查看分支</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
-
-<p>查看所有分支</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></table></figure>
-
-<p>tip:如果你创建了但是没有显示分支，那么就切换你创建的分支再回到主分支就出现了</p>
-<p>切换分支</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;分支名称&gt;</span><br></pre></td></tr></table></figure>
-
-<p>合并分支</p>
-<p>git merge master</p>
-<p>如果想要将其他分支的内容合并到master那么按照以下流程操作</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git checkout master </span><br><span class="line"></span><br><span class="line">git merge frr </span><br><span class="line"></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-
-<p>或者直接</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></table></figure>
-
-<p>分支改名</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -m &lt;旧名字&gt; &lt;新名字&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="git"><a href="#git" class="headerlink" title="git"></a>git</h1><h4 id="一-作用"><a href="#一-作用" class="headerlink" title="一.作用"></a>一.作用</h4><p>分布式版本控制工具,主要管理java源代码,xml文件,html页面,可以通过它进行 代码回溯,版本切换,多人协作,远程备份</p>
-<h4 id="二-git常用命令"><a href="#二-git常用命令" class="headerlink" title="二.git常用命令"></a>二.git常用命令</h4><ol>
-<li><p>全局设置</p>
-<p>当安装Git后首先要做的事情是设置用户名称和email地址。这是非常重要的，因为每次Git提交都会使用该用户信息。<br>在Git命令行中执行下面命令:<br>◆设置用户信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;zyw&quot;</span><br><span class="line">git config --global user.email &quot;1024655706@qq.com&quot;</span><br></pre></td></tr></table></figure>
-
-
-<p>◆查看配置信息</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
-
-
-<p>注意:上面设置的user.name和user.email并不是我们在注册码云账号时使用的用户名和邮箱，此处可以任意设置。</p>
-</li>
-<li><p>获取git仓库</p>
-<ol>
-<li>在本地初始化仓库 git init(不常用)</li>
-<li>拉去远程仓库(常用)</li>
-</ol>
-</li>
-<li><p>git基本概念</p>
-<ol>
-<li>版本库 git文件包含配置信息,日志信息,文件信息.</li>
-<li>工作区包含git文件的目录存放开发代码<ul>
-<li>untracked未跟踪(未被纳入版本控制) 创建完文件没有执行git add *</li>
-<li>tracked已跟踪(被纳入版本控制)<ol>
-<li>unmodified 未修改状态</li>
-<li>Modified 已修改状态</li>
-<li>staged 已暂存状态</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>暂存区.git目录中的index文件也叫stage</li>
-</ol>
-</li>
-<li><p>本地仓库操作命令</p>
-<ol>
-<li><p>git status 查看文件状态</p>
-</li>
-<li><p>git add 将文件存入暂存区</p>
-</li>
-<li><p>git reset 将暂存区的文件取消 或者切换到指定版本 git rest –hard</p>
-</li>
-<li><p>git commit 将暂存区的文件提交到 版本库      </p>
-<p>ps:处理完冲突后提交报错  后面跟 -i</p>
-</li>
-<li><p>git log 查看日志</p>
-</li>
-</ol>
-</li>
-<li><p>远程仓库操作命令</p>
-<ol>
-<li><p>git remote -v 查看远程仓库</p>
-</li>
-<li><p>git remote add   origin 添加远程仓库 将本地仓库和远程仓库进行关联</p>
-<p>ps: git pull origin master</p>
-<p>ps:关联后拉取远程仓库信息会报错,在拉取的后面添加–allow-unrelated-histories</p>
-</li>
-<li><p>git clone 从远程仓库克隆</p>
-</li>
-<li><p>git pull 从远程仓库拉取</p>
-</li>
-<li><p>git push 推送远程仓库</p>
-</li>
-</ol>
-</li>
-<li><p>分支操作命令</p>
-<ol>
-<li>git branch 查看分支 -r 远程分支  -a 远程分支和本地分支</li>
-<li>git branch [name] 创建分支</li>
-<li>git checkout [name] 切换分支</li>
-<li>git push [shortName] [name] 推送至远程仓库分支</li>
-<li>git merge [name] 合并分支</li>
-</ol>
-</li>
-<li><p>标签操作命令(版本)</p>
-<ol>
-<li><p>git tag 查看标签</p>
-</li>
-<li><p>git tag [name] 创建标签</p>
-</li>
-<li><p>git push [shortName] [name] 推送至远程仓库</p>
-</li>
-<li><p>git checkout -b [branch] [name] 检出标签</p>
-</li>
-</ol>
-</li>
-</ol>
-<h4 id="三-在idea中使用git"><a href="#三-在idea中使用git" class="headerlink" title="三.在idea中使用git"></a>三.在idea中使用git</h4><ol>
-<li><p>初始化仓库</p>
-<ol>
-<li>本地初始化仓库 去cvs中</li>
-<li>克隆远程仓库 去cvs中</li>
-</ol>
-</li>
-<li><p>按照图形化界面提交代码即可</p>
-</li>
-<li><p>如果是本地初始化仓库需要拉取 代码在进行提交</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Push rejected</span><br><span class="line">推拒</span><br><span class="line">Push to origin/master was rejected</span><br><span class="line">推到原点/主人被拒绝</span><br><span class="line">git pull origin master -–allow-unrelated-histories</span><br><span class="line">git push -u origin master -f</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-                
-            </div>
-        </article>
-    
-        <article class="post article-entry">
-            <div class="post-title">
-                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2023/10/13/Web/">Web学习笔记</a>
-            </div>
-            <p class="sub">Oct 13 2023</p>
-            <div class="post-content">
-                
-                    <blockquote>
-<blockquote>
-<p>Web应用程序是一种基于互联网的软件应用程序，它通过浏览器来提供服务和功能。用户可以使用Web应用程序在互联网上执行各种任务，如购物、社交、学习、工作等。这些应用程序通常使用Web技术（例如HTML、CSS、JavaScript等）来构建，并在Web服务器上运行。</p>
-</blockquote>
-<p><strong>Web应用程序的运行逻辑：</strong></p>
-<ol>
-<li><strong>用户发出请求：</strong> 用户在浏览器中输入Web应用程序的网址（URL）或者通过点击链接、按钮等与Web应用程序进行交互。这些请求通常是HTTP请求。</li>
-<li><strong>Web服务器接收请求：</strong> 用户的请求到达Web服务器，服务器收到请求后开始处理。</li>
-<li><strong>应用程序逻辑处理：</strong> Web服务器将请求传递给Web应用程序，应用程序进行逻辑处理。这可能包括从数据库中获取数据、处理用户输入、生成动态内容等。</li>
-<li><strong>生成响应：</strong> 应用程序根据请求处理的结果生成一个HTTP响应。这个响应包含了要在用户浏览器上显示的内容，通常是HTML、CSS、JavaScript和其他资源。</li>
-<li><strong>发送响应：</strong> 生成的HTTP响应发送回到用户的浏览器。</li>
-<li><strong>浏览器渲染：</strong> 用户的浏览器接收到响应后，开始解析和渲染HTML、CSS和JavaScript，将内容显示在用户的屏幕上。</li>
-<li><strong>用户与应用程序交互：</strong> 用户可以在浏览器中与Web应用程序的页面进行交互，例如填写表单、点击按钮、触发事件等。</li>
-<li><strong>再次请求：</strong> 如果用户在应用程序上执行了操作，可能会产生新的请求，重复上述步骤。</li>
-</ol>
-<p><strong>网络顺序：</strong></p>
-<p>Web应用程序的运行涉及多个设备和网络层级，按照一般顺序为：</p>
-<ol>
-<li><strong>客户端（Client）：</strong> 用户使用的设备，如计算机、手机、平板电脑等，装有浏览器用于访问Web应用程序。</li>
-<li><strong>本地网络：</strong> 用户的设备连接到本地网络，如家庭Wi-Fi或公司局域网。</li>
-<li><strong>互联网：</strong> 本地网络通过互联网连接到Web服务器，互联网是连接全球网络的基础设施。</li>
-<li><strong>Web服务器：</strong> 接收并处理用户请求的服务器，运行Web应用程序。</li>
-<li><strong>应用程序服务器：</strong> 对于复杂的Web应用程序，可能涉及应用程序服务器来处理业务逻辑。</li>
-<li><strong>数据库服务器：</strong> Web应用程序通常需要从数据库中获取或存储数据，数据库服务器用于管理和存储数据。</li>
-</ol>
-<p>在这个网络顺序中，数据和请求通过互联网在不同的服务器之间传递，直到最终在用户的浏览器上显示出来。Web应用程序的运行涉及多个环节的协调与交互，这样的设计使得Web应用程序具有高度的可扩展性和灵活性。</p>
-</blockquote>
-<p><strong>目录</strong></p>
-<p>[TOC]</p>
-<h1 id="1-架构"><a href="#1-架构" class="headerlink" title="1.架构"></a>1.架构</h1><h2 id="B-S架构"><a href="#B-S架构" class="headerlink" title="B&#x2F;S架构"></a>B&#x2F;S架构</h2><p>当谈到BS架构（Browser-Server架构）的Web应用程序时，我们可以用一个简单的比喻来帮助新手理解。想象一下您正在参加一场虚拟咖啡馆会议：</p>
-<ol>
-<li><strong>浏览器（Browser）：</strong> 就像您自己坐在电脑前的浏览器，它是您与Web应用程序交互的窗口。您可以在浏览器中输入网址、点击链接或按钮，就像在虚拟咖啡馆会议中发言、举手或参与讨论一样。</li>
-<li><strong>服务器（Server）：</strong> 咖啡馆的服务员就像服务器，他们接收您的需求并提供所需的服务。在BS架构中，服务器是一个强大的计算机，它储存了Web应用程序的所有信息和逻辑。当您在浏览器中发出请求时，服务器会处理您的请求并提供相应的内容，就像服务员会为您提供咖啡、点心和其他所需的东西一样。</li>
-<li><strong>交互过程：</strong> 当您在浏览器中输入网址并按下回车时，这就像您走进咖啡馆并坐下。您告诉服务员您的需求，服务员将您的请求带到厨房（服务器处理请求），然后返回您所需的咖啡和点心（服务器响应请求）。您通过浏览器看到的内容，就像您在桌子上看到的咖啡和点心一样。</li>
-<li><strong>分离性：</strong> 就像在虚拟咖啡馆会议中，您不需要亲自去厨房，只需与服务员交互，BS架构将前端（浏览器）和后端（服务器）分开。这种分离性使得开发人员可以独立地设计、构建和维护这两部分，从而使整个系统更加有序和灵活。</li>
-</ol>
-<p>总的来说，BS架构的Web应用程序就像您在虚拟咖啡馆与服务员进行交互一样。您使用浏览器发送请求，服务器处理并返回响应，这种分离性和交互方式使得Web应用程序变得高效、灵活且易于维护。</p>
-<h2 id="C-S架构"><a href="#C-S架构" class="headerlink" title="C&#x2F;S架构"></a>C&#x2F;S架构</h2><h1 id="2-Tomcat"><a href="#2-Tomcat" class="headerlink" title="2.Tomcat"></a>2.Tomcat</h1><p>当谈到Tomcat时，它是一个非常流行的Java Servlet容器和JavaServer Pages（JSP）容器，它允许您在Web服务器上运行Java Web应用程序。以下是Tomcat的一些主要特点，以便新手更容易理解：</p>
-<p><strong>1. 什么是Servlet和JSP：</strong></p>
-<ul>
-<li>Servlet是Java编写的服务器端程序，用于处理客户端请求并生成动态内容。</li>
-<li>JSP是JavaServer Pages的缩写，它是一种将Java代码嵌入HTML页面的技术，用于生成动态Web内容。</li>
-</ul>
-<p><strong>2. Tomcat是什么：</strong></p>
-<ul>
-<li>Tomcat是Apache软件基金会的一个开源项目，它是一个Servlet容器，也称为Web容器。它的主要作用是运行Servlet和JSP，将这些动态内容转换成HTML并发送给客户端浏览器。</li>
-</ul>
-<p><strong>3. 轻量级：</strong></p>
-<ul>
-<li>Tomcat是一个相对轻量级的Web服务器，适合用于小到中等规模的应用程序。</li>
-</ul>
-<p><strong>4. 独立性：</strong></p>
-<ul>
-<li>Tomcat是一个独立的Web服务器，您可以将其与其他Web服务器（如Apache HTTP Server）结合使用，或者将其作为独立的Web服务器运行。</li>
-</ul>
-<p><strong>5. 容易配置：</strong></p>
-<ul>
-<li>Tomcat具有简单且易于理解的配置。大多数情况下，您只需对默认配置进行少量修改即可开始运行Web应用程序。</li>
-</ul>
-<p><strong>6. 内置开发支持：</strong></p>
-<ul>
-<li>Tomcat内置了一个方便的开发模式，它允许您在不重启服务器的情况下进行应用程序的修改和调试。</li>
-</ul>
-<p><strong>7. 易于部署：</strong></p>
-<ul>
-<li>将Java Web应用程序部署到Tomcat中通常很简单。只需将您的WAR（Web ARchive）文件放在指定的目录中，Tomcat将自动将其解压并启动您的应用程序。</li>
-</ul>
-<p><strong>8. 支持多个协议：</strong></p>
-<ul>
-<li>Tomcat支持HTTP和HTTPS协议，并可以通过配置支持其他协议，如AJP（Apache JServ Protocol）。</li>
-</ul>
-<p><strong>9. 健壮性：</strong></p>
-<ul>
-<li>Tomcat在运行Java Web应用程序时表现良好，并且对于处理并发请求和大量用户非常可靠。</li>
-</ul>
-<p>总之，Tomcat是Java Web开发的重要组成部分，它为Java开发人员提供了一个快速、可靠且易于使用的平台，用于构建和运行动态的Java Web应用程序。对于新手来说，了解Tomcat的这些基本特点将有助于更好地理解它在Java Web开发中的作用和价值。</p>
-<h2 id="Tomcat目录"><a href="#Tomcat目录" class="headerlink" title="Tomcat目录"></a>Tomcat目录</h2><p>当您使用Tomcat作为您的Java Web应用程序的服务器时，了解Tomcat的目录结构对于新手是非常重要的。这里我会简要介绍Tomcat的主要目录，以帮助您更容易理解：</p>
-<ol>
-<li><strong>bin目录：</strong><ul>
-<li>这个目录包含了可执行文件，如启动和停止Tomcat服务器的脚本。在Windows系统中，您会找到<code>startup.bat</code>用于启动Tomcat，<code>shutdown.bat</code>用于停止Tomcat。在类Unix系统中，对应的文件分别是<code>startup.sh</code>和<code>shutdown.sh</code>。</li>
-</ul>
-</li>
-<li><strong>conf目录：</strong><ul>
-<li>这个目录包含了Tomcat的配置文件。其中最重要的文件是<code>server.xml</code>，它定义了Tomcat服务器的配置信息，如端口号、虚拟主机设置等。此外，还有其他一些配置文件，如<code>web.xml</code>用于配置Web应用程序的设置，<code>tomcat-users.xml</code>用于定义Tomcat管理员的登录信息等。</li>
-</ul>
-</li>
-<li><strong>lib目录：</strong><ul>
-<li>该目录包含Tomcat服务器运行所需的Java类库（JAR文件）。这些类库是Tomcat运行的核心组件，包括Servlet和JSP的实现以及其他支持文件。</li>
-</ul>
-</li>
-<li><strong>logs目录：</strong><ul>
-<li>Tomcat在运行时会将各种日志文件保存在这个目录中。这些日志文件包含了服务器的访问日志、错误日志和其他重要的运行时信息，对于故障排查和性能监测非常有用。</li>
-</ul>
-</li>
-<li><strong>webapps目录：</strong><ul>
-<li>这个目录是您放置Web应用程序的地方。每个放在这个目录下的文件夹都会被Tomcat当作一个独立的Web应用程序来部署和运行。例如，如果您的应用程序是<code>myapp.war</code>，将其放在<code>webapps</code>目录下，Tomcat将自动将其解压并启动您的应用程序。</li>
-</ul>
-</li>
-<li><strong>work目录：</strong><ul>
-<li>Tomcat在运行时将生成临时文件和缓存文件，并将它们存储在这个目录中。这些临时文件通常是编译后的Servlet类文件和JSP文件，以及其他缓存数据。</li>
-</ul>
-</li>
-<li><strong>temp目录：</strong><ul>
-<li>临时文件目录。Tomcat在运行时会在这个目录中创建临时文件，并在不再需要时自动删除。</li>
-</ul>
-</li>
-<li><strong>logs目录：</strong><ul>
-<li>Tomcat的日志目录。Tomcat会将服务器运行过程中的日志信息保存在这个目录中，包括访问日志、错误日志等。</li>
-</ul>
-</li>
-</ol>
-<p>请注意，Tomcat的目录结构可能会因版本而异，但通常以上述目录为基础。了解Tomcat的目录结构有助于您更好地管理和理解Tomcat服务器以及您的Java Web应用程序的部署和运行。</p>
-<h1 id="3-JSP"><a href="#3-JSP" class="headerlink" title="3.JSP"></a>3.JSP</h1><h2 id="JSP介绍"><a href="#JSP介绍" class="headerlink" title="JSP介绍"></a>JSP介绍</h2><p>当谈到JSP（JavaServer Pages），可以将其想象成一种用于在Web应用程序中创建动态内容的技术。JSP允许您在HTML页面中嵌入Java代码，以便在服务器端生成动态内容，然后将其发送到用户的浏览器。</p>
-<p><strong>JSP的主要特点和工作原理：</strong></p>
-<ol>
-<li><strong>动态内容生成：</strong> JSP允许您将Java代码嵌入到HTML中，从而能够在服务器上动态生成内容。这意味着您可以根据用户请求、数据库数据或其他条件来生成不同的页面内容。</li>
-<li><strong>易于学习：</strong> 对于熟悉HTML和Java的开发人员来说，学习JSP相对容易。您只需要在HTML中插入少量的Java代码，就可以在页面中实现复杂的逻辑和功能。</li>
-<li><strong>与Servlet结合：</strong> JSP实际上是基于Servlet技术的，它被转化为Java Servlet并在服务器端运行。这使得JSP可以与Java类、库和框架无缝结合，实现更强大的功能。</li>
-<li><strong>分离逻辑和视图：</strong> JSP鼓励将Java代码和HTML内容分开，这有助于更好地组织代码，使代码更易于维护和理解。</li>
-<li><strong>标签库：</strong> JSP标签库（Tag Library）提供了许多预定义的标签，用于执行常见的任务，如循环、条件语句等。这些标签可以简化页面开发过程。</li>
-<li><strong>隐式对象：</strong> JSP提供了一组隐式对象，可以直接在JSP页面中使用，如请求对象、响应对象、会话对象等，以便更方便地访问和操作Web应用程序的不同方面。</li>
-</ol>
-<p><strong>JSP的工作流程：</strong></p>
-<ol>
-<li><strong>客户端发出请求：</strong> 用户在浏览器中输入URL或点击链接，向Web服务器发出请求。</li>
-<li><strong>Web服务器接收请求：</strong> Web服务器接收到请求，将其传递给处理JSP的Servlet引擎。</li>
-<li><strong>JSP转化为Servlet：</strong> JSP文件被Servlet引擎编译成一个Java Servlet。这个Servlet包含了JSP页面中的Java代码和动态内容生成逻辑。</li>
-<li><strong>生成动态内容：</strong> 编译后的Servlet执行JSP页面中的Java代码，生成动态内容。这可能涉及从数据库获取数据、处理用户输入等。</li>
-<li><strong>生成响应：</strong> Servlet生成一个包含动态内容的HTTP响应，然后将其发送回给Web服务器。</li>
-<li><strong>Web服务器发送响应：</strong> Web服务器将生成的响应发送回用户的浏览器。</li>
-<li><strong>浏览器渲染：</strong> 浏览器接收响应，解析HTML和动态内容，然后在用户的屏幕上渲染出完整的页面。</li>
-</ol>
-<p>总之，JSP是一种强大的技术，允许开发人员在HTML中嵌入Java代码，以便在服务器上生成动态内容。这使得Web应用程序可以根据用户的需求和其他条件提供个性化和实时的体验。</p>
-<h2 id="JSP工作原理"><a href="#JSP工作原理" class="headerlink" title="JSP工作原理"></a>JSP工作原理</h2><p> JSP（JavaServer Pages）的工作原理涉及到以下几个主要步骤：</p>
-<ol>
-<li><strong>JSP文件创建和部署：</strong> 开发人员编写JSP文件，这些文件包含HTML标记和嵌入在其中的Java代码片段。JSP文件必须部署到Web服务器中，通常与其他Web资源（例如HTML、CSS、JavaScript、Servlet等）一起组成Web应用程序。</li>
-<li><strong>JSP的编译：</strong> 当Web服务器启动时或者第一次请求JSP页面时，JSP引擎（容器）将对JSP文件进行编译。编译将JSP文件转换为一个Java Servlet。该Servlet类会继承自javax.servlet.jsp.HttpJspBase，并包含在JSP页面中嵌入的Java代码。</li>
-<li><strong>Servlet的初始化：</strong> 当Servlet被编译后，容器将创建该Servlet的一个实例，并调用其init()方法，进行一些初始化设置。</li>
-<li><strong>HTTP请求处理：</strong> 当用户在浏览器中请求JSP页面时，Web服务器将创建一个HTTP请求对象，并将其传递给JSP Servlet实例。</li>
-<li><strong>JSP代码执行：</strong> Servlet实例处理HTTP请求，执行JSP页面中嵌入的Java代码。这些Java代码可能包含条件语句、循环、数据库查询等。在执行过程中，Servlet可以访问一系列隐式对象（如request、response、session等），用于处理客户端发送的请求和生成响应。</li>
-<li><strong>动态内容生成：</strong> 在JSP代码的执行过程中，Servlet可以根据请求、数据库数据或其他条件来生成动态内容。生成的内容通常是在HTML标记中嵌入的，用于构建最终要发送到浏览器的响应。</li>
-<li><strong>HTTP响应生成：</strong> Servlet执行完JSP页面中的Java代码后，它将生成一个HTTP响应，其中包含了动态生成的内容。</li>
-<li><strong>HTTP响应发送：</strong> Servlet将生成的HTTP响应发送回Web服务器。</li>
-<li><strong>浏览器渲染：</strong> Web服务器将响应传递给用户的浏览器，浏览器解析HTML和动态内容，并将其显示在用户的屏幕上。</li>
-</ol>
-<p>需要注意的是，一旦JSP文件被编译成Servlet并生成响应，JSP本身在整个过程中不再直接参与。每次请求JSP页面时，Servlet引擎都会重新处理该JSP，以确保动态内容生成和个性化的效果。</p>
-<p>通过这种方式，JSP允许开发人员在HTML中嵌入Java代码，实现更加灵活和动态的Web应用程序。同时，与Java Servlet结合，JSP可以更高效地生成动态内容并响应客户端请求。</p>
-<h2 id="JSP基础代码"><a href="#JSP基础代码" class="headerlink" title="JSP基础代码"></a>JSP基础代码</h2><p>当你开始学习JSP时，以下是一些基础代码示例，帮助你理解JSP的工作原理和语法。我们将从简单的JSP页面开始，逐步介绍如何嵌入Java代码和显示动态内容。</p>
-<p><strong>1. 创建基本的JSP页面：</strong></p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- index.jsp --&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;My First JSP Page&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;Hello, World!&lt;/h1&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>解释：</p>
-<ul>
-<li>这是一个简单的HTML页面，其中包含一个h1标签显示”Hello, World!”。</li>
-<li>保存该文件为index.jsp，并将其放置在Web应用程序的合适位置，例如在WebContent目录下。</li>
-</ul>
-<p><strong>2. 在JSP中嵌入Java代码：</strong></p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- greet.jsp --&gt;</span><br><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=UTF-8&quot;</span> pageEncoding=<span class="string">&quot;UTF-8&quot;</span> %&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Greeting Page&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;% </span><br><span class="line">        <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;John&quot;</span>; <span class="comment">// Java代码段，定义一个名为name的字符串变量</span></span><br><span class="line">        out.println(<span class="string">&quot;Hello, &quot;</span> + name); <span class="comment">// Java代码段，输出动态内容</span></span><br><span class="line">    %&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>解释：</p>
-<ul>
-<li><code>&lt;%@ page %&gt;</code>指令用于定义页面的属性和配置信息。在这里，我们指定使用Java语言，并且输出的字符编码为UTF-8。</li>
-<li>在<code>&lt;body&gt;</code>标签中，我们使用<code>&lt;% %&gt;</code>标签将Java代码嵌入到JSP页面中。</li>
-<li>在这个例子中，我们定义了一个名为<code>name</code>的字符串变量，并使用<code>out.println()</code>函数输出”Hello, John”。这样，我们在浏览器中访问该页面时，将看到”Hello, John”被显示出来。</li>
-</ul>
-<p><strong>3. 使用JSP隐式对象：</strong></p>
-<p>JSP提供了一组隐式对象，您无需声明即可在JSP页面中直接使用。以下是一些常用的隐式对象：</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- implicit_objects.jsp --&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Implicit Objects&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;User Information&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;Username: &lt;%= request.getParameter(<span class="string">&quot;username&quot;</span>) %&gt;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;IP Address: &lt;%= request.getRemoteAddr() %&gt;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;Session ID: &lt;%= session.getId() %&gt;&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>解释：</p>
-<ul>
-<li><code>request</code>：代表客户端的请求，可以用于获取请求参数等信息。</li>
-<li><code>session</code>：代表用户的会话，可以用于跟踪用户状态和共享数据。</li>
-</ul>
-<p>注意：在实际开发中，为了更好地分离逻辑和视图，应该尽量避免在JSP中嵌入过多的Java代码。应该将业务逻辑封装在JavaBean、Servlet或其他后端组件中，并在JSP中调用这些组件，以提高代码的可维护性和复用性。</p>
-<p>这些基础的JSP代码示例应该能帮助您开始学习JSP，并逐渐了解如何在JSP中嵌入Java代码和生成动态内容。继续学习JSP和相关的Web开发技术，您将能够构建更复杂和功能丰富的Web应用程序。</p>
-<h2 id="JSP关于out-print报红解决办法"><a href="#JSP关于out-print报红解决办法" class="headerlink" title="JSP关于out.print报红解决办法"></a>JSP关于out.print报红解决办法</h2><p>虽然可以正常使用，但是却有报红，这是因为lib包和Tomcat的lib没有正确被识别导致的，需要手动识别添加</p>
-<p>首先在WEB-INF里建立lib包然后导入在Tomcat-lib里的jaspic-api and servlet-api 导入后在文件-项目结构-模块-你的项目-依赖-Tomcat（没有就点击加号添加）</p>
-<p>最后重启项目</p>
-<h2 id="JSP实例演示1"><a href="#JSP实例演示1" class="headerlink" title="JSP实例演示1"></a>JSP实例演示1</h2><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;java.util.Date&quot;</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;java.text.SimpleDateFormat&quot;</span> %&gt;&lt;%-- Created by IntelliJ IDEA. --%&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">  web项目启动成功</span><br><span class="line">  &lt;%</span><br><span class="line">    <span class="type">Date</span> <span class="variable">date</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">    <span class="type">SimpleDateFormat</span> <span class="variable">simpleDateFormat</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">format</span> <span class="operator">=</span> simpleDateFormat.format(date);</span><br><span class="line">    out.print(format);</span><br><span class="line">    String[] fruits = &#123;<span class="string">&quot;Apple&quot;</span>, <span class="string">&quot;Banana&quot;</span>, <span class="string">&quot;Orange&quot;</span>, <span class="string">&quot;Grapes&quot;</span>, <span class="string">&quot;Mango&quot;</span>&#125;;</span><br><span class="line">  %&gt;</span><br><span class="line">  &lt;%=format%&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h1 id="4-JSP核心内置对象"><a href="#4-JSP核心内置对象" class="headerlink" title="4.JSP核心内置对象"></a>4.JSP核心内置对象</h1><h2 id="基础介绍"><a href="#基础介绍" class="headerlink" title="基础介绍"></a>基础介绍</h2><ol>
-<li><strong>request</strong>：代表客户端的请求。它可以用来获取客户端发送的数据，比如表单数据、URL 参数等。</li>
-<li><strong>response</strong>：代表服务器的响应。你可以使用它来发送数据回客户端，比如生成 HTML 内容。</li>
-<li><strong>out</strong>：这个对象用于输出内容到客户端。你可以使用它将文本、HTML、XML 等内容发送给浏览器。</li>
-<li><strong>session</strong>：用于在不同请求之间保存用户的会话数据。可以用来存储用户登录信息、购物车内容等。</li>
-<li><strong>application</strong>：代表整个 web 应用程序的上下文。可以在不同的页面之间共享数据。</li>
-<li><strong>pageContext</strong>：代表 JSP 页面的上下文信息。可以用来获取其他内置对象。</li>
-<li><strong>config</strong>：包含 JSP 页面的配置信息，比如初始化参数。</li>
-<li><strong>page</strong>：指向当前的 JSP 页面本身，可以用来调用自身的方法。</li>
-<li><strong>exception</strong>：在发生异常时，包含了异常对象的信息。</li>
-</ol>
-<p>你可以根据需要，使用这些内置对象来处理不同的任务和数据。记得根据每个内置对象的特点和用途做出相应的笔记。如果需要更详细的信息，可以查阅 JSP 官方文档或其他相关资料。</p>
-<h2 id="使用格式"><a href="#使用格式" class="headerlink" title="使用格式"></a>使用格式</h2><ol>
-<li><strong>request</strong>：假设你有一个简单的登录表单，用户通过输入用户名和密码提交登录请求。在 JSP 页面中，你可以使用 <code>request.getParameter(&quot;username&quot;)</code> 和 <code>request.getParameter(&quot;password&quot;)</code> 来获取用户输入的用户名和密码。</li>
-<li><strong>response</strong>：如果你想向客户端发送一个简单的 “Hello World” 消息，可以使用 <code>response.getWriter().println(&quot;Hello World&quot;);</code> 将该消息输出到客户端。</li>
-<li><strong>out</strong>：你可以使用 <code>out.println(&quot;这是输出到浏览器的内容&quot;);</code> 将指定的文本内容输出到客户端的浏览器。</li>
-<li><strong>session</strong>：假设用户登录后，你想在不同页面之间保持用户的登录状态。你可以使用 <code>session.setAttribute(&quot;username&quot;, &quot;user123&quot;);</code> 将用户的用户名存储在会话中，在其他页面中通过 <code>session.getAttribute(&quot;username&quot;);</code> 获取该值。</li>
-<li><strong>application</strong>：如果你想在整个 web 应用程序中共享某个值，比如一个全局配置，你可以使用 <code>application.setAttribute(&quot;key&quot;, value);</code> 存储数据，并在其他页面中通过 <code>application.getAttribute(&quot;key&quot;);</code> 获取该值。</li>
-<li><strong>pageContext</strong>：在 JSP 页面中，你可以使用 <code>pageContext.getRequest()</code> 获取请求对象，或者使用 <code>pageContext.getServletContext()</code> 获取 servlet 上下文对象。</li>
-<li><strong>config</strong>：如果在 <code>web.xml</code> 配置文件中设置了一个初始化参数，你可以在 JSP 页面中使用 <code>config.getInitParameter(&quot;paramName&quot;);</code> 获取该参数的值。</li>
-<li><strong>page</strong>：你可以在 JSP 页面中使用 <code>&lt;% pageContext.forward(&quot;otherPage.jsp&quot;); %&gt;</code> 来调用 <code>otherPage.jsp</code> 页面的内容。</li>
-<li><strong>exception</strong>：在 JSP 页面中，如果发生异常，你可以使用 <code>exception.printStackTrace();</code> 输出异常堆栈信息。</li>
-</ol>
-<h2 id="from表格提交与接收"><a href="#from表格提交与接收" class="headerlink" title="from表格提交与接收"></a>from表格提交与接收</h2><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;%-- Created by IntelliJ IDEA. --%&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;from表单提交&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">  &lt;form method=<span class="string">&quot;post&quot;</span> action=<span class="string">&quot;indexController.jsp&quot;</span>&gt;</span><br><span class="line">    &lt;in&gt;</span><br><span class="line">      商品评价</span><br><span class="line">      &lt;input type=<span class="string">&quot;radio&quot;</span> value=<span class="string">&quot;五星&quot;</span> name=<span class="string">&quot;level&quot;</span>&gt;五星</span><br><span class="line">      &lt;input type=<span class="string">&quot;radio&quot;</span> value=<span class="string">&quot;四星&quot;</span> name=<span class="string">&quot;level&quot;</span>&gt;四星</span><br><span class="line">      &lt;input type=<span class="string">&quot;radio&quot;</span> value=<span class="string">&quot;三星&quot;</span> name=<span class="string">&quot;level&quot;</span> checked&gt;三星</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;textarea name=<span class="string">&quot;info&quot;</span> rows=<span class="string">&quot;4&quot;</span> cols=<span class="string">&quot;12&quot;</span>&gt;&lt;/textarea&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      配送评价</span><br><span class="line">      &lt;input type=<span class="string">&quot;checkbox&quot;</span> value=<span class="string">&quot;配送快&quot;</span> name=<span class="string">&quot;send&quot;</span>&gt;配送快&lt;/input&gt;</span><br><span class="line">      &lt;input type=<span class="string">&quot;checkbox&quot;</span> value=<span class="string">&quot;配送快&quot;</span> name=<span class="string">&quot;send&quot;</span>&gt;配送好&lt;/input&gt;</span><br><span class="line">      &lt;input type=<span class="string">&quot;checkbox&quot;</span> value=<span class="string">&quot;配送快&quot;</span> name=<span class="string">&quot;send&quot;</span>&gt;服务态度好&lt;/input&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;&lt;input type=<span class="string">&quot;submit&quot;</span>&gt; &lt;input type=<span class="string">&quot;reset&quot;</span>&gt;&lt;/p&gt;</span><br><span class="line">  &lt;/form&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;%--</span><br><span class="line">  Created by IntelliJ IDEA.</span><br><span class="line">  User: Administrator</span><br><span class="line">  Date: <span class="number">2023</span>/<span class="number">8</span>/<span class="number">7</span></span><br><span class="line">  Time: <span class="number">14</span>:<span class="number">47</span></span><br><span class="line">  To change <span class="built_in">this</span> template use File | Settings | File Templates.</span><br><span class="line">--%&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;接受from&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;%</span><br><span class="line">    <span class="comment">//设置乱码</span></span><br><span class="line">    request.setCharacterEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">level</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;level&quot;</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">info</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;info&quot;</span>);</span><br><span class="line">    out.print(level);</span><br><span class="line">    out.print(info);</span><br><span class="line">    String[] sends = request.getParameterValues(<span class="string">&quot;send&quot;</span>);</span><br><span class="line">    <span class="keyword">for</span> (String send:sends)&#123;</span><br><span class="line">        out.print(send);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="转发和重定向的区别"><a href="#转发和重定向的区别" class="headerlink" title="转发和重定向的区别"></a>转发和重定向的区别</h2><p>重定向（Redirect）和转发（Forward）是在 web 应用程序中用于页面跳转的两种不同技术，它们有以下区别：</p>
-<p><strong>1. 目标地址不同：</strong></p>
-<ul>
-<li>重定向：将请求发送到一个完全不同的 URL 地址。客户端会发起新的请求，并且浏览器地址栏会显示新的 URL。</li>
-<li>转发：将请求转发给同一 web 服务器上的另一个资源（如 JSP、Servlet）。客户端不知道发生了转发，URL 地址保持不变。</li>
-</ul>
-<p><strong>2. 流程：</strong></p>
-<ul>
-<li>重定向：是两次请求-响应过程。首先，客户端发送一个请求给服务器，服务器返回一个响应来重定向到另一个 URL，客户端再次发送请求到该新的 URL。</li>
-<li>转发：是一次请求-响应过程。客户端发送请求给服务器，服务器直接将请求转发给另一个资源进行处理，然后返回响应给客户端。</li>
-</ul>
-<p><strong>3. 数据传递：</strong></p>
-<ul>
-<li>重定向：不同请求之间的数据传递需要使用 URL 参数、Cookie 或者会话（Session）。</li>
-<li>转发：可以在服务器端通过请求对象传递数据给目标资源，使用 <code>request.setAttribute()</code>，目标资源可以通过请求对象获取数据。</li>
-</ul>
-<p><strong>4. 地址栏变化：</strong></p>
-<ul>
-<li>重定向：会导致浏览器地址栏显示新的 URL，因为发生了新的请求和响应。</li>
-<li>转发：浏览器地址栏 URL 不会改变，因为是在服务器端内部处理的转发。</li>
-</ul>
-<p><strong>5. 应用场景：</strong></p>
-<ul>
-<li>重定向：适合用于不同 web 应用程序之间的跳转，或者在处理 POST 请求后防止表单重复提交。</li>
-<li>转发：适合用于在同一 web 应用程序内部的页面跳转和共享数据。</li>
-</ul>
-<p>在选择重定向或转发时，需要考虑这两者之间的差异以及适用的具体情况。重定向更适合用于不同资源或应用程序之间的跳转，而转发更适合用于在同一应用程序内部进行页面跳转和数据传递。</p>
-<h2 id="转发"><a href="#转发" class="headerlink" title="转发"></a>转发</h2><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;% request.getRequestDispatcher(<span class="string">&quot;home.jsp&quot;</span>).forward(request,response); %&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;% response.sendRedirect(<span class="string">&quot;home.jsp&quot;</span>); %&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在这种情况如何传参把特定参数给跳转的页</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;% response.sendRedirect(<span class="string">&quot;home.jsp&quot;</span> + username); %&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="5-session对象"><a href="#5-session对象" class="headerlink" title="5.session对象"></a>5.session对象</h1><h2 id="Session-对象"><a href="#Session-对象" class="headerlink" title="Session 对象"></a>Session 对象</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><code>session</code>对象是在 web 应用程序中用于在不同请求之间存储和共享用户数据的一种机制。每个用户的 <code>session</code> 对象在用户访问 web 应用程序时都会被创建，它可以在用户的整个会话期间保存数据，直到用户关闭浏览器或会话超时。</p>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
-<li><code>session</code> 对象是基于用户的，每个用户都会有自己的 <code>session</code>。</li>
-<li>通过 <code>session</code> 对象，可以在不同的页面和请求之间共享数据，无需每次都通过 URL 参数或表单字段传递数据。</li>
-</ul>
-<h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><ol>
-<li><strong>创建 <code>session</code> 对象</strong>： 在 JSP 页面或 Servlet 中，可以通过 <code>request.getSession()</code> 方法获取当前用户的 <code>session</code> 对象。如果 <code>session</code> 对象不存在，则会创建一个新的 <code>session</code>。</li>
-<li><strong>存储数据</strong>： 使用 <code>session.setAttribute(&quot;key&quot;, value)</code> 方法可以将数据存储在 <code>session</code> 对象中。<code>key</code> 是用来标识数据的名称，<code>value</code> 是实际的数据。</li>
-<li><strong>获取数据</strong>： 通过 <code>session.getAttribute(&quot;key&quot;)</code> 方法可以获取之前存储在 <code>session</code> 中的数据。</li>
-<li><strong>删除数据</strong>： 可以使用 <code>session.removeAttribute(&quot;key&quot;)</code> 方法从 <code>session</code> 对象中删除指定的数据。</li>
-<li>**销毁 <code>session</code>**： 通常，<code>session</code> 会在用户关闭浏览器后自动销毁，或者根据配置的超时时间进行销毁。也可以使用 <code>session.invalidate()</code> 方法手动销毁当前用户的 <code>session</code>。</li>
-</ol>
-<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>假设你正在开发一个在线购物网站：</p>
-<ol>
-<li>用户登录后，可以将用户的用户名存储在 <code>session</code> 对象中，以便在其他页面显示欢迎信息。</li>
-<li>用户在浏览商品时，将选中的商品信息存储在 <code>session</code> 对象中的购物车中，以便用户在不同页面之间保持购物车内容。</li>
-<li>用户结账时，从 <code>session</code> 对象中获取购物车中的商品信息，进行订单处理。</li>
-</ol>
-<p>通过使用 <code>session</code> 对象，你可以在用户的整个会话期间持久化保存用户的状态和数据，实现更好的用户体验。</p>
-<p>记得根据需要，将上述内容调整为你的笔记规范，帮助你更好地理解和记忆 <code>session</code> 对象的用法。</p>
-<h2 id="session-常用方法介绍与举例"><a href="#session-常用方法介绍与举例" class="headerlink" title="session 常用方法介绍与举例"></a><code>session</code> 常用方法介绍与举例</h2><h4 id="1-setAttribute-String-name-Object-value"><a href="#1-setAttribute-String-name-Object-value" class="headerlink" title="1. setAttribute(String name, Object value)"></a>1. <code>setAttribute(String name, Object value)</code></h4><ul>
-<li>作用：将数据存储在 <code>session</code> 对象中。</li>
-<li>参数：<ul>
-<li><code>name</code>：用于标识数据的名称。</li>
-<li><code>value</code>：实际的数据。</li>
-</ul>
-</li>
-</ul>
-<p><strong>示例</strong>：在登录成功后，将用户的用户名存储在 <code>session</code> 中。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">username</span> <span class="operator">=</span> <span class="string">&quot;user123&quot;</span>;</span><br><span class="line">session.setAttribute(<span class="string">&quot;username&quot;</span>, username);</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-getAttribute-String-name"><a href="#2-getAttribute-String-name" class="headerlink" title="2. getAttribute(String name)"></a>2. <code>getAttribute(String name)</code></h4><ul>
-<li>作用：从 <code>session</code> 对象中获取之前存储的数据。</li>
-<li>参数：<code>name</code>：要获取的数据的名称。</li>
-</ul>
-<p><strong>示例</strong>：在其他页面中获取之前存储的用户名。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">storedUsername</span> <span class="operator">=</span> (String) session.getAttribute(<span class="string">&quot;username&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<h4 id="3-removeAttribute-String-name"><a href="#3-removeAttribute-String-name" class="headerlink" title="3. removeAttribute(String name)"></a>3. <code>removeAttribute(String name)</code></h4><ul>
-<li>作用：从 <code>session</code> 对象中删除指定名称的数据。</li>
-<li>参数：<code>name</code>：要删除的数据的名称。</li>
-</ul>
-<p><strong>示例</strong>：在用户退出登录时，清除存储的用户名。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">session.removeAttribute(<span class="string">&quot;username&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<h4 id="4-invalidate"><a href="#4-invalidate" class="headerlink" title="4. invalidate()"></a>4. <code>invalidate()</code></h4><ul>
-<li>作用：手动销毁当前用户的 <code>session</code> 对象，清除其中的所有数据。</li>
-</ul>
-<p><strong>示例</strong>：用户注销或会话过期时，调用该方法销毁 <code>session</code>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">session.invalidate();</span><br></pre></td></tr></table></figure>
-
-<h4 id="5-getId"><a href="#5-getId" class="headerlink" title="5. getId()"></a>5. <code>getId()</code></h4><ul>
-<li>作用：获取当前 <code>session</code> 的唯一标识符。</li>
-</ul>
-<p><strong>示例</strong>：用于记录日志或跟踪用户会话。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">sessionID</span> <span class="operator">=</span> session.getId();</span><br></pre></td></tr></table></figure>
-
-<h4 id="6-getCreationTime"><a href="#6-getCreationTime" class="headerlink" title="6. getCreationTime()"></a>6. <code>getCreationTime()</code></h4><ul>
-<li>作用：获取 <code>session</code> 对象创建的时间。</li>
-</ul>
-<p><strong>示例</strong>：用于跟踪会话的开始时间。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> <span class="variable">creationTime</span> <span class="operator">=</span> session.getCreationTime();</span><br></pre></td></tr></table></figure>
-
-<h4 id="7-getLastAccessedTime"><a href="#7-getLastAccessedTime" class="headerlink" title="7. getLastAccessedTime()"></a>7. <code>getLastAccessedTime()</code></h4><ul>
-<li>作用：获取用户上次访问 <code>session</code> 对象的时间。</li>
-</ul>
-<p><strong>示例</strong>：用于判断用户是否活跃。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> <span class="variable">lastAccessedTime</span> <span class="operator">=</span> session.getLastAccessedTime();</span><br></pre></td></tr></table></figure>
-
-<p>通过上述常用方法，你可以在 <code>session</code> 对象中存储、获取、删除数据，管理用户会话，以及追踪用户活动。这些方法能够帮助你更好地利用 <code>session</code> 来维护用户状态和数据。</p>
-<h2 id="JSP连接数据库模板"><a href="#JSP连接数据库模板" class="headerlink" title="JSP连接数据库模板"></a>JSP连接数据库模板</h2><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">&lt;%--</span><br><span class="line">  Created by IntelliJ IDEA.</span><br><span class="line">  User: Administrator</span><br><span class="line">  Date: <span class="number">2023</span>/<span class="number">8</span>/<span class="number">7</span></span><br><span class="line">  Time: <span class="number">17</span>:<span class="number">01</span></span><br><span class="line">  To change <span class="built_in">this</span> template use File | Settings | File Templates.</span><br><span class="line">--%&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;数据库读取输出&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">&quot;java.sql.*&quot;</span> %&gt;</span><br><span class="line">&lt;%</span><br><span class="line"><span class="comment">// 声明数据库连接信息</span></span><br><span class="line"><span class="type">String</span> <span class="variable">jdbcUrl</span> <span class="operator">=</span> <span class="string">&quot;jdbc:mysql://localhost:3306/zhuanzhuandb?serverTimezone=GMT-8&quot;</span>; <span class="comment">// 数据库的连接 URL</span></span><br><span class="line"><span class="type">String</span> <span class="variable">username</span> <span class="operator">=</span> <span class="string">&quot;root&quot;</span>; <span class="comment">// 数据库用户名</span></span><br><span class="line"><span class="type">String</span> <span class="variable">password</span> <span class="operator">=</span> <span class="string">&quot;123&quot;</span>; <span class="comment">// 数据库密码</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">// 加载MySQL驱动程序</span></span><br><span class="line">Class.forName(<span class="string">&quot;com.mysql.cj.jdbc.Driver&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立数据库连接</span></span><br><span class="line"><span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> DriverManager.getConnection(jdbcUrl, username, password);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建并执行查询</span></span><br><span class="line"><span class="type">Statement</span> <span class="variable">statement</span> <span class="operator">=</span> connection.createStatement();</span><br><span class="line">    <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;SELECT ROW_NUMBER() OVER (ORDER BY addTime) AS row_num, id, name, price, addTime FROM goods WHERE isOnSell = 1 LIMIT 1 , 5&quot;</span>;</span><br><span class="line">    <span class="type">ResultSet</span> <span class="variable">resultSet</span> <span class="operator">=</span> statement.executeQuery(sql);</span><br><span class="line">    out.println(<span class="string">&quot;_______________________________________________________________________________&quot;</span> + <span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">    out.println( <span class="string">&quot;序号&quot;</span> + <span class="string">&quot;\t&quot;</span> + <span class="string">&quot;好物编号&quot;</span> + <span class="string">&quot;\t&quot;</span> + <span class="string">&quot;姓名&quot;</span> + <span class="string">&quot;\t&quot;</span> + <span class="string">&quot;价格&quot;</span> + <span class="string">&quot;\t&quot;</span> + <span class="string">&quot;上架时间&quot;</span>+ <span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">    out.println(<span class="string">&quot;_______________________________________________________________________________&quot;</span>+ <span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (resultSet.next())&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> resultSet.getInt(<span class="number">1</span>);</span><br><span class="line">            <span class="type">int</span> <span class="variable">id</span> <span class="operator">=</span> resultSet.getInt(<span class="number">2</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> resultSet.getString(<span class="number">3</span>);</span><br><span class="line">            <span class="type">int</span> <span class="variable">price</span> <span class="operator">=</span> resultSet.getInt(<span class="number">4</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">Date</span> <span class="operator">=</span> resultSet.getString(<span class="number">5</span>);</span><br><span class="line">            out.println(x + <span class="string">&quot;\t&quot;</span> + <span class="string">&quot;\t&quot;</span> + id + <span class="string">&quot;\t&quot;</span> + name + <span class="string">&quot;\t&quot;</span> + price + <span class="string">&quot;\t&quot;</span> + Date+ <span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;_______________________________________________________________________________&quot;</span>+ <span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭资源</span></span><br><span class="line">resultSet.close();</span><br><span class="line">statement.close();</span><br><span class="line">connection.close();</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">out.println(<span class="string">&quot;MySQL驱动程序未找到： &quot;</span> + e.getMessage());</span><br><span class="line">&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">out.println(<span class="string">&quot;数据库连接错误： &quot;</span> + e.getMessage());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">%&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h1 id="6-Cookie"><a href="#6-Cookie" class="headerlink" title="6.Cookie"></a>6.Cookie</h1><h1 id="7-JSP数据访问"><a href="#7-JSP数据访问" class="headerlink" title="7.JSP数据访问"></a>7.JSP数据访问</h1><h2 id="include"><a href="#include" class="headerlink" title="include"></a>include</h2><p>在JSP中，<code>&lt;%@ include %&gt;</code> 指令用于将一个文件的内容嵌入到另一个文件中，从而在页面上进行代码重用。这种技术被称为”包含”（include），它可以在编译时或运行时将指定的文件内容合并到当前的JSP页面中。</p>
-<p>包含可以帮助减少代码的冗余，提高代码的可维护性，并允许在多个页面中共享相同的代码片段。有两种主要的包含方式：</p>
-<ol>
-<li><p><strong>静态包含（Static Include）</strong>：</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ include file=<span class="string">&quot;header.jsp&quot;</span> %&gt;</span><br><span class="line">&lt;!-- Other content --&gt;</span><br><span class="line">&lt;%@ include file=<span class="string">&quot;footer.jsp&quot;</span> %&gt;</span><br></pre></td></tr></table></figure>
-
-<p>静态包含在JSP页面的编译阶段将被合并到当前页面，作为页面的一部分。在生成的servlet代码中，被包含的内容就像直接写在包含指令的位置一样。</p>
-</li>
-<li><p><strong>动态包含（Dynamic Include）</strong>：</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:include page=<span class="string">&quot;header.jsp&quot;</span> /&gt;</span><br><span class="line">&lt;!-- Other content --&gt;</span><br><span class="line">&lt;jsp:include page=<span class="string">&quot;footer.jsp&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
-
-<p>动态包含在运行时通过JSP引擎实现，允许根据条件或用户请求来包含特定的内容。包含的内容在页面每次请求时都会被执行和合并。</p>
-</li>
-</ol>
-<p>无论是静态包含还是动态包含，都可以用来引入头部、尾部、导航栏或其他在多个页面中重复的部分。需要注意的是，包含操作只是将文件的内容嵌入到页面中，而不会改变上下文中的变量或对象作用域。</p>
-<h2 id="application"><a href="#application" class="headerlink" title="application"></a>application</h2><p><strong>Application 对象介绍</strong></p>
-<p>在 JavaServer Pages (JSP) 中，<code>application</code> 对象是一个全局的 Servlet 上下文对象，代表整个 Web 应用程序的范围。它允许在不同的会话和请求之间共享数据，并且在整个应用程序的生命周期内保持持久性。<code>application</code> 对象的数据在所有用户之间共享，适合存储全局配置、共享资源等信息。</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>setAttribute(String name, Object value)</code></td>
-<td>将一个数据对象存储在 <code>application</code> 对象中。</td>
-</tr>
-<tr>
-<td><code>getAttribute(String name)</code></td>
-<td>通过名称从 <code>application</code> 对象中获取之前存储的数据对象。</td>
-</tr>
-<tr>
-<td><code>removeAttribute(String name)</code></td>
-<td>从 <code>application</code> 对象中移除特定名称的数据对象。</td>
-</tr>
-<tr>
-<td><code>getInitParameter(String name)</code></td>
-<td>获取应用程序的初始化参数，这些参数在 <code>web.xml</code> 文件中配置。</td>
-</tr>
-<tr>
-<td><code>getInitParameterNames()</code></td>
-<td>获取应用程序的所有初始化参数的名称。</td>
-</tr>
-<tr>
-<td><code>getServletContextName()</code></td>
-<td>获取当前 Servlet 上下文的名称。</td>
-</tr>
-<tr>
-<td><code>getResource(String path)</code></td>
-<td>获取与给定路径关联的 URL 对象，用于访问 Web 应用中的资源。</td>
-</tr>
-<tr>
-<td><code>getResourceAsStream(String path)</code></td>
-<td>获取与给定路径关联的输入流，用于读取 Web 应用中的资源。</td>
-</tr>
-<tr>
-<td><code>getRequestDispatcher(String path)</code></td>
-<td>获取一个请求分派器，用于将请求转发给其他资源。</td>
-</tr>
-<tr>
-<td><code>log(String message)</code></td>
-<td>在服务器日志中记录一条消息。</td>
-</tr>
-<tr>
-<td><code>log(String message, Throwable throwable)</code></td>
-<td>在服务器日志中记录一条消息及其相关的异常信息。</td>
-</tr>
-</tbody></table>
-<p><strong>常用的 <code>application</code> 对象方法</strong>0</p>
-<ol>
-<li><p>**<code>setAttribute(String name, Object value)</code>**： 用于将一个数据对象存储在 <code>application</code> 对象中。可以通过名称访问存储的对象。</p>
-<p>示例：</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    application.setAttribute(<span class="string">&quot;companyName&quot;</span>, <span class="string">&quot;MyCorp Inc.&quot;</span>);</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>**<code>getAttribute(String name)</code>**： 通过名称从 <code>application</code> 对象中获取之前存储的数据对象。</p>
-<p>示例：</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    <span class="type">String</span> <span class="variable">companyName</span> <span class="operator">=</span> (String) application.getAttribute(<span class="string">&quot;companyName&quot;</span>);</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>**<code>removeAttribute(String name)</code>**： 从 <code>application</code> 对象中移除特定名称的数据对象。</p>
-<p>示例：</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    application.removeAttribute(<span class="string">&quot;companyName&quot;</span>);</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>**<code>getInitParameter(String name)</code>**： 获取应用程序的初始化参数，这些参数在 <code>web.xml</code> 文件中配置。</p>
-<p>示例：</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    <span class="type">String</span> <span class="variable">databaseURL</span> <span class="operator">=</span> application.getInitParameter(<span class="string">&quot;databaseURL&quot;</span>);</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>**<code>getServletContextName()</code>**： 获取当前 Servlet 上下文的名称。</p>
-<p>示例：</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    <span class="type">String</span> <span class="variable">contextName</span> <span class="operator">=</span> application.getServletContextName();</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="JSP作用域介绍"><a href="#JSP作用域介绍" class="headerlink" title="JSP作用域介绍"></a>JSP作用域介绍</h2><p>JSP 提供了四种不同的对象作用域，它们分别是页面作用域（Page Scope）、请求作用域（Request Scope）、会话作用域（Session Scope）和应用程序作用域（Application Scope）。这些作用域具有不同的范围和大小，适用于不同的数据共享需求。</p>
-<p><strong>页面作用域（Page Scope）</strong>：</p>
-<ul>
-<li><strong>范围</strong>：仅在单个 JSP 页面中有效。</li>
-<li><strong>大小</strong>：最小，只在当前页面内共享数据。</li>
-<li><strong>适用场景</strong>：适合存储和传递仅在页面上使用的临时数据。</li>
-</ul>
-<p><strong>请求作用域（Request Scope）</strong>：</p>
-<ul>
-<li><strong>范围</strong>：在同一次 HTTP 请求中有效，对于处理该请求的所有 JSP 页面和 Servlet 可见。</li>
-<li><strong>大小</strong>：适中，适合在同一次请求的多个页面之间共享数据。</li>
-<li><strong>适用场景</strong>：在请求处理过程中传递数据，如表单提交后的数据传递。</li>
-</ul>
-<p><strong>会话作用域（Session Scope）</strong>：</p>
-<ul>
-<li><strong>范围</strong>：在整个用户会话期间有效，跨多个请求和页面。</li>
-<li><strong>大小</strong>：较大，适用于在整个用户会话中保持状态和数据。</li>
-<li><strong>适用场景</strong>：存储用户登录状态、用户首选项、购物车等会话级别的数据。</li>
-</ul>
-<p><strong>应用程序作用域（Application Scope）</strong>：</p>
-<ul>
-<li><strong>范围</strong>：在整个 Web 应用程序生命周期内有效，对所有用户和请求可见。</li>
-<li><strong>大小</strong>：最大，适用于全局配置、共享资源等数据。</li>
-<li><strong>适用场景</strong>：存储全局设置、共享的数据库连接池等全局级别的数据。</li>
-</ul>
-<p>选择适当的作用域取决于数据的生命周期和共享范围。更小的作用域可以提高数据隔离和安全性，但可能需要更多的数据传递工作。更大的作用域可以简化数据共享，但需要注意可能的并发问题和资源消耗。根据具体需求合理选择作用域是很重要的。</p>
-<h2 id="JavaBean"><a href="#JavaBean" class="headerlink" title="JavaBean"></a>JavaBean</h2><h1 id="8-Serviet"><a href="#8-Serviet" class="headerlink" title="8.Serviet"></a>8.Serviet</h1><h2 id="Servlet创建、配置和调用"><a href="#Servlet创建、配置和调用" class="headerlink" title="Servlet创建、配置和调用"></a>Servlet创建、配置和调用</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.bdqn.web;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletConfig;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletResponse;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet(&quot;/HelloServiet&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloServiet</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">HelloServiet</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">service</span><span class="params">(ServletRequest req, ServletResponse res)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Web运行&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">destroy</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;销毁&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;初始化&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="创建Servlet"><a href="#创建Servlet" class="headerlink" title="创建Servlet"></a>创建Servlet</h3><p>在Java Web应用程序中，创建一个Servlet可以通过以下步骤完成：</p>
-<ol>
-<li><strong>创建Java类</strong>: 创建一个类，继承自<code>javax.servlet.http.HttpServlet</code>。例如：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">java复制代码import javax.servlet.http.HttpServlet;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line">import java.io.IOException;</span><br><span class="line"></span><br><span class="line">public class MyServlet extends HttpServlet &#123;</span><br><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException &#123;</span><br><span class="line">        // 在这里编写处理GET请求的代码</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置Servlet"><a href="#配置Servlet" class="headerlink" title="配置Servlet"></a>配置Servlet</h3><p>要使Servlet在Web应用程序中运行，需要对其进行配置：</p>
-<ol>
-<li><strong>web.xml配置（传统方式）</strong>：在<code>WEB-INF</code>文件夹下的<code>web.xml</code>文件中添加Servlet的配置信息。示例：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">xml复制代码&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;MyServlet&lt;/servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;com.example.MyServlet&lt;/servlet-class&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;MyServlet&lt;/servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;/myservlet&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li><strong>注解配置</strong>：在Servlet类上使用注解进行配置。示例：</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">java复制代码import javax.servlet.annotation.WebServlet;</span><br><span class="line"></span><br><span class="line">@WebServlet(&quot;/myservlet&quot;)</span><br><span class="line">public class MyServlet extends HttpServlet &#123;</span><br><span class="line">    // doGet 方法和其他代码</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="调用Servlet"><a href="#调用Servlet" class="headerlink" title="调用Servlet"></a>调用Servlet</h3><p>一旦Servlet已创建并配置，您可以通过浏览器或其他HTTP客户端来调用它：</p>
-<ol>
-<li>在浏览器中输入URL：<code>http://localhost:8080/your-web-app/myservlet</code> （请根据您的实际配置和端口号进行相应替换）</li>
-<li>HTTP客户端编程：您可以使用Java的<code>HttpURLConnection</code>或者第三方库如Apache HttpClient来通过编程方式调用Servlet。</li>
-</ol>
-<h2 id="Servlet常用方法"><a href="#Servlet常用方法" class="headerlink" title="Servlet常用方法"></a>Servlet常用方法</h2><table>
-<thead>
-<tr>
-<th>方法名</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>doGet()</code></td>
-<td>处理 HTTP GET 请求，用于获取资源或执行一些无副作用的操作。</td>
-</tr>
-<tr>
-<td><code>doPost()</code></td>
-<td>处理 HTTP POST 请求，通常用于提交数据到服务器端。</td>
-</tr>
-<tr>
-<td><code>doPut()</code></td>
-<td>处理 HTTP PUT 请求，用于更新服务器上的资源。</td>
-</tr>
-<tr>
-<td><code>doDelete()</code></td>
-<td>处理 HTTP DELETE 请求，用于删除服务器上的资源。</td>
-</tr>
-<tr>
-<td><code>doHead()</code></td>
-<td>类似于 <code>doGet()</code>，但只返回响应头部信息，不返回实际数据。</td>
-</tr>
-<tr>
-<td><code>doOptions()</code></td>
-<td>处理 HTTP OPTIONS 请求，返回服务器支持的请求方法和头信息。</td>
-</tr>
-<tr>
-<td><code>doTrace()</code></td>
-<td>处理 HTTP TRACE 请求，返回服务器收到的请求信息，用于测试和诊断。</td>
-</tr>
-<tr>
-<td><code>service()</code></td>
-<td>根据请求的方法（GET、POST 等）调用适当的 <code>doXxx()</code> 方法处理请求。</td>
-</tr>
-<tr>
-<td><code>init()</code></td>
-<td>初始化方法，用于执行一些一次性的初始化操作，比如加载配置。</td>
-</tr>
-<tr>
-<td><code>destroy()</code></td>
-<td>销毁方法，在 Servlet 容器关闭时调用，用于执行一些清理操作，释放资源等。</td>
-</tr>
-<tr>
-<td><code>getServletConfig()</code></td>
-<td>获取 Servlet 的配置信息，可以用于获取初始化参数等。</td>
-</tr>
-<tr>
-<td><code>getServletContext()</code></td>
-<td>获取 Servlet 上下文，用于访问 Servlet 容器的其他功能，比如获取资源、日志等。</td>
-</tr>
-<tr>
-<td><code>getInitParameter()</code></td>
-<td>获取初始化参数的值，可以在 web.xml 中配置。</td>
-</tr>
-<tr>
-<td><code>getInitParameterNames()</code></td>
-<td>获取所有初始化参数的名称。</td>
-</tr>
-<tr>
-<td><code>getServletInfo()</code></td>
-<td>获取 Servlet 的信息，一般是版本、作者等。</td>
-</tr>
-<tr>
-<td><code>getLastModified()</code></td>
-<td>获取最后修改时间，用于实现缓存机制。</td>
-</tr>
-</tbody></table>
-<h1 id="9-EL表达式（Expression-Language）介绍与基础使用"><a href="#9-EL表达式（Expression-Language）介绍与基础使用" class="headerlink" title="9.EL表达式（Expression Language）介绍与基础使用"></a>9.EL表达式（Expression Language）介绍与基础使用</h1><h2 id="什么是EL表达式？"><a href="#什么是EL表达式？" class="headerlink" title="什么是EL表达式？"></a>什么是EL表达式？</h2><p>EL表达式（Expression Language）是一种用于在JavaWeb应用中访问和操作数据的简化表达方式。它通常用于JSP（JavaServer Pages）页面中，允许开发人员在页面上直接引用和操作JavaBean中的属性，从而实现动态数据的展示和处理。</p>
-<h2 id="EL表达式的优点"><a href="#EL表达式的优点" class="headerlink" title="EL表达式的优点"></a>EL表达式的优点</h2><ul>
-<li><strong>简化代码</strong>：EL表达式可以帮助减少繁琐的Java代码，使页面逻辑更加清晰简洁。</li>
-<li><strong>易读性</strong>：EL表达式的语法更接近自然语言，提高了代码的可读性。</li>
-<li><strong>与JSP兼容</strong>：EL表达式与JSP标签配合使用，可以轻松地在JSP页面中嵌入动态数据。</li>
-</ul>
-<h2 id="EL表达式的基础用法"><a href="#EL表达式的基础用法" class="headerlink" title="EL表达式的基础用法"></a>EL表达式的基础用法</h2><h3 id="访问属性"><a href="#访问属性" class="headerlink" title="访问属性"></a>访问属性</h3><p>通过<code>$&#123;&#125;</code>语法来访问JavaBean中的属性。</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">&quot;java&quot;</span> contentType=<span class="string">&quot;text/html; charset=UTF-8&quot;</span> pageEncoding=<span class="string">&quot;UTF-8&quot;</span>%&gt;</span><br><span class="line">&lt;%@ taglib prefix=<span class="string">&quot;c&quot;</span> uri=<span class="string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span> %&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;EL表达式示例&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;c:set <span class="keyword">var</span>=<span class="string">&quot;userName&quot;</span> value=<span class="string">&quot;John&quot;</span> /&gt; &lt;!-- 设置一个变量 --&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;p&gt;Welcome, $&#123;userName&#125;!&lt;/p&gt; &lt;!-- 访问变量值 --&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="执行运算"><a href="#执行运算" class="headerlink" title="执行运算"></a>执行运算</h3><p>EL表达式支持各种数学和逻辑运算。</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;Sum: $&#123;<span class="number">5</span> + <span class="number">3</span>&#125;&lt;/p&gt;</span><br><span class="line">&lt;p&gt;Product: $&#123;<span class="number">2</span> * <span class="number">4</span>&#125;&lt;/p&gt;</span><br><span class="line">&lt;p&gt;Is True: $&#123;<span class="literal">true</span> &amp;&amp; <span class="literal">false</span>&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="调用方法"><a href="#调用方法" class="headerlink" title="调用方法"></a>调用方法</h3><p>可以调用JavaBean中的方法。</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;Current Time: $&#123;java.time.LocalDateTime.now()&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="访问集合"><a href="#访问集合" class="headerlink" title="访问集合"></a>访问集合</h3><p>访问List、Map等集合类型的元素。</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:set <span class="keyword">var</span>=<span class="string">&quot;fruits&quot;</span> value=<span class="string">&quot;$&#123;[&#x27;Apple&#x27;, &#x27;Banana&#x27;, &#x27;Orange&#x27;]&#125;&quot;</span>/&gt;</span><br><span class="line">&lt;p&gt;Second Fruit: $&#123;fruits[<span class="number">1</span>]&#125;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;c:set <span class="keyword">var</span>=<span class="string">&quot;person&quot;</span> value=<span class="string">&quot;$&#123;&#123;&#x27;name&#x27;: &#x27;Alice&#x27;, &#x27;age&#x27;: 30&#125;&#125;&quot;</span>/&gt;</span><br><span class="line">&lt;p&gt;Name: $&#123;person[<span class="string">&#x27;name&#x27;</span>]&#125;, Age: $&#123;person[<span class="string">&#x27;age&#x27;</span>]&#125;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="条件判断和循环"><a href="#条件判断和循环" class="headerlink" title="条件判断和循环"></a>条件判断和循环</h3><p>使用EL表达式进行条件判断和循环。</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:<span class="keyword">if</span> test=<span class="string">&quot;$&#123;age &gt;= 18&#125;&quot;</span>&gt;</span><br><span class="line">    &lt;p&gt;You are an adult.&lt;/p&gt;</span><br><span class="line">&lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;c:forEach items=<span class="string">&quot;$&#123;fruits&#125;&quot;</span> <span class="keyword">var</span>=<span class="string">&quot;fruit&quot;</span>&gt;</span><br><span class="line">    &lt;p&gt;$&#123;fruit&#125;&lt;/p&gt;</span><br><span class="line">&lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>EL表达式是一种简化访问和操作数据的方式，可以在JSP页面中轻松地引用JavaBean的属性和方法。它的简洁语法和强大功能使得在Web开发中更加便捷和高效。</p>
-<h1 id="10-JSTL-JavaServer-Pages-Standard-Tag-Library-简介与基础使用"><a href="#10-JSTL-JavaServer-Pages-Standard-Tag-Library-简介与基础使用" class="headerlink" title="10.JSTL (JavaServer Pages Standard Tag Library) 简介与基础使用"></a>10.JSTL (JavaServer Pages Standard Tag Library) 简介与基础使用</h1><h2 id="什么是-JSTL？"><a href="#什么是-JSTL？" class="headerlink" title="什么是 JSTL？"></a>什么是 JSTL？</h2><p>JavaServer Pages Standard Tag Library (JSTL) 是一组用于在 JSP 页面中执行通用任务的标签集合。它提供了一种在 JSP 页面中编写更简洁、易于维护的代码的方式，同时还有助于将页面逻辑和显示分离开来。JSTL 包含多个标签库，每个库都专注于不同的任务。</p>
-<h2 id="JSTL-的核心标签库"><a href="#JSTL-的核心标签库" class="headerlink" title="JSTL 的核心标签库"></a>JSTL 的核心标签库</h2><p>JSTL 核心标签库提供了基本的控制结构和变量处理功能。</p>
-<h3 id="1"><a href="#1" class="headerlink" title="1. &lt;c:out&gt;"></a>1. <code>&lt;c:out&gt;</code></h3><p>用于在页面中输出变量值，可以防止 HTML 和 JavaScript 注入攻击。</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:out value=<span class="string">&quot;$&#123;variable&#125;&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="2"><a href="#2" class="headerlink" title="2. &lt;c:set&gt;"></a>2. <code>&lt;c:set&gt;</code></h3><p>用于设置变量值。</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:set <span class="keyword">var</span>=<span class="string">&quot;count&quot;</span> value=<span class="string">&quot;10&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3"><a href="#3" class="headerlink" title="3. &lt;c:if&gt;"></a>3. <code>&lt;c:if&gt;</code></h3><p>条件判断标签，根据表达式的值决定是否执行其中的内容。</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:<span class="keyword">if</span> test=<span class="string">&quot;$&#123;age &gt; 18&#125;&quot;</span>&gt;</span><br><span class="line">    &lt;!-- 在年龄大于 <span class="number">18</span> 时显示的内容 --&gt;</span><br><span class="line">&lt;/c:<span class="keyword">if</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="4"><a href="#4" class="headerlink" title="4. &lt;c:choose&gt;, &lt;c:when&gt;, &lt;c:otherwise&gt;"></a>4. <code>&lt;c:choose&gt;</code>, <code>&lt;c:when&gt;</code>, <code>&lt;c:otherwise&gt;</code></h3><p>类似于 Java 中的 switch 语句，根据条件执行不同的分支。</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:choose&gt;</span><br><span class="line">    &lt;c:when test=<span class="string">&quot;$&#123;day == &#x27;Monday&#x27;&#125;&quot;</span>&gt;</span><br><span class="line">        &lt;!-- 星期一的处理 --&gt;</span><br><span class="line">    &lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=<span class="string">&quot;$&#123;day == &#x27;Tuesday&#x27;&#125;&quot;</span>&gt;</span><br><span class="line">        &lt;!-- 星期二的处理 --&gt;</span><br><span class="line">    &lt;/c:when&gt;</span><br><span class="line">    &lt;c:otherwise&gt;</span><br><span class="line">        &lt;!-- 其他情况的处理 --&gt;</span><br><span class="line">    &lt;/c:otherwise&gt;</span><br><span class="line">&lt;/c:choose&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="5"><a href="#5" class="headerlink" title="5. &lt;c:forEach&gt;"></a>5. <code>&lt;c:forEach&gt;</code></h3><p>用于循环迭代集合或数组。</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:forEach items=<span class="string">&quot;$&#123;products&#125;&quot;</span> <span class="keyword">var</span>=<span class="string">&quot;product&quot;</span>&gt;</span><br><span class="line">    &lt;!-- 对每个产品执行的操作 --&gt;</span><br><span class="line">&lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="6"><a href="#6" class="headerlink" title="6. &lt;c:url&gt;"></a>6. <code>&lt;c:url&gt;</code></h3><p>用于生成带有参数的 URL。</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:url value=<span class="string">&quot;/productDetails.jsp&quot;</span>&gt;</span><br><span class="line">    &lt;c:param name=<span class="string">&quot;productId&quot;</span> value=<span class="string">&quot;123&quot;</span> /&gt;</span><br><span class="line">&lt;/c:url&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h2><p>下面是一个简单的示例，展示如何在 JSP 页面中使用 JSTL 标签库来输出一个集合中的用户列表：</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib prefix=<span class="string">&quot;c&quot;</span> uri=<span class="string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span> %&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;User List&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;User List&lt;/h1&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;c:forEach items=<span class="string">&quot;$&#123;users&#125;&quot;</span> <span class="keyword">var</span>=<span class="string">&quot;user&quot;</span>&gt;</span><br><span class="line">            &lt;li&gt;&lt;c:out value=<span class="string">&quot;$&#123;user&#125;&quot;</span> /&gt;&lt;/li&gt;</span><br><span class="line">        &lt;/c:forEach&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在上述示例中，<code>$&#123;users&#125;</code> 是一个从后端传递到前端的用户列表，<code>&lt;c:forEach&gt;</code> 标签用于循环遍历列表中的每个用户，并使用 <code>&lt;c:out&gt;</code> 标签输出用户信息。</p>
-<p>这只是 JSTL 的基础使用介绍，它还有其他标签库，如格式化标签库、XML 标签库等，可以根据不同的需求进行学习和使用。</p>
-<h2 id="更容易理解的例子"><a href="#更容易理解的例子" class="headerlink" title="更容易理解的例子"></a>更容易理解的例子</h2><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib prefix=<span class="string">&quot;c&quot;</span> uri=<span class="string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span> %&gt;</span><br><span class="line">&lt;%--</span><br><span class="line">  Created by IntelliJ IDEA.</span><br><span class="line">  User: Administrator</span><br><span class="line">  Date: <span class="number">2023</span>/<span class="number">8</span>/<span class="number">28</span></span><br><span class="line">  Time: <span class="number">14</span>:<span class="number">39</span></span><br><span class="line">  To change <span class="built_in">this</span> template use File | Settings | File Templates.</span><br><span class="line">--%&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">&quot;text/html;charset=UTF-8&quot;</span> language=<span class="string">&quot;java&quot;</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;数据展示&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;table border=<span class="string">&quot;1&quot;</span>&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;th&gt;id&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;name&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;price&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;dese&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;状态&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;c:forEach items=<span class="string">&quot;$&#123;list&#125;&quot;</span> <span class="keyword">var</span>=<span class="string">&quot;m&quot;</span> varStatus=<span class="string">&quot;status&quot;</span>&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;$&#123;m.id&#125;&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;$&#123;m.product_name&#125;&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;$&#123;m.product_price&#125;&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;$&#123;m.product_desc&#125;&lt;/td&gt;</span><br><span class="line">        &lt;c:set <span class="keyword">var</span>=<span class="string">&quot;flag&quot;</span> value=<span class="string">&quot;$&#123;m.flag&#125;&quot;</span>&gt;&lt;/c:set&gt;</span><br><span class="line">        &lt;c:<span class="keyword">if</span> test=<span class="string">&quot;$&#123;flag &lt; 1&#125;&quot;</span>&gt;</span><br><span class="line">            &lt;td&gt;上架&lt;/td&gt;</span><br><span class="line">        &lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line">        &lt;c:<span class="keyword">if</span> test=<span class="string">&quot;$&#123;flag &gt; 1&#125;&quot;</span>&gt;</span><br><span class="line">            &lt;td&gt;下架&lt;/td&gt;</span><br><span class="line">        &lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/c:forEach&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script src=<span class="string">&quot;js/jquery.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="11-tomcat链接数据库"><a href="#11-tomcat链接数据库" class="headerlink" title="11.tomcat链接数据库"></a>11.tomcat链接数据库</h1><h2 id="请求传值"><a href="#请求传值" class="headerlink" title="请求传值"></a>请求传值</h2><p>通过超链接能够向java Service发值，然后用request.getParameter();进行接收</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button&gt;&lt;a href=<span class="string">&quot;Stu?flag=Del&amp;xid=$&#123;stu.sid&#125;&quot;</span>&gt;删除&lt;/a&gt;&lt;/button&gt;</span><br></pre></td></tr></table></figure>
-
-<p>Java接收</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">flag</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;flag&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="提交表单传值"><a href="#提交表单传值" class="headerlink" title="提交表单传值"></a>提交表单传值</h2><p>通过提交from表单可以将表单的值全部传递到Java接收，照理同样用request.getParameter();进行接收</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;form method=<span class="string">&quot;post&quot;</span> action=<span class="string">&quot;Stu&quot;</span>&gt;</span><br><span class="line">    &lt;c:forEach items=<span class="string">&quot;$&#123;liststu&#125;&quot;</span> <span class="keyword">var</span>=<span class="string">&quot;stu&quot;</span> varStatus=<span class="string">&quot;status&quot;</span>&gt;</span><br><span class="line">        &lt;input type=<span class="string">&quot;hidden&quot;</span> name=<span class="string">&quot;xid&quot;</span> value=<span class="string">&quot;$&#123;stu.sid&#125;&quot;</span>&gt;</span><br><span class="line">        &lt;input type=<span class="string">&quot;hidden&quot;</span> name=<span class="string">&quot;flag&quot;</span> value=<span class="string">&quot;upDate&quot;</span>&gt;</span><br><span class="line">        &lt;p&gt;名字: &lt;input type=<span class="string">&quot;text&quot;</span> value=<span class="string">&quot;$&#123;stu.sname&#125;&quot;</span> name=<span class="string">&quot;xname&quot;</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;性别: &lt;input type=<span class="string">&quot;text&quot;</span> value=<span class="string">&quot;$&#123;stu.sgender&#125;&quot;</span> name=<span class="string">&quot;xgender&quot;</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;年龄: &lt;input type=<span class="string">&quot;text&quot;</span> value=<span class="string">&quot;$&#123;stu.sage&#125;&quot;</span> name=<span class="string">&quot;xage&quot;</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;地址: &lt;input type=<span class="string">&quot;text&quot;</span> value=<span class="string">&quot;$&#123;stu.saddress&#125;&quot;</span> name=<span class="string">&quot;xaddress&quot;</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;邮箱: &lt;input type=<span class="string">&quot;text&quot;</span> value=<span class="string">&quot;$&#123;stu.semail&#125;&quot;</span> name=<span class="string">&quot;xemail&quot;</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;input type=<span class="string">&quot;submit&quot;</span> value=<span class="string">&quot;更改&quot;</span>&gt;</span><br><span class="line">        &lt;button&gt;&lt;a href=<span class="string">&quot;Stu?flag=Del&amp;xid=$&#123;stu.sid&#125;&quot;</span>&gt;删除&lt;/a&gt;&lt;/button&gt;</span><br><span class="line">    &lt;/c:forEach&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<p>Java接收</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">xname</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;xname&quot;</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xgender</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;xgender&quot;</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xage</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;xage&quot;</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xaddress</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;xaddress&quot;</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xemail</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;xemail&quot;</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xid</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;xid&quot;</span>);</span><br><span class="line">          System.out.println(<span class="string">&quot;测试获取FindID的表值&quot;</span> + xaddress + xage + xname + xgender + xemail +xid);</span><br><span class="line">          <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> StuList.UpDate(xname, xgender, Integer.parseInt(xage), xaddress, xemail,Integer.parseInt(xid));</span><br><span class="line">          <span class="keyword">if</span> (i &gt; <span class="number">0</span>)&#123;</span><br><span class="line">              List&lt;Student&gt; students = StuList.StuShow();</span><br><span class="line">              session.setAttribute(<span class="string">&quot;list&quot;</span>,students);</span><br><span class="line">              response.sendRedirect(<span class="string">&quot;home.jsp&quot;</span>);</span><br><span class="line">          &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">              response.sendRedirect(<span class="string">&quot;index.jsp&quot;</span>);</span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果有一些特殊的值需要传递但是又不能用a标签传递，那么可以用input标签将属性设定为隐藏后，一同提交到Java Service里</p>
-<h2 id="Java-Service跳转JSP网页"><a href="#Java-Service跳转JSP网页" class="headerlink" title="Java Service跳转JSP网页"></a>Java Service跳转JSP网页</h2><p>通过使用response.sendRedirect进行跳转</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.sendRedirect(<span class="string">&quot;home.jsp&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<h2 id="Java-Service如何传值给Jsp网页"><a href="#Java-Service如何传值给Jsp网页" class="headerlink" title="Java Service如何传值给Jsp网页"></a>Java Service如何传值给Jsp网页</h2><p>通过保存会话到Session，然后在JSP网页中调用会话，进行传递</p>
-<p>可以选择压缩成集合进行传递，也可以单个变量，使用集合后可以在Jsp里用JSTL核心标签库的&lt;c:forEach&gt;标签进行循环遍历</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">&quot;第三个flag:&quot;</span> + flag);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xname</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;xname&quot;</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xgender</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;xgender&quot;</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xage</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;xage&quot;</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xaddress</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;xaddress&quot;</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xemail</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;xemail&quot;</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xid</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;xid&quot;</span>);</span><br><span class="line">          System.out.println(<span class="string">&quot;测试获取FindID的表值&quot;</span> + xaddress + xage + xname + xgender + xemail +xid);</span><br><span class="line">          <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> StuList.UpDate(xname, xgender, Integer.parseInt(xage), xaddress, xemail,Integer.parseInt(xid));</span><br><span class="line">          <span class="keyword">if</span> (i &gt; <span class="number">0</span>)&#123;</span><br><span class="line">              List&lt;Student&gt; students = StuList.StuShow();</span><br><span class="line">              session.setAttribute(<span class="string">&quot;list&quot;</span>,students);</span><br><span class="line">              response.sendRedirect(<span class="string">&quot;home.jsp&quot;</span>);</span><br><span class="line">          &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">              response.sendRedirect(<span class="string">&quot;index.jsp&quot;</span>);</span><br><span class="line">          &#125;</span><br></pre></td></tr></table></figure>
-
-<p>Jsp页面</p>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;form method=<span class="string">&quot;post&quot;</span> action=<span class="string">&quot;Stu&quot;</span>&gt;</span><br><span class="line">    &lt;c:forEach items=<span class="string">&quot;$&#123;liststu&#125;&quot;</span> <span class="keyword">var</span>=<span class="string">&quot;stu&quot;</span> varStatus=<span class="string">&quot;status&quot;</span>&gt;</span><br><span class="line">        &lt;input type=<span class="string">&quot;hidden&quot;</span> name=<span class="string">&quot;xid&quot;</span> value=<span class="string">&quot;$&#123;stu.sid&#125;&quot;</span>&gt;</span><br><span class="line">        &lt;input type=<span class="string">&quot;hidden&quot;</span> name=<span class="string">&quot;flag&quot;</span> value=<span class="string">&quot;upDate&quot;</span>&gt;</span><br><span class="line">        &lt;p&gt;名字: &lt;input type=<span class="string">&quot;text&quot;</span> value=<span class="string">&quot;$&#123;stu.sname&#125;&quot;</span> name=<span class="string">&quot;xname&quot;</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;性别: &lt;input type=<span class="string">&quot;text&quot;</span> value=<span class="string">&quot;$&#123;stu.sgender&#125;&quot;</span> name=<span class="string">&quot;xgender&quot;</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;年龄: &lt;input type=<span class="string">&quot;text&quot;</span> value=<span class="string">&quot;$&#123;stu.sage&#125;&quot;</span> name=<span class="string">&quot;xage&quot;</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;地址: &lt;input type=<span class="string">&quot;text&quot;</span> value=<span class="string">&quot;$&#123;stu.saddress&#125;&quot;</span> name=<span class="string">&quot;xaddress&quot;</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;邮箱: &lt;input type=<span class="string">&quot;text&quot;</span> value=<span class="string">&quot;$&#123;stu.semail&#125;&quot;</span> name=<span class="string">&quot;xemail&quot;</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;input type=<span class="string">&quot;submit&quot;</span> value=<span class="string">&quot;更改&quot;</span>&gt;</span><br><span class="line">        &lt;button&gt;&lt;a href=<span class="string">&quot;Stu?flag=Del&amp;xid=$&#123;stu.sid&#125;&quot;</span>&gt;删除&lt;/a&gt;&lt;/button&gt;</span><br><span class="line">    &lt;/c:forEach&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在这其中，通过使用${stu.sname}可以调用Java代码，用来插入需要的信息</p>
-<h1 id="12-Ajax和jQuery"><a href="#12-Ajax和jQuery" class="headerlink" title="12.Ajax和jQuery"></a>12.Ajax和jQuery</h1><p>下午编写笔记</p>
 
                 
             </div>
