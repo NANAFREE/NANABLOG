@@ -48,6 +48,212 @@
     
         <article class="post article-entry">
             <div class="post-title">
+                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2020/09/03/sqlserver/">sqlserver基础语句</a>
+            </div>
+            <p class="sub">Sep 03 2020</p>
+            <div class="post-content">
+                
+                    <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> Demo</span><br><span class="line"></span><br><span class="line"><span class="comment">--获取系统时间</span></span><br><span class="line"><span class="keyword">select</span> GETDATE()</span><br><span class="line"></span><br><span class="line"><span class="comment">--读取表里的生日</span></span><br><span class="line"><span class="keyword">select</span> birthady <span class="keyword">from</span> Demo</span><br><span class="line"></span><br><span class="line"><span class="comment">--计算年龄</span></span><br><span class="line"><span class="keyword">select</span> DATEDIFF(yy,<span class="string">&#x27;2003-06-01&#x27;</span>,GETDATE())</span><br><span class="line"></span><br><span class="line"><span class="comment">--读取表里的生日                      -- as 别名</span></span><br><span class="line"> <span class="keyword">select</span> DATEDIFF(yy,birthady,GETDATE()) <span class="keyword">as</span> <span class="string">&#x27;计算结果&#x27;</span> <span class="keyword">from</span> Demo;  <span class="comment">--如果没有from 表格 那么就无法定位到 名为 birthady的列 所以就会失败</span></span><br><span class="line"><span class="comment">-- 查询 [DATAEIFF() 函数返回两个日期的间隔 里面是 birthady日期 和 GETDATE 当前日期获取] 来自 Demo 表格</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--全部查询</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> student</span><br><span class="line"></span><br><span class="line"><span class="comment">--条件查询</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> name,age <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> age<span class="operator">&gt;</span><span class="number">30</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">desc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--起别名</span></span><br><span class="line">                 <span class="comment">--注意，as 可写可不写</span></span><br><span class="line"><span class="keyword">select</span> name <span class="keyword">as</span> <span class="string">&#x27;姓名&#x27;</span> ,age <span class="keyword">as</span> <span class="string">&#x27;年龄&#x27;</span>  <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> age<span class="operator">&gt;</span><span class="number">30</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">desc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--加top</span></span><br><span class="line"><span class="keyword">select</span> top <span class="number">2</span>  name <span class="keyword">as</span> <span class="string">&#x27;姓名&#x27;</span> ,age <span class="keyword">as</span> <span class="string">&#x27;年龄&#x27;</span>  <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> age<span class="operator">&gt;</span><span class="number">30</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">desc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--加常量列</span></span><br><span class="line"><span class="keyword">select</span> top <span class="number">2</span>  name <span class="keyword">as</span> <span class="string">&#x27;姓名&#x27;</span> ,age <span class="keyword">as</span> <span class="string">&#x27;年龄&#x27;</span> , <span class="string">&#x27;你好&#x27;</span> <span class="keyword">as</span> <span class="string">&#x27;还好&#x27;</span>  <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> age<span class="operator">&gt;</span><span class="number">30</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">desc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--加百分比查询 top</span></span><br><span class="line"><span class="keyword">select</span> top <span class="number">50</span> <span class="keyword">percent</span>  name <span class="keyword">as</span> <span class="string">&#x27;姓名&#x27;</span> ,age <span class="keyword">as</span> <span class="string">&#x27;年龄&#x27;</span> , <span class="string">&#x27;你好&#x27;</span> <span class="keyword">as</span> <span class="string">&#x27;还好&#x27;</span>  <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> age<span class="operator">&gt;</span><span class="number">30</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">desc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--加百分比查询 加减操作</span></span><br><span class="line"><span class="keyword">select</span> top <span class="number">50</span> <span class="keyword">percent</span>  name <span class="keyword">as</span> <span class="string">&#x27;姓名&#x27;</span> ,age <span class="operator">+</span> <span class="number">50</span> <span class="keyword">as</span> <span class="string">&#x27;年龄&#x27;</span> , <span class="string">&#x27;你好&#x27;</span> <span class="keyword">as</span> <span class="string">&#x27;还好&#x27;</span>  <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> age<span class="operator">&gt;</span><span class="number">30</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">desc</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- is NULL 和 为空不一样</span></span><br><span class="line"><span class="comment">-- 查询条件为 值为NULL 或者 值为&#x27;空&#x27;</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> phone <span class="keyword">is</span> <span class="keyword">null</span> <span class="keyword">or</span> phone <span class="operator">=</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 检索 所有 学生表 as 别名Stu</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> Student <span class="keyword">as</span> Stu</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> score <span class="keyword">as</span> Sco <span class="comment">-- inner join 关联 成绩表 别名 as Sco</span></span><br><span class="line"><span class="keyword">on</span> Stu.Sid <span class="operator">=</span> Sco.id <span class="comment">-- 关联条件 学生表的 Sid 和 成绩表的 id 进行关联 查询</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--挑选结果</span></span><br><span class="line"><span class="keyword">select</span> Stu.name,Sco.name,Sco.age,Sco.sex,Sco.id <span class="keyword">from</span> Student <span class="keyword">as</span> Stu</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> score <span class="keyword">as</span> Sco</span><br><span class="line"><span class="keyword">on</span> Stu.Sid <span class="operator">=</span> Sco.id </span><br><span class="line"><span class="comment">--还可以写条件</span></span><br><span class="line"><span class="keyword">where</span> Sco.age<span class="operator">=</span><span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--------------</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> score <span class="keyword">as</span> Sco <span class="comment">-- 查询</span></span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> Student <span class="keyword">as</span> Stu   <span class="comment">-- 左边查询 没有显示NULL</span></span><br><span class="line"><span class="keyword">on</span> Stu.Sid <span class="operator">=</span> Sco.id </span><br><span class="line"><span class="comment">--右链接 取反</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--求和</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">SUM</span>(age) <span class="keyword">as</span> <span class="string">&#x27;学生年龄和&#x27;</span> <span class="keyword">from</span> Student</span><br><span class="line"></span><br><span class="line"><span class="comment">--最大值 最小值</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">SUM</span>(age) <span class="keyword">as</span> <span class="string">&#x27;学生年龄和&#x27;</span> <span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">select</span> <span class="built_in">avg</span>(age) <span class="keyword">as</span> <span class="string">&#x27;学生平均值&#x27;</span> <span class="keyword">from</span> Student</span><br><span class="line"><span class="keyword">select</span> <span class="built_in">max</span>(age) <span class="keyword">as</span> <span class="string">&#x27;男同学的最大年龄&#x27;</span> </span><br><span class="line"><span class="keyword">from</span> score <span class="keyword">where</span> sex <span class="operator">=</span> <span class="string">&#x27;男&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--个数</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">as</span> <span class="string">&#x27;男同学个数&#x27;</span>  <span class="comment">-- 一般来说括号里是 * 或者是 1</span></span><br><span class="line"><span class="keyword">from</span> score <span class="keyword">where</span> sex <span class="operator">=</span> <span class="string">&#x27;男&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">max</span>(age) <span class="keyword">as</span> <span class="string">&#x27;男同学的最大年龄&#x27;</span> </span><br><span class="line"><span class="keyword">from</span> score <span class="keyword">where</span> sex <span class="operator">=</span> <span class="string">&#x27;男&#x27;</span></span><br><span class="line"><span class="comment">----------------</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">as</span> <span class="string">&#x27;女同学的个数&#x27;</span> </span><br><span class="line"><span class="keyword">from</span> score <span class="keyword">where</span> sex <span class="operator">=</span> <span class="string">&#x27;女&#x27;</span></span><br><span class="line"><span class="comment">----------------</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span>(age) <span class="keyword">as</span> <span class="string">&#x27;男同学的年龄都有那些&#x27;</span> </span><br><span class="line"><span class="keyword">from</span> score <span class="keyword">where</span> sex <span class="operator">=</span> <span class="string">&#x27;男&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--聚合函数 分组</span></span><br><span class="line"><span class="keyword">select</span>  sex,<span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">as</span> <span class="string">&#x27;个数&#x27;</span> <span class="keyword">from</span> score <span class="comment">-- group by 为分组判断 他会把不一样的分组判断 计算个数出来 其中 group by 只负责分组 而 count负责计算</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> sex</span><br><span class="line"></span><br><span class="line"><span class="comment">--where  是分组前的条件</span></span><br><span class="line"><span class="comment">--having 是分组后的条件</span></span><br><span class="line"><span class="keyword">select</span>  sex,<span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">as</span> <span class="string">&#x27;个数&#x27;</span> <span class="keyword">from</span> score</span><br><span class="line"><span class="keyword">where</span> age <span class="operator">&gt;</span> <span class="number">1</span> <span class="comment">-- 为前</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> sex</span><br><span class="line"><span class="keyword">having</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="operator">&lt;</span> <span class="number">1</span> <span class="comment">-- 为后</span></span><br><span class="line"><span class="comment">--运行结果 满足此条件为 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> Usersinfo</span><br><span class="line"><span class="keyword">where</span> LoginName <span class="keyword">in</span> (<span class="string">&#x27;lilei@163.com&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">--使用连接查询登录名为 lilei@163.com 的用户所记笔记的笔记标题 内容和用户姓名</span></span><br><span class="line"><span class="keyword">select</span> Note.Title,Note.Content,Usr.UserName <span class="keyword">from</span> Usersinfo <span class="keyword">as</span> Usr</span><br><span class="line"><span class="keyword">inner</span> <span class="keyword">join</span> NoteInfo <span class="keyword">as</span> Note</span><br><span class="line"><span class="keyword">on</span> Usr.UserId <span class="operator">=</span> Note.NoteId </span><br><span class="line"><span class="keyword">where</span> Usr.LoginName <span class="operator">=</span> <span class="string">&#x27;lilei@163.com&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--使用聚合函数查询登录名为 zhangtao@163.com 的用户且笔记分类名称是 工作 的笔记记录数</span></span><br><span class="line"><span class="comment">--聚合函数 分组</span></span><br><span class="line"><span class="keyword">select</span>  CategoryName,<span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">as</span> <span class="string">&#x27;个数&#x27;</span> <span class="keyword">from</span> NoteCategory <span class="comment">-- group by 为分组判断 他会把不一样的分组判断 计算个数出来 其中 group by 只负责分组 而 count负责计算</span></span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> CategoryName</span><br><span class="line"></span><br><span class="line"><span class="comment">--使用模糊查询 查询登录名为 lilei.163.com 的用户 且笔记标题里包含 邮件 的笔记标题和内容</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> Usersinfo</span><br><span class="line"><span class="keyword">where</span> LoginName <span class="keyword">like</span> <span class="string">&#x27;%lilei.163.com%&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--按照创建时间降序排序 查询登录名为 lilei@163.com 的前10条笔记的标题和内容</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">--查询所有用户的姓名 登录名 笔记标题和笔记内容</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">--查询记录笔记数大于 1 的用户姓名 登录名和性别</span></span><br><span class="line"></span><br><span class="line">use school</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> student;</span><br><span class="line"> <span class="comment">--添加语句</span></span><br><span class="line"> <span class="keyword">insert</span> <span class="keyword">into</span> student <span class="keyword">values</span>(<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>);</span><br><span class="line"> <span class="comment">--添加语句</span></span><br><span class="line"> <span class="keyword">insert</span> <span class="keyword">into</span> student (name,sex,age)</span><br><span class="line"> <span class="keyword">values</span></span><br><span class="line"> (<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)</span><br><span class="line"> <span class="comment">--运行结果失败，是因为不允许为NULL 不然则可以</span></span><br><span class="line"> </span><br><span class="line"> <span class="comment">--多行插入</span></span><br><span class="line"> <span class="keyword">insert</span> <span class="keyword">into</span> student <span class="keyword">values</span></span><br><span class="line"> (<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>), <span class="comment">--如果报红要加一个逗号 </span></span><br><span class="line"> (<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line"> <span class="keyword">insert</span> <span class="keyword">into</span> Patient (password,BirthDate,Gender,PatientName,PhoneNum,Email,IndentityNum,Address)</span><br><span class="line"> <span class="keyword">values</span>(<span class="number">123456</span>,<span class="string">&#x27;1985-06-07&#x27;</span>,<span class="string">&#x27;女&#x27;</span>,<span class="string">&#x27;夏颖&#x27;</span>,<span class="number">13800000001</span>,<span class="string">&#x27;ying.xia@qq.com&#x27;</span>,<span class="number">110000198506071100</span>,<span class="string">&#x27;厦门市&#x27;</span>),</span><br><span class="line"> (<span class="number">234567</span>,<span class="string">&#x27;1985-06-08&#x27;</span>,<span class="string">&#x27;男&#x27;</span>,<span class="string">&#x27;李政&#x27;</span>,<span class="number">1380000002</span>,<span class="string">&#x27;lizheng@163.com&#x27;</span>,<span class="number">210000198506082100</span>,<span class="string">&#x27;长春市&#x27;</span>)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> Patient;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">--更新语句</span></span><br><span class="line"> <span class="keyword">UPDATE</span> Patient <span class="keyword">set</span> Password<span class="operator">=</span><span class="string">&#x27;11111&#x27;</span></span><br><span class="line"> </span><br><span class="line"> <span class="comment">--删除语句  范围是 id = 1;</span></span><br><span class="line"> <span class="keyword">delete</span> <span class="keyword">from</span> Patient <span class="keyword">where</span> Patient<span class="operator">=</span><span class="number">1</span>;</span><br><span class="line"> <span class="comment">--直接删除全部</span></span><br><span class="line"> <span class="keyword">delete</span> <span class="keyword">from</span> Patient </span><br><span class="line"> <span class="comment">--但是序号都在 </span></span><br><span class="line"> </span><br><span class="line"> <span class="comment">--用清除会连序号全部彻底删除</span></span><br><span class="line"> </span><br><span class="line"> <span class="comment">--去重 加入 distinct后 sex展示相同的只会显示一次</span></span><br><span class="line"> <span class="keyword">select</span> <span class="keyword">distinct</span> sex <span class="keyword">from</span> Student</span><br></pre></td></tr></table></figure>
+                
+            </div>
+        </article>
+    
+        <article class="post article-entry">
+            <div class="post-title">
+                <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2019/10/18/Dos%E6%95%B4%E7%90%86/">Dos操作指令</a>
+            </div>
+            <p class="sub">Oct 18 2019</p>
+            <div class="post-content">
+                
+                    <h4 id="DOS整理"><a href="#DOS整理" class="headerlink" title="DOS整理"></a>DOS整理</h4><p><strong>文件路径</strong></p>
+<hr>
+<p><strong>[桌面目录cmd.exe]</strong> c:\windows\system32\cmd</p>
+<p><strong>[xp桌面目录]</strong> c:\documents and settings\all users\桌面</p>
+<p>[win7桌面目录] c:\users\administrator[name]\desktop\</p>
+<p><strong>cmd程序</strong></p>
+<hr>
+<p>winver - 检查windows版本</p>
+<p>wscript - windows脚本宿主设置</p>
+<p>write - 写字板</p>
+<p>wiaacmgr - 扫描仪和照相机向导</p>
+<p>winchat - xp自在局域网聊天</p>
+<p>msconfig.exe - 系统配置实用程序</p>
+<p>mspaint - 画图板</p>
+<p>mstsc - 远程桌面连接</p>
+<p>magnify - 放大镜程序</p>
+<p>mmc - 打开控制台</p>
+<p>mobsync - 同步命令</p>
+<p>dxdiag - 检查DirectX信息</p>
+<p>diskmgmt.msc - 磁盘管理实用程序</p>
+<p>dcomcnfg - 系统组件服务</p>
+<p>dvdplay - DVD播放器</p>
+<p>notepad - 打开记事本</p>
+<p>narrator - 屏幕讲述人</p>
+<p>netstat -an – (TC命令检查接口</p>
+<p>sigverif - 文件签名验证系统</p>
+<p>shrpubw - 创建共享文件夹</p>
+<p>syskey - 系统加密双重加密</p>
+<p>services.msc - 本地服务设置</p>
+<p>sfc.exe - 系统文件检查器</p>
+<p>taskmgr - 任务管理器</p>
+<p>eventvwr - 事件查看器</p>
+<p>eudcedit - 造字程序</p>
+<p>explorer - 打开资源管理器</p>
+<p>perfmon.msc - 计算机性能监测程序</p>
+<p>regedit.exe - 注册表</p>
+<p>rsop.msc - 注册表结果集</p>
+<p>chkdsk.exe - 磁盘检查</p>
+<p>certmgr.msc - 证书管理实用程序</p>
+<p>calc - 启动计算机</p>
+<p>charmap - 启动字符映射表</p>
+<p>compmgmt.msc - 计算机管理</p>
+<p>cleanmgr - 垃圾清理</p>
+<p>osk - 打开屏幕键盘</p>
+<p>lusrmgr.msc - 本机用户和组</p>
+<p>iexpress - mu马捆绑系统自带CAB压缩和自解压工具</p>
+<p>fsmgmt.msc - 共享文件夹管理器</p>
+<p>utilman - 辅助工具管理器</p>
+<p><strong>备忘录</strong></p>
+<hr>
+<p><strong>一般管理员服务器账号****：</strong>administrator</p>
+<p><strong>快捷键</strong></p>
+<hr>
+<p>[打开输入法] ctrl+空格</p>
+<p><strong>运行</strong></p>
+<hr>
+<p>explorer.exe [桌面程序]</p>
+<p>mstsc [远程桌面程序]</p>
+<p>\[ip] [访问共享文件夹，多数适用于局域网内的文件运输]</p>
+<p>\ [ip]*<em>c$</em>* [默认情况处在同一网络中可以访问c盘]</p>
+<p>logoff [注销]</p>
+<p>regedit [修改注册表]</p>
+<p>services.msc [服务管理窗口]</p>
+<p><strong>基础目录控制 [按tab可以补全]</strong></p>
+<hr>
+<p>dir [浏览文件] &#x2F;a&#x3D;浏览包括隐藏的文件和文件夹</p>
+<p>cls [清屏]</p>
+<p>ren [重命名]</p>
+<p>rd [删除]</p>
+<p>cd [进入]</p>
+<p>md [创建文件夹]</p>
+<p>move [移动]</p>
+<p>copy [复制]</p>
+<p>xcopy [复制文件夹及文件夹里的文件]</p>
+<p>more [显示内容] more 1.txt 2.txt 分页显示多个文档</p>
+<p>type [打印]</p>
+<p>del [删除文件]</p>
+<p>echo nul&gt; 路径 [创建一个自义定内容和路径的文件]</p>
+<p>echo. [回响空行]</p>
+<p>attrib <strong>+s +h</strong> [更改属性 s&#x3D;系统 h&#x3D;隐藏]</p>
+<p>tree [扫描文件]</p>
+<p>exit [退出窗口]</p>
+<p><strong>命令</strong></p>
+<hr>
+<p>arp -a [查看局域网其他人的IP]</p>
+<p>shutdown <strong>-s -f -t</strong> time[关机 s&#x3D;关机 f&#x3D;强制 t&#x3D;时间 time&#x3D;自义定]</p>
+<p>pause [暂停]</p>
+<p>color [改变背景和文字颜色]</p>
+<p>fsutil file createnew [创建文件，并自定义文件占内存大小]</p>
+<p>taskkill <strong>&#x2F;f &#x2F;im</strong> [强制杀死电脑进程]  </p>
+<p>tasklist [列出进程&#x2F;管理进程]</p>
+<p>nslookup [ip] [检查ip地址的ns服务器]</p>
+<p>at [time] [添加计划任务] #如果使用at来打开其他bat有两种方法1: at [time] c:\1.bat 2: at [time] “start c:\1.bat” 加引号是为了把start当做是参数，不过我推荐直接输入路径就好</p>
+<p>at [查看计划任务]</p>
+<p>telnet towel.blinkenlights.nl [观看ASCLL版星球大战]</p>
+<p><strong>[输出] | clip</strong> [ |&#x3D;管道符可以输出字符 clip&#x3D;剪贴板 管道符快捷键：shift+] [可以联合type 部分系统无法使用 测试：win7可以使用]</p>
+<p>&amp;&amp; [同时执行多个命令]</p>
+<p><img src="https://app.yinxiang.com/FileSharing.action?hash=1/eb7a3359356b099beb715c1d64a7d5dc-70518" alt="img"></p>
+<p><strong>start</strong> [运行]</p>
+<p>mode con cols&#x3D;300 lines&#x3D;80 [改变窗口大小，cols&#x3D;长 lines&#x3D;宽]</p>
+<p><strong>变量和引用变量与判断</strong></p>
+<hr>
+<p>set &#x2F;p num[num也是可定义字符]&#x3D;[自义定文字] <strong>[定义变量]</strong></p>
+<p>%变量名% <strong>[引用变量]</strong> </p>
+<p>：a [创立区间]</p>
+<p>goto a [跳转区间]</p>
+<p>if — [判断成立后的动作] <strong>[判断]</strong></p>
+<p><strong>&#x3D;是赋值</strong></p>
+<p><strong>&#x3D;&#x3D;是等于</strong></p>
+<p><strong>用户管理和组管理</strong></p>
+<hr>
+<p>whoami <strong>&#x2F;user</strong> [查看sid值]</p>
+<p>whoami [显示主机名和用户名] </p>
+<p>net user [查看所有用户]</p>
+<p>net user [name] [passworld] [改密码or创建用户]</p>
+<p>net user [name] [passworld] <strong>&#x2F;add</strong> [创建一个新用户添加到电脑中]</p>
+<p>net localgroup administrators [name] <strong>&#x2F;add</strong> [将普通用户移入管理员用户] <strong>提权</strong></p>
+<p>net user [name] &#x2F;del [删除用户]</p>
+<p>net user [name] &#x2F;active:yes [激活禁用用户]</p>
+<p>net user [name] &#x2F;active:no [禁用用户]</p>
+<p>组管理</p>
+<p>net localgroup [查看所有组]</p>
+<p>net localgroup [组name] <strong>&#x2F;add</strong> [创建一个组]</p>
+<p>net localgroup [组name] [查看一个组的成员]</p>
+<p>net localgroup [组name] [用户] <strong>&#x2F;add</strong> [将一个用户创建并添加到组里]</p>
+<p>net localgroup [组name] [用户] <strong>&#x2F;del</strong> [将一个用户从组里删除]</p>
+<p>net localgroup [组name] <strong>&#x2F;del</strong> [删除一个组]</p>
+<p><strong>服务器与端口</strong></p>
+<hr>
+<p>net start [服务名] 开启服务&#x2F;端口</p>
+<p>netstat 查询当前使用端口</p>
+<p>netstat -an [查询当前端口]</p>
+<p>ipconfig [查询本机Ip]</p>
+<p>ipconfig &#x2F;all [查询本机IP和详细信息]</p>
+<p>ping [ip] [检查网络流畅] <strong>-t</strong> [一直ping <strong>ctrl+c****停止</strong>] -n[修改Ping包的数量]</p>
+<p>共享服务</p>
+<p>net share [列出对外开放的共享文件夹&#x2F;&#x2F;<strong>包括隐藏共享文件夹$</strong>]</p>
+<p>net share [共享名] &#x2F;del [删除共享文件夹，也可以删除共享隐藏文件夹]</p>
+<p><strong>注释：服务器重启后会默认重新打开****默认共享</strong></p>
+<p>net use \[ip]\ipc$ [密码] &#x2F;nser:[用户名] [连接对方的<strong>空链接</strong>]</p>
+<p>net time \[ip] [查询目标主机时间]</p>
+<p>copy [路径] \[目标ip]\c$\ [复制文件到目标主机<strong>c</strong>盘上]</p>
+<p>at \[目标ip] [time] [路径] [给目标主机添加计划任务]</p>
+<p>at \[目标ip] [查看目标主机时间任务]</p>
+<p>at \[目标ip] &#x2F;del [删除目标主机时间任务]</p>
+<p><strong>DHCP服务</strong></p>
+<hr>
+<p>开始DHCP服务后会自动开启67&#x2F;68端口</p>
+<p>ipconfig &#x2F;release [释放地址] </p>
+<p>ipconfig &#x2F;renew [重新获取地址]</p>
+<p><strong>端口</strong></p>
+<hr>
+<p>3389_远程桌面服务(<strong>RDP)</strong></p>
+<p>445_文件共享服务 [默认微软开机自动打开共享] <strong>(SMB)</strong></p>
+<p>23_telnet [命令行远程服务]</p>
+<p>67&#x2F;68_DHCP协议端口 [自动分配ip地址服务器]</p>
+<p>53_DNS服务监听端口</p>
+<p>80_WEB <strong>http协议</strong> <strong>默认端口</strong></p>
+<p><strong>DNS</strong></p>
+<hr>
+<p>nslookup [域名&#x2F;ip] [手动域名解析]</p>
+<p>ipconfig &#x2F;flushdns [清空本地DNS缓存]</p>
+<p>ipconfig &#x2F;displaydns [显示本地DNS缓存]</p>
+<p><strong>WEB</strong></p>
+<hr>
+<p><strong>当IIS里没有发布网站时，80端口会自动关闭，发布网站后在打开80端口</strong></p>
+<p><strong>一些创新</strong></p>
+<hr>
+<p><strong>图片隐藏文件.jpg</strong></p>
+<p><strong>c</strong>opy &#x2F;b 图片.jpg + 需要隐藏的文件.zip 图片.jpg -b表示一个二进位文件</p>
+<p><strong>查看</strong></p>
+<hr>
+<p>按 ctrl+c 以后输入 cls 清除屏幕</p>
+<p>ver 显示当前windows系统的版本号</p>
+<p>winver 弹框显示当前windows系统信息</p>
+<p>vol 显示当前分区的卷标</p>
+<p>label 显示当前分区的卷标，同时提示输入新卷标</p>
+<p>label c:system 设置c盘的卷标为system</p>
+<p>time 显示或设置当前时间</p>
+<p>date 显示或设置当前日期</p>
+<p>ver 查看系统详细版本号</p>
+<p>msinfo32 查看window详细版本号</p>
+
+                
+            </div>
+        </article>
+    
+        <article class="post article-entry">
+            <div class="post-title">
                 <a class="post-title-link text-underline" href="/Blackcat-loveBlog/2019/10/18/gradle/">Gradle部署</a>
             </div>
             <p class="sub">Oct 18 2019</p>
