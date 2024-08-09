@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>Web学习笔记</title><meta name="description" content="每个人都是被人所爱才诞生到这个世界上的"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>Web学习笔记</title><meta name="description" content="编程"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
 <!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/Blackcat-loveBlog/images/favicon.ico"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/bulma.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/base.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/helper.css"><script src="/Blackcat-loveBlog/js/common.js"></script><link rel="stylesheet" href="/Blackcat-loveBlog/style/post.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/jquery.fancybox.min.css"><script src="/Blackcat-loveBlog/js/highlight.pack.js"></script><meta name="description" content="
 
 Web应用程序是一种基于互联网的软件应用程序，它通过浏览器来提供服务和功能。用户可以使用Web应用程序在互联网上执行各种任务，如购物、社交、学习、工作等。这些应用程序通常使用Web技术（例如HTML、CSS、JavaScript等）来构建，并在Web服务器上运行。
@@ -159,7 +159,16 @@ Web服务器接收请求： 用户的请求到达Web服务器，服务器收到�
 <p>通过这种方式，JSP允许开发人员在HTML中嵌入Java代码，实现更加灵活和动态的Web应用程序。同时，与Java Servlet结合，JSP可以更高效地生成动态内容并响应客户端请求。</p>
 <h2 id="JSP基础代码"><a href="#JSP基础代码" class="headerlink" title="JSP基础代码"></a>JSP基础代码</h2><p>当你开始学习JSP时，以下是一些基础代码示例，帮助你理解JSP的工作原理和语法。我们将从简单的JSP页面开始，逐步介绍如何嵌入Java代码和显示动态内容。</p>
 <p><strong>1. 创建基本的JSP页面：</strong></p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- index.jsp --&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;My First JSP Page&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;Hello, World!&lt;/h1&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;!-- index.jsp --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;My First JSP Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
 
 <p>解释：</p>
 <ul>
@@ -167,7 +176,20 @@ Web服务器接收请求： 用户的请求到达Web服务器，服务器收到�
 <li>保存该文件为index.jsp，并将其放置在Web应用程序的合适位置，例如在WebContent目录下。</li>
 </ul>
 <p><strong>2. 在JSP中嵌入Java代码：</strong></p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- greet.jsp --&gt;</span><br><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span> pageEncoding=<span class="string">"UTF-8"</span> %&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Greeting Page&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;% </span><br><span class="line">        <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">"John"</span>; <span class="comment">// Java代码段，定义一个名为name的字符串变量</span></span><br><span class="line">        out.println(<span class="string">"Hello, "</span> + name); <span class="comment">// Java代码段，输出动态内容</span></span><br><span class="line">    %&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;!-- greet.jsp --&gt;
+&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span> pageEncoding=<span class="string">"UTF-8"</span> %&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Greeting Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;% 
+        <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">"John"</span>; <span class="comment">// Java代码段，定义一个名为name的字符串变量</span>
+        out.println(<span class="string">"Hello, "</span> + name); <span class="comment">// Java代码段，输出动态内容</span>
+    %&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
 
 <p>解释：</p>
 <ul>
@@ -177,7 +199,19 @@ Web服务器接收请求： 用户的请求到达Web服务器，服务器收到�
 </ul>
 <p><strong>3. 使用JSP隐式对象：</strong></p>
 <p>JSP提供了一组隐式对象，您无需声明即可在JSP页面中直接使用。以下是一些常用的隐式对象：</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- implicit_objects.jsp --&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Implicit Objects&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;User Information&lt;/h1&gt;</span><br><span class="line">    &lt;p&gt;Username: &lt;%= request.getParameter(<span class="string">"username"</span>) %&gt;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;IP Address: &lt;%= request.getRemoteAddr() %&gt;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;Session ID: &lt;%= session.getId() %&gt;&lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;!-- implicit_objects.jsp --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Implicit Objects&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;User Information&lt;/h1&gt;
+    &lt;p&gt;Username: &lt;%= request.getParameter(<span class="string">"username"</span>) %&gt;&lt;/p&gt;
+    &lt;p&gt;IP Address: &lt;%= request.getRemoteAddr() %&gt;&lt;/p&gt;
+    &lt;p&gt;Session ID: &lt;%= session.getId() %&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
 
 <p>解释：</p>
 <ul>
@@ -189,7 +223,25 @@ Web服务器接收请求： 用户的请求到达Web服务器，服务器收到�
 <h2 id="JSP关于out-print报红解决办法"><a href="#JSP关于out-print报红解决办法" class="headerlink" title="JSP关于out.print报红解决办法"></a>JSP关于out.print报红解决办法</h2><p>虽然可以正常使用，但是却有报红，这是因为lib包和Tomcat的lib没有正确被识别导致的，需要手动识别添加</p>
 <p>首先在WEB-INF里建立lib包然后导入在Tomcat-lib里的jaspic-api and servlet-api 导入后在文件-项目结构-模块-你的项目-依赖-Tomcat（没有就点击加号添加）</p>
 <p>最后重启项目</p>
-<h2 id="JSP实例演示1"><a href="#JSP实例演示1" class="headerlink" title="JSP实例演示1"></a>JSP实例演示1</h2><figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.util.Date"</span> %&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.text.SimpleDateFormat"</span> %&gt;&lt;%-- Created by IntelliJ IDEA. --%&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">  web项目启动成功</span><br><span class="line">  &lt;%</span><br><span class="line">    <span class="type">Date</span> <span class="variable">date</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">    <span class="type">SimpleDateFormat</span> <span class="variable">simpleDateFormat</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">"yyyy-MM-dd"</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">format</span> <span class="operator">=</span> simpleDateFormat.format(date);</span><br><span class="line">    out.print(format);</span><br><span class="line">    String[] fruits = {<span class="string">"Apple"</span>, <span class="string">"Banana"</span>, <span class="string">"Orange"</span>, <span class="string">"Grapes"</span>, <span class="string">"Mango"</span>};</span><br><span class="line">  %&gt;</span><br><span class="line">  &lt;%=format%&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="JSP实例演示1"><a href="#JSP实例演示1" class="headerlink" title="JSP实例演示1"></a>JSP实例演示1</h2><pre><code class="highlight jsp">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.util.Date"</span> %&gt;
+&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.text.SimpleDateFormat"</span> %&gt;&lt;%-- Created by IntelliJ IDEA. --%&gt;
+&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  web项目启动成功
+  &lt;%
+    <span class="type">Date</span> <span class="variable">date</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Date</span>();
+    <span class="type">SimpleDateFormat</span> <span class="variable">simpleDateFormat</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">"yyyy-MM-dd"</span>);
+    <span class="type">String</span> <span class="variable">format</span> <span class="operator">=</span> simpleDateFormat.format(date);
+    out.print(format);
+    String[] fruits = {<span class="string">"Apple"</span>, <span class="string">"Banana"</span>, <span class="string">"Orange"</span>, <span class="string">"Grapes"</span>, <span class="string">"Mango"</span>};
+  %&gt;
+  &lt;%=format%&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
 
 <h1 id="4-JSP核心内置对象"><a href="#4-JSP核心内置对象" class="headerlink" title="4.JSP核心内置对象"></a>4.JSP核心内置对象</h1><h2 id="基础介绍"><a href="#基础介绍" class="headerlink" title="基础介绍"></a>基础介绍</h2><ol>
 <li><strong>request</strong>：代表客户端的请求。它可以用来获取客户端发送的数据，比如表单数据、URL 参数等。</li>
@@ -214,9 +266,65 @@ Web服务器接收请求： 用户的请求到达Web服务器，服务器收到�
 <li><strong>page</strong>：你可以在 JSP 页面中使用 <code>&lt;% pageContext.forward("otherPage.jsp"); %&gt;</code> 来调用 <code>otherPage.jsp</code> 页面的内容。</li>
 <li><strong>exception</strong>：在 JSP 页面中，如果发生异常，你可以使用 <code>exception.printStackTrace();</code> 输出异常堆栈信息。</li>
 </ol>
-<h2 id="from表格提交与接收"><a href="#from表格提交与接收" class="headerlink" title="from表格提交与接收"></a>from表格提交与接收</h2><figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;%-- Created by IntelliJ IDEA. --%&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;title&gt;from表单提交&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">  &lt;form method=<span class="string">"post"</span> action=<span class="string">"indexController.jsp"</span>&gt;</span><br><span class="line">    &lt;in&gt;</span><br><span class="line">      商品评价</span><br><span class="line">      &lt;input type=<span class="string">"radio"</span> value=<span class="string">"五星"</span> name=<span class="string">"level"</span>&gt;五星</span><br><span class="line">      &lt;input type=<span class="string">"radio"</span> value=<span class="string">"四星"</span> name=<span class="string">"level"</span>&gt;四星</span><br><span class="line">      &lt;input type=<span class="string">"radio"</span> value=<span class="string">"三星"</span> name=<span class="string">"level"</span> checked&gt;三星</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      &lt;textarea name=<span class="string">"info"</span> rows=<span class="string">"4"</span> cols=<span class="string">"12"</span>&gt;&lt;/textarea&gt;</span><br><span class="line"></span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;</span><br><span class="line">      配送评价</span><br><span class="line">      &lt;input type=<span class="string">"checkbox"</span> value=<span class="string">"配送快"</span> name=<span class="string">"send"</span>&gt;配送快&lt;/input&gt;</span><br><span class="line">      &lt;input type=<span class="string">"checkbox"</span> value=<span class="string">"配送快"</span> name=<span class="string">"send"</span>&gt;配送好&lt;/input&gt;</span><br><span class="line">      &lt;input type=<span class="string">"checkbox"</span> value=<span class="string">"配送快"</span> name=<span class="string">"send"</span>&gt;服务态度好&lt;/input&gt;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &lt;p&gt;&lt;input type=<span class="string">"submit"</span>&gt; &lt;input type=<span class="string">"reset"</span>&gt;&lt;/p&gt;</span><br><span class="line">  &lt;/form&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="from表格提交与接收"><a href="#from表格提交与接收" class="headerlink" title="from表格提交与接收"></a>from表格提交与接收</h2><pre><code class="highlight jsp">&lt;%-- Created by IntelliJ IDEA. --%&gt;
+&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;from表单提交&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;form method=<span class="string">"post"</span> action=<span class="string">"indexController.jsp"</span>&gt;
+    &lt;in&gt;
+      商品评价
+      &lt;input type=<span class="string">"radio"</span> value=<span class="string">"五星"</span> name=<span class="string">"level"</span>&gt;五星
+      &lt;input type=<span class="string">"radio"</span> value=<span class="string">"四星"</span> name=<span class="string">"level"</span>&gt;四星
+      &lt;input type=<span class="string">"radio"</span> value=<span class="string">"三星"</span> name=<span class="string">"level"</span> checked&gt;三星
+    &lt;/p&gt;
+    &lt;p&gt;
+      &lt;textarea name=<span class="string">"info"</span> rows=<span class="string">"4"</span> cols=<span class="string">"12"</span>&gt;&lt;/textarea&gt;
 
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;%--</span><br><span class="line">  Created by IntelliJ IDEA.</span><br><span class="line">  User: Administrator</span><br><span class="line">  Date: <span class="number">2023</span>/<span class="number">8</span>/<span class="number">7</span></span><br><span class="line">  Time: <span class="number">14</span>:<span class="number">47</span></span><br><span class="line">  To change <span class="built_in">this</span> template use File | Settings | File Templates.</span><br><span class="line">--%&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;接受from&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;%</span><br><span class="line">    <span class="comment">//设置乱码</span></span><br><span class="line">    request.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">level</span> <span class="operator">=</span> request.getParameter(<span class="string">"level"</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">info</span> <span class="operator">=</span> request.getParameter(<span class="string">"info"</span>);</span><br><span class="line">    out.print(level);</span><br><span class="line">    out.print(info);</span><br><span class="line">    String[] sends = request.getParameterValues(<span class="string">"send"</span>);</span><br><span class="line">    <span class="keyword">for</span> (String send:sends){</span><br><span class="line">        out.print(send);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+    &lt;/p&gt;
+    &lt;p&gt;
+      配送评价
+      &lt;input type=<span class="string">"checkbox"</span> value=<span class="string">"配送快"</span> name=<span class="string">"send"</span>&gt;配送快&lt;/input&gt;
+      &lt;input type=<span class="string">"checkbox"</span> value=<span class="string">"配送快"</span> name=<span class="string">"send"</span>&gt;配送好&lt;/input&gt;
+      &lt;input type=<span class="string">"checkbox"</span> value=<span class="string">"配送快"</span> name=<span class="string">"send"</span>&gt;服务态度好&lt;/input&gt;
+    &lt;/p&gt;
+    &lt;p&gt;&lt;input type=<span class="string">"submit"</span>&gt; &lt;input type=<span class="string">"reset"</span>&gt;&lt;/p&gt;
+  &lt;/form&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+<pre><code class="highlight jsp">&lt;%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: <span class="number">2023</span>/<span class="number">8</span>/<span class="number">7</span>
+  Time: <span class="number">14</span>:<span class="number">47</span>
+  To change <span class="built_in">this</span> template use File | Settings | File Templates.
+--%&gt;
+&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;接受from&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;%
+    <span class="comment">//设置乱码</span>
+    request.setCharacterEncoding(<span class="string">"utf-8"</span>);
+    <span class="type">String</span> <span class="variable">level</span> <span class="operator">=</span> request.getParameter(<span class="string">"level"</span>);
+    <span class="type">String</span> <span class="variable">info</span> <span class="operator">=</span> request.getParameter(<span class="string">"info"</span>);
+    out.print(level);
+    out.print(info);
+    String[] sends = request.getParameterValues(<span class="string">"send"</span>);
+    <span class="keyword">for</span> (String send:sends){
+        out.print(send);
+    }
+
+%&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
 
 <h2 id="转发和重定向的区别"><a href="#转发和重定向的区别" class="headerlink" title="转发和重定向的区别"></a>转发和重定向的区别</h2><p>重定向（Redirect）和转发（Forward）是在 web 应用程序中用于页面跳转的两种不同技术，它们有以下区别：</p>
 <p><strong>1. 目标地址不同：</strong></p>
@@ -245,12 +353,12 @@ Web服务器接收请求： 用户的请求到达Web服务器，服务器收到�
 <li>转发：适合用于在同一 web 应用程序内部的页面跳转和共享数据。</li>
 </ul>
 <p>在选择重定向或转发时，需要考虑这两者之间的差异以及适用的具体情况。重定向更适合用于不同资源或应用程序之间的跳转，而转发更适合用于在同一应用程序内部进行页面跳转和数据传递。</p>
-<h2 id="转发"><a href="#转发" class="headerlink" title="转发"></a>转发</h2><figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;% request.getRequestDispatcher(<span class="string">"home.jsp"</span>).forward(request,response); %&gt;</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="转发"><a href="#转发" class="headerlink" title="转发"></a>转发</h2><pre><code class="highlight jsp">&lt;% request.getRequestDispatcher(<span class="string">"home.jsp"</span>).forward(request,response); %&gt;</code></pre>
 
-<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;% response.sendRedirect(<span class="string">"home.jsp"</span>); %&gt;</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><pre><code class="highlight jsp">&lt;% response.sendRedirect(<span class="string">"home.jsp"</span>); %&gt;</code></pre>
 
 <p>在这种情况如何传参把特定参数给跳转的页</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;% response.sendRedirect(<span class="string">"home.jsp"</span> + username); %&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;% response.sendRedirect(<span class="string">"home.jsp"</span> + username); %&gt;</code></pre>
 
 
 
@@ -283,59 +391,125 @@ Web服务器接收请求： 用户的请求到达Web服务器，服务器收到�
 </li>
 </ul>
 <p><strong>示例</strong>：在登录成功后，将用户的用户名存储在 <code>session</code> 中。</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">username</span> <span class="operator">=</span> <span class="string">"user123"</span>;</span><br><span class="line">session.setAttribute(<span class="string">"username"</span>, username);</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight java"><span class="type">String</span> <span class="variable">username</span> <span class="operator">=</span> <span class="string">"user123"</span>;
+session.setAttribute(<span class="string">"username"</span>, username);</code></pre>
 
 <h4 id="2-getAttribute-String-name"><a href="#2-getAttribute-String-name" class="headerlink" title="2. getAttribute(String name)"></a>2. <code>getAttribute(String name)</code></h4><ul>
 <li>作用：从 <code>session</code> 对象中获取之前存储的数据。</li>
 <li>参数：<code>name</code>：要获取的数据的名称。</li>
 </ul>
 <p><strong>示例</strong>：在其他页面中获取之前存储的用户名。</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">storedUsername</span> <span class="operator">=</span> (String) session.getAttribute(<span class="string">"username"</span>);</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight java"><span class="type">String</span> <span class="variable">storedUsername</span> <span class="operator">=</span> (String) session.getAttribute(<span class="string">"username"</span>);</code></pre>
 
 <h4 id="3-removeAttribute-String-name"><a href="#3-removeAttribute-String-name" class="headerlink" title="3. removeAttribute(String name)"></a>3. <code>removeAttribute(String name)</code></h4><ul>
 <li>作用：从 <code>session</code> 对象中删除指定名称的数据。</li>
 <li>参数：<code>name</code>：要删除的数据的名称。</li>
 </ul>
 <p><strong>示例</strong>：在用户退出登录时，清除存储的用户名。</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">session.removeAttribute(<span class="string">"username"</span>);</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight java">session.removeAttribute(<span class="string">"username"</span>);</code></pre>
 
 <h4 id="4-invalidate"><a href="#4-invalidate" class="headerlink" title="4. invalidate()"></a>4. <code>invalidate()</code></h4><ul>
 <li>作用：手动销毁当前用户的 <code>session</code> 对象，清除其中的所有数据。</li>
 </ul>
 <p><strong>示例</strong>：用户注销或会话过期时，调用该方法销毁 <code>session</code>。</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">session.invalidate();</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight java">session.invalidate();</code></pre>
 
 <h4 id="5-getId"><a href="#5-getId" class="headerlink" title="5. getId()"></a>5. <code>getId()</code></h4><ul>
 <li>作用：获取当前 <code>session</code> 的唯一标识符。</li>
 </ul>
 <p><strong>示例</strong>：用于记录日志或跟踪用户会话。</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">sessionID</span> <span class="operator">=</span> session.getId();</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight java"><span class="type">String</span> <span class="variable">sessionID</span> <span class="operator">=</span> session.getId();</code></pre>
 
 <h4 id="6-getCreationTime"><a href="#6-getCreationTime" class="headerlink" title="6. getCreationTime()"></a>6. <code>getCreationTime()</code></h4><ul>
 <li>作用：获取 <code>session</code> 对象创建的时间。</li>
 </ul>
 <p><strong>示例</strong>：用于跟踪会话的开始时间。</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> <span class="variable">creationTime</span> <span class="operator">=</span> session.getCreationTime();</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight java"><span class="type">long</span> <span class="variable">creationTime</span> <span class="operator">=</span> session.getCreationTime();</code></pre>
 
 <h4 id="7-getLastAccessedTime"><a href="#7-getLastAccessedTime" class="headerlink" title="7. getLastAccessedTime()"></a>7. <code>getLastAccessedTime()</code></h4><ul>
 <li>作用：获取用户上次访问 <code>session</code> 对象的时间。</li>
 </ul>
 <p><strong>示例</strong>：用于判断用户是否活跃。</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> <span class="variable">lastAccessedTime</span> <span class="operator">=</span> session.getLastAccessedTime();</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight java"><span class="type">long</span> <span class="variable">lastAccessedTime</span> <span class="operator">=</span> session.getLastAccessedTime();</code></pre>
 
 <p>通过上述常用方法，你可以在 <code>session</code> 对象中存储、获取、删除数据，管理用户会话，以及追踪用户活动。这些方法能够帮助你更好地利用 <code>session</code> 来维护用户状态和数据。</p>
-<h2 id="JSP连接数据库模板"><a href="#JSP连接数据库模板" class="headerlink" title="JSP连接数据库模板"></a>JSP连接数据库模板</h2><figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">&lt;%--</span><br><span class="line">  Created by IntelliJ IDEA.</span><br><span class="line">  User: Administrator</span><br><span class="line">  Date: <span class="number">2023</span>/<span class="number">8</span>/<span class="number">7</span></span><br><span class="line">  Time: <span class="number">17</span>:<span class="number">01</span></span><br><span class="line">  To change <span class="built_in">this</span> template use File | Settings | File Templates.</span><br><span class="line">--%&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;数据库读取输出&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.sql.*"</span> %&gt;</span><br><span class="line">&lt;%</span><br><span class="line"><span class="comment">// 声明数据库连接信息</span></span><br><span class="line"><span class="type">String</span> <span class="variable">jdbcUrl</span> <span class="operator">=</span> <span class="string">"jdbc:mysql://localhost:3306/zhuanzhuandb?serverTimezone=GMT-8"</span>; <span class="comment">// 数据库的连接 URL</span></span><br><span class="line"><span class="type">String</span> <span class="variable">username</span> <span class="operator">=</span> <span class="string">"root"</span>; <span class="comment">// 数据库用户名</span></span><br><span class="line"><span class="type">String</span> <span class="variable">password</span> <span class="operator">=</span> <span class="string">"123"</span>; <span class="comment">// 数据库密码</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> {</span><br><span class="line"><span class="comment">// 加载MySQL驱动程序</span></span><br><span class="line">Class.forName(<span class="string">"com.mysql.cj.jdbc.Driver"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 建立数据库连接</span></span><br><span class="line"><span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> DriverManager.getConnection(jdbcUrl, username, password);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建并执行查询</span></span><br><span class="line"><span class="type">Statement</span> <span class="variable">statement</span> <span class="operator">=</span> connection.createStatement();</span><br><span class="line">    <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">"SELECT ROW_NUMBER() OVER (ORDER BY addTime) AS row_num, id, name, price, addTime FROM goods WHERE isOnSell = 1 LIMIT 1 , 5"</span>;</span><br><span class="line">    <span class="type">ResultSet</span> <span class="variable">resultSet</span> <span class="operator">=</span> statement.executeQuery(sql);</span><br><span class="line">    out.println(<span class="string">"_______________________________________________________________________________"</span> + <span class="string">"&lt;br&gt;"</span>);</span><br><span class="line">    out.println( <span class="string">"序号"</span> + <span class="string">"\t"</span> + <span class="string">"好物编号"</span> + <span class="string">"\t"</span> + <span class="string">"姓名"</span> + <span class="string">"\t"</span> + <span class="string">"价格"</span> + <span class="string">"\t"</span> + <span class="string">"上架时间"</span>+ <span class="string">"&lt;br&gt;"</span>);</span><br><span class="line">    out.println(<span class="string">"_______________________________________________________________________________"</span>+ <span class="string">"&lt;br&gt;"</span>);</span><br><span class="line">    <span class="keyword">try</span> {</span><br><span class="line">        <span class="keyword">while</span> (resultSet.next()){</span><br><span class="line">            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> resultSet.getInt(<span class="number">1</span>);</span><br><span class="line">            <span class="type">int</span> <span class="variable">id</span> <span class="operator">=</span> resultSet.getInt(<span class="number">2</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> resultSet.getString(<span class="number">3</span>);</span><br><span class="line">            <span class="type">int</span> <span class="variable">price</span> <span class="operator">=</span> resultSet.getInt(<span class="number">4</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">Date</span> <span class="operator">=</span> resultSet.getString(<span class="number">5</span>);</span><br><span class="line">            out.println(x + <span class="string">"\t"</span> + <span class="string">"\t"</span> + id + <span class="string">"\t"</span> + name + <span class="string">"\t"</span> + price + <span class="string">"\t"</span> + Date+ <span class="string">"&lt;br&gt;"</span>);</span><br><span class="line">        }</span><br><span class="line">        System.out.println(<span class="string">"_______________________________________________________________________________"</span>+ <span class="string">"&lt;br&gt;"</span>);</span><br><span class="line">    } <span class="keyword">catch</span> (Exception e) {</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭资源</span></span><br><span class="line">resultSet.close();</span><br><span class="line">statement.close();</span><br><span class="line">connection.close();</span><br><span class="line"></span><br><span class="line">} <span class="keyword">catch</span> (ClassNotFoundException e) {</span><br><span class="line">out.println(<span class="string">"MySQL驱动程序未找到： "</span> + e.getMessage());</span><br><span class="line">} <span class="keyword">catch</span> (SQLException e) {</span><br><span class="line">out.println(<span class="string">"数据库连接错误： "</span> + e.getMessage());</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">%&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="JSP连接数据库模板"><a href="#JSP连接数据库模板" class="headerlink" title="JSP连接数据库模板"></a>JSP连接数据库模板</h2><pre><code class="highlight jsp">&lt;%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: <span class="number">2023</span>/<span class="number">8</span>/<span class="number">7</span>
+  Time: <span class="number">17</span>:<span class="number">01</span>
+  To change <span class="built_in">this</span> template use File | Settings | File Templates.
+--%&gt;
+&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;数据库读取输出&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.sql.*"</span> %&gt;
+&lt;%
+<span class="comment">// 声明数据库连接信息</span>
+<span class="type">String</span> <span class="variable">jdbcUrl</span> <span class="operator">=</span> <span class="string">"jdbc:mysql://localhost:3306/zhuanzhuandb?serverTimezone=GMT-8"</span>; <span class="comment">// 数据库的连接 URL</span>
+<span class="type">String</span> <span class="variable">username</span> <span class="operator">=</span> <span class="string">"root"</span>; <span class="comment">// 数据库用户名</span>
+<span class="type">String</span> <span class="variable">password</span> <span class="operator">=</span> <span class="string">"123"</span>; <span class="comment">// 数据库密码</span>
+
+<span class="keyword">try</span> {
+<span class="comment">// 加载MySQL驱动程序</span>
+Class.forName(<span class="string">"com.mysql.cj.jdbc.Driver"</span>);
+
+<span class="comment">// 建立数据库连接</span>
+<span class="type">Connection</span> <span class="variable">connection</span> <span class="operator">=</span> DriverManager.getConnection(jdbcUrl, username, password);
+
+<span class="comment">// 创建并执行查询</span>
+<span class="type">Statement</span> <span class="variable">statement</span> <span class="operator">=</span> connection.createStatement();
+    <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">"SELECT ROW_NUMBER() OVER (ORDER BY addTime) AS row_num, id, name, price, addTime FROM goods WHERE isOnSell = 1 LIMIT 1 , 5"</span>;
+    <span class="type">ResultSet</span> <span class="variable">resultSet</span> <span class="operator">=</span> statement.executeQuery(sql);
+    out.println(<span class="string">"_______________________________________________________________________________"</span> + <span class="string">"&lt;br&gt;"</span>);
+    out.println( <span class="string">"序号"</span> + <span class="string">"\t"</span> + <span class="string">"好物编号"</span> + <span class="string">"\t"</span> + <span class="string">"姓名"</span> + <span class="string">"\t"</span> + <span class="string">"价格"</span> + <span class="string">"\t"</span> + <span class="string">"上架时间"</span>+ <span class="string">"&lt;br&gt;"</span>);
+    out.println(<span class="string">"_______________________________________________________________________________"</span>+ <span class="string">"&lt;br&gt;"</span>);
+    <span class="keyword">try</span> {
+        <span class="keyword">while</span> (resultSet.next()){
+            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> resultSet.getInt(<span class="number">1</span>);
+            <span class="type">int</span> <span class="variable">id</span> <span class="operator">=</span> resultSet.getInt(<span class="number">2</span>);
+            <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> resultSet.getString(<span class="number">3</span>);
+            <span class="type">int</span> <span class="variable">price</span> <span class="operator">=</span> resultSet.getInt(<span class="number">4</span>);
+            <span class="type">String</span> <span class="variable">Date</span> <span class="operator">=</span> resultSet.getString(<span class="number">5</span>);
+            out.println(x + <span class="string">"\t"</span> + <span class="string">"\t"</span> + id + <span class="string">"\t"</span> + name + <span class="string">"\t"</span> + price + <span class="string">"\t"</span> + Date+ <span class="string">"&lt;br&gt;"</span>);
+        }
+        System.out.println(<span class="string">"_______________________________________________________________________________"</span>+ <span class="string">"&lt;br&gt;"</span>);
+    } <span class="keyword">catch</span> (Exception e) {
+        e.printStackTrace();
+    }
+
+<span class="comment">// 关闭资源</span>
+resultSet.close();
+statement.close();
+connection.close();
+
+} <span class="keyword">catch</span> (ClassNotFoundException e) {
+out.println(<span class="string">"MySQL驱动程序未找到： "</span> + e.getMessage());
+} <span class="keyword">catch</span> (SQLException e) {
+out.println(<span class="string">"数据库连接错误： "</span> + e.getMessage());
+}
+
+%&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
 
 <h1 id="6-Cookie"><a href="#6-Cookie" class="headerlink" title="6.Cookie"></a>6.Cookie</h1><h1 id="7-JSP数据访问"><a href="#7-JSP数据访问" class="headerlink" title="7.JSP数据访问"></a>7.JSP数据访问</h1><h2 id="include"><a href="#include" class="headerlink" title="include"></a>include</h2><p>在JSP中，<code>&lt;%@ include %&gt;</code> 指令用于将一个文件的内容嵌入到另一个文件中，从而在页面上进行代码重用。这种技术被称为”包含”（include），它可以在编译时或运行时将指定的文件内容合并到当前的JSP页面中。</p>
 <p>包含可以帮助减少代码的冗余，提高代码的可维护性，并允许在多个页面中共享相同的代码片段。有两种主要的包含方式：</p>
 <ol>
 <li><p><strong>静态包含（Static Include）</strong>：</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ include file=<span class="string">"header.jsp"</span> %&gt;</span><br><span class="line">&lt;!-- Other content --&gt;</span><br><span class="line">&lt;%@ include file=<span class="string">"footer.jsp"</span> %&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;%@ include file=<span class="string">"header.jsp"</span> %&gt;
+&lt;!-- Other content --&gt;
+&lt;%@ include file=<span class="string">"footer.jsp"</span> %&gt;</code></pre>
 
 <p>静态包含在JSP页面的编译阶段将被合并到当前页面，作为页面的一部分。在生成的servlet代码中，被包含的内容就像直接写在包含指令的位置一样。</p>
 </li>
 <li><p><strong>动态包含（Dynamic Include）</strong>：</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:include page=<span class="string">"header.jsp"</span> /&gt;</span><br><span class="line">&lt;!-- Other content --&gt;</span><br><span class="line">&lt;jsp:include page=<span class="string">"footer.jsp"</span> /&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;jsp:include page=<span class="string">"header.jsp"</span> /&gt;
+&lt;!-- Other content --&gt;
+&lt;jsp:include page=<span class="string">"footer.jsp"</span> /&gt;</code></pre>
 
 <p>动态包含在运行时通过JSP引擎实现，允许根据条件或用户请求来包含特定的内容。包含的内容在页面每次请求时都会被执行和合并。</p>
 </li>
@@ -399,23 +573,33 @@ Web服务器接收请求： 用户的请求到达Web服务器，服务器收到�
 <ol>
 <li><p>**<code>setAttribute(String name, Object value)</code>**： 用于将一个数据对象存储在 <code>application</code> 对象中。可以通过名称访问存储的对象。</p>
 <p>示例：</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    application.setAttribute(<span class="string">"companyName"</span>, <span class="string">"MyCorp Inc."</span>);</span><br><span class="line">%&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;%
+    application.setAttribute(<span class="string">"companyName"</span>, <span class="string">"MyCorp Inc."</span>);
+%&gt;</code></pre>
 </li>
 <li><p>**<code>getAttribute(String name)</code>**： 通过名称从 <code>application</code> 对象中获取之前存储的数据对象。</p>
 <p>示例：</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    <span class="type">String</span> <span class="variable">companyName</span> <span class="operator">=</span> (String) application.getAttribute(<span class="string">"companyName"</span>);</span><br><span class="line">%&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;%
+    <span class="type">String</span> <span class="variable">companyName</span> <span class="operator">=</span> (String) application.getAttribute(<span class="string">"companyName"</span>);
+%&gt;</code></pre>
 </li>
 <li><p>**<code>removeAttribute(String name)</code>**： 从 <code>application</code> 对象中移除特定名称的数据对象。</p>
 <p>示例：</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    application.removeAttribute(<span class="string">"companyName"</span>);</span><br><span class="line">%&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;%
+    application.removeAttribute(<span class="string">"companyName"</span>);
+%&gt;</code></pre>
 </li>
 <li><p>**<code>getInitParameter(String name)</code>**： 获取应用程序的初始化参数，这些参数在 <code>web.xml</code> 文件中配置。</p>
 <p>示例：</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    <span class="type">String</span> <span class="variable">databaseURL</span> <span class="operator">=</span> application.getInitParameter(<span class="string">"databaseURL"</span>);</span><br><span class="line">%&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;%
+    <span class="type">String</span> <span class="variable">databaseURL</span> <span class="operator">=</span> application.getInitParameter(<span class="string">"databaseURL"</span>);
+%&gt;</code></pre>
 </li>
 <li><p>**<code>getServletContextName()</code>**： 获取当前 Servlet 上下文的名称。</p>
 <p>示例：</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    <span class="type">String</span> <span class="variable">contextName</span> <span class="operator">=</span> application.getServletContextName();</span><br><span class="line">%&gt;</span><br></pre></td></tr></tbody></table></figure></li>
+<pre><code class="highlight jsp">&lt;%
+    <span class="type">String</span> <span class="variable">contextName</span> <span class="operator">=</span> application.getServletContextName();
+%&gt;</code></pre></li>
 </ol>
 <h2 id="JSP作用域介绍"><a href="#JSP作用域介绍" class="headerlink" title="JSP作用域介绍"></a>JSP作用域介绍</h2><p>JSP 提供了四种不同的对象作用域，它们分别是页面作用域（Page Scope）、请求作用域（Request Scope）、会话作用域（Session Scope）和应用程序作用域（Application Scope）。这些作用域具有不同的范围和大小，适用于不同的数据共享需求。</p>
 <p><strong>页面作用域（Page Scope）</strong>：</p>
@@ -443,24 +627,76 @@ Web服务器接收请求： 用户的请求到达Web服务器，服务器收到�
 <li><strong>适用场景</strong>：存储全局设置、共享的数据库连接池等全局级别的数据。</li>
 </ul>
 <p>选择适当的作用域取决于数据的生命周期和共享范围。更小的作用域可以提高数据隔离和安全性，但可能需要更多的数据传递工作。更大的作用域可以简化数据共享，但需要注意可能的并发问题和资源消耗。根据具体需求合理选择作用域是很重要的。</p>
-<h2 id="JavaBean"><a href="#JavaBean" class="headerlink" title="JavaBean"></a>JavaBean</h2><h1 id="8-Serviet"><a href="#8-Serviet" class="headerlink" title="8.Serviet"></a>8.Serviet</h1><h2 id="Servlet创建、配置和调用"><a href="#Servlet创建、配置和调用" class="headerlink" title="Servlet创建、配置和调用"></a>Servlet创建、配置和调用</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.bdqn.web;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletConfig;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletResponse;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet("/HelloServiet")</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloServiet</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> {</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">HelloServiet</span><span class="params">()</span> {</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">service</span><span class="params">(ServletRequest req, ServletResponse res)</span> <span class="keyword">throws</span> ServletException, IOException {</span><br><span class="line">        System.out.println(<span class="string">"Web运行"</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">destroy</span><span class="params">()</span> {</span><br><span class="line">        System.out.println(<span class="string">"销毁"</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException {</span><br><span class="line">        System.out.println(<span class="string">"初始化"</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="JavaBean"><a href="#JavaBean" class="headerlink" title="JavaBean"></a>JavaBean</h2><h1 id="8-Serviet"><a href="#8-Serviet" class="headerlink" title="8.Serviet"></a>8.Serviet</h1><h2 id="Servlet创建、配置和调用"><a href="#Servlet创建、配置和调用" class="headerlink" title="Servlet创建、配置和调用"></a>Servlet创建、配置和调用</h2><pre><code class="highlight java"><span class="keyword">package</span> com.bdqn.web;
+
+<span class="keyword">import</span> javax.servlet.ServletConfig;
+<span class="keyword">import</span> javax.servlet.ServletException;
+<span class="keyword">import</span> javax.servlet.ServletRequest;
+<span class="keyword">import</span> javax.servlet.ServletResponse;
+<span class="keyword">import</span> javax.servlet.annotation.WebServlet;
+<span class="keyword">import</span> javax.servlet.http.HttpServlet;
+<span class="keyword">import</span> java.io.IOException;
+
+<span class="meta">@WebServlet("/HelloServiet")</span>
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloServiet</span> <span class="keyword">extends</span> <span class="title class_">HttpServlet</span> {
+
+    <span class="keyword">public</span> <span class="title function_">HelloServiet</span><span class="params">()</span> {
+    }
+
+    <span class="meta">@Override</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">service</span><span class="params">(ServletRequest req, ServletResponse res)</span> <span class="keyword">throws</span> ServletException, IOException {
+        System.out.println(<span class="string">"Web运行"</span>);
+    }
+
+    <span class="meta">@Override</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">destroy</span><span class="params">()</span> {
+        System.out.println(<span class="string">"销毁"</span>);
+    }
+
+    <span class="meta">@Override</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException {
+        System.out.println(<span class="string">"初始化"</span>);
+    }
+}
+</code></pre>
 
 <h3 id="创建Servlet"><a href="#创建Servlet" class="headerlink" title="创建Servlet"></a>创建Servlet</h3><p>在Java Web应用程序中，创建一个Servlet可以通过以下步骤完成：</p>
 <ol>
 <li><strong>创建Java类</strong>: 创建一个类，继承自<code>javax.servlet.http.HttpServlet</code>。例如：</li>
 </ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">java复制代码import javax.servlet.http.HttpServlet;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line">import java.io.IOException;</span><br><span class="line"></span><br><span class="line">public class MyServlet extends HttpServlet {</span><br><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {</span><br><span class="line">        // 在这里编写处理GET请求的代码</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight plaintext">java复制代码import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+public class MyServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // 在这里编写处理GET请求的代码
+    }
+}</code></pre>
 
 <h3 id="配置Servlet"><a href="#配置Servlet" class="headerlink" title="配置Servlet"></a>配置Servlet</h3><p>要使Servlet在Web应用程序中运行，需要对其进行配置：</p>
 <ol>
 <li><strong>web.xml配置（传统方式）</strong>：在<code>WEB-INF</code>文件夹下的<code>web.xml</code>文件中添加Servlet的配置信息。示例：</li>
 </ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">xml复制代码&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;MyServlet&lt;/servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;com.example.MyServlet&lt;/servlet-class&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;MyServlet&lt;/servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;/myservlet&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight plaintext">xml复制代码&lt;servlet&gt;
+    &lt;servlet-name&gt;MyServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;com.example.MyServlet&lt;/servlet-class&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;MyServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/myservlet&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;</code></pre>
 
 <ol>
 <li><strong>注解配置</strong>：在Servlet类上使用注解进行配置。示例：</li>
 </ol>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">java复制代码import javax.servlet.annotation.WebServlet;</span><br><span class="line"></span><br><span class="line">@WebServlet("/myservlet")</span><br><span class="line">public class MyServlet extends HttpServlet {</span><br><span class="line">    // doGet 方法和其他代码</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight plaintext">java复制代码import javax.servlet.annotation.WebServlet;
+
+@WebServlet("/myservlet")
+public class MyServlet extends HttpServlet {
+    // doGet 方法和其他代码
+}</code></pre>
 
 <h3 id="调用Servlet"><a href="#调用Servlet" class="headerlink" title="调用Servlet"></a>调用Servlet</h3><p>一旦Servlet已创建并配置，您可以通过浏览器或其他HTTP客户端来调用它：</p>
 <ol>
@@ -546,72 +782,222 @@ Web服务器接收请求： 用户的请求到达Web服务器，服务器收到�
 <li><strong>与JSP兼容</strong>：EL表达式与JSP标签配合使用，可以轻松地在JSP页面中嵌入动态数据。</li>
 </ul>
 <h2 id="EL表达式的基础用法"><a href="#EL表达式的基础用法" class="headerlink" title="EL表达式的基础用法"></a>EL表达式的基础用法</h2><h3 id="访问属性"><a href="#访问属性" class="headerlink" title="访问属性"></a>访问属性</h3><p>通过<code>${}</code>语法来访问JavaBean中的属性。</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span> pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib prefix=<span class="string">"c"</span> uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> %&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;EL表达式示例&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;c:set <span class="keyword">var</span>=<span class="string">"userName"</span> value=<span class="string">"John"</span> /&gt; &lt;!-- 设置一个变量 --&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;p&gt;Welcome, ${userName}!&lt;/p&gt; &lt;!-- 访问变量值 --&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span> pageEncoding=<span class="string">"UTF-8"</span>%&gt;
+&lt;%@ taglib prefix=<span class="string">"c"</span> uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> %&gt;
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;EL表达式示例&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;c:set <span class="keyword">var</span>=<span class="string">"userName"</span> value=<span class="string">"John"</span> /&gt; &lt;!-- 设置一个变量 --&gt;
+    
+    &lt;p&gt;Welcome, ${userName}!&lt;/p&gt; &lt;!-- 访问变量值 --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
 
 <h3 id="执行运算"><a href="#执行运算" class="headerlink" title="执行运算"></a>执行运算</h3><p>EL表达式支持各种数学和逻辑运算。</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;Sum: ${<span class="number">5</span> + <span class="number">3</span>}&lt;/p&gt;</span><br><span class="line">&lt;p&gt;Product: ${<span class="number">2</span> * <span class="number">4</span>}&lt;/p&gt;</span><br><span class="line">&lt;p&gt;Is True: ${<span class="literal">true</span> &amp;&amp; <span class="literal">false</span>}&lt;/p&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;p&gt;Sum: ${<span class="number">5</span> + <span class="number">3</span>}&lt;/p&gt;
+&lt;p&gt;Product: ${<span class="number">2</span> * <span class="number">4</span>}&lt;/p&gt;
+&lt;p&gt;Is True: ${<span class="literal">true</span> &amp;&amp; <span class="literal">false</span>}&lt;/p&gt;</code></pre>
 
 <h3 id="调用方法"><a href="#调用方法" class="headerlink" title="调用方法"></a>调用方法</h3><p>可以调用JavaBean中的方法。</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;Current Time: ${java.time.LocalDateTime.now()}&lt;/p&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;p&gt;Current Time: ${java.time.LocalDateTime.now()}&lt;/p&gt;</code></pre>
 
 <h3 id="访问集合"><a href="#访问集合" class="headerlink" title="访问集合"></a>访问集合</h3><p>访问List、Map等集合类型的元素。</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:set <span class="keyword">var</span>=<span class="string">"fruits"</span> value=<span class="string">"${['Apple', 'Banana', 'Orange']}"</span>/&gt;</span><br><span class="line">&lt;p&gt;Second Fruit: ${fruits[<span class="number">1</span>]}&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;c:set <span class="keyword">var</span>=<span class="string">"person"</span> value=<span class="string">"${{'name': 'Alice', 'age': 30}}"</span>/&gt;</span><br><span class="line">&lt;p&gt;Name: ${person[<span class="string">'name'</span>]}, Age: ${person[<span class="string">'age'</span>]}&lt;/p&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;c:set <span class="keyword">var</span>=<span class="string">"fruits"</span> value=<span class="string">"${['Apple', 'Banana', 'Orange']}"</span>/&gt;
+&lt;p&gt;Second Fruit: ${fruits[<span class="number">1</span>]}&lt;/p&gt;
+
+&lt;c:set <span class="keyword">var</span>=<span class="string">"person"</span> value=<span class="string">"${{'name': 'Alice', 'age': 30}}"</span>/&gt;
+&lt;p&gt;Name: ${person[<span class="string">'name'</span>]}, Age: ${person[<span class="string">'age'</span>]}&lt;/p&gt;</code></pre>
 
 <h3 id="条件判断和循环"><a href="#条件判断和循环" class="headerlink" title="条件判断和循环"></a>条件判断和循环</h3><p>使用EL表达式进行条件判断和循环。</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:<span class="keyword">if</span> test=<span class="string">"${age &gt;= 18}"</span>&gt;</span><br><span class="line">    &lt;p&gt;You are an adult.&lt;/p&gt;</span><br><span class="line">&lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;c:forEach items=<span class="string">"${fruits}"</span> <span class="keyword">var</span>=<span class="string">"fruit"</span>&gt;</span><br><span class="line">    &lt;p&gt;${fruit}&lt;/p&gt;</span><br><span class="line">&lt;/c:forEach&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;c:<span class="keyword">if</span> test=<span class="string">"${age &gt;= 18}"</span>&gt;
+    &lt;p&gt;You are an adult.&lt;/p&gt;
+&lt;/c:<span class="keyword">if</span>&gt;
+
+&lt;c:forEach items=<span class="string">"${fruits}"</span> <span class="keyword">var</span>=<span class="string">"fruit"</span>&gt;
+    &lt;p&gt;${fruit}&lt;/p&gt;
+&lt;/c:forEach&gt;</code></pre>
 
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>EL表达式是一种简化访问和操作数据的方式，可以在JSP页面中轻松地引用JavaBean的属性和方法。它的简洁语法和强大功能使得在Web开发中更加便捷和高效。</p>
 <h1 id="10-JSTL-JavaServer-Pages-Standard-Tag-Library-简介与基础使用"><a href="#10-JSTL-JavaServer-Pages-Standard-Tag-Library-简介与基础使用" class="headerlink" title="10.JSTL (JavaServer Pages Standard Tag Library) 简介与基础使用"></a>10.JSTL (JavaServer Pages Standard Tag Library) 简介与基础使用</h1><h2 id="什么是-JSTL？"><a href="#什么是-JSTL？" class="headerlink" title="什么是 JSTL？"></a>什么是 JSTL？</h2><p>JavaServer Pages Standard Tag Library (JSTL) 是一组用于在 JSP 页面中执行通用任务的标签集合。它提供了一种在 JSP 页面中编写更简洁、易于维护的代码的方式，同时还有助于将页面逻辑和显示分离开来。JSTL 包含多个标签库，每个库都专注于不同的任务。</p>
 <h2 id="JSTL-的核心标签库"><a href="#JSTL-的核心标签库" class="headerlink" title="JSTL 的核心标签库"></a>JSTL 的核心标签库</h2><p>JSTL 核心标签库提供了基本的控制结构和变量处理功能。</p>
 <h3 id="1"><a href="#1" class="headerlink" title="1. <c:out>"></a>1. <code>&lt;c:out&gt;</code></h3><p>用于在页面中输出变量值，可以防止 HTML 和 JavaScript 注入攻击。</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:out value=<span class="string">"${variable}"</span> /&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;c:out value=<span class="string">"${variable}"</span> /&gt;</code></pre>
 
 <h3 id="2"><a href="#2" class="headerlink" title="2. <c:set>"></a>2. <code>&lt;c:set&gt;</code></h3><p>用于设置变量值。</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:set <span class="keyword">var</span>=<span class="string">"count"</span> value=<span class="string">"10"</span> /&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;c:set <span class="keyword">var</span>=<span class="string">"count"</span> value=<span class="string">"10"</span> /&gt;</code></pre>
 
 <h3 id="3"><a href="#3" class="headerlink" title="3. <c:if>"></a>3. <code>&lt;c:if&gt;</code></h3><p>条件判断标签，根据表达式的值决定是否执行其中的内容。</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:<span class="keyword">if</span> test=<span class="string">"${age &gt; 18}"</span>&gt;</span><br><span class="line">    &lt;!-- 在年龄大于 <span class="number">18</span> 时显示的内容 --&gt;</span><br><span class="line">&lt;/c:<span class="keyword">if</span>&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;c:<span class="keyword">if</span> test=<span class="string">"${age &gt; 18}"</span>&gt;
+    &lt;!-- 在年龄大于 <span class="number">18</span> 时显示的内容 --&gt;
+&lt;/c:<span class="keyword">if</span>&gt;</code></pre>
 
 <h3 id="4"><a href="#4" class="headerlink" title="4. <c:choose>, <c:when>, <c:otherwise>"></a>4. <code>&lt;c:choose&gt;</code>, <code>&lt;c:when&gt;</code>, <code>&lt;c:otherwise&gt;</code></h3><p>类似于 Java 中的 switch 语句，根据条件执行不同的分支。</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:choose&gt;</span><br><span class="line">    &lt;c:when test=<span class="string">"${day == 'Monday'}"</span>&gt;</span><br><span class="line">        &lt;!-- 星期一的处理 --&gt;</span><br><span class="line">    &lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=<span class="string">"${day == 'Tuesday'}"</span>&gt;</span><br><span class="line">        &lt;!-- 星期二的处理 --&gt;</span><br><span class="line">    &lt;/c:when&gt;</span><br><span class="line">    &lt;c:otherwise&gt;</span><br><span class="line">        &lt;!-- 其他情况的处理 --&gt;</span><br><span class="line">    &lt;/c:otherwise&gt;</span><br><span class="line">&lt;/c:choose&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;c:choose&gt;
+    &lt;c:when test=<span class="string">"${day == 'Monday'}"</span>&gt;
+        &lt;!-- 星期一的处理 --&gt;
+    &lt;/c:when&gt;
+    &lt;c:when test=<span class="string">"${day == 'Tuesday'}"</span>&gt;
+        &lt;!-- 星期二的处理 --&gt;
+    &lt;/c:when&gt;
+    &lt;c:otherwise&gt;
+        &lt;!-- 其他情况的处理 --&gt;
+    &lt;/c:otherwise&gt;
+&lt;/c:choose&gt;</code></pre>
 
 <h3 id="5"><a href="#5" class="headerlink" title="5. <c:forEach>"></a>5. <code>&lt;c:forEach&gt;</code></h3><p>用于循环迭代集合或数组。</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:forEach items=<span class="string">"${products}"</span> <span class="keyword">var</span>=<span class="string">"product"</span>&gt;</span><br><span class="line">    &lt;!-- 对每个产品执行的操作 --&gt;</span><br><span class="line">&lt;/c:forEach&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;c:forEach items=<span class="string">"${products}"</span> <span class="keyword">var</span>=<span class="string">"product"</span>&gt;
+    &lt;!-- 对每个产品执行的操作 --&gt;
+&lt;/c:forEach&gt;</code></pre>
 
 <h3 id="6"><a href="#6" class="headerlink" title="6. <c:url>"></a>6. <code>&lt;c:url&gt;</code></h3><p>用于生成带有参数的 URL。</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:url value=<span class="string">"/productDetails.jsp"</span>&gt;</span><br><span class="line">    &lt;c:param name=<span class="string">"productId"</span> value=<span class="string">"123"</span> /&gt;</span><br><span class="line">&lt;/c:url&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;c:url value=<span class="string">"/productDetails.jsp"</span>&gt;
+    &lt;c:param name=<span class="string">"productId"</span> value=<span class="string">"123"</span> /&gt;
+&lt;/c:url&gt;</code></pre>
 
 <h2 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h2><p>下面是一个简单的示例，展示如何在 JSP 页面中使用 JSTL 标签库来输出一个集合中的用户列表：</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib prefix=<span class="string">"c"</span> uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> %&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;User List&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;User List&lt;/h1&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;c:forEach items=<span class="string">"${users}"</span> <span class="keyword">var</span>=<span class="string">"user"</span>&gt;</span><br><span class="line">            &lt;li&gt;&lt;c:out value=<span class="string">"${user}"</span> /&gt;&lt;/li&gt;</span><br><span class="line">        &lt;/c:forEach&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;%@ taglib prefix=<span class="string">"c"</span> uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> %&gt;
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;User List&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;User List&lt;/h1&gt;
+    &lt;ul&gt;
+        &lt;c:forEach items=<span class="string">"${users}"</span> <span class="keyword">var</span>=<span class="string">"user"</span>&gt;
+            &lt;li&gt;&lt;c:out value=<span class="string">"${user}"</span> /&gt;&lt;/li&gt;
+        &lt;/c:forEach&gt;
+    &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
 
 <p>在上述示例中，<code>${users}</code> 是一个从后端传递到前端的用户列表，<code>&lt;c:forEach&gt;</code> 标签用于循环遍历列表中的每个用户，并使用 <code>&lt;c:out&gt;</code> 标签输出用户信息。</p>
 <p>这只是 JSTL 的基础使用介绍，它还有其他标签库，如格式化标签库、XML 标签库等，可以根据不同的需求进行学习和使用。</p>
-<h2 id="更容易理解的例子"><a href="#更容易理解的例子" class="headerlink" title="更容易理解的例子"></a>更容易理解的例子</h2><figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib prefix=<span class="string">"c"</span> uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> %&gt;</span><br><span class="line">&lt;%--</span><br><span class="line">  Created by IntelliJ IDEA.</span><br><span class="line">  User: Administrator</span><br><span class="line">  Date: <span class="number">2023</span>/<span class="number">8</span>/<span class="number">28</span></span><br><span class="line">  Time: <span class="number">14</span>:<span class="number">39</span></span><br><span class="line">  To change <span class="built_in">this</span> template use File | Settings | File Templates.</span><br><span class="line">--%&gt;</span><br><span class="line">&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;数据展示&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;table border=<span class="string">"1"</span>&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;th&gt;id&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;name&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;price&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;dese&lt;/th&gt;</span><br><span class="line">        &lt;th&gt;状态&lt;/th&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;c:forEach items=<span class="string">"${list}"</span> <span class="keyword">var</span>=<span class="string">"m"</span> varStatus=<span class="string">"status"</span>&gt;</span><br><span class="line">    &lt;tr&gt;</span><br><span class="line">        &lt;td&gt;${m.id}&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;${m.product_name}&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;${m.product_price}&lt;/td&gt;</span><br><span class="line">        &lt;td&gt;${m.product_desc}&lt;/td&gt;</span><br><span class="line">        &lt;c:set <span class="keyword">var</span>=<span class="string">"flag"</span> value=<span class="string">"${m.flag}"</span>&gt;&lt;/c:set&gt;</span><br><span class="line">        &lt;c:<span class="keyword">if</span> test=<span class="string">"${flag &lt; 1}"</span>&gt;</span><br><span class="line">            &lt;td&gt;上架&lt;/td&gt;</span><br><span class="line">        &lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line">        &lt;c:<span class="keyword">if</span> test=<span class="string">"${flag &gt; 1}"</span>&gt;</span><br><span class="line">            &lt;td&gt;下架&lt;/td&gt;</span><br><span class="line">        &lt;/c:<span class="keyword">if</span>&gt;</span><br><span class="line">    &lt;/tr&gt;</span><br><span class="line">&lt;/c:forEach&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;script src=<span class="string">"js/jquery.min.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="更容易理解的例子"><a href="#更容易理解的例子" class="headerlink" title="更容易理解的例子"></a>更容易理解的例子</h2><pre><code class="highlight jsp">&lt;%@ taglib prefix=<span class="string">"c"</span> uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> %&gt;
+&lt;%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: <span class="number">2023</span>/<span class="number">8</span>/<span class="number">28</span>
+  Time: <span class="number">14</span>:<span class="number">39</span>
+  To change <span class="built_in">this</span> template use File | Settings | File Templates.
+--%&gt;
+&lt;%@ page contentType=<span class="string">"text/html;charset=UTF-8"</span> language=<span class="string">"java"</span> %&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;数据展示&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;table border=<span class="string">"1"</span>&gt;
+    &lt;tr&gt;
+        &lt;th&gt;id&lt;/th&gt;
+        &lt;th&gt;name&lt;/th&gt;
+        &lt;th&gt;price&lt;/th&gt;
+        &lt;th&gt;dese&lt;/th&gt;
+        &lt;th&gt;状态&lt;/th&gt;
+    &lt;/tr&gt;
+&lt;c:forEach items=<span class="string">"${list}"</span> <span class="keyword">var</span>=<span class="string">"m"</span> varStatus=<span class="string">"status"</span>&gt;
+    &lt;tr&gt;
+        &lt;td&gt;${m.id}&lt;/td&gt;
+        &lt;td&gt;${m.product_name}&lt;/td&gt;
+        &lt;td&gt;${m.product_price}&lt;/td&gt;
+        &lt;td&gt;${m.product_desc}&lt;/td&gt;
+        &lt;c:set <span class="keyword">var</span>=<span class="string">"flag"</span> value=<span class="string">"${m.flag}"</span>&gt;&lt;/c:set&gt;
+        &lt;c:<span class="keyword">if</span> test=<span class="string">"${flag &lt; 1}"</span>&gt;
+            &lt;td&gt;上架&lt;/td&gt;
+        &lt;/c:<span class="keyword">if</span>&gt;
+        &lt;c:<span class="keyword">if</span> test=<span class="string">"${flag &gt; 1}"</span>&gt;
+            &lt;td&gt;下架&lt;/td&gt;
+        &lt;/c:<span class="keyword">if</span>&gt;
+    &lt;/tr&gt;
+&lt;/c:forEach&gt;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;script src=<span class="string">"js/jquery.min.js"</span>&gt;&lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
 
 
 
 <h1 id="11-tomcat链接数据库"><a href="#11-tomcat链接数据库" class="headerlink" title="11.tomcat链接数据库"></a>11.tomcat链接数据库</h1><h2 id="请求传值"><a href="#请求传值" class="headerlink" title="请求传值"></a>请求传值</h2><p>通过超链接能够向java Service发值，然后用request.getParameter();进行接收</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button&gt;&lt;a href=<span class="string">"Stu?flag=Del&amp;xid=${stu.sid}"</span>&gt;删除&lt;/a&gt;&lt;/button&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;button&gt;&lt;a href=<span class="string">"Stu?flag=Del&amp;xid=${stu.sid}"</span>&gt;删除&lt;/a&gt;&lt;/button&gt;</code></pre>
 
 <p>Java接收</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">flag</span> <span class="operator">=</span> request.getParameter(<span class="string">"flag"</span>);</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight java"><span class="type">String</span> <span class="variable">flag</span> <span class="operator">=</span> request.getParameter(<span class="string">"flag"</span>);</code></pre>
 
 <h2 id="提交表单传值"><a href="#提交表单传值" class="headerlink" title="提交表单传值"></a>提交表单传值</h2><p>通过提交from表单可以将表单的值全部传递到Java接收，照理同样用request.getParameter();进行接收</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;form method=<span class="string">"post"</span> action=<span class="string">"Stu"</span>&gt;</span><br><span class="line">    &lt;c:forEach items=<span class="string">"${liststu}"</span> <span class="keyword">var</span>=<span class="string">"stu"</span> varStatus=<span class="string">"status"</span>&gt;</span><br><span class="line">        &lt;input type=<span class="string">"hidden"</span> name=<span class="string">"xid"</span> value=<span class="string">"${stu.sid}"</span>&gt;</span><br><span class="line">        &lt;input type=<span class="string">"hidden"</span> name=<span class="string">"flag"</span> value=<span class="string">"upDate"</span>&gt;</span><br><span class="line">        &lt;p&gt;名字: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.sname}"</span> name=<span class="string">"xname"</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;性别: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.sgender}"</span> name=<span class="string">"xgender"</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;年龄: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.sage}"</span> name=<span class="string">"xage"</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;地址: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.saddress}"</span> name=<span class="string">"xaddress"</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;邮箱: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.semail}"</span> name=<span class="string">"xemail"</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;input type=<span class="string">"submit"</span> value=<span class="string">"更改"</span>&gt;</span><br><span class="line">        &lt;button&gt;&lt;a href=<span class="string">"Stu?flag=Del&amp;xid=${stu.sid}"</span>&gt;删除&lt;/a&gt;&lt;/button&gt;</span><br><span class="line">    &lt;/c:forEach&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;form method=<span class="string">"post"</span> action=<span class="string">"Stu"</span>&gt;
+    &lt;c:forEach items=<span class="string">"${liststu}"</span> <span class="keyword">var</span>=<span class="string">"stu"</span> varStatus=<span class="string">"status"</span>&gt;
+        &lt;input type=<span class="string">"hidden"</span> name=<span class="string">"xid"</span> value=<span class="string">"${stu.sid}"</span>&gt;
+        &lt;input type=<span class="string">"hidden"</span> name=<span class="string">"flag"</span> value=<span class="string">"upDate"</span>&gt;
+        &lt;p&gt;名字: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.sname}"</span> name=<span class="string">"xname"</span>&gt;&lt;/p&gt;
+        &lt;p&gt;性别: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.sgender}"</span> name=<span class="string">"xgender"</span>&gt;&lt;/p&gt;
+        &lt;p&gt;年龄: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.sage}"</span> name=<span class="string">"xage"</span>&gt;&lt;/p&gt;
+        &lt;p&gt;地址: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.saddress}"</span> name=<span class="string">"xaddress"</span>&gt;&lt;/p&gt;
+        &lt;p&gt;邮箱: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.semail}"</span> name=<span class="string">"xemail"</span>&gt;&lt;/p&gt;
+        &lt;input type=<span class="string">"submit"</span> value=<span class="string">"更改"</span>&gt;
+        &lt;button&gt;&lt;a href=<span class="string">"Stu?flag=Del&amp;xid=${stu.sid}"</span>&gt;删除&lt;/a&gt;&lt;/button&gt;
+    &lt;/c:forEach&gt;
+&lt;/form&gt;</code></pre>
 
 <p>Java接收</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">xname</span> <span class="operator">=</span> request.getParameter(<span class="string">"xname"</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xgender</span> <span class="operator">=</span> request.getParameter(<span class="string">"xgender"</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xage</span> <span class="operator">=</span> request.getParameter(<span class="string">"xage"</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xaddress</span> <span class="operator">=</span> request.getParameter(<span class="string">"xaddress"</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xemail</span> <span class="operator">=</span> request.getParameter(<span class="string">"xemail"</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xid</span> <span class="operator">=</span> request.getParameter(<span class="string">"xid"</span>);</span><br><span class="line">          System.out.println(<span class="string">"测试获取FindID的表值"</span> + xaddress + xage + xname + xgender + xemail +xid);</span><br><span class="line">          <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> StuList.UpDate(xname, xgender, Integer.parseInt(xage), xaddress, xemail,Integer.parseInt(xid));</span><br><span class="line">          <span class="keyword">if</span> (i &gt; <span class="number">0</span>){</span><br><span class="line">              List&lt;Student&gt; students = StuList.StuShow();</span><br><span class="line">              session.setAttribute(<span class="string">"list"</span>,students);</span><br><span class="line">              response.sendRedirect(<span class="string">"home.jsp"</span>);</span><br><span class="line">          }<span class="keyword">else</span>{</span><br><span class="line">              response.sendRedirect(<span class="string">"index.jsp"</span>);</span><br><span class="line">          }</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight java"><span class="type">String</span> <span class="variable">xname</span> <span class="operator">=</span> request.getParameter(<span class="string">"xname"</span>);
+          <span class="type">String</span> <span class="variable">xgender</span> <span class="operator">=</span> request.getParameter(<span class="string">"xgender"</span>);
+          <span class="type">String</span> <span class="variable">xage</span> <span class="operator">=</span> request.getParameter(<span class="string">"xage"</span>);
+          <span class="type">String</span> <span class="variable">xaddress</span> <span class="operator">=</span> request.getParameter(<span class="string">"xaddress"</span>);
+          <span class="type">String</span> <span class="variable">xemail</span> <span class="operator">=</span> request.getParameter(<span class="string">"xemail"</span>);
+          <span class="type">String</span> <span class="variable">xid</span> <span class="operator">=</span> request.getParameter(<span class="string">"xid"</span>);
+          System.out.println(<span class="string">"测试获取FindID的表值"</span> + xaddress + xage + xname + xgender + xemail +xid);
+          <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> StuList.UpDate(xname, xgender, Integer.parseInt(xage), xaddress, xemail,Integer.parseInt(xid));
+          <span class="keyword">if</span> (i &gt; <span class="number">0</span>){
+              List&lt;Student&gt; students = StuList.StuShow();
+              session.setAttribute(<span class="string">"list"</span>,students);
+              response.sendRedirect(<span class="string">"home.jsp"</span>);
+          }<span class="keyword">else</span>{
+              response.sendRedirect(<span class="string">"index.jsp"</span>);
+          }</code></pre>
 
 <p>如果有一些特殊的值需要传递但是又不能用a标签传递，那么可以用input标签将属性设定为隐藏后，一同提交到Java Service里</p>
 <h2 id="Java-Service跳转JSP网页"><a href="#Java-Service跳转JSP网页" class="headerlink" title="Java Service跳转JSP网页"></a>Java Service跳转JSP网页</h2><p>通过使用response.sendRedirect进行跳转</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">response.sendRedirect(<span class="string">"home.jsp"</span>);</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight java">response.sendRedirect(<span class="string">"home.jsp"</span>);</code></pre>
 
 <h2 id="Java-Service如何传值给Jsp网页"><a href="#Java-Service如何传值给Jsp网页" class="headerlink" title="Java Service如何传值给Jsp网页"></a>Java Service如何传值给Jsp网页</h2><p>通过保存会话到Session，然后在JSP网页中调用会话，进行传递</p>
 <p>可以选择压缩成集合进行传递，也可以单个变量，使用集合后可以在Jsp里用JSTL核心标签库的&lt;c:forEach&gt;标签进行循环遍历</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(<span class="string">"第三个flag:"</span> + flag);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xname</span> <span class="operator">=</span> request.getParameter(<span class="string">"xname"</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xgender</span> <span class="operator">=</span> request.getParameter(<span class="string">"xgender"</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xage</span> <span class="operator">=</span> request.getParameter(<span class="string">"xage"</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xaddress</span> <span class="operator">=</span> request.getParameter(<span class="string">"xaddress"</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xemail</span> <span class="operator">=</span> request.getParameter(<span class="string">"xemail"</span>);</span><br><span class="line">          <span class="type">String</span> <span class="variable">xid</span> <span class="operator">=</span> request.getParameter(<span class="string">"xid"</span>);</span><br><span class="line">          System.out.println(<span class="string">"测试获取FindID的表值"</span> + xaddress + xage + xname + xgender + xemail +xid);</span><br><span class="line">          <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> StuList.UpDate(xname, xgender, Integer.parseInt(xage), xaddress, xemail,Integer.parseInt(xid));</span><br><span class="line">          <span class="keyword">if</span> (i &gt; <span class="number">0</span>){</span><br><span class="line">              List&lt;Student&gt; students = StuList.StuShow();</span><br><span class="line">              session.setAttribute(<span class="string">"list"</span>,students);</span><br><span class="line">              response.sendRedirect(<span class="string">"home.jsp"</span>);</span><br><span class="line">          }<span class="keyword">else</span>{</span><br><span class="line">              response.sendRedirect(<span class="string">"index.jsp"</span>);</span><br><span class="line">          }</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight java">System.out.println(<span class="string">"第三个flag:"</span> + flag);
+          <span class="type">String</span> <span class="variable">xname</span> <span class="operator">=</span> request.getParameter(<span class="string">"xname"</span>);
+          <span class="type">String</span> <span class="variable">xgender</span> <span class="operator">=</span> request.getParameter(<span class="string">"xgender"</span>);
+          <span class="type">String</span> <span class="variable">xage</span> <span class="operator">=</span> request.getParameter(<span class="string">"xage"</span>);
+          <span class="type">String</span> <span class="variable">xaddress</span> <span class="operator">=</span> request.getParameter(<span class="string">"xaddress"</span>);
+          <span class="type">String</span> <span class="variable">xemail</span> <span class="operator">=</span> request.getParameter(<span class="string">"xemail"</span>);
+          <span class="type">String</span> <span class="variable">xid</span> <span class="operator">=</span> request.getParameter(<span class="string">"xid"</span>);
+          System.out.println(<span class="string">"测试获取FindID的表值"</span> + xaddress + xage + xname + xgender + xemail +xid);
+          <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> StuList.UpDate(xname, xgender, Integer.parseInt(xage), xaddress, xemail,Integer.parseInt(xid));
+          <span class="keyword">if</span> (i &gt; <span class="number">0</span>){
+              List&lt;Student&gt; students = StuList.StuShow();
+              session.setAttribute(<span class="string">"list"</span>,students);
+              response.sendRedirect(<span class="string">"home.jsp"</span>);
+          }<span class="keyword">else</span>{
+              response.sendRedirect(<span class="string">"index.jsp"</span>);
+          }</code></pre>
 
 <p>Jsp页面</p>
-<figure class="highlight jsp"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;form method=<span class="string">"post"</span> action=<span class="string">"Stu"</span>&gt;</span><br><span class="line">    &lt;c:forEach items=<span class="string">"${liststu}"</span> <span class="keyword">var</span>=<span class="string">"stu"</span> varStatus=<span class="string">"status"</span>&gt;</span><br><span class="line">        &lt;input type=<span class="string">"hidden"</span> name=<span class="string">"xid"</span> value=<span class="string">"${stu.sid}"</span>&gt;</span><br><span class="line">        &lt;input type=<span class="string">"hidden"</span> name=<span class="string">"flag"</span> value=<span class="string">"upDate"</span>&gt;</span><br><span class="line">        &lt;p&gt;名字: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.sname}"</span> name=<span class="string">"xname"</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;性别: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.sgender}"</span> name=<span class="string">"xgender"</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;年龄: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.sage}"</span> name=<span class="string">"xage"</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;地址: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.saddress}"</span> name=<span class="string">"xaddress"</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;p&gt;邮箱: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.semail}"</span> name=<span class="string">"xemail"</span>&gt;&lt;/p&gt;</span><br><span class="line">        &lt;input type=<span class="string">"submit"</span> value=<span class="string">"更改"</span>&gt;</span><br><span class="line">        &lt;button&gt;&lt;a href=<span class="string">"Stu?flag=Del&amp;xid=${stu.sid}"</span>&gt;删除&lt;/a&gt;&lt;/button&gt;</span><br><span class="line">    &lt;/c:forEach&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight jsp">&lt;form method=<span class="string">"post"</span> action=<span class="string">"Stu"</span>&gt;
+    &lt;c:forEach items=<span class="string">"${liststu}"</span> <span class="keyword">var</span>=<span class="string">"stu"</span> varStatus=<span class="string">"status"</span>&gt;
+        &lt;input type=<span class="string">"hidden"</span> name=<span class="string">"xid"</span> value=<span class="string">"${stu.sid}"</span>&gt;
+        &lt;input type=<span class="string">"hidden"</span> name=<span class="string">"flag"</span> value=<span class="string">"upDate"</span>&gt;
+        &lt;p&gt;名字: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.sname}"</span> name=<span class="string">"xname"</span>&gt;&lt;/p&gt;
+        &lt;p&gt;性别: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.sgender}"</span> name=<span class="string">"xgender"</span>&gt;&lt;/p&gt;
+        &lt;p&gt;年龄: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.sage}"</span> name=<span class="string">"xage"</span>&gt;&lt;/p&gt;
+        &lt;p&gt;地址: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.saddress}"</span> name=<span class="string">"xaddress"</span>&gt;&lt;/p&gt;
+        &lt;p&gt;邮箱: &lt;input type=<span class="string">"text"</span> value=<span class="string">"${stu.semail}"</span> name=<span class="string">"xemail"</span>&gt;&lt;/p&gt;
+        &lt;input type=<span class="string">"submit"</span> value=<span class="string">"更改"</span>&gt;
+        &lt;button&gt;&lt;a href=<span class="string">"Stu?flag=Del&amp;xid=${stu.sid}"</span>&gt;删除&lt;/a&gt;&lt;/button&gt;
+    &lt;/c:forEach&gt;
+&lt;/form&gt;</code></pre>
 
 <p>在这其中，通过使用${stu.sname}可以调用Java代码，用来插入需要的信息</p>
 <h1 id="12-Ajax和jQuery"><a href="#12-Ajax和jQuery" class="headerlink" title="12.Ajax和jQuery"></a>12.Ajax和jQuery</h1><p>下午编写笔记</p>

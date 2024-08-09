@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>JAVA基础概念</title><meta name="description" content="每个人都是被人所爱才诞生到这个世界上的"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>JAVA基础概念</title><meta name="description" content="编程"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
 <!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/Blackcat-loveBlog/images/favicon.ico"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/bulma.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/base.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/helper.css"><script src="/Blackcat-loveBlog/js/common.js"></script><link rel="stylesheet" href="/Blackcat-loveBlog/style/post.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/jquery.fancybox.min.css"><script src="/Blackcat-loveBlog/js/highlight.pack.js"></script><meta name="description" content="概念理解变量可变的量、值，通常是数字(int,double)，小数(double)，整数(int)，字符串(String)，字符(char)。
 常量不可变的量，通常是一些常用的，比如一天24小时，1小时60分钟， 修饰符为 final。
 判断通过不同的条件语句进行对变量的判断，为true继续执行 为false结束执行。
@@ -37,27 +37,300 @@
 <p>3、父类引用变量指向子类对象（向上转型）。</p>
 <h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>Alt + Ins  //快速创建 构造类</p>
 <p>Ctrl + Alt + T  //调出所有的判断 循环 报错标准语句</p>
-<h1 id="基础语句"><a href="#基础语句" class="headerlink" title="基础语句"></a>基础语句</h1><h2 id="构建一个方法"><a href="#构建一个方法" class="headerlink" title="构建一个方法"></a>构建一个方法</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//默认系统自带无参构造方法</span></span><br><span class="line">   <span class="comment">//快捷键生成构造方法 alt + Ins</span></span><br><span class="line">   <span class="comment">//构建了一个无参方法</span></span><br><span class="line">   <span class="keyword">public</span> <span class="title function_">Corn</span><span class="params">()</span> {</span><br><span class="line">   }</span><br><span class="line"></span><br><span class="line"><span class="comment">//构建了一个有参方法</span></span><br><span class="line">   <span class="keyword">public</span> <span class="title function_">Corn</span><span class="params">(String name, <span class="type">int</span> growTime, <span class="type">int</span> harvestTime, <span class="type">int</span> numsOfFruits, String status, <span class="type">double</span> harvestCost, <span class="type">boolean</span> isHarvested)</span> {</span><br><span class="line">       <span class="built_in">this</span>.name = name;</span><br><span class="line">       <span class="built_in">this</span>.growTime = growTime;</span><br><span class="line">       <span class="built_in">this</span>.harvestTime = harvestTime;</span><br><span class="line">       <span class="built_in">this</span>.numsOfFruits = numsOfFruits;</span><br><span class="line">       <span class="built_in">this</span>.status = status;</span><br><span class="line">       <span class="built_in">this</span>.harvestCost = harvestCost;</span><br><span class="line">       <span class="built_in">this</span>.isHarvested = isHarvested;</span><br><span class="line">   }</span><br><span class="line"></span><br><span class="line"><span class="comment">//类的属性</span></span><br><span class="line">   <span class="keyword">public</span> <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">"玉米"</span>; <span class="comment">//名称</span></span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="variable">growTime</span> <span class="operator">=</span> <span class="number">8</span>; <span class="comment">//生长期</span></span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="variable">harvestTime</span> <span class="operator">=</span> <span class="number">3</span>; <span class="comment">//采摘期</span></span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="variable">numsOfFruits</span> <span class="operator">=</span> <span class="number">200</span>; <span class="comment">//果实数量</span></span><br><span class="line">   <span class="keyword">public</span> <span class="type">String</span> <span class="variable">status</span> <span class="operator">=</span> <span class="string">"生长期"</span>; <span class="comment">// 生长状态</span></span><br><span class="line">   <span class="keyword">public</span> <span class="type">double</span> <span class="variable">harvestCost</span> <span class="operator">=</span> <span class="number">50</span>; <span class="comment">//收割费用</span></span><br><span class="line">   <span class="keyword">public</span> <span class="type">boolean</span> <span class="variable">isHarvested</span> <span class="operator">=</span> <span class="literal">false</span>; <span class="comment">//是否已采摘</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//类的方法（行为）</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">()</span>{</span><br><span class="line">       System.out.println(<span class="string">"*******作物特性*******"</span>);</span><br><span class="line">       System.out.println(<span class="string">"您种植了:"</span> + <span class="built_in">this</span>.name + <span class="string">"。"</span>);</span><br><span class="line">       System.out.println(<span class="string">"生长日期:"</span> + <span class="built_in">this</span>.growTime + <span class="string">"。"</span>);</span><br><span class="line">       System.out.println(<span class="string">"采摘日期:"</span> + <span class="built_in">this</span>.harvestTime + <span class="string">"。"</span>);</span><br><span class="line">       System.out.println(<span class="string">"目前果实数量:"</span> + <span class="built_in">this</span>.numsOfFruits + <span class="string">"。"</span>);</span><br><span class="line">       System.out.println(<span class="string">"生长状态:"</span> + <span class="built_in">this</span>.status + <span class="string">"。"</span>);</span><br><span class="line">       System.out.println(<span class="string">"收割费用:"</span> + <span class="built_in">this</span>.harvestCost + <span class="string">"。"</span>);</span><br><span class="line">   }</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="基础语句"><a href="#基础语句" class="headerlink" title="基础语句"></a>基础语句</h1><h2 id="构建一个方法"><a href="#构建一个方法" class="headerlink" title="构建一个方法"></a>构建一个方法</h2><pre><code class="highlight java"><span class="comment">//默认系统自带无参构造方法</span>
+   <span class="comment">//快捷键生成构造方法 alt + Ins</span>
+   <span class="comment">//构建了一个无参方法</span>
+   <span class="keyword">public</span> <span class="title function_">Corn</span><span class="params">()</span> {
+   }
 
-<h2 id="静态-1"><a href="#静态-1" class="headerlink" title="静态"></a>静态</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dbqn.demo05;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> {</span><br><span class="line">    <span class="comment">//静态变量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span>  String name;</span><br><span class="line">    <span class="comment">//实例变量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> age;</span><br><span class="line">    <span class="comment">//静态方法</span></span><br><span class="line">    <span class="comment">//静态方法中不可以调用实例方法</span></span><br><span class="line">    <span class="comment">//静态方法可以调用静态方法</span></span><br><span class="line">    <span class="comment">//静态方法不可以调用静态变量</span></span><br><span class="line">    <span class="comment">//静态方法不能使用 this</span></span><br><span class="line">    <span class="comment">//静态方法不能调用实例变量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">Print</span><span class="params">()</span>{}</span><br><span class="line">    <span class="comment">//实例方法</span></span><br><span class="line">    <span class="comment">//实例方法中可以调用静态方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Print</span><span class="params">(<span class="type">int</span> age)</span>{}</span><br><span class="line"></span><br><span class="line">    <span class="comment">//静态代码块</span></span><br><span class="line">    <span class="keyword">static</span> { <span class="comment">// 当启动项加载时，会先执行静态代码块 如果执行顺序不对，可能是 new 对象的顺序不对</span></span><br><span class="line">        name = <span class="string">"小明"</span>;</span><br><span class="line">        <span class="comment">//静态代码块 只能给静态变量赋值</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">//常量</span></span><br><span class="line">    <span class="comment">//常量一般用 静态关键词修饰</span></span><br><span class="line">    <span class="comment">//常量名字一般 大写</span></span><br><span class="line">    <span class="comment">//常量 要加关键字 final</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span>  <span class="type">double</span> <span class="variable">PI</span> <span class="operator">=</span> <span class="number">3.14</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<span class="comment">//构建了一个有参方法</span>
+   <span class="keyword">public</span> <span class="title function_">Corn</span><span class="params">(String name, <span class="type">int</span> growTime, <span class="type">int</span> harvestTime, <span class="type">int</span> numsOfFruits, String status, <span class="type">double</span> harvestCost, <span class="type">boolean</span> isHarvested)</span> {
+       <span class="built_in">this</span>.name = name;
+       <span class="built_in">this</span>.growTime = growTime;
+       <span class="built_in">this</span>.harvestTime = harvestTime;
+       <span class="built_in">this</span>.numsOfFruits = numsOfFruits;
+       <span class="built_in">this</span>.status = status;
+       <span class="built_in">this</span>.harvestCost = harvestCost;
+       <span class="built_in">this</span>.isHarvested = isHarvested;
+   }
 
-<h2 id="封装-1"><a href="#封装-1" class="headerlink" title="封装"></a>封装</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dbqn.demo03;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AppleTtee</span> {</span><br><span class="line"></span><br><span class="line">    <span class="comment">//封装</span></span><br><span class="line">    <span class="comment">//第一步 属性私有化</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span>  <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">private</span>  String date;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//第二步 构建方法 获取或者 改变属性 快捷键  alt + Ins</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> {</span><br><span class="line">        <span class="keyword">if</span> (name.equals(<span class="string">"苹果"</span>)){  <span class="comment">// 私有化的时候 如果是this.name 就会报错 所以必须直接写名字 进行判断</span></span><br><span class="line">            <span class="built_in">this</span>.name = name;</span><br><span class="line">        }<span class="keyword">else</span> {</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">"您输入的名字不合理"</span>); <span class="comment">// 报错语句</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getAge</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(<span class="type">int</span> age)</span> {</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getDate</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">return</span> date;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setDate</span><span class="params">(String date)</span> {</span><br><span class="line">        <span class="built_in">this</span>.date = date;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">//在 set 方法中添加控制语句，设定条件 在上述更改</span></span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<span class="comment">//类的属性</span>
+   <span class="keyword">public</span> <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">"玉米"</span>; <span class="comment">//名称</span>
+   <span class="keyword">public</span> <span class="type">int</span> <span class="variable">growTime</span> <span class="operator">=</span> <span class="number">8</span>; <span class="comment">//生长期</span>
+   <span class="keyword">public</span> <span class="type">int</span> <span class="variable">harvestTime</span> <span class="operator">=</span> <span class="number">3</span>; <span class="comment">//采摘期</span>
+   <span class="keyword">public</span> <span class="type">int</span> <span class="variable">numsOfFruits</span> <span class="operator">=</span> <span class="number">200</span>; <span class="comment">//果实数量</span>
+   <span class="keyword">public</span> <span class="type">String</span> <span class="variable">status</span> <span class="operator">=</span> <span class="string">"生长期"</span>; <span class="comment">// 生长状态</span>
+   <span class="keyword">public</span> <span class="type">double</span> <span class="variable">harvestCost</span> <span class="operator">=</span> <span class="number">50</span>; <span class="comment">//收割费用</span>
+   <span class="keyword">public</span> <span class="type">boolean</span> <span class="variable">isHarvested</span> <span class="operator">=</span> <span class="literal">false</span>; <span class="comment">//是否已采摘</span>
 
-<h2 id="重载-1"><a href="#重载-1" class="headerlink" title="重载"></a>重载</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dbqn.demo06;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Pande</span> {</span><br><span class="line"> <span class="comment">// 重载</span></span><br><span class="line">    <span class="comment">//同一个类中 方法名相同 参数类型不同 1.参数数据类型不同 2.参数个数不同 3.顺序不同 和返回值无关</span></span><br><span class="line">    <span class="comment">//参数个数不同</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">()</span>{}</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">(String a)</span>{}</span><br><span class="line">    <span class="comment">//参数数据类型不同</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span>  <span class="title function_">print</span><span class="params">(<span class="type">int</span> a)</span>{}</span><br><span class="line">    <span class="comment">//顺序不同</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">(<span class="type">int</span> a ,String b)</span>{}</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">(String b, <span class="type">int</span> a)</span>{}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<span class="comment">//类的方法（行为）</span>
+   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">()</span>{
+       System.out.println(<span class="string">"*******作物特性*******"</span>);
+       System.out.println(<span class="string">"您种植了:"</span> + <span class="built_in">this</span>.name + <span class="string">"。"</span>);
+       System.out.println(<span class="string">"生长日期:"</span> + <span class="built_in">this</span>.growTime + <span class="string">"。"</span>);
+       System.out.println(<span class="string">"采摘日期:"</span> + <span class="built_in">this</span>.harvestTime + <span class="string">"。"</span>);
+       System.out.println(<span class="string">"目前果实数量:"</span> + <span class="built_in">this</span>.numsOfFruits + <span class="string">"。"</span>);
+       System.out.println(<span class="string">"生长状态:"</span> + <span class="built_in">this</span>.status + <span class="string">"。"</span>);
+       System.out.println(<span class="string">"收割费用:"</span> + <span class="built_in">this</span>.harvestCost + <span class="string">"。"</span>);
+   }</code></pre>
+
+<h2 id="静态-1"><a href="#静态-1" class="headerlink" title="静态"></a>静态</h2><pre><code class="highlight java"><span class="keyword">package</span> com.dbqn.demo05;
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> {
+    <span class="comment">//静态变量</span>
+    <span class="keyword">public</span> <span class="keyword">static</span>  String name;
+    <span class="comment">//实例变量</span>
+    <span class="keyword">public</span> <span class="type">int</span> age;
+    <span class="comment">//静态方法</span>
+    <span class="comment">//静态方法中不可以调用实例方法</span>
+    <span class="comment">//静态方法可以调用静态方法</span>
+    <span class="comment">//静态方法不可以调用静态变量</span>
+    <span class="comment">//静态方法不能使用 this</span>
+    <span class="comment">//静态方法不能调用实例变量</span>
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">Print</span><span class="params">()</span>{}
+    <span class="comment">//实例方法</span>
+    <span class="comment">//实例方法中可以调用静态方法</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Print</span><span class="params">(<span class="type">int</span> age)</span>{}
+
+    <span class="comment">//静态代码块</span>
+    <span class="keyword">static</span> { <span class="comment">// 当启动项加载时，会先执行静态代码块 如果执行顺序不对，可能是 new 对象的顺序不对</span>
+        name = <span class="string">"小明"</span>;
+        <span class="comment">//静态代码块 只能给静态变量赋值</span>
+    }
+
+    <span class="comment">//常量</span>
+    <span class="comment">//常量一般用 静态关键词修饰</span>
+    <span class="comment">//常量名字一般 大写</span>
+    <span class="comment">//常量 要加关键字 final</span>
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span>  <span class="type">double</span> <span class="variable">PI</span> <span class="operator">=</span> <span class="number">3.14</span>;
+
+    <span class="comment">//</span>
+}</code></pre>
+
+<h2 id="封装-1"><a href="#封装-1" class="headerlink" title="封装"></a>封装</h2><pre><code class="highlight java"><span class="keyword">package</span> com.dbqn.demo03;
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AppleTtee</span> {
+
+    <span class="comment">//封装</span>
+    <span class="comment">//第一步 属性私有化</span>
+    <span class="keyword">private</span> String name;
+    <span class="keyword">private</span>  <span class="type">int</span> age;
+    <span class="keyword">private</span>  String date;
+
+    <span class="comment">//第二步 构建方法 获取或者 改变属性 快捷键  alt + Ins</span>
+
+    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> {
+        <span class="keyword">return</span> name;
+    }
+
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> {
+        <span class="keyword">if</span> (name.equals(<span class="string">"苹果"</span>)){  <span class="comment">// 私有化的时候 如果是this.name 就会报错 所以必须直接写名字 进行判断</span>
+            <span class="built_in">this</span>.name = name;
+        }<span class="keyword">else</span> {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">"您输入的名字不合理"</span>); <span class="comment">// 报错语句</span>
+        }
+    }
+
+    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getAge</span><span class="params">()</span> {
+        <span class="keyword">return</span> age;
+    }
+
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(<span class="type">int</span> age)</span> {
+        <span class="built_in">this</span>.age = age;
+    }
+
+    <span class="keyword">public</span> String <span class="title function_">getDate</span><span class="params">()</span> {
+        <span class="keyword">return</span> date;
+    }
+
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setDate</span><span class="params">(String date)</span> {
+        <span class="built_in">this</span>.date = date;
+    }
+    <span class="comment">//在 set 方法中添加控制语句，设定条件 在上述更改</span>
+
+}</code></pre>
+
+<h2 id="重载-1"><a href="#重载-1" class="headerlink" title="重载"></a>重载</h2><pre><code class="highlight java"><span class="keyword">package</span> com.dbqn.demo06;
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Pande</span> {
+ <span class="comment">// 重载</span>
+    <span class="comment">//同一个类中 方法名相同 参数类型不同 1.参数数据类型不同 2.参数个数不同 3.顺序不同 和返回值无关</span>
+    <span class="comment">//参数个数不同</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">()</span>{}
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">(String a)</span>{}
+    <span class="comment">//参数数据类型不同</span>
+    <span class="keyword">public</span> <span class="keyword">void</span>  <span class="title function_">print</span><span class="params">(<span class="type">int</span> a)</span>{}
+    <span class="comment">//顺序不同</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">(<span class="type">int</span> a ,String b)</span>{}
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">(String b, <span class="type">int</span> a)</span>{}
+}</code></pre>
 
 <h2 id="继承-1"><a href="#继承-1" class="headerlink" title="继承"></a>继承</h2><p>注意点： 写父级的时候要写有参构造 否则 子级继承的时候回报错</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br></pre></td><td class="code"><pre><span class="line">package com.dbqn.demo06_继承;</span><br><span class="line"></span><br><span class="line">public class Corp {</span><br><span class="line">    //注意事项</span><br><span class="line">    //不能被继承</span><br><span class="line">    //1.当父类的属性或方法的修饰符是Priveate</span><br><span class="line">    //2.当父类的属性或方法的修饰符是默认的，且不再同一个包中</span><br><span class="line">    //3.构造方法不能被继承，但可以被使用</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private String name; //名字</span><br><span class="line">    private  int growTime; //生长期</span><br><span class="line">    private  int harvestTime; //采摘期</span><br><span class="line">    private  int numsOfFruits; //果实数量</span><br><span class="line">    private  String status; //生长状态</span><br><span class="line">    private  boolean isHarvested; //是否采摘</span><br><span class="line"></span><br><span class="line">    //构造参数</span><br><span class="line">    //有参构造</span><br><span class="line">    public Corp(String name, int growTime, int harvestTime, int numsOfFruits, String status, boolean isHarvested) {</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.growTime = growTime;</span><br><span class="line">        this.harvestTime = harvestTime;</span><br><span class="line">        this.numsOfFruits = numsOfFruits;</span><br><span class="line">        this.status = status;</span><br><span class="line">        this.isHarvested = isHarvested;</span><br><span class="line">    }</span><br><span class="line">    //无参构造</span><br><span class="line">    public Corp() {</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    //封装</span><br><span class="line">    public String getName() {</span><br><span class="line">        return name;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public void setName(String name) {</span><br><span class="line">        this.name = name;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public int getGrowTime() {</span><br><span class="line">        return growTime;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public void setGrowTime(int growTime) {</span><br><span class="line">        this.growTime = growTime;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public int getHarvestTime() {</span><br><span class="line">        return harvestTime;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public void setHarvestTime(int harvestTime) {</span><br><span class="line">        this.harvestTime = harvestTime;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public int getNumsOfFruits() {</span><br><span class="line">        return numsOfFruits;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public void setNumsOfFruits(int numsOfFruits) {</span><br><span class="line">        this.numsOfFruits = numsOfFruits;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public String getStatus() {</span><br><span class="line">        return status;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public void setStatus(String status) {</span><br><span class="line">        this.status = status;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public boolean isHarvested() {</span><br><span class="line">        return isHarvested;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public void setHarvested(boolean harvested) {</span><br><span class="line">        isHarvested = harvested;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    //展示</span><br><span class="line">    public void print(){</span><br><span class="line">        System.out.println("*******作物特性*******");</span><br><span class="line">        System.out.println("您种植了:" + this.name + "。");</span><br><span class="line">        System.out.println("生长日期:" + this.growTime + "。");</span><br><span class="line">        System.out.println("采摘日期:" + this.harvestTime + "。");</span><br><span class="line">        System.out.println("目前果实数量:" + this.numsOfFruits + "。");</span><br><span class="line">        System.out.println("生长状态:" + this.status + "。");</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight text-x-java">package com.dbqn.demo06_继承;
+
+public class Corp {
+    //注意事项
+    //不能被继承
+    //1.当父类的属性或方法的修饰符是Priveate
+    //2.当父类的属性或方法的修饰符是默认的，且不再同一个包中
+    //3.构造方法不能被继承，但可以被使用
+
+
+
+    private String name; //名字
+    private  int growTime; //生长期
+    private  int harvestTime; //采摘期
+    private  int numsOfFruits; //果实数量
+    private  String status; //生长状态
+    private  boolean isHarvested; //是否采摘
+
+    //构造参数
+    //有参构造
+    public Corp(String name, int growTime, int harvestTime, int numsOfFruits, String status, boolean isHarvested) {
+        this.name = name;
+        this.growTime = growTime;
+        this.harvestTime = harvestTime;
+        this.numsOfFruits = numsOfFruits;
+        this.status = status;
+        this.isHarvested = isHarvested;
+    }
+    //无参构造
+    public Corp() {
+    }
+
+    //封装
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getGrowTime() {
+        return growTime;
+    }
+
+    public void setGrowTime(int growTime) {
+        this.growTime = growTime;
+    }
+
+    public int getHarvestTime() {
+        return harvestTime;
+    }
+
+    public void setHarvestTime(int harvestTime) {
+        this.harvestTime = harvestTime;
+    }
+
+    public int getNumsOfFruits() {
+        return numsOfFruits;
+    }
+
+    public void setNumsOfFruits(int numsOfFruits) {
+        this.numsOfFruits = numsOfFruits;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public boolean isHarvested() {
+        return isHarvested;
+    }
+
+    public void setHarvested(boolean harvested) {
+        isHarvested = harvested;
+    }
+
+    //展示
+    public void print(){
+        System.out.println("*******作物特性*******");
+        System.out.println("您种植了:" + this.name + "。");
+        System.out.println("生长日期:" + this.growTime + "。");
+        System.out.println("采摘日期:" + this.harvestTime + "。");
+        System.out.println("目前果实数量:" + this.numsOfFruits + "。");
+        System.out.println("生长状态:" + this.status + "。");
+
+    }
+}</code></pre>
 
 <p>tip:当子类继承了父类,它的构造方法会默认父类的无参构造，在调用父类的构造方法时，先进行属性的赋值</p>
-<h2 id="多态-1"><a href="#多态-1" class="headerlink" title="多态"></a>多态</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dbqn.demo06_继承;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Land</span> {</span><br><span class="line">    <span class="comment">//判断土地是否被种植</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="variable">flag</span> <span class="operator">=</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//种植苹果树</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">plant</span><span class="params">(AppleTree AppleTree)</span> {</span><br><span class="line">        <span class="keyword">if</span> (flag) {</span><br><span class="line">            System.out.println(<span class="string">"恭喜你，成功种植了苹果树"</span>);</span><br><span class="line">            AppleTree.print();</span><br><span class="line">            flag = <span class="literal">false</span>;</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            System.out.println(<span class="string">"抱歉，该土地已经被种植"</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">//种植玉米</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">plant</span><span class="params">(Corn Corn)</span> {</span><br><span class="line">        <span class="keyword">if</span> (flag) {</span><br><span class="line">            System.out.println(<span class="string">"恭喜你，成功种植了玉米"</span>);</span><br><span class="line">            Corn.print();</span><br><span class="line">            flag = <span class="literal">false</span>;</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            System.out.println(<span class="string">"抱歉，该土地已经被种植"</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">//种植西红柿</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">plant</span><span class="params">(Tomato Tomato)</span> {</span><br><span class="line">        <span class="keyword">if</span> (flag) {</span><br><span class="line">            System.out.println(<span class="string">"恭喜你，成功种植了玉米"</span>);</span><br><span class="line">            Tomato.print();</span><br><span class="line">            flag = <span class="literal">false</span>;</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            System.out.println(<span class="string">"抱歉，该土地已经被种植"</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">//在以下三种种植的时候，都是传入了子类的对象 以便可以引用 ，这种情况下有大量的重复性代码.</span></span><br><span class="line">    <span class="comment">//同一个方法中，用到不同的对象 ，简称为 多态</span></span><br><span class="line">    <span class="comment">//官方： 同一个方法中，不用的对象展现的方法，简称为 多态</span></span><br><span class="line">    <span class="comment">//所以直接传入父类对象作为参数 就可以简化代码 这被称之为多态</span></span><br><span class="line">    <span class="comment">//父类是也可以用子类的属性和方法的，他们是相同的</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">plant</span><span class="params">(Corp corp)</span> { <span class="comment">// new对象的时候直接New Corp也可以，因为子父类继承，构造方法也有子类的特殊属性的传递 所以不会报错</span></span><br><span class="line">        <span class="keyword">if</span> (flag) {</span><br><span class="line">            System.out.println(<span class="string">"恭喜你，成功种植了"</span> + corp.getName());</span><br><span class="line">            corp.print();</span><br><span class="line">            flag = <span class="literal">false</span>;</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            System.out.println(<span class="string">"抱歉，该土地已经被种植"</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    * 多态应用中(1.让父类作为形参传入方法)</span></span><br><span class="line"><span class="comment">    *向上转型(自动转化)</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="多态-1"><a href="#多态-1" class="headerlink" title="多态"></a>多态</h2><pre><code class="highlight java"><span class="keyword">package</span> com.dbqn.demo06_继承;
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Land</span> {
+    <span class="comment">//判断土地是否被种植</span>
+    <span class="keyword">public</span> <span class="type">boolean</span> <span class="variable">flag</span> <span class="operator">=</span> <span class="literal">true</span>;
+
+    <span class="comment">//种植苹果树</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">plant</span><span class="params">(AppleTree AppleTree)</span> {
+        <span class="keyword">if</span> (flag) {
+            System.out.println(<span class="string">"恭喜你，成功种植了苹果树"</span>);
+            AppleTree.print();
+            flag = <span class="literal">false</span>;
+        } <span class="keyword">else</span> {
+            System.out.println(<span class="string">"抱歉，该土地已经被种植"</span>);
+        }
+    }
+
+    <span class="comment">//种植玉米</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">plant</span><span class="params">(Corn Corn)</span> {
+        <span class="keyword">if</span> (flag) {
+            System.out.println(<span class="string">"恭喜你，成功种植了玉米"</span>);
+            Corn.print();
+            flag = <span class="literal">false</span>;
+        } <span class="keyword">else</span> {
+            System.out.println(<span class="string">"抱歉，该土地已经被种植"</span>);
+        }
+    }
+
+    <span class="comment">//种植西红柿</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">plant</span><span class="params">(Tomato Tomato)</span> {
+        <span class="keyword">if</span> (flag) {
+            System.out.println(<span class="string">"恭喜你，成功种植了玉米"</span>);
+            Tomato.print();
+            flag = <span class="literal">false</span>;
+        } <span class="keyword">else</span> {
+            System.out.println(<span class="string">"抱歉，该土地已经被种植"</span>);
+        }
+    }
+
+    <span class="comment">//在以下三种种植的时候，都是传入了子类的对象 以便可以引用 ，这种情况下有大量的重复性代码.</span>
+    <span class="comment">//同一个方法中，用到不同的对象 ，简称为 多态</span>
+    <span class="comment">//官方： 同一个方法中，不用的对象展现的方法，简称为 多态</span>
+    <span class="comment">//所以直接传入父类对象作为参数 就可以简化代码 这被称之为多态</span>
+    <span class="comment">//父类是也可以用子类的属性和方法的，他们是相同的</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">plant</span><span class="params">(Corp corp)</span> { <span class="comment">// new对象的时候直接New Corp也可以，因为子父类继承，构造方法也有子类的特殊属性的传递 所以不会报错</span>
+        <span class="keyword">if</span> (flag) {
+            System.out.println(<span class="string">"恭喜你，成功种植了"</span> + corp.getName());
+            corp.print();
+            flag = <span class="literal">false</span>;
+        } <span class="keyword">else</span> {
+            System.out.println(<span class="string">"抱歉，该土地已经被种植"</span>);
+        }
+    }
+
+    <span class="comment">/*</span>
+<span class="comment">    * 多态应用中(1.让父类作为形参传入方法)</span>
+<span class="comment">    *向上转型(自动转化)</span>
+<span class="comment">    *</span>
+<span class="comment">    * */</span>
+
+
+}</code></pre>
 
 <p>tip:这是以形参为父类的多态方法，以下是以返回值为父类的多态方法</p>
 <h2 id="强制转换"><a href="#强制转换" class="headerlink" title="强制转换"></a>强制转换</h2><p>在Java中，强制类型转换（也称为类型转换或类型转换）是将一个数据类型的值转换为另一个数据类型的过程。这通常是因为你需要在不同的数据类型之间进行操作或赋值，但Java的类型系统要求你明确地告诉编译器你的意图，因为一些类型转换可能导致数据丢失或不可预测的结果。</p>
 <p>要执行强制类型转换，你可以使用以下语法：</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java复制代码目标数据类型 变量名 = (目标数据类型) 原始数据;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight plaintext">java复制代码目标数据类型 变量名 = (目标数据类型) 原始数据;</code></pre>
 
 <p>这是一个简单的示例，演示如何将一个整数转换为浮点数：</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">intValue</span> <span class="operator">=</span> <span class="number">42</span>;</span><br><span class="line"><span class="type">double</span> <span class="variable">doubleValue</span> <span class="operator">=</span> (<span class="type">double</span>) intValue;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight java"><span class="type">int</span> <span class="variable">intValue</span> <span class="operator">=</span> <span class="number">42</span>;
+<span class="type">double</span> <span class="variable">doubleValue</span> <span class="operator">=</span> (<span class="type">double</span>) intValue;</code></pre>
 
 <p>在这个示例中，<code>(double)</code> 是强制类型转换操作符，它告诉编译器将整数值 <code>intValue</code> 转换为双精度浮点数，并将结果存储在 <code>doubleValue</code> 变量中。</p>
 <p>需要注意的几点事项：</p>

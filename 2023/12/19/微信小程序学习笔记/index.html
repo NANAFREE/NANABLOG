@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>微信小程序学习笔记</title><meta name="description" content="每个人都是被人所爱才诞生到这个世界上的"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>微信小程序学习笔记</title><meta name="description" content="编程"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
 <!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/Blackcat-loveBlog/images/favicon.ico"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/bulma.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/base.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/helper.css"><script src="/Blackcat-loveBlog/js/common.js"></script><link rel="stylesheet" href="/Blackcat-loveBlog/style/post.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/jquery.fancybox.min.css"><script src="/Blackcat-loveBlog/js/highlight.pack.js"></script><meta name="description" content="
 小程序简介小程序是一种全新的连接用户与服务的方式，它可以在微信内被便捷地获取和传播，同时具有出色的使用体验。
 官方文档:https://developers.weixin.qq.com/miniprogram/dev/framework/quickstart/
@@ -126,7 +126,17 @@ json
 <li><code>app.js</code> 文件：小程序的全局配置文件，包括全局变量、函数、生命周期函数等。</li>
 </ol>
 <p>以下是微信小程序项目目录树的一个示例：</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/my_wechat_app  </span><br><span class="line">|-- pages/  </span><br><span class="line">|   |-- index/  </span><br><span class="line">|   |   |-- index.js  </span><br><span class="line">|   |   |-- index.wxml  </span><br><span class="line">|   |   |-- index.wxss  </span><br><span class="line">|   |   |-- index.json  </span><br><span class="line">|-- utils/  </span><br><span class="line">|   |-- helper.js  </span><br><span class="line">|   |-- another_helper.js  </span><br><span class="line">|-- app.js</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight bash">/my_wechat_app  
+|-- pages/  
+|   |-- index/  
+|   |   |-- index.js  
+|   |   |-- index.wxml  
+|   |   |-- index.wxss  
+|   |   |-- index.json  
+|-- utils/  
+|   |-- helper.js  
+|   |-- another_helper.js  
+|-- app.js</code></pre>
 
 <p>这里只是一个基本的目录结构示例，实际上可能还有其他的文件夹和文件。为了方便新手理解，可以按照以下步骤操作：</p>
 <ol>
@@ -163,7 +173,8 @@ json
 <li>WXML (view, text, image, navigator)</li>
 </ul>
 <p><strong>2.属性节点不同</strong></p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;ahref="#"&gt;超链接&lt;/a&gt;</span><br><span class="line">&lt;navigator url="/pages/home/home"&gt;&lt;/navigator&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight plaintext">&lt;ahref="#"&gt;超链接&lt;/a&gt;
+&lt;navigator url="/pages/home/home"&gt;&lt;/navigator&gt;</code></pre>
 
 <p><strong>3.提供了类似于 Vue 中的模板语法</strong></p>
 <p>可以帮助我们快速实现模板的渲染</p>

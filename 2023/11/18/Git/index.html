@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>Git的基础使用</title><meta name="description" content="每个人都是被人所爱才诞生到这个世界上的"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>Git的基础使用</title><meta name="description" content="编程"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
 <!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/Blackcat-loveBlog/images/favicon.ico"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/bulma.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/base.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/helper.css"><script src="/Blackcat-loveBlog/js/common.js"></script><link rel="stylesheet" href="/Blackcat-loveBlog/style/post.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/jquery.fancybox.min.css"><script src="/Blackcat-loveBlog/js/highlight.pack.js"></script><meta name="description" content="以下是关于Git中几个区域及其作用的表格，包括暂存区、工作区、本地仓库和远程仓库：
 
 
@@ -60,38 +60,38 @@
 </ol>
 <p>命令:</p>
 <p>克隆 远程仓库 </p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git <span class="built_in">clone</span></code></pre>
 
 <p>检查本地仓库状态 </p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git status</code></pre>
 
 <p>将工作区的修改添加到暂存区 </p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add  &lt;file&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git add  &lt;file&gt;</code></pre>
 
 <p>将暂存区的修改提交到本地仓库 </p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &lt;msg&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git commit -m &lt;msg&gt;</code></pre>
 
 <p>将本地仓库提交到远程仓库 </p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git push</code></pre>
 
 <p>查看日志</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> </span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git <span class="built_in">log</span></code></pre>
 
 <p>tip:输入q退出</p>
 <p>查看提交记录</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git reflog</code></pre>
 
 <p>tip:使用此方式查看的文件Id比较短</p>
 <p>编写：</p>
 <p>在工作区撤销指定文件 </p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -- &lt;file&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git checkout -- &lt;file&gt;</code></pre>
 
 <p>从暂存区撤销到工作区 </p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset <span class="built_in">head</span> .  </span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git reset <span class="built_in">head</span> .</code></pre>
 
 <p>tip:当你已经将代码add 到暂存区的时候 你想要撤回先要将代码从暂存区撤销回工作区 才能使用checkout撤销文件做出修改</p>
 <p>从本地仓库撤销已提交消息</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git reset --hard</code></pre>
 
 <p>假设您有一个 Git 仓库，里面包含了一些提交记录，并且当前分支位于最新的提交上。现在，假设您误提交了一些代码并且想撤回这个提交。</p>
 <p>您可以使用 <code>git log</code> 命令查看提交记录，找到您想要撤回的提交的哈希值或引用，然后运行 <code>git reset --hard &lt;commit-hash&gt;</code> 命令撤回提交。在这个例子中，假设您要撤回最后一个提交，可以使用 <code>git reset --hard HEAD~1</code> 命令。</p>
@@ -99,7 +99,7 @@
 <p>回到之前的版本</p>
 <p>首先，使用 <code>git reflog</code> 命令可以查看提交历史记录以及每次操作对应的哈希值。这可以帮助你找到需要回退到的特定提交。接下来，你可以使用 <code>git revert --no-edit &lt;hash&gt;</code> 命令来撤销指定提交的更改，但不会打开编辑器以供编辑提交信息。</p>
 <p>例如，假设要回退到哈希值为 <code>&lt;hash&gt;</code> 的提交，你可以执行以下命令：</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert --no-edit &lt;<span class="built_in">hash</span>&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git revert --no-edit &lt;<span class="built_in">hash</span>&gt;</code></pre>
 
 <p>这将会创建一个新的提交，内容是撤销了哈希值为 <code>&lt;hash&gt;</code> 的提交所引入的更改。该命令不会打开编辑器以进行提交信息的修改，而是使用默认的撤销提交信息。</p>
 <p>分支</p>
@@ -154,57 +154,72 @@
 </tbody></table>
 <p>创建本地仓库和远程仓库然后链接仓库进行操作</p>
 <p>使用 </p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add &lt;name&gt; &lt;url&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git remote add &lt;name&gt; &lt;url&gt;</code></pre>
 
 <p>关联远程仓库</p>
 <p>强制拉取远程仓库的数据</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull --allow-unrelated-histories</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git pull --allow-unrelated-histories</code></pre>
 
 <p>如果在强制拉取的时候报错则需要输入当前远程仓库名字和分支</p>
 <p>然后将本地仓库内容推送到远程仓库</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line"></span><br><span class="line">git commit -m &lt;msg&gt; </span><br><span class="line"><span class="comment">#origin 是你链接远程仓库时设置的名称 master是你要推送的分支</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git add .
+
+git commit -m &lt;msg&gt; 
+<span class="comment">#origin 是你链接远程仓库时设置的名称 master是你要推送的分支</span>
+git push origin master</code></pre>
 
 <p>tip:如果报错</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git push</span><br><span class="line">fatal: The current branch master has no upstream branch.</span><br><span class="line">To push the current branch and <span class="built_in">set</span> the remote as upstream, use</span><br><span class="line"></span><br><span class="line">    git push --set-upstream origin master</span><br><span class="line"></span><br><span class="line">To have this happen automatically <span class="keyword">for</span> branches without a tracking</span><br><span class="line">upstream, see <span class="string">'push.autoSetupRemote'</span> <span class="keyword">in</span> <span class="string">'git help config'</span>.</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">$ git push
+fatal: The current branch master has no upstream branch.
+To push the current branch and <span class="built_in">set</span> the remote as upstream, use
+
+    git push --set-upstream origin master
+
+To have this happen automatically <span class="keyword">for</span> branches without a tracking
+upstream, see <span class="string">'push.autoSetupRemote'</span> <span class="keyword">in</span> <span class="string">'git help config'</span>.</code></pre>
 
 <p>则是因为你没有设置你要推送的远程仓库名称和分支</p>
 <p>分支:</p>
 <p>不同的分支都是独立的，合并分支后才会统一，适合多线程操作</p>
 <p>创建分支</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch &lt;分支名称&gt; master</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git branch &lt;分支名称&gt; master</code></pre>
 
 <p>推送分支到远程仓库</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push - u origin &lt;分支名称&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git push - u origin &lt;分支名称&gt;</code></pre>
 
 <p>创建一个新分支到远程仓库</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin &lt;new branch name&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git push origin &lt;new branch name&gt;</code></pre>
 
 <p>删除远程仓库的分支</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin --delete &lt;old-branch-name&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git push origin --delete &lt;old-branch-name&gt;</code></pre>
 
 <p>删除本地分支</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d &lt;branch-name&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git branch -d &lt;branch-name&gt;</code></pre>
 
 <p>查看分支</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git branch</code></pre>
 
 <p>查看所有分支</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git branch -a</code></pre>
 
 <p>tip:如果你创建了但是没有显示分支，那么就切换你创建的分支再回到主分支就出现了</p>
 <p>切换分支</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout &lt;分支名称&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git checkout &lt;分支名称&gt;</code></pre>
 
 <p>合并分支</p>
 <p>git merge master</p>
 <p>如果想要将其他分支的内容合并到master那么按照以下流程操作</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git checkout master </span><br><span class="line"></span><br><span class="line">git merge frr </span><br><span class="line"></span><br><span class="line">git push origin master</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git checkout master 
+
+git merge frr 
+
+git push origin master</code></pre>
 
 <p>或者直接</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git push</code></pre>
 
 <p>分支改名</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -m &lt;旧名字&gt; &lt;新名字&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">git branch -m &lt;旧名字&gt; &lt;新名字&gt;</code></pre>
 
 
 
@@ -212,11 +227,12 @@
 <h4 id="二-git常用命令"><a href="#二-git常用命令" class="headerlink" title="二.git常用命令"></a>二.git常用命令</h4><ol>
 <li><p>全局设置</p>
 <p>当安装Git后首先要做的事情是设置用户名称和email地址。这是非常重要的，因为每次Git提交都会使用该用户信息。<br>在Git命令行中执行下面命令:<br>◆设置用户信息</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name "zyw"</span><br><span class="line">git config --global user.email "1024655706@qq.com"</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight git">git config --global user.name "zyw"
+git config --global user.email "1024655706@qq.com"</code></pre>
 
 
 <p>◆查看配置信息</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight plaintext">git config --list</code></pre>
 
 
 <p>注意:上面设置的user.name和user.email并不是我们在注册码云账号时使用的用户名和邮箱，此处可以任意设置。</p>
@@ -306,7 +322,12 @@
 <li><p>按照图形化界面提交代码即可</p>
 </li>
 <li><p>如果是本地初始化仓库需要拉取 代码在进行提交</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Push rejected</span><br><span class="line">推拒</span><br><span class="line">Push to origin/master was rejected</span><br><span class="line">推到原点/主人被拒绝</span><br><span class="line">git pull origin master -–allow-unrelated-histories</span><br><span class="line">git push -u origin master -f</span><br></pre></td></tr></tbody></table></figure></li>
+<pre><code class="highlight git">Push rejected
+推拒
+Push to origin/master was rejected
+推到原点/主人被拒绝
+git pull origin master -–allow-unrelated-histories
+git push -u origin master -f</code></pre></li>
 </ol>
 </article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/Blackcat-loveBlog/2023/12/11/python/" title="python学习笔记"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">上一页: python学习笔记</span></a><a class="button is-default" href="/Blackcat-loveBlog/2023/10/13/Web/" title="Web学习笔记"><span class="has-text-weight-semibold">下一页: Web学习笔记</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Blackcat-love"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> 天明 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/Blackcat-loveBlog/js/jquery-3.6.1.min.js"></script><script src="/Blackcat-loveBlog/js/jquery-fancybox.min.js"></script><script src="/Blackcat-loveBlog/js/img_zoom.js"></script><script src="/Blackcat-loveBlog/js/post.js"></script><!-- hexo injector body_end start --><script data-pjax src="https://registry.npmmirror.com/oh-my-live2d/latest/files"></script><script>const oml2d = OML2D.loadOml2d({libraryUrls:{"complete":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/complete.js","cubism2":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism2.js","cubism5":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism5.js"},mobileDisplay:true,models:[{"path":"/Blackcat-loveBlog/live2d/波奇酱2.0/波奇酱2.0.model3.json","mobilePosition":[0,0],"mobileScale":0.1,"mobileStageStyle":{"width":180,"height":250},"motionPreloadStrategy":"IDLE","position":[-100,-100],"scale":0.15,"stageStyle":{"width":250,"height":250}},{"path":"/Blackcat-loveBlog/live2d/liang_vts/liang.model3.json","scale":0.12,"position":[0,60],"stageStyle":{"width":250},"mobileScale":0.1,"mobilePosition":[0,0],"mobileStageStyle":{"width":180}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
   return axios.get('https://v1.hitokoto.cn?c=i')

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>[2024]hexo部署静态博客到Github教程</title><meta name="description" content="每个人都是被人所爱才诞生到这个世界上的"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>[2024]hexo部署静态博客到Github教程</title><meta name="description" content="编程"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
 <!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/Blackcat-loveBlog/images/favicon.ico"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/bulma.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/base.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/helper.css"><script src="/Blackcat-loveBlog/js/common.js"></script><link rel="stylesheet" href="/Blackcat-loveBlog/style/post.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/jquery.fancybox.min.css"><script src="/Blackcat-loveBlog/js/highlight.pack.js"></script><meta name="description" content="维护博客，写博客，本身就是一件有意义的事情，在这个过程中，对自己的收获最大，这就像是以前的人们写笔记，不断总结，让自己变得更好。
 一开始总是会感到迷茫，不知道写什么，我觉得任何你想要分享的内容都可以，给他人带来启发，亦或者帮助他人解答困惑。
 如果你未来或者现在已经打算从事互联网相关的行业，那么博客必然能为你带来更多的帮助，总结自己的技术，既能够让自己理解更加深刻，再忘记的时候也能快速找到，这种不断构建属于自己的图书馆的感觉，真的很满足。
@@ -59,24 +59,28 @@
 <p>多试几次或者通过修改国内镜像来下载。</p>
 <h2 id="如果npm下载插件报错"><a href="#如果npm下载插件报错" class="headerlink" title="如果npm下载插件报错"></a>如果npm下载插件报错</h2><p>可是通过使用yarn add下载插件。</p>
 <h1 id="3-创建博客"><a href="#3-创建博客" class="headerlink" title="3.创建博客"></a>3.创建博客</h1><p>使用hexo init创建Hexo工具</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init '输入你的blog文件夹名称'</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight plaintext">hexo init '输入你的blog文件夹名称'</code></pre>
 
 <p>打开_config.yml更改deploy</p>
-<figure class="highlight yaml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span>     <span class="comment">#仓库链接</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br><span class="line">  <span class="attr">message:</span> <span class="string">'hello blog'</span> <span class="comment">#msg</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight yaml"><span class="attr">deploy:</span>
+  <span class="attr">type:</span> <span class="string">git</span>
+  <span class="attr">repo:</span>     <span class="comment">#仓库链接</span>
+  <span class="attr">branch:</span> <span class="string">main</span>
+  <span class="attr">message:</span> <span class="string">'hello blog'</span> <span class="comment">#msg</span></code></pre>
 
 <p>下载deploy插件</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight plaintext">npm install hexo-deployer-git --save</code></pre>
 
 <p>创建一个新文章</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new 'blog name'</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight plaintext">hexo new 'blog name'</code></pre>
 
 <p>在本地渲染运行</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight plaintext">hexo g</code></pre>
 
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight plaintext">hexo s</code></pre>
 
 <p>确保没有问题后，上传到github</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight plaintext">hexo d</code></pre>
 
 <p>打开Settings的Pages，将Branch改为main然后save保存。</p>
 <p>刷新等待，打开连接查看博客。</p>

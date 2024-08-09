@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>液金偏移检测软件</title><meta name="description" content="每个人都是被人所爱才诞生到这个世界上的"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>液金偏移检测软件</title><meta name="description" content="编程"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
 <!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/Blackcat-loveBlog/images/favicon.ico"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/bulma.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/base.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/helper.css"><script src="/Blackcat-loveBlog/js/common.js"></script><link rel="stylesheet" href="/Blackcat-loveBlog/style/post.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/jquery.fancybox.min.css"><script src="/Blackcat-loveBlog/js/highlight.pack.js"></script><meta name="description" content="说是液金偏移检测软件，其实也只是通过监控不同的核心温度温差来做一个是否偏移的判断
 oshi是一个用于获取系统信息的Java库，可以用来获取关于硬件、操作系统和进程的详细信息。它提供了一组简单易用的API，使得获取系统信息变得非常方便。
 oshi库的主要功能包括：
@@ -22,17 +22,52 @@ oshi库的主要功能包括：
 <p>总之，oshi库为Java开发者提供了一个强大且易用的工具，用于获取系统信息并进行相应处理。</p>
 <p>首先，你需要在Maven或Gradle中添加oshi库的依赖项。</p>
 <p>对于Maven项目，可以在 <code>pom.xml</code> 文件中添加以下依赖项：</p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.oshi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>oshi-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.7.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight xml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.oshi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>oshi-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.7.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></code></pre>
 
 <p>对于Gradle项目，可以在 <code>build.gradle</code> 文件中添加以下依赖项：</p>
-<figure class="highlight groovy"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies {</span><br><span class="line">    implementation <span class="string">'com.github.oshi:oshi-core:5.7.4'</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight groovy">dependencies {
+    implementation <span class="string">'com.github.oshi:oshi-core:5.7.4'</span>
+}</code></pre>
 
 <p>然后，你可以使用以下代码示例来获取CPU温度信息：</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> oshi.SystemInfo;</span><br><span class="line"><span class="keyword">import</span> oshi.hardware.CentralProcessor;</span><br><span class="line"><span class="keyword">import</span> oshi.hardware.Sensors;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        <span class="type">SystemInfo</span> <span class="variable">systemInfo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SystemInfo</span>();</span><br><span class="line">        <span class="type">CentralProcessor</span> <span class="variable">processor</span> <span class="operator">=</span> systemInfo.getHardware().getProcessor();</span><br><span class="line">        <span class="type">Sensors</span> <span class="variable">sensors</span> <span class="operator">=</span> systemInfo.getHardware().getSensors();</span><br><span class="line"></span><br><span class="line">        <span class="type">double</span> <span class="variable">cpuTemperature</span> <span class="operator">=</span> sensors.getCpuTemperature();</span><br><span class="line">        System.out.println(<span class="string">"CPU温度: "</span> + cpuTemperature + <span class="string">"°C"</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight java"><span class="keyword">import</span> oshi.SystemInfo;
+<span class="keyword">import</span> oshi.hardware.CentralProcessor;
+<span class="keyword">import</span> oshi.hardware.Sensors;
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {
+        <span class="type">SystemInfo</span> <span class="variable">systemInfo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SystemInfo</span>();
+        <span class="type">CentralProcessor</span> <span class="variable">processor</span> <span class="operator">=</span> systemInfo.getHardware().getProcessor();
+        <span class="type">Sensors</span> <span class="variable">sensors</span> <span class="operator">=</span> systemInfo.getHardware().getSensors();
+
+        <span class="type">double</span> <span class="variable">cpuTemperature</span> <span class="operator">=</span> sensors.getCpuTemperature();
+        System.out.println(<span class="string">"CPU温度: "</span> + cpuTemperature + <span class="string">"°C"</span>);
+    }
+}</code></pre>
 
 <p>这段代码将使用oshi库获取CPU温度信息，并将其打印到控制台上。记得处理可能的异常情况，比如未能获取到CPU温度的情况。</p>
 <p>在上一个示例中，我展示了如何使用oshi来获取整个CPU的温度，如果你想获取每一个CPU核心的温度，你可以使用以下代码：</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> oshi.SystemInfo;</span><br><span class="line"><span class="keyword">import</span> oshi.hardware.CentralProcessor;</span><br><span class="line"><span class="keyword">import</span> oshi.hardware.CentralProcessor.TickType;</span><br><span class="line"><span class="keyword">import</span> oshi.hardware.HardwareAbstractionLayer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> {</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">        <span class="type">SystemInfo</span> <span class="variable">systemInfo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SystemInfo</span>();</span><br><span class="line">        <span class="type">HardwareAbstractionLayer</span> <span class="variable">hardware</span> <span class="operator">=</span> systemInfo.getHardware();</span><br><span class="line">        <span class="type">CentralProcessor</span> <span class="variable">processor</span> <span class="operator">=</span> hardware.getProcessor();</span><br><span class="line"></span><br><span class="line">        <span class="type">double</span>[] temperatures = processor.getTemperatures();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; temperatures.length; i++) {</span><br><span class="line">            System.out.println(<span class="string">"Core "</span> + i + <span class="string">" 温度: "</span> + temperatures[i] + <span class="string">"°C"</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight java"><span class="keyword">import</span> oshi.SystemInfo;
+<span class="keyword">import</span> oshi.hardware.CentralProcessor;
+<span class="keyword">import</span> oshi.hardware.CentralProcessor.TickType;
+<span class="keyword">import</span> oshi.hardware.HardwareAbstractionLayer;
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {
+        <span class="type">SystemInfo</span> <span class="variable">systemInfo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SystemInfo</span>();
+        <span class="type">HardwareAbstractionLayer</span> <span class="variable">hardware</span> <span class="operator">=</span> systemInfo.getHardware();
+        <span class="type">CentralProcessor</span> <span class="variable">processor</span> <span class="operator">=</span> hardware.getProcessor();
+
+        <span class="type">double</span>[] temperatures = processor.getTemperatures();
+        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; temperatures.length; i++) {
+            System.out.println(<span class="string">"Core "</span> + i + <span class="string">" 温度: "</span> + temperatures[i] + <span class="string">"°C"</span>);
+        }
+    }
+}</code></pre>
 
 <p>在这段代码中，我们使用 <code>processor.getTemperatures()</code> 方法获取到每个CPU核心的温度，并将其打印出来。这样你就能够查看每个CPU核心的温度了。</p>
 <h3 id="返回结果是0"><a href="#返回结果是0" class="headerlink" title="返回结果是0"></a>返回结果是0</h3><p>很多PC机的硬件生产商一般都不会把CPU的温度、风扇转速、电压值向WMI开放，但是我们获取CPU的性能数据就是通过向WMI请求返回值的，这就造成请求下发但是不能返回值，返回的性能值都是 0 </p>

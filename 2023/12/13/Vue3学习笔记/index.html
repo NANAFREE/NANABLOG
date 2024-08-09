@@ -1,4 +1,4 @@
-<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>Vue3学习笔记</title><meta name="description" content="每个人都是被人所爱才诞生到这个世界上的"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>Vue3学习笔记</title><meta name="description" content="编程"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
 <!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/Blackcat-loveBlog/images/favicon.ico"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/bulma.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/base.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/helper.css"><script src="/Blackcat-loveBlog/js/common.js"></script><link rel="stylesheet" href="/Blackcat-loveBlog/style/post.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/jquery.fancybox.min.css"><script src="/Blackcat-loveBlog/js/highlight.pack.js"></script><meta name="description" content="Vue3
 官方文档:https://cn.vuejs.org/guide/introduction.html
 Vue (发音为 /vjuː/，类似 view) 是一款用于构建用户界面的 JavaScript 框架。它基于标准 HTML、CSS 和 JavaScript 构建，并提供了一套声明式的、组件化的编程模型，帮助你高效地开发用户界面。无论是简单还是复杂的界面，Vue 都可以胜任。
@@ -27,79 +27,374 @@ Composition API：引入了Composition API，让代码更加灵活和可维护�
 <p>总体来说，Vue 3带来了许多优点，但也需要开发者在使用时留意一些潜在的问题。</p>
 <p>在我看来此次更新最重要的点就在于它的组合式API编程，让代码逻辑更清晰和好维护，创建和使用过程也更加快速，响应也很快</p>
 <p><img src="/Blackcat-loveBlog/png/vue3.png"></p>
-<h3 id="创建Vue3脚手架"><a href="#创建Vue3脚手架" class="headerlink" title="创建Vue3脚手架"></a>创建Vue3脚手架</h3><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init vue@latest</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="创建Vue3脚手架"><a href="#创建Vue3脚手架" class="headerlink" title="创建Vue3脚手架"></a>创建Vue3脚手架</h3><pre><code class="highlight sh">npm init vue@latest</code></pre>
 
 <p>输入项目名称并且配置你需要的模块</p>
 <p>一般默认都选否 <strong>End to End</strong>测试工具则选不需要</p>
 <p>然后按照教程进入项目 下载依赖</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">npm install</code></pre>
 
 <p>运行vue3</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">npm run dev</code></pre>
 
 <h3 id="遇到卡住不动的情况"><a href="#遇到卡住不动的情况" class="headerlink" title="遇到卡住不动的情况"></a>遇到卡住不动的情况</h3><p>当创建脚手架和下载依赖的时候如果遇到卡住不同的情况，多半是网络问题或者镜像问题,更换镜像或者降低npm版本即可。</p>
 <p>参考教程:</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46695182/article/details/127846670">https://blog.csdn.net/m0_46695182/article/details/127846670</a></p>
 <h3 id="Vue3相比Vue2的变化"><a href="#Vue3相比Vue2的变化" class="headerlink" title="Vue3相比Vue2的变化"></a>Vue3相比Vue2的变化</h3><h4 id="关键文件"><a href="#关键文件" class="headerlink" title="关键文件"></a>关键文件</h4><p>1.vite.config.js - 项目的配置文件 基于vite的配置<br>2.package.json - 项目包文件 核心依赖项变成了 Vue3.x 和 vite<br>3.main.js - 入口文件 createApp函数创建应用实例<br>4.app.vue - 根组件 SFC单文件组件 script - template - style</p>
 <h4 id="变化"><a href="#变化" class="headerlink" title="变化"></a>变化</h4><p>变化一: 脚本script和模板template顺序调整<br>变化二: 模板template不再要求唯一根元素<br>变化三:脚本script添加setup标识支持组合式API<br>5.index.html- 单页入口 提供id为app的挂载点</p>
-<h3 id="Vue3页面结构"><a href="#Vue3页面结构" class="headerlink" title="Vue3页面结构"></a>Vue3页面结构</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line"></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="Vue3页面结构"><a href="#Vue3页面结构" class="headerlink" title="Vue3页面结构"></a>Vue3页面结构</h3><pre><code class="highlight vue">&lt;script setup&gt;
+
+&lt;/script&gt;
+
+&lt;template&gt;
+
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;</code></pre>
 
 <p>相比于Vue2,结构发生了一些变换，script 放在了最上方 中间的template不在需要div包裹直接写也可以显示</p>
 <p>setup是最早的生命周期，创建的生命周期代码直接写在setup里就好</p>
-<h3 id="创建变量，创建方法，使用变量和方法"><a href="#创建变量，创建方法，使用变量和方法" class="headerlink" title="创建变量，创建方法，使用变量和方法"></a>创建变量，创建方法，使用变量和方法</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">// 变量</span><br><span class="line">const count = 999</span><br><span class="line">// 方法</span><br><span class="line">const logCount = ()=&gt;{</span><br><span class="line">  console.log(count);</span><br><span class="line">}</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!-- 页面渲染 --&gt;</span><br><span class="line">&lt;h1&gt;{{ count }}&lt;/h1&gt;</span><br><span class="line">&lt;button @click="logCount"&gt;打印&lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="创建变量，创建方法，使用变量和方法"><a href="#创建变量，创建方法，使用变量和方法" class="headerlink" title="创建变量，创建方法，使用变量和方法"></a>创建变量，创建方法，使用变量和方法</h3><pre><code class="highlight vue">&lt;script setup&gt;
+// 变量
+const count = 999
+// 方法
+const logCount = ()=&gt;{
+  console.log(count);
+}
+&lt;/script&gt;
 
-<h3 id="组件API"><a href="#组件API" class="headerlink" title="组件API"></a>组件API</h3><h4 id="reative"><a href="#reative" class="headerlink" title="reative()"></a>reative()</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">// 这里的数据是死的</span><br><span class="line">const count = 999;</span><br><span class="line">// 这里是响应式数据，可以++</span><br><span class="line">import { reactive } from 'vue';</span><br><span class="line">const msg = reactive({</span><br><span class="line">  // 只能接收对象</span><br><span class="line">  count:123,</span><br><span class="line">  name:'小明'</span><br><span class="line">})</span><br><span class="line">const logmsg = ()=&gt;{</span><br><span class="line">  // console.log(msg.count);</span><br><span class="line">  msg.count++</span><br><span class="line">}</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!-- 页面渲染 --&gt;</span><br><span class="line">&lt;h1&gt;{{ msg.count }}&lt;/h1&gt;</span><br><span class="line">&lt;h1&gt;{{ msg.name }}&lt;/h1&gt;</span><br><span class="line">&lt;button @click="logmsg"&gt;点击&lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></tbody></table></figure>
+&lt;template&gt;
+  &lt;!-- 页面渲染 --&gt;
+&lt;h1&gt;{{ count }}&lt;/h1&gt;
+&lt;button @click="logCount"&gt;打印&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;</code></pre>
+
+<h3 id="组件API"><a href="#组件API" class="headerlink" title="组件API"></a>组件API</h3><h4 id="reative"><a href="#reative" class="headerlink" title="reative()"></a>reative()</h4><pre><code class="highlight vue">&lt;script setup&gt;
+// 这里的数据是死的
+const count = 999;
+// 这里是响应式数据，可以++
+import { reactive } from 'vue';
+const msg = reactive({
+  // 只能接收对象
+  count:123,
+  name:'小明'
+})
+const logmsg = ()=&gt;{
+  // console.log(msg.count);
+  msg.count++
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;!-- 页面渲染 --&gt;
+&lt;h1&gt;{{ msg.count }}&lt;/h1&gt;
+&lt;h1&gt;{{ msg.name }}&lt;/h1&gt;
+&lt;button @click="logmsg"&gt;点击&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;</code></pre>
 
 <p>使用reative()里的对象数据是响应式的，可以被加一</p>
 <h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><p>直接定义创建数据</p>
 <p>由于ref定义后直接msg++会出问题，需要使用它的value值</p>
 <p>ref返回永远是一个响应式对象</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import { ref } from 'vue';</span><br><span class="line">    //创建变量 值为1</span><br><span class="line">const msg = ref(0)</span><br><span class="line">	//创建方法改变变量msg值</span><br><span class="line">const logmsg = ()=&gt;{</span><br><span class="line">  msg.value++</span><br><span class="line">}</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!-- 页面渲染 --&gt;</span><br><span class="line">&lt;h1&gt;{{ msg }}&lt;/h1&gt;</span><br><span class="line">&lt;button @click="logmsg"&gt;点击&lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight vue">&lt;script setup&gt;
+import { ref } from 'vue';
+    //创建变量 值为1
+const msg = ref(0)
+	//创建方法改变变量msg值
+const logmsg = ()=&gt;{
+  msg.value++
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;!-- 页面渲染 --&gt;
+&lt;h1&gt;{{ msg }}&lt;/h1&gt;
+&lt;button @click="logmsg"&gt;点击&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;</code></pre>
 
 <p>使用对象创建数据</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import { ref } from 'vue';</span><br><span class="line">const msg = ref({</span><br><span class="line">  const:0</span><br><span class="line">})</span><br><span class="line">const logmsg = ()=&gt;{</span><br><span class="line">  msg.value.const++</span><br><span class="line">}</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;!-- 页面渲染 --&gt;</span><br><span class="line">&lt;h1&gt;{{ msg.const }}&lt;/h1&gt;</span><br><span class="line">&lt;button @click="logmsg"&gt;点击&lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight vue">&lt;script setup&gt;
+import { ref } from 'vue';
+const msg = ref({
+  const:0
+})
+const logmsg = ()=&gt;{
+  msg.value.const++
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;!-- 页面渲染 --&gt;
+&lt;h1&gt;{{ msg.const }}&lt;/h1&gt;
+&lt;button @click="logmsg"&gt;点击&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;</code></pre>
 
 <h4 id="computed"><a href="#computed" class="headerlink" title="computed"></a>computed</h4><p>计算属性</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;  </span><br><span class="line">import { computed, ref } from 'vue';  </span><br><span class="line">const list = ref([1,2,3,4,5,6,7,8]);  </span><br><span class="line">  </span><br><span class="line">// 调用函数  </span><br><span class="line">const logList = computed(() =&gt; {  </span><br><span class="line">    // return list.value.filter(item =&gt; item &gt; 3);  </span><br><span class="line">    return list.value.filter((item) =&gt; {return item &gt; 3}); </span><br><span class="line">});  </span><br><span class="line">&lt;/script&gt;  </span><br><span class="line">  </span><br><span class="line">&lt;template&gt; </span><br><span class="line"> &lt;!--接收变量  --&gt;</span><br><span class="line">    &lt;p&gt;{{ list }}&lt;/p&gt;  </span><br><span class="line">    &lt;p&gt;{{ logList }}&lt;/p&gt;  </span><br><span class="line">&lt;/template&gt;  </span><br><span class="line">  </span><br><span class="line">&lt;style scoped&gt;  </span><br><span class="line">  </span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight vue">&lt;script setup&gt;  
+import { computed, ref } from 'vue';  
+const list = ref([1,2,3,4,5,6,7,8]);  
+  
+// 调用函数  
+const logList = computed(() =&gt; {  
+    // return list.value.filter(item =&gt; item &gt; 3);  
+    return list.value.filter((item) =&gt; {return item &gt; 3}); 
+});  
+&lt;/script&gt;  
+  
+&lt;template&gt; 
+ &lt;!--接收变量  --&gt;
+    &lt;p&gt;{{ list }}&lt;/p&gt;  
+    &lt;p&gt;{{ logList }}&lt;/p&gt;  
+&lt;/template&gt;  
+  
+&lt;style scoped&gt;  
+  
+&lt;/style&gt;</code></pre>
 
 <h4 id="watch"><a href="#watch" class="headerlink" title="watch"></a>watch</h4><p>监听器</p>
 <p>基础监听器</p>
 <p>检测到count值发生变化后控制台打印信息</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import { ref,watch} from 'vue';''</span><br><span class="line">const count = ref(0)</span><br><span class="line">watch(count,(newValue,oldValue)=&gt;{</span><br><span class="line">  console.log(newValue,oldValue);</span><br><span class="line">})</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;button @click="count++" &gt;{{ count }}&lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight vue">&lt;script setup&gt;
+import { ref,watch} from 'vue';''
+const count = ref(0)
+watch(count,(newValue,oldValue)=&gt;{
+  console.log(newValue,oldValue);
+})
+&lt;/script&gt;
 
-<h5 id="侦听对象开启深度监听"><a href="#侦听对象开启深度监听" class="headerlink" title="侦听对象开启深度监听"></a>侦听对象开启深度监听</h5><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deep</span>:<span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
+&lt;template&gt;
+  &lt;button @click="count++" &gt;{{ count }}&lt;/button&gt;
+&lt;/template&gt;
 
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import { ref,watch} from 'vue';''</span><br><span class="line">const msg = ref({</span><br><span class="line">  const:0</span><br><span class="line">})</span><br><span class="line">watch(msg,(newValue,oldValue)=&gt;{</span><br><span class="line">  console.log(newValue,oldValue);</span><br><span class="line">},{</span><br><span class="line">  deep:true</span><br><span class="line">})</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;button @click="msg.const++" &gt;{{ msg.const }}&lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></tbody></table></figure>
+&lt;style scoped&gt;
 
-<h5 id="精确监听"><a href="#精确监听" class="headerlink" title="精确监听"></a>精确监听</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import { ref,watch} from 'vue';''</span><br><span class="line">const msg = ref({</span><br><span class="line">  // 只监听const</span><br><span class="line">  const:0,</span><br><span class="line">  age:'cp'</span><br><span class="line">})</span><br><span class="line">watch(</span><br><span class="line">  // 精确监听某个属性</span><br><span class="line">  ()=&gt;msg.value.const,</span><br><span class="line">  (newValue,oldValue)=&gt;{</span><br><span class="line">    console.log(newValue,oldValue);</span><br><span class="line">  }</span><br><span class="line">)</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;button @click="msg.const++" &gt;{{ msg.const }}&lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></tbody></table></figure>
+&lt;/style&gt;</code></pre>
 
-<h5 id="生命周期onMounted"><a href="#生命周期onMounted" class="headerlink" title="生命周期onMounted"></a>生命周期onMounted</h5><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import { onMounted } from 'vue';</span><br><span class="line">onMounted(() =&gt; {</span><br><span class="line">  console.log('mounted1');</span><br><span class="line">});</span><br><span class="line">onMounted(() =&gt; {</span><br><span class="line">  console.log('mounted2');</span><br><span class="line">});</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;h1&gt;你好&lt;/h1&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></tbody></table></figure>
+<h5 id="侦听对象开启深度监听"><a href="#侦听对象开启深度监听" class="headerlink" title="侦听对象开启深度监听"></a>侦听对象开启深度监听</h5><pre><code class="highlight javascript"><span class="attr">deep</span>:<span class="literal">true</span></code></pre>
+
+<pre><code class="highlight vue">&lt;script setup&gt;
+import { ref,watch} from 'vue';''
+const msg = ref({
+  const:0
+})
+watch(msg,(newValue,oldValue)=&gt;{
+  console.log(newValue,oldValue);
+},{
+  deep:true
+})
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;button @click="msg.const++" &gt;{{ msg.const }}&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;</code></pre>
+
+<h5 id="精确监听"><a href="#精确监听" class="headerlink" title="精确监听"></a>精确监听</h5><pre><code class="highlight vue">&lt;script setup&gt;
+import { ref,watch} from 'vue';''
+const msg = ref({
+  // 只监听const
+  const:0,
+  age:'cp'
+})
+watch(
+  // 精确监听某个属性
+  ()=&gt;msg.value.const,
+  (newValue,oldValue)=&gt;{
+    console.log(newValue,oldValue);
+  }
+)
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;button @click="msg.const++" &gt;{{ msg.const }}&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;</code></pre>
+
+<h5 id="生命周期onMounted"><a href="#生命周期onMounted" class="headerlink" title="生命周期onMounted"></a>生命周期onMounted</h5><pre><code class="highlight vue">&lt;script setup&gt;
+import { onMounted } from 'vue';
+onMounted(() =&gt; {
+  console.log('mounted1');
+});
+onMounted(() =&gt; {
+  console.log('mounted2');
+});
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;h1&gt;你好&lt;/h1&gt;
+&lt;/template&gt;
+
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;</code></pre>
 
 <h4 id="父传子"><a href="#父传子" class="headerlink" title="父传子"></a>父传子</h4><p>父组件</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">    //导入子组件</span><br><span class="line">import Soncon from './components/son-con.vue'</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">&lt;h1&gt;这是父组件&lt;/h1&gt;</span><br><span class="line">&lt;Soncon message="这是传给子组件的数据"&gt;&lt;/Soncon&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight vue">&lt;script setup&gt;
+    //导入子组件
+import Soncon from './components/son-con.vue'
+
+&lt;/script&gt;
+
+&lt;template&gt;
+&lt;h1&gt;这是父组件&lt;/h1&gt;
+&lt;Soncon message="这是传给子组件的数据"&gt;&lt;/Soncon&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;</code></pre>
 
 <p>子组件</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">// 编译器宏函数</span><br><span class="line">const props = defineProps({</span><br><span class="line">    // 因为setup生命周期太早所以需要使用defineProps编译器宏</span><br><span class="line">    message:String</span><br><span class="line">})</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">&lt;h1&gt;这是子组件=={{ message }}&lt;/h1&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight vue">&lt;script setup&gt;
+// 编译器宏函数
+const props = defineProps({
+    // 因为setup生命周期太早所以需要使用defineProps编译器宏
+    message:String
+})
+&lt;/script&gt;
 
-<h5 id="使用props接收参数"><a href="#使用props接收参数" class="headerlink" title="使用props接收参数"></a>使用props接收参数</h5><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> props = <span class="title function_">defineProps</span>({</span><br><span class="line">    <span class="comment">// 因为setup生命周期太早所以需要使用defineProps编译器宏</span></span><br><span class="line">    <span class="attr">message</span>:<span class="title class_">String</span></span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+&lt;template&gt;
+&lt;h1&gt;这是子组件=={{ message }}&lt;/h1&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;</code></pre>
+
+<h5 id="使用props接收参数"><a href="#使用props接收参数" class="headerlink" title="使用props接收参数"></a>使用props接收参数</h5><pre><code class="highlight javascript"><span class="keyword">const</span> props = <span class="title function_">defineProps</span>({
+    <span class="comment">// 因为setup生命周期太早所以需要使用defineProps编译器宏</span>
+    <span class="attr">message</span>:<span class="title class_">String</span>
+})</code></pre>
 
 <h4 id="子传父"><a href="#子传父" class="headerlink" title="子传父"></a>子传父</h4><p>父组件</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import Soncon from './components/son-con.vue'</span><br><span class="line">const getMessage = (mes)=&gt;{</span><br><span class="line">  console.log(mes);</span><br><span class="line">}</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">&lt;h1&gt;这是父组件&lt;/h1&gt;</span><br><span class="line">&lt;Soncon message="这是传给子组件的数据" @get-message="getMessage"&gt;&lt;/Soncon&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight vue">&lt;script setup&gt;
+import Soncon from './components/son-con.vue'
+const getMessage = (mes)=&gt;{
+  console.log(mes);
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+&lt;h1&gt;这是父组件&lt;/h1&gt;
+&lt;Soncon message="这是传给子组件的数据" @get-message="getMessage"&gt;&lt;/Soncon&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;</code></pre>
 
 <p>子组件</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">// 编译器宏函数</span><br><span class="line">    const props = defineProps({</span><br><span class="line">        // 因为setup生命周期太早所以需要使用defineProps编译器宏</span><br><span class="line">        message:String</span><br><span class="line">    })</span><br><span class="line"></span><br><span class="line">    const emit = defineEmits(['get-message'])</span><br><span class="line"></span><br><span class="line">    const show = ()=&gt;{</span><br><span class="line">        emit('get-message','子组件数据')</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">&lt;h1&gt;这是子组件=={{ message }}&lt;/h1&gt;</span><br><span class="line">&lt;button @click="show"&gt;按钮&lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight vue">&lt;script setup&gt;
+// 编译器宏函数
+    const props = defineProps({
+        // 因为setup生命周期太早所以需要使用defineProps编译器宏
+        message:String
+    })
 
-<h4 id="获取Dom元素"><a href="#获取Dom元素" class="headerlink" title="获取Dom元素"></a>获取Dom元素</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import { ref,onMounted } from 'vue';</span><br><span class="line"></span><br><span class="line">const h1Ref = ref(null)</span><br><span class="line"></span><br><span class="line">// setup生命周期在早，页面未渲染直接输出不会显示</span><br><span class="line">// 所以换一个生命周期</span><br><span class="line">onMounted(()=&gt;{</span><br><span class="line">  console.log(h1Ref.value);</span><br><span class="line">})</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">&lt;h1 ref="h1Ref"&gt;这是根组件&lt;/h1&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></tbody></table></figure>
+    const emit = defineEmits(['get-message'])
 
-<h5 id="defineExpose"><a href="#defineExpose" class="headerlink" title="defineExpose"></a>defineExpose</h5><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> msg = <span class="title function_">ref</span>(<span class="string">'hello world'</span>);</span><br><span class="line">       <span class="title function_">defineExpose</span>({</span><br><span class="line">           msg</span><br><span class="line">       })</span><br></pre></td></tr></tbody></table></figure>
+    const show = ()=&gt;{
+        emit('get-message','子组件数据')
+    }
+
+&lt;/script&gt;
+
+&lt;template&gt;
+&lt;h1&gt;这是子组件=={{ message }}&lt;/h1&gt;
+&lt;button @click="show"&gt;按钮&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;</code></pre>
+
+<h4 id="获取Dom元素"><a href="#获取Dom元素" class="headerlink" title="获取Dom元素"></a>获取Dom元素</h4><pre><code class="highlight vue">&lt;script setup&gt;
+import { ref,onMounted } from 'vue';
+
+const h1Ref = ref(null)
+
+// setup生命周期在早，页面未渲染直接输出不会显示
+// 所以换一个生命周期
+onMounted(()=&gt;{
+  console.log(h1Ref.value);
+})
+&lt;/script&gt;
+
+&lt;template&gt;
+&lt;h1 ref="h1Ref"&gt;这是根组件&lt;/h1&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;</code></pre>
+
+<h5 id="defineExpose"><a href="#defineExpose" class="headerlink" title="defineExpose"></a>defineExpose</h5><pre><code class="highlight javascript"><span class="keyword">const</span> msg = <span class="title function_">ref</span>(<span class="string">'hello world'</span>);
+       <span class="title function_">defineExpose</span>({
+           msg
+       })</code></pre>
 
 <p>使用defineExpose再去获取Dom元素才能在跨层获取才能获取到数据</p>
 <p><code>defineExpose</code> 是 Vue 3 中的一个特性，用于向父组件公开子组件的内部状态或方法。通过 <code>defineExpose</code>，子组件可以显式地公开需要暴露给父组件的属性或方法。</p>
 <p>在上述代码中，我们使用 <code>defineExpose</code> 来向父组件暴露了一个名为 <code>msg</code> 的响应式数据。</p>
 <p>下面是一个简单的示例：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ChildComponent.vue</span></span><br><span class="line"><span class="keyword">import</span> { defineComponent, ref, defineExpose } <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineComponent</span>({</span><br><span class="line">  <span class="title function_">setup</span>(<span class="params"></span>) {</span><br><span class="line">    <span class="keyword">const</span> msg = <span class="title function_">ref</span>(<span class="string">'hello world'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="title function_">defineExpose</span>({</span><br><span class="line">        msg</span><br><span class="line">    });</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> {</span><br><span class="line">      msg</span><br><span class="line">    };</span><br><span class="line">  }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight javascript"><span class="comment">// ChildComponent.vue</span>
+<span class="keyword">import</span> { defineComponent, ref, defineExpose } <span class="keyword">from</span> <span class="string">'vue'</span>;
 
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// ParentComponent.vue</span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;ChildComponent ref="childComponent" /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import ChildComponent from './ChildComponent.vue';</span><br><span class="line"></span><br><span class="line">export default {</span><br><span class="line">  mounted() {</span><br><span class="line">    console.log(this.$refs.childComponent.msg); // 输出: "hello world"</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
+<span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineComponent</span>({
+  <span class="title function_">setup</span>(<span class="params"></span>) {
+    <span class="keyword">const</span> msg = <span class="title function_">ref</span>(<span class="string">'hello world'</span>);
+
+    <span class="title function_">defineExpose</span>({
+        msg
+    });
+
+    <span class="keyword">return</span> {
+      msg
+    };
+  }
+});</code></pre>
+
+<pre><code class="highlight vue">// ParentComponent.vue
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;ChildComponent ref="childComponent" /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import ChildComponent from './ChildComponent.vue';
+
+export default {
+  mounted() {
+    console.log(this.$refs.childComponent.msg); // 输出: "hello world"
+  }
+}
+&lt;/script&gt;</code></pre>
 
 <p>在这个示例中，子组件通过 <code>defineExpose</code> 公开了 <code>msg</code> 这个数据，然后在父组件中通过 <code>$refs</code> 访问子组件并获取到了 <code>msg</code> 数据。</p>
 <p>这种方式适用于需要在子组件中定义一些内部状态或方法，并且需要在父组件中进行访问或操作时。</p>
@@ -107,35 +402,121 @@ Composition API：引入了Composition API，让代码更加灵活和可维护�
 <p><code>provide</code> 和 <code>inject</code> 是 Vue 中用于在父组件和子组件之间跨层级传递数据的一种方式。<code>provide</code> 在父组件中创建数据，而 <code>inject</code> 则在子组件中接收这些数据。</p>
 <p>在父组件中，通过 <code>provide</code> 来提供数据，子组件通过 <code>inject</code> 来注入这些数据。这种方式可以跨越多个嵌套层级，让数据在组件之间更方便地流动。</p>
 <p>下面是一个简单的示例：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ParentComponent.vue</span></span><br><span class="line"> <span class="keyword">export</span> <span class="keyword">default</span> {</span><br><span class="line">   <span class="attr">provide</span>: {</span><br><span class="line">     <span class="attr">message</span>: <span class="string">'这是来自父组件的消息'</span></span><br><span class="line">   }</span><br><span class="line"> }</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight javascript"><span class="comment">// ParentComponent.vue</span>
+ <span class="keyword">export</span> <span class="keyword">default</span> {
+   <span class="attr">provide</span>: {
+     <span class="attr">message</span>: <span class="string">'这是来自父组件的消息'</span>
+   }
+ }</code></pre>
 
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ChildComponent.vue</span></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> {</span><br><span class="line">    <span class="attr">inject</span>: [<span class="string">'message'</span>],</span><br><span class="line">    <span class="title function_">mounted</span>(<span class="params"></span>) {</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">message</span>); <span class="comment">// 输出: "这是来自父组件的消息"</span></span><br><span class="line">    }</span><br><span class="line">  }</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight javascript"><span class="comment">// ChildComponent.vue</span>
+  <span class="keyword">export</span> <span class="keyword">default</span> {
+    <span class="attr">inject</span>: [<span class="string">'message'</span>],
+    <span class="title function_">mounted</span>(<span class="params"></span>) {
+      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="property">message</span>); <span class="comment">// 输出: "这是来自父组件的消息"</span>
+    }
+  }</code></pre>
 
 <p>在这个例子中，父组件通过 <code>provide</code> 提供了一个名为 <code>message</code> 的数据，而子组件则通过 <code>inject</code> 注入了这个数据，并在 <code>mounted</code> 钩子中访问了这个数据。</p>
 <p>这种方式比较方便，但需要注意的是，使用 <code>inject</code> 时要确保你知道提供数据的来源，以避免意外的耦合。</p>
 <h4 id="Element"><a href="#Element" class="headerlink" title="Element"></a>Element</h4><p>在Vue3中使用ElementUI需要使用Element-plus</p>
 <p>官网链接:<a target="_blank" rel="noopener" href="https://element-plus.org/zh-CN/component/button.html">https://element-plus.org/zh-CN/component/button.html</a></p>
 <p>在对应路径按照依赖</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install element-plus --save</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">npm install element-plus --save</code></pre>
 
 <p>也可以选择线上引入</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- Import style --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"//unpkg.com/element-plus/dist/index.css"</span> /&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- Import Vue 3 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//unpkg.com/vue@3"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- Import component library --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//unpkg.com/element-plus"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight html"><span class="tag">&lt;<span class="name">head</span>&gt;</span>
+  <span class="comment">&lt;!-- Import style --&gt;</span>
+  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"//unpkg.com/element-plus/dist/index.css"</span> /&gt;</span>
+  <span class="comment">&lt;!-- Import Vue 3 --&gt;</span>
+  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//unpkg.com/vue@3"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+  <span class="comment">&lt;!-- Import component library --&gt;</span>
+  <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//unpkg.com/element-plus"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">head</span>&gt;</span></code></pre>
 
 <p>详细参考官方文档</p>
 <h3 id="Pinia"><a href="#Pinia" class="headerlink" title="Pinia"></a>Pinia</h3><p>官方文档:<a target="_blank" rel="noopener" href="https://pinia.vuejs.org/zh/getting-started.html">https://pinia.vuejs.org/zh/getting-started.html</a></p>
 <p>安装</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm cteate vue@latest <span class="comment">#安装最新vue3脚手架</span></span><br><span class="line">yarn add pinia</span><br><span class="line"><span class="comment"># 或者使用 npm</span></span><br><span class="line">npm install pinia</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">npm cteate vue@latest <span class="comment">#安装最新vue3脚手架</span>
+yarn add pinia
+<span class="comment"># 或者使用 npm</span>
+npm install pinia</code></pre>
 
-<h4 id="使用get接口获取数据"><a href="#使用get接口获取数据" class="headerlink" title="使用get接口获取数据"></a>使用get接口获取数据</h4><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> { defineStore } <span class="keyword">from</span> <span class="string">"pinia"</span>;</span><br><span class="line"><span class="keyword">import</span> { ref } <span class="keyword">from</span> <span class="string">"vue"</span>;</span><br><span class="line"><span class="keyword">import</span> { computed} <span class="keyword">from</span> <span class="string">'vue'</span>;  </span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span>;  </span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> useCounterStore= <span class="title function_">defineStore</span>(<span class="string">'counter'</span>,<span class="function">()=&gt;</span>{</span><br><span class="line">    <span class="comment">//创建变量</span></span><br><span class="line">    <span class="keyword">const</span> count=<span class="title function_">ref</span>(<span class="number">0</span>)</span><br><span class="line">    <span class="comment">// 创建响应式数组</span></span><br><span class="line">    <span class="keyword">const</span> arrayr = <span class="title function_">ref</span>([]);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建计算属性</span></span><br><span class="line">    <span class="keyword">const</span> logList = <span class="title function_">computed</span>(<span class="function">() =&gt;</span> {  </span><br><span class="line">      <span class="keyword">return</span> count.<span class="property">value</span> * <span class="number">2</span>; </span><br><span class="line">  });  </span><br><span class="line">	<span class="comment">//创建方法</span></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">increment</span>=(<span class="params"></span>)=&gt;{-+</span><br><span class="line">        count.<span class="property">value</span>++</span><br><span class="line">    }</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 获取数据</span></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">fetchData</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; {  </span><br><span class="line">        <span class="keyword">const</span> res = <span class="keyword">await</span> axios.<span class="title function_">get</span>(<span class="string">'http://geek.itheima.net/v1_0/channels'</span>);  </span><br><span class="line">        <span class="comment">// console.log(res.data.data.channels);</span></span><br><span class="line">        arrayr.<span class="property">value</span> = res.<span class="property">data</span>.<span class="property">data</span>.<span class="property">channels</span></span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">'res'</span> + arrayr.<span class="property">value</span>);</span><br><span class="line">    };  </span><br><span class="line"></span><br><span class="line">     </span><br><span class="line">    <span class="comment">//用对象的形式返回</span></span><br><span class="line">    <span class="comment">//所有方法和变量都需要返回，否则报错和接收不到</span></span><br><span class="line">    <span class="keyword">return</span> {</span><br><span class="line">        count,</span><br><span class="line">        logList,</span><br><span class="line">        increment,</span><br><span class="line">        <span class="comment">// 返回结果</span></span><br><span class="line">        fetchData,</span><br><span class="line">        arrayr,</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="使用get接口获取数据"><a href="#使用get接口获取数据" class="headerlink" title="使用get接口获取数据"></a>使用get接口获取数据</h4><pre><code class="highlight js"><span class="keyword">import</span> { defineStore } <span class="keyword">from</span> <span class="string">"pinia"</span>;
+<span class="keyword">import</span> { ref } <span class="keyword">from</span> <span class="string">"vue"</span>;
+<span class="keyword">import</span> { computed} <span class="keyword">from</span> <span class="string">'vue'</span>;  
+<span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span>;  
+
+<span class="keyword">export</span> <span class="keyword">const</span> useCounterStore= <span class="title function_">defineStore</span>(<span class="string">'counter'</span>,<span class="function">()=&gt;</span>{
+    <span class="comment">//创建变量</span>
+    <span class="keyword">const</span> count=<span class="title function_">ref</span>(<span class="number">0</span>)
+    <span class="comment">// 创建响应式数组</span>
+    <span class="keyword">const</span> arrayr = <span class="title function_">ref</span>([]);
+
+    <span class="comment">//创建计算属性</span>
+    <span class="keyword">const</span> logList = <span class="title function_">computed</span>(<span class="function">() =&gt;</span> {  
+      <span class="keyword">return</span> count.<span class="property">value</span> * <span class="number">2</span>; 
+  });  
+	<span class="comment">//创建方法</span>
+    <span class="keyword">const</span> <span class="title function_">increment</span>=(<span class="params"></span>)=&gt;{-+
+        count.<span class="property">value</span>++
+    }
+    
+    <span class="comment">// 获取数据</span>
+    <span class="keyword">const</span> <span class="title function_">fetchData</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; {  
+        <span class="keyword">const</span> res = <span class="keyword">await</span> axios.<span class="title function_">get</span>(<span class="string">'http://geek.itheima.net/v1_0/channels'</span>);  
+        <span class="comment">// console.log(res.data.data.channels);</span>
+        arrayr.<span class="property">value</span> = res.<span class="property">data</span>.<span class="property">data</span>.<span class="property">channels</span>
+        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">'res'</span> + arrayr.<span class="property">value</span>);
+    };  
+
+     
+    <span class="comment">//用对象的形式返回</span>
+    <span class="comment">//所有方法和变量都需要返回，否则报错和接收不到</span>
+    <span class="keyword">return</span> {
+        count,
+        logList,
+        increment,
+        <span class="comment">// 返回结果</span>
+        fetchData,
+        arrayr,
+
+    }
+})</code></pre>
 
 <p>组件展示数据</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;script setup&gt;</span><br><span class="line">import sPage from './components/store-page.vue'</span><br><span class="line">import sMsg from './components/store-msg.vue'</span><br><span class="line">//1、导入</span><br><span class="line">import { useCounterStore }from './stores/Counter'</span><br><span class="line">//2、执行方法</span><br><span class="line">const counterStore = useCounterStore()</span><br><span class="line">counterStore.fetchData()</span><br><span class="line"> console.log('hello:' + counterStore.arrayr);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;  </span><br><span class="line">    &lt;ul&gt;  </span><br><span class="line">      &lt;li v-for="item in counterStore.arrayr" :key="item.id"&gt;{{ item.name }}&lt;/li&gt;  </span><br><span class="line">    &lt;/ul&gt;  </span><br><span class="line">  &lt;/div&gt;  </span><br><span class="line">  &lt;button @click="counterStore.increment"&gt;这是按钮&lt;/button&gt;</span><br><span class="line">  &lt;h1&gt;这是父组件=={{ counterStore.count }}=={{ counterStore.logList}}&lt;/h1&gt;</span><br><span class="line">  &lt;sPage&gt;&lt;/sPage&gt;</span><br><span class="line">  &lt;sMsg&gt;&lt;/sMsg&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line"></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight vue">&lt;script setup&gt;
+import sPage from './components/store-page.vue'
+import sMsg from './components/store-msg.vue'
+//1、导入
+import { useCounterStore }from './stores/Counter'
+//2、执行方法
+const counterStore = useCounterStore()
+counterStore.fetchData()
+ console.log('hello:' + counterStore.arrayr);
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;  
+    &lt;ul&gt;  
+      &lt;li v-for="item in counterStore.arrayr" :key="item.id"&gt;{{ item.name }}&lt;/li&gt;  
+    &lt;/ul&gt;  
+  &lt;/div&gt;  
+  &lt;button @click="counterStore.increment"&gt;这是按钮&lt;/button&gt;
+  &lt;h1&gt;这是父组件=={{ counterStore.count }}=={{ counterStore.logList}}&lt;/h1&gt;
+  &lt;sPage&gt;&lt;/sPage&gt;
+  &lt;sMsg&gt;&lt;/sMsg&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+
+&lt;/style&gt;</code></pre>
 
 <h3 id="pnpm"><a href="#pnpm" class="headerlink" title="pnpm"></a>pnpm</h3><p>全局安装</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g pnpm</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">npm install -g pnpm</code></pre>
 
 <p>使用pnpm创建Vue</p>
-<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm create vue</span><br></pre></td></tr></tbody></table></figure>
+<pre><code class="highlight sh">pnpm create vue</code></pre>
 
 </article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/Blackcat-loveBlog/2023/12/13/Vue/" title="Vue学习笔记"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">上一页: Vue学习笔记</span></a><a class="button is-default" href="/Blackcat-loveBlog/2023/12/12/Springboot-vue%E6%A1%86%E6%9E%B6%E9%83%A8%E7%BD%B2/" title="Springboot+vue框架部署"><span class="has-text-weight-semibold">下一页: Springboot+vue框架部署</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Blackcat-love"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> 天明 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/Blackcat-loveBlog/js/jquery-3.6.1.min.js"></script><script src="/Blackcat-loveBlog/js/jquery-fancybox.min.js"></script><script src="/Blackcat-loveBlog/js/img_zoom.js"></script><script src="/Blackcat-loveBlog/js/post.js"></script><!-- hexo injector body_end start --><script data-pjax src="https://registry.npmmirror.com/oh-my-live2d/latest/files"></script><script>const oml2d = OML2D.loadOml2d({libraryUrls:{"complete":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/complete.js","cubism2":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism2.js","cubism5":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism5.js"},mobileDisplay:true,models:[{"path":"/Blackcat-loveBlog/live2d/波奇酱2.0/波奇酱2.0.model3.json","mobilePosition":[0,0],"mobileScale":0.1,"mobileStageStyle":{"width":180,"height":250},"motionPreloadStrategy":"IDLE","position":[-100,-100],"scale":0.15,"stageStyle":{"width":250,"height":250}},{"path":"/Blackcat-loveBlog/live2d/liang_vts/liang.model3.json","scale":0.12,"position":[0,60],"stageStyle":{"width":250},"mobileScale":0.1,"mobilePosition":[0,0],"mobileStageStyle":{"width":180}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
   return axios.get('https://v1.hitokoto.cn?c=i')
