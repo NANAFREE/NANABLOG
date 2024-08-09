@@ -1,15 +1,168 @@
-<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>JAVA基础概念</title><meta name="description" content="编程"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
-<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.ico"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/common/jquery.fancybox.min.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="概念理解变量可变的量、值，通常是数字(int,double)，小数(double)，整数(int)，字符串(String)，字符(char)。
-常量不可变的量，通常是一些常用的，比如一天24小时，1小时60分钟， 修饰符为 final。
-判断通过不同的条件语句进行对变量的判断，为true继续执行 为false结束执行。
-数组用来存储一段数字 或者 字符串
-类一种类型，比如跑车类，越野车类。
-包一个归类的文件夹，在同一个包中，他们在同一个路径上，可以互相传递，倘若在不同包中，则需要其他方法进行链接和允许。
-方法一个类中拥有，若干的方法，这是一种行为动作 其中main()方法作为程序执行的主入口。
-构建方法(快捷键: alt + ins:Constructor) 
-当New 对象的时候 会在类中执行 有参构造方.."><meta name="generator" content="Hexo 5.1.1">
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="概念理解变量可变的量、值，通常是数字(int,double)，小数(double)，整数(int)，字符串(String)，字符(char)。 常量不可变的量，通常是一些常用的，比如一天24小时，1小时60分钟， 修饰符为 final。 判断通过不同的条件语句进行对变量的判断，为true继续执行 为false结束执行。 数组用来存储一段数字 或者 字符串 类一种类型，比如跑车类，越野车类。 包一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA基础概念">
+<meta property="og:url" content="https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/index.html">
+<meta property="og:site_name" content="天明">
+<meta property="og:description" content="概念理解变量可变的量、值，通常是数字(int,double)，小数(double)，整数(int)，字符串(String)，字符(char)。 常量不可变的量，通常是一些常用的，比如一天24小时，1小时60分钟， 修饰符为 final。 判断通过不同的条件语句进行对变量的判断，为true继续执行 为false结束执行。 数组用来存储一段数字 或者 字符串 类一种类型，比如跑车类，越野车类。 包一个">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-12-11T10:33:08.000Z">
+<meta property="article:modified_time" content="2024-01-09T06:18:52.589Z">
+<meta property="article:author" content="天明">
+<meta property="article:tag" content="JAVA">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/Blackcat-loveBlog/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/Blackcat-loveBlog/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/Blackcat-loveBlog/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>JAVA基础概念</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/Blackcat-loveBlog/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">天明's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">JAVA基础概念</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E7%90%86%E8%A7%A3"><span class="toc-text">概念理解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-text">常量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD"><span class="toc-text">判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-text">数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB"><span class="toc-text">类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%85"><span class="toc-text">包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-text">方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E6%96%B9%E6%B3%95"><span class="toc-text">构建方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7"><span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81"><span class="toc-text">静态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E8%A3%85"><span class="toc-text">封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD"><span class="toc-text">重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-text">修饰符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-text">继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%86%99"><span class="toc-text">重写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%80%81"><span class="toc-text">多态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-text">快捷键</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5"><span class="toc-text">基础语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95"><span class="toc-text">构建一个方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81-1"><span class="toc-text">静态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E8%A3%85-1"><span class="toc-text">封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD-1"><span class="toc-text">重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF-1"><span class="toc-text">继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%80%81-1"><span class="toc-text">多态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-text">强制转换</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/JAVA"><i class="tag post-item-tag">JAVA</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">JAVA基础概念</h1><time class="has-text-grey" datetime="2023-12-11T10:33:08.000Z">2023-12-11</time><article class="mt-2 post-content"><h1 id="概念理解"><a href="#概念理解" class="headerlink" title="概念理解"></a>概念理解</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a><strong>变量</strong></h2><p>可变的量、值，通常是数字(int,double)，小数(double)，整数(int)，字符串(String)，字符(char)。</p>
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/Blackcat-loveBlog/">首页</a></li><!--
+     --><!--
+       --><li><a href="/Blackcat-loveBlog/about/about">关于</a></li><!--
+     --><!--
+       --><li><a href="/Blackcat-loveBlog/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Blackcat-love">项目</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/Blackcat-loveBlog/2023/12/11/html/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/Blackcat-loveBlog/2023/12/11/python/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/&text=JAVA基础概念"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/&title=JAVA基础概念"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/&is_video=false&description=JAVA基础概念"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JAVA基础概念&body=Check out this article: https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/&title=JAVA基础概念"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/&title=JAVA基础概念"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/&title=JAVA基础概念"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/&title=JAVA基础概念"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/&name=JAVA基础概念&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/&t=JAVA基础概念"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E7%90%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">概念理解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-number">1.2.</span> <span class="toc-text">常量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD"><span class="toc-number">1.3.</span> <span class="toc-text">判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-number">1.4.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB"><span class="toc-number">1.5.</span> <span class="toc-text">类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%85"><span class="toc-number">1.6.</span> <span class="toc-text">包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-number">1.7.</span> <span class="toc-text">方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E6%96%B9%E6%B3%95"><span class="toc-number">1.8.</span> <span class="toc-text">构建方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7"><span class="toc-number">1.9.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81"><span class="toc-number">1.10.</span> <span class="toc-text">静态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E8%A3%85"><span class="toc-number">1.11.</span> <span class="toc-text">封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD"><span class="toc-number">1.12.</span> <span class="toc-text">重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-number">1.13.</span> <span class="toc-text">修饰符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-number">1.14.</span> <span class="toc-text">继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%86%99"><span class="toc-number">1.15.</span> <span class="toc-text">重写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%80%81"><span class="toc-number">1.16.</span> <span class="toc-text">多态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">1.17.</span> <span class="toc-text">快捷键</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5"><span class="toc-number">2.</span> <span class="toc-text">基础语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">构建一个方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81-1"><span class="toc-number">2.2.</span> <span class="toc-text">静态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E8%A3%85-1"><span class="toc-number">2.3.</span> <span class="toc-text">封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD-1"><span class="toc-number">2.4.</span> <span class="toc-text">重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF-1"><span class="toc-number">2.5.</span> <span class="toc-text">继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%80%81-1"><span class="toc-number">2.6.</span> <span class="toc-text">多态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-number">2.7.</span> <span class="toc-text">强制转换</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        JAVA基础概念
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">天明</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-12-11T10:33:08.000Z" class="dt-published" itemprop="datePublished">2023-12-11</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/Blackcat-loveBlog/tags/JAVA/" rel="tag">JAVA</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="概念理解"><a href="#概念理解" class="headerlink" title="概念理解"></a>概念理解</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a><strong>变量</strong></h2><p>可变的量、值，通常是数字(int,double)，小数(double)，整数(int)，字符串(String)，字符(char)。</p>
 <h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a><strong>常量</strong></h2><p>不可变的量，通常是一些常用的，比如一天24小时，1小时60分钟， 修饰符为 final。</p>
 <h2 id="判断"><a href="#判断" class="headerlink" title="判断"></a><strong>判断</strong></h2><p>通过不同的条件语句进行对变量的判断，为true继续执行 为false结束执行。</p>
 <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a><strong>数组</strong></h2><p>用来存储一段数字 或者 字符串</p>
@@ -37,301 +190,28 @@
 <p>3、父类引用变量指向子类对象（向上转型）。</p>
 <h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>Alt + Ins  //快速创建 构造类</p>
 <p>Ctrl + Alt + T  //调出所有的判断 循环 报错标准语句</p>
-<h1 id="基础语句"><a href="#基础语句" class="headerlink" title="基础语句"></a>基础语句</h1><h2 id="构建一个方法"><a href="#构建一个方法" class="headerlink" title="构建一个方法"></a>构建一个方法</h2><pre><code class="java"> //默认系统自带无参构造方法
-    //快捷键生成构造方法 alt + Ins
-    //构建了一个无参方法
-    public Corn() {
-    }
+<h1 id="基础语句"><a href="#基础语句" class="headerlink" title="基础语句"></a>基础语句</h1><h2 id="构建一个方法"><a href="#构建一个方法" class="headerlink" title="构建一个方法"></a>构建一个方法</h2><figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">//默认系统自带无参构造方法</span></span><br><span class="line">   <span class="comment">//快捷键生成构造方法 alt + Ins</span></span><br><span class="line">   <span class="comment">//构建了一个无参方法</span></span><br><span class="line">   <span class="keyword">public</span> <span class="title function_">Corn</span><span class="params">()</span> {</span><br><span class="line">   }</span><br><span class="line"></span><br><span class="line"><span class="comment">//构建了一个有参方法</span></span><br><span class="line">   <span class="keyword">public</span> <span class="title function_">Corn</span><span class="params">(String name, <span class="type">int</span> growTime, <span class="type">int</span> harvestTime, <span class="type">int</span> numsOfFruits, String status, <span class="type">double</span> harvestCost, <span class="type">boolean</span> isHarvested)</span> {</span><br><span class="line">       <span class="built_in">this</span>.name = name;</span><br><span class="line">       <span class="built_in">this</span>.growTime = growTime;</span><br><span class="line">       <span class="built_in">this</span>.harvestTime = harvestTime;</span><br><span class="line">       <span class="built_in">this</span>.numsOfFruits = numsOfFruits;</span><br><span class="line">       <span class="built_in">this</span>.status = status;</span><br><span class="line">       <span class="built_in">this</span>.harvestCost = harvestCost;</span><br><span class="line">       <span class="built_in">this</span>.isHarvested = isHarvested;</span><br><span class="line">   }</span><br><span class="line"></span><br><span class="line"><span class="comment">//类的属性</span></span><br><span class="line">   <span class="keyword">public</span> <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">"玉米"</span>; <span class="comment">//名称</span></span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="variable">growTime</span> <span class="operator">=</span> <span class="number">8</span>; <span class="comment">//生长期</span></span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="variable">harvestTime</span> <span class="operator">=</span> <span class="number">3</span>; <span class="comment">//采摘期</span></span><br><span class="line">   <span class="keyword">public</span> <span class="type">int</span> <span class="variable">numsOfFruits</span> <span class="operator">=</span> <span class="number">200</span>; <span class="comment">//果实数量</span></span><br><span class="line">   <span class="keyword">public</span> <span class="type">String</span> <span class="variable">status</span> <span class="operator">=</span> <span class="string">"生长期"</span>; <span class="comment">// 生长状态</span></span><br><span class="line">   <span class="keyword">public</span> <span class="type">double</span> <span class="variable">harvestCost</span> <span class="operator">=</span> <span class="number">50</span>; <span class="comment">//收割费用</span></span><br><span class="line">   <span class="keyword">public</span> <span class="type">boolean</span> <span class="variable">isHarvested</span> <span class="operator">=</span> <span class="literal">false</span>; <span class="comment">//是否已采摘</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//类的方法（行为）</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">()</span>{</span><br><span class="line">       System.out.println(<span class="string">"*******作物特性*******"</span>);</span><br><span class="line">       System.out.println(<span class="string">"您种植了:"</span> + <span class="built_in">this</span>.name + <span class="string">"。"</span>);</span><br><span class="line">       System.out.println(<span class="string">"生长日期:"</span> + <span class="built_in">this</span>.growTime + <span class="string">"。"</span>);</span><br><span class="line">       System.out.println(<span class="string">"采摘日期:"</span> + <span class="built_in">this</span>.harvestTime + <span class="string">"。"</span>);</span><br><span class="line">       System.out.println(<span class="string">"目前果实数量:"</span> + <span class="built_in">this</span>.numsOfFruits + <span class="string">"。"</span>);</span><br><span class="line">       System.out.println(<span class="string">"生长状态:"</span> + <span class="built_in">this</span>.status + <span class="string">"。"</span>);</span><br><span class="line">       System.out.println(<span class="string">"收割费用:"</span> + <span class="built_in">this</span>.harvestCost + <span class="string">"。"</span>);</span><br><span class="line">   }</span><br></pre></td></tr></tbody></table></figure>
 
-    //构建了一个有参方法
-    public Corn(String name, int growTime, int harvestTime, int numsOfFruits, String status, double harvestCost, boolean isHarvested) {
-        this.name = name;
-        this.growTime = growTime;
-        this.harvestTime = harvestTime;
-        this.numsOfFruits = numsOfFruits;
-        this.status = status;
-        this.harvestCost = harvestCost;
-        this.isHarvested = isHarvested;
-    }
+<h2 id="静态-1"><a href="#静态-1" class="headerlink" title="静态"></a>静态</h2><figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dbqn.demo05;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> {</span><br><span class="line">    <span class="comment">//静态变量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span>  String name;</span><br><span class="line">    <span class="comment">//实例变量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> age;</span><br><span class="line">    <span class="comment">//静态方法</span></span><br><span class="line">    <span class="comment">//静态方法中不可以调用实例方法</span></span><br><span class="line">    <span class="comment">//静态方法可以调用静态方法</span></span><br><span class="line">    <span class="comment">//静态方法不可以调用静态变量</span></span><br><span class="line">    <span class="comment">//静态方法不能使用 this</span></span><br><span class="line">    <span class="comment">//静态方法不能调用实例变量</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">Print</span><span class="params">()</span>{}</span><br><span class="line">    <span class="comment">//实例方法</span></span><br><span class="line">    <span class="comment">//实例方法中可以调用静态方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Print</span><span class="params">(<span class="type">int</span> age)</span>{}</span><br><span class="line"></span><br><span class="line">    <span class="comment">//静态代码块</span></span><br><span class="line">    <span class="keyword">static</span> { <span class="comment">// 当启动项加载时，会先执行静态代码块 如果执行顺序不对，可能是 new 对象的顺序不对</span></span><br><span class="line">        name = <span class="string">"小明"</span>;</span><br><span class="line">        <span class="comment">//静态代码块 只能给静态变量赋值</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">//常量</span></span><br><span class="line">    <span class="comment">//常量一般用 静态关键词修饰</span></span><br><span class="line">    <span class="comment">//常量名字一般 大写</span></span><br><span class="line">    <span class="comment">//常量 要加关键字 final</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span>  <span class="type">double</span> <span class="variable">PI</span> <span class="operator">=</span> <span class="number">3.14</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-    //类的属性
-    public String name = "玉米"; //名称
-    public int growTime = 8; //生长期
-    public int harvestTime = 3; //采摘期
-    public int numsOfFruits = 200; //果实数量
-    public String status = "生长期"; // 生长状态
-    public double harvestCost = 50; //收割费用
-    public boolean isHarvested = false; //是否已采摘
+<h2 id="封装-1"><a href="#封装-1" class="headerlink" title="封装"></a>封装</h2><figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dbqn.demo03;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AppleTtee</span> {</span><br><span class="line"></span><br><span class="line">    <span class="comment">//封装</span></span><br><span class="line">    <span class="comment">//第一步 属性私有化</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span>  <span class="type">int</span> age;</span><br><span class="line">    <span class="keyword">private</span>  String date;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//第二步 构建方法 获取或者 改变属性 快捷键  alt + Ins</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span> {</span><br><span class="line">        <span class="keyword">if</span> (name.equals(<span class="string">"苹果"</span>)){  <span class="comment">// 私有化的时候 如果是this.name 就会报错 所以必须直接写名字 进行判断</span></span><br><span class="line">            <span class="built_in">this</span>.name = name;</span><br><span class="line">        }<span class="keyword">else</span> {</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">"您输入的名字不合理"</span>); <span class="comment">// 报错语句</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">getAge</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setAge</span><span class="params">(<span class="type">int</span> age)</span> {</span><br><span class="line">        <span class="built_in">this</span>.age = age;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getDate</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">return</span> date;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setDate</span><span class="params">(String date)</span> {</span><br><span class="line">        <span class="built_in">this</span>.date = date;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">//在 set 方法中添加控制语句，设定条件 在上述更改</span></span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-    //类的方法（行为）
-    public void print(){
-        System.out.println("*******作物特性*******");
-        System.out.println("您种植了:" + this.name + "。");
-        System.out.println("生长日期:" + this.growTime + "。");
-        System.out.println("采摘日期:" + this.harvestTime + "。");
-        System.out.println("目前果实数量:" + this.numsOfFruits + "。");
-        System.out.println("生长状态:" + this.status + "。");
-        System.out.println("收割费用:" + this.harvestCost + "。");
-    }
-</code></pre>
-<h2 id="静态-1"><a href="#静态-1" class="headerlink" title="静态"></a>静态</h2><pre><code class="java">package com.dbqn.demo05;
+<h2 id="重载-1"><a href="#重载-1" class="headerlink" title="重载"></a>重载</h2><figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dbqn.demo06;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Pande</span> {</span><br><span class="line"> <span class="comment">// 重载</span></span><br><span class="line">    <span class="comment">//同一个类中 方法名相同 参数类型不同 1.参数数据类型不同 2.参数个数不同 3.顺序不同 和返回值无关</span></span><br><span class="line">    <span class="comment">//参数个数不同</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">()</span>{}</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">(String a)</span>{}</span><br><span class="line">    <span class="comment">//参数数据类型不同</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span>  <span class="title function_">print</span><span class="params">(<span class="type">int</span> a)</span>{}</span><br><span class="line">    <span class="comment">//顺序不同</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">(<span class="type">int</span> a ,String b)</span>{}</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">(String b, <span class="type">int</span> a)</span>{}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-public class Student {
-    //静态变量
-    public static  String name;
-    //实例变量
-    public int age;
-    //静态方法
-    //静态方法中不可以调用实例方法
-    //静态方法可以调用静态方法
-    //静态方法不可以调用静态变量
-    //静态方法不能使用 this
-    //静态方法不能调用实例变量
-    public static void Print(){}
-    //实例方法
-    //实例方法中可以调用静态方法
-    public void Print(int age){}
-
-    //静态代码块
-    static { // 当启动项加载时，会先执行静态代码块 如果执行顺序不对，可能是 new 对象的顺序不对
-        name = "小明";
-        //静态代码块 只能给静态变量赋值
-    }
-
-    //常量
-    //常量一般用 静态关键词修饰
-    //常量名字一般 大写
-    //常量 要加关键字 final
-    public static final  double PI = 3.14;
-
-    //
-}
-</code></pre>
-<h2 id="封装-1"><a href="#封装-1" class="headerlink" title="封装"></a>封装</h2><pre><code class="java">package com.dbqn.demo03;
-
-public class AppleTtee {
-
-    //封装
-    //第一步 属性私有化
-    private String name;
-    private  int age;
-    private  String date;
-
-    //第二步 构建方法 获取或者 改变属性 快捷键  alt + Ins
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        if (name.equals("苹果")){  // 私有化的时候 如果是this.name 就会报错 所以必须直接写名字 进行判断
-            this.name = name;
-        }else {
-            throw new RuntimeException("您输入的名字不合理"); // 报错语句
-        }
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-    //在 set 方法中添加控制语句，设定条件 在上述更改
-
-}
-</code></pre>
-<h2 id="重载-1"><a href="#重载-1" class="headerlink" title="重载"></a>重载</h2><pre><code class="java">package com.dbqn.demo06;
-
-public class Pande {
- // 重载
-    //同一个类中 方法名相同 参数类型不同 1.参数数据类型不同 2.参数个数不同 3.顺序不同 和返回值无关
-    //参数个数不同
-    public void print(){}
-    public void print(String a){}
-    //参数数据类型不同
-    public void  print(int a){}
-    //顺序不同
-    public void print(int a ,String b){}
-    public void print(String b, int a){}
-}
-</code></pre>
 <h2 id="继承-1"><a href="#继承-1" class="headerlink" title="继承"></a>继承</h2><p>注意点： 写父级的时候要写有参构造 否则 子级继承的时候回报错</p>
-<pre><code class="text-x-java">package com.dbqn.demo06_继承;
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">package com.dbqn.demo06_继承;</span><br><span class="line"></span><br><span class="line">public class Corp {</span><br><span class="line">    //注意事项</span><br><span class="line">    //不能被继承</span><br><span class="line">    //1.当父类的属性或方法的修饰符是Priveate</span><br><span class="line">    //2.当父类的属性或方法的修饰符是默认的，且不再同一个包中</span><br><span class="line">    //3.构造方法不能被继承，但可以被使用</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private String name; //名字</span><br><span class="line">    private  int growTime; //生长期</span><br><span class="line">    private  int harvestTime; //采摘期</span><br><span class="line">    private  int numsOfFruits; //果实数量</span><br><span class="line">    private  String status; //生长状态</span><br><span class="line">    private  boolean isHarvested; //是否采摘</span><br><span class="line"></span><br><span class="line">    //构造参数</span><br><span class="line">    //有参构造</span><br><span class="line">    public Corp(String name, int growTime, int harvestTime, int numsOfFruits, String status, boolean isHarvested) {</span><br><span class="line">        this.name = name;</span><br><span class="line">        this.growTime = growTime;</span><br><span class="line">        this.harvestTime = harvestTime;</span><br><span class="line">        this.numsOfFruits = numsOfFruits;</span><br><span class="line">        this.status = status;</span><br><span class="line">        this.isHarvested = isHarvested;</span><br><span class="line">    }</span><br><span class="line">    //无参构造</span><br><span class="line">    public Corp() {</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    //封装</span><br><span class="line">    public String getName() {</span><br><span class="line">        return name;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public void setName(String name) {</span><br><span class="line">        this.name = name;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public int getGrowTime() {</span><br><span class="line">        return growTime;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public void setGrowTime(int growTime) {</span><br><span class="line">        this.growTime = growTime;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public int getHarvestTime() {</span><br><span class="line">        return harvestTime;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public void setHarvestTime(int harvestTime) {</span><br><span class="line">        this.harvestTime = harvestTime;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public int getNumsOfFruits() {</span><br><span class="line">        return numsOfFruits;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public void setNumsOfFruits(int numsOfFruits) {</span><br><span class="line">        this.numsOfFruits = numsOfFruits;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public String getStatus() {</span><br><span class="line">        return status;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public void setStatus(String status) {</span><br><span class="line">        this.status = status;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public boolean isHarvested() {</span><br><span class="line">        return isHarvested;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    public void setHarvested(boolean harvested) {</span><br><span class="line">        isHarvested = harvested;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    //展示</span><br><span class="line">    public void print(){</span><br><span class="line">        System.out.println("*******作物特性*******");</span><br><span class="line">        System.out.println("您种植了:" + this.name + "。");</span><br><span class="line">        System.out.println("生长日期:" + this.growTime + "。");</span><br><span class="line">        System.out.println("采摘日期:" + this.harvestTime + "。");</span><br><span class="line">        System.out.println("目前果实数量:" + this.numsOfFruits + "。");</span><br><span class="line">        System.out.println("生长状态:" + this.status + "。");</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-public class Corp {
-    //注意事项
-    //不能被继承
-    //1.当父类的属性或方法的修饰符是Priveate
-    //2.当父类的属性或方法的修饰符是默认的，且不再同一个包中
-    //3.构造方法不能被继承，但可以被使用
-
-
-
-    private String name; //名字
-    private  int growTime; //生长期
-    private  int harvestTime; //采摘期
-    private  int numsOfFruits; //果实数量
-    private  String status; //生长状态
-    private  boolean isHarvested; //是否采摘
-
-    //构造参数
-    //有参构造
-    public Corp(String name, int growTime, int harvestTime, int numsOfFruits, String status, boolean isHarvested) {
-        this.name = name;
-        this.growTime = growTime;
-        this.harvestTime = harvestTime;
-        this.numsOfFruits = numsOfFruits;
-        this.status = status;
-        this.isHarvested = isHarvested;
-    }
-    //无参构造
-    public Corp() {
-    }
-
-    //封装
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getGrowTime() {
-        return growTime;
-    }
-
-    public void setGrowTime(int growTime) {
-        this.growTime = growTime;
-    }
-
-    public int getHarvestTime() {
-        return harvestTime;
-    }
-
-    public void setHarvestTime(int harvestTime) {
-        this.harvestTime = harvestTime;
-    }
-
-    public int getNumsOfFruits() {
-        return numsOfFruits;
-    }
-
-    public void setNumsOfFruits(int numsOfFruits) {
-        this.numsOfFruits = numsOfFruits;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public boolean isHarvested() {
-        return isHarvested;
-    }
-
-    public void setHarvested(boolean harvested) {
-        isHarvested = harvested;
-    }
-
-    //展示
-    public void print(){
-        System.out.println("*******作物特性*******");
-        System.out.println("您种植了:" + this.name + "。");
-        System.out.println("生长日期:" + this.growTime + "。");
-        System.out.println("采摘日期:" + this.harvestTime + "。");
-        System.out.println("目前果实数量:" + this.numsOfFruits + "。");
-        System.out.println("生长状态:" + this.status + "。");
-
-    }
-}
-</code></pre>
 <p>tip:当子类继承了父类,它的构造方法会默认父类的无参构造，在调用父类的构造方法时，先进行属性的赋值</p>
-<h2 id="多态-1"><a href="#多态-1" class="headerlink" title="多态"></a>多态</h2><pre><code class="java">package com.dbqn.demo06_继承;
+<h2 id="多态-1"><a href="#多态-1" class="headerlink" title="多态"></a>多态</h2><figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dbqn.demo06_继承;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Land</span> {</span><br><span class="line">    <span class="comment">//判断土地是否被种植</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="variable">flag</span> <span class="operator">=</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//种植苹果树</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">plant</span><span class="params">(AppleTree AppleTree)</span> {</span><br><span class="line">        <span class="keyword">if</span> (flag) {</span><br><span class="line">            System.out.println(<span class="string">"恭喜你，成功种植了苹果树"</span>);</span><br><span class="line">            AppleTree.print();</span><br><span class="line">            flag = <span class="literal">false</span>;</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            System.out.println(<span class="string">"抱歉，该土地已经被种植"</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">//种植玉米</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">plant</span><span class="params">(Corn Corn)</span> {</span><br><span class="line">        <span class="keyword">if</span> (flag) {</span><br><span class="line">            System.out.println(<span class="string">"恭喜你，成功种植了玉米"</span>);</span><br><span class="line">            Corn.print();</span><br><span class="line">            flag = <span class="literal">false</span>;</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            System.out.println(<span class="string">"抱歉，该土地已经被种植"</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">//种植西红柿</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">plant</span><span class="params">(Tomato Tomato)</span> {</span><br><span class="line">        <span class="keyword">if</span> (flag) {</span><br><span class="line">            System.out.println(<span class="string">"恭喜你，成功种植了玉米"</span>);</span><br><span class="line">            Tomato.print();</span><br><span class="line">            flag = <span class="literal">false</span>;</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            System.out.println(<span class="string">"抱歉，该土地已经被种植"</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">//在以下三种种植的时候，都是传入了子类的对象 以便可以引用 ，这种情况下有大量的重复性代码.</span></span><br><span class="line">    <span class="comment">//同一个方法中，用到不同的对象 ，简称为 多态</span></span><br><span class="line">    <span class="comment">//官方： 同一个方法中，不用的对象展现的方法，简称为 多态</span></span><br><span class="line">    <span class="comment">//所以直接传入父类对象作为参数 就可以简化代码 这被称之为多态</span></span><br><span class="line">    <span class="comment">//父类是也可以用子类的属性和方法的，他们是相同的</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">plant</span><span class="params">(Corp corp)</span> { <span class="comment">// new对象的时候直接New Corp也可以，因为子父类继承，构造方法也有子类的特殊属性的传递 所以不会报错</span></span><br><span class="line">        <span class="keyword">if</span> (flag) {</span><br><span class="line">            System.out.println(<span class="string">"恭喜你，成功种植了"</span> + corp.getName());</span><br><span class="line">            corp.print();</span><br><span class="line">            flag = <span class="literal">false</span>;</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            System.out.println(<span class="string">"抱歉，该土地已经被种植"</span>);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    * 多态应用中(1.让父类作为形参传入方法)</span></span><br><span class="line"><span class="comment">    *向上转型(自动转化)</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
-public class Land {
-    //判断土地是否被种植
-    public boolean flag = true;
-
-    //种植苹果树
-    public void plant(AppleTree AppleTree) {
-        if (flag) {
-            System.out.println("恭喜你，成功种植了苹果树");
-            AppleTree.print();
-            flag = false;
-        } else {
-            System.out.println("抱歉，该土地已经被种植");
-        }
-    }
-
-    //种植玉米
-    public void plant(Corn Corn) {
-        if (flag) {
-            System.out.println("恭喜你，成功种植了玉米");
-            Corn.print();
-            flag = false;
-        } else {
-            System.out.println("抱歉，该土地已经被种植");
-        }
-    }
-
-    //种植西红柿
-    public void plant(Tomato Tomato) {
-        if (flag) {
-            System.out.println("恭喜你，成功种植了玉米");
-            Tomato.print();
-            flag = false;
-        } else {
-            System.out.println("抱歉，该土地已经被种植");
-        }
-    }
-
-    //在以下三种种植的时候，都是传入了子类的对象 以便可以引用 ，这种情况下有大量的重复性代码.
-    //同一个方法中，用到不同的对象 ，简称为 多态
-    //官方： 同一个方法中，不用的对象展现的方法，简称为 多态
-    //所以直接传入父类对象作为参数 就可以简化代码 这被称之为多态
-    //父类是也可以用子类的属性和方法的，他们是相同的
-    public void plant(Corp corp) { // new对象的时候直接New Corp也可以，因为子父类继承，构造方法也有子类的特殊属性的传递 所以不会报错
-        if (flag) {
-            System.out.println("恭喜你，成功种植了" + corp.getName());
-            corp.print();
-            flag = false;
-        } else {
-            System.out.println("抱歉，该土地已经被种植");
-        }
-    }
-
-    /*
-    * 多态应用中(1.让父类作为形参传入方法)
-    *向上转型(自动转化)
-    *
-    * */
-
-
-}
-</code></pre>
 <p>tip:这是以形参为父类的多态方法，以下是以返回值为父类的多态方法</p>
 <h2 id="强制转换"><a href="#强制转换" class="headerlink" title="强制转换"></a>强制转换</h2><p>在Java中，强制类型转换（也称为类型转换或类型转换）是将一个数据类型的值转换为另一个数据类型的过程。这通常是因为你需要在不同的数据类型之间进行操作或赋值，但Java的类型系统要求你明确地告诉编译器你的意图，因为一些类型转换可能导致数据丢失或不可预测的结果。</p>
 <p>要执行强制类型转换，你可以使用以下语法：</p>
-<pre><code>java复制代码目标数据类型 变量名 = (目标数据类型) 原始数据;
-</code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">java复制代码目标数据类型 变量名 = (目标数据类型) 原始数据;</span><br></pre></td></tr></tbody></table></figure>
+
 <p>这是一个简单的示例，演示如何将一个整数转换为浮点数：</p>
-<pre><code class="java">int intValue = 42;
-double doubleValue = (double) intValue;
-</code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">intValue</span> <span class="operator">=</span> <span class="number">42</span>;</span><br><span class="line"><span class="type">double</span> <span class="variable">doubleValue</span> <span class="operator">=</span> (<span class="type">double</span>) intValue;</span><br></pre></td></tr></tbody></table></figure>
+
 <p>在这个示例中，<code>(double)</code> 是强制类型转换操作符，它告诉编译器将整数值 <code>intValue</code> 转换为双精度浮点数，并将结果存储在 <code>doubleValue</code> 变量中。</p>
 <p>需要注意的几点事项：</p>
 <ol>
@@ -339,4 +219,144 @@ double doubleValue = (double) intValue;
 <li>强制类型转换应该谨慎使用，因为它可能会导致运行时错误或不确定的行为。你应该确保转换是安全的，不会导致数据丢失或错误的结果。</li>
 <li>在某些情况下，Java会自动执行隐式类型转换，但在其他情况下，你需要显式地使用强制类型转换。</li>
 </ol>
-</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2023/12/11/html/" title="html学习笔记"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">上一页: html学习笔记</span></a><a class="button is-default" href="/2023/12/11/python/" title="python学习笔记"><span class="has-text-weight-semibold">下一页: python学习笔记</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Blackcat-love"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> 天明 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/Blackcat-loveBlog/">首页</a></li>
+        
+          <li><a href="/Blackcat-loveBlog/about/about">关于</a></li>
+        
+          <li><a href="/Blackcat-loveBlog/archives/">归档</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://github.com/Blackcat-love">项目</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E5%BF%B5%E7%90%86%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">概念理解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F"><span class="toc-number">1.2.</span> <span class="toc-text">常量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E6%96%AD"><span class="toc-number">1.3.</span> <span class="toc-text">判断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-number">1.4.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB"><span class="toc-number">1.5.</span> <span class="toc-text">类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8C%85"><span class="toc-number">1.6.</span> <span class="toc-text">包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%B3%95"><span class="toc-number">1.7.</span> <span class="toc-text">方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E6%96%B9%E6%B3%95"><span class="toc-number">1.8.</span> <span class="toc-text">构建方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7"><span class="toc-number">1.9.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81"><span class="toc-number">1.10.</span> <span class="toc-text">静态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E8%A3%85"><span class="toc-number">1.11.</span> <span class="toc-text">封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD"><span class="toc-number">1.12.</span> <span class="toc-text">重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="toc-number">1.13.</span> <span class="toc-text">修饰符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-number">1.14.</span> <span class="toc-text">继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%86%99"><span class="toc-number">1.15.</span> <span class="toc-text">重写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%80%81"><span class="toc-number">1.16.</span> <span class="toc-text">多态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">1.17.</span> <span class="toc-text">快捷键</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5"><span class="toc-number">2.</span> <span class="toc-text">基础语句</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">构建一个方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%99%E6%80%81-1"><span class="toc-number">2.2.</span> <span class="toc-text">静态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%81%E8%A3%85-1"><span class="toc-number">2.3.</span> <span class="toc-text">封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD-1"><span class="toc-number">2.4.</span> <span class="toc-text">重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF-1"><span class="toc-number">2.5.</span> <span class="toc-text">继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E6%80%81-1"><span class="toc-number">2.6.</span> <span class="toc-text">多态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2"><span class="toc-number">2.7.</span> <span class="toc-text">强制转换</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/&text=JAVA基础概念"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/&title=JAVA基础概念"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/&is_video=false&description=JAVA基础概念"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JAVA基础概念&body=Check out this article: https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/&title=JAVA基础概念"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/&title=JAVA基础概念"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/&title=JAVA基础概念"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/&title=JAVA基础概念"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/&name=JAVA基础概念&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blackcat-love.github.io/Blackcat-loveBlog/2023/12/11/java/&t=JAVA基础概念"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    天明
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/Blackcat-loveBlog/">首页</a></li><!--
+     --><!--
+       --><li><a href="/Blackcat-loveBlog/about/about">关于</a></li><!--
+     --><!--
+       --><li><a href="/Blackcat-loveBlog/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Blackcat-love">项目</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/Blackcat-loveBlog/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
