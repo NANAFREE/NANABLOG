@@ -1,64 +1,27 @@
-<!DOCTYPE html>
-<html>
-    <head>
-    <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>Gradle部署</title><meta name="description" content="每个人都是被人所爱才诞生到这个世界上的"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/Blackcat-loveBlog/images/favicon.ico"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/bulma.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/base.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/helper.css"><script src="/Blackcat-loveBlog/js/common.js"></script><link rel="stylesheet" href="/Blackcat-loveBlog/style/post.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/jquery.fancybox.min.css"><script src="/Blackcat-loveBlog/js/highlight.pack.js"></script><meta name="description" content="1.环境配置1.1下载gradle官网:https://gradle.org/releases/
+这里我使用的IDEA版本2019所以下载gradle-5.2.1
+然后需在IDEA设置-找到gradle设置为本地下载的版本
+gradle user home:%gradle路径%
+如果Use Gradle from报错需要设置成本地 Specified location
+1.2配置环境变量%GRADLE_HOME%/bin
+1.3测试环境配置cmd命令
+1gradle -version
 
-
-<title>Gradle部署 | Bocchi the blog&#39;s</title>
-
-
-<link rel="stylesheet" href="/Blackcat-loveBlog/styles/main.css">
-
-
-    <meta name="generator" content="Hexo 7.2.0"></head>
-    <body>
-        <div class="container">
-            <header>
-<div class="main">
-<div class="title">
-    <a href="#" class="logo">Bocchi the blog&#39;s</a>
-</div>
-<div class="site-nav">
-    <ul id="menu" class="menu">
-    
-        <li class="menu-item text-underline">
-            <a href="/Blackcat-loveBlog/">Home</a>
-        </li>
-    
-        <li class="menu-item text-underline">
-            <a href="/Blackcat-loveBlog/archives">Archives</a>
-        </li>
-    
-        <li class="menu-item text-underline">
-            <a href="/Blackcat-loveBlog/about/about">About</a>
-        </li>
-    
-        <li class="menu-item text-underline">
-            <a href="/Blackcat-loveBlog/friends/friends">Menu.友链</a>
-        </li>
-            
-    </ul>
-</div>
-</div>
-</header>
-            <main class="main">
-                <section class="posts clearfix">
-<div class="post-wrapper">
-    <article class="post article-entry">
-    <div class="post-title">
-        Gradle部署
-    </div>
-    <p class="sub">Oct 18 2019</p>
-    <div class="post-content">
-        <h2 id="1-环境配置"><a href="#1-环境配置" class="headerlink" title="1.环境配置"></a>1.环境配置</h2><h4 id="1-1下载gradle"><a href="#1-1下载gradle" class="headerlink" title="1.1下载gradle"></a>1.1下载gradle</h4><p>官网:<a target="_blank" rel="noopener" href="https://gradle.org/releases/">https://gradle.org/releases/</a></p>
+2.IDEA创建Gradle2.1创建gradle项目groupid: 组织名称
+artifactid:项目名称
+Veersion:版本号
+tip:勾选 Use auto-import 自动导入包
+使用你之前下载好的grad.."><meta name="generator" content="Hexo 7.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/Blackcat-loveBlog/">天明's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Gradle部署</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/">首页</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/">首页</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-text">1.环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1%E4%B8%8B%E8%BD%BDgradle"><span class="toc-text">1.1下载gradle</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text">1.2配置环境变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-text">1.3测试环境配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-IDEA%E5%88%9B%E5%BB%BAGradle"><span class="toc-text">2.IDEA创建Gradle</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1%E5%88%9B%E5%BB%BAgradle%E9%A1%B9%E7%9B%AE"><span class="toc-text">2.1创建gradle项目</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-IDEA%E4%BD%BF%E7%94%A8Gradle"><span class="toc-text">3.IDEA使用Gradle</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-text">3.1目录结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80"><span class="toc-text">3.2编程语言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3groovy"><span class="toc-text">3.3groovy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4%E9%97%AD%E5%8C%85"><span class="toc-text">3.4闭包</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E9%97%AD%E5%8C%85"><span class="toc-text">基础闭包</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%A6%E5%8F%82%E6%95%B0%E9%97%AD%E5%8C%85"><span class="toc-text">带参数闭包</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8"><span class="toc-text">方法调用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">3.5配置文件</span></a></li></ol></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/Blackcat-loveBlog/tags/Gradle"><i class="tag post-item-tag">Gradle</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Gradle部署</h1><time class="has-text-grey" datetime="2019-10-18T07:05:36.000Z">2019-10-18</time><article class="mt-2 post-content"><h2 id="1-环境配置"><a href="#1-环境配置" class="headerlink" title="1.环境配置"></a>1.环境配置</h2><h4 id="1-1下载gradle"><a href="#1-1下载gradle" class="headerlink" title="1.1下载gradle"></a>1.1下载gradle</h4><p>官网:<a target="_blank" rel="noopener" href="https://gradle.org/releases/">https://gradle.org/releases/</a></p>
 <p>这里我使用的IDEA版本2019所以下载gradle-5.2.1</p>
 <p>然后需在IDEA设置-找到gradle设置为本地下载的版本</p>
 <p>gradle user home:%gradle路径%</p>
 <p>如果Use Gradle from报错需要设置成本地 Specified location</p>
-<h4 id="1-2配置环境变量"><a href="#1-2配置环境变量" class="headerlink" title="1.2配置环境变量"></a>1.2配置环境变量</h4><p>%GRADLE_HOME%&#x2F;bin</p>
+<h4 id="1-2配置环境变量"><a href="#1-2配置环境变量" class="headerlink" title="1.2配置环境变量"></a>1.2配置环境变量</h4><p>%GRADLE_HOME%/bin</p>
 <h4 id="1-3测试环境配置"><a href="#1-3测试环境配置" class="headerlink" title="1.3测试环境配置"></a>1.3测试环境配置</h4><p>cmd命令</p>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradle -version</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gradle -version</span><br></pre></td></tr></tbody></table></figure>
 
 <h2 id="2-IDEA创建Gradle"><a href="#2-IDEA创建Gradle" class="headerlink" title="2.IDEA创建Gradle"></a>2.IDEA创建Gradle</h2><h4 id="2-1创建gradle项目"><a href="#2-1创建gradle项目" class="headerlink" title="2.1创建gradle项目"></a>2.1创建gradle项目</h4><p>groupid: 组织名称</p>
 <p>artifactid:项目名称</p>
@@ -66,7 +29,7 @@
 <p>tip:勾选 Use auto-import 自动导入包</p>
 <p>使用你之前下载好的gradle-bin路径</p>
 <p>其他可以直接next然后创建完成</p>
-<h2 id="3-IDEA使用Gradle"><a href="#3-IDEA使用Gradle" class="headerlink" title="3.IDEA使用Gradle"></a>3.IDEA使用Gradle</h2><h4 id="3-1目录结构"><a href="#3-1目录结构" class="headerlink" title="3.1目录结构"></a>3.1目录结构</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">project-root</span><br><span class="line">├── build.gradle</span><br><span class="line">├── settings.gradle</span><br><span class="line">├── gradle.properties</span><br><span class="line">├── gradlew</span><br><span class="line">├── gradlew.bat</span><br><span class="line">├── src</span><br><span class="line">│   ├── main</span><br><span class="line">│   │   ├── java</span><br><span class="line">│   │   │   └── (Java源代码文件)</span><br><span class="line">│   │   ├── kotlin</span><br><span class="line">│   │   │   └── (Kotlin源代码文件)</span><br><span class="line">│   │   ├── resources</span><br><span class="line">│   │   │   └── (资源文件)</span><br><span class="line">│   │   └── webapp</span><br><span class="line">│   │       ├── WEB-INF</span><br><span class="line">│   │       │   └── web.xml</span><br><span class="line">│   │       ├── css</span><br><span class="line">│   │       │   └── (CSS文件)</span><br><span class="line">│   │       ├── js</span><br><span class="line">│   │       │   └── (JavaScript文件)</span><br><span class="line">│   │       └── index.html</span><br><span class="line">│   └── test</span><br><span class="line">│       ├── java</span><br><span class="line">│       │   └── (Java测试代码文件)</span><br><span class="line">│       ├── kotlin</span><br><span class="line">│       │   └── (Kotlin测试代码文件)</span><br><span class="line">│       └── resources</span><br><span class="line">│           └── (测试资源文件)</span><br><span class="line">└── build</span><br><span class="line">    └── (构建输出文件)</span><br></pre></td></tr></table></figure>
+<h2 id="3-IDEA使用Gradle"><a href="#3-IDEA使用Gradle" class="headerlink" title="3.IDEA使用Gradle"></a>3.IDEA使用Gradle</h2><h4 id="3-1目录结构"><a href="#3-1目录结构" class="headerlink" title="3.1目录结构"></a>3.1目录结构</h4><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">project-root</span><br><span class="line">├── build.gradle</span><br><span class="line">├── settings.gradle</span><br><span class="line">├── gradle.properties</span><br><span class="line">├── gradlew</span><br><span class="line">├── gradlew.bat</span><br><span class="line">├── src</span><br><span class="line">│   ├── main</span><br><span class="line">│   │   ├── java</span><br><span class="line">│   │   │   └── (Java源代码文件)</span><br><span class="line">│   │   ├── kotlin</span><br><span class="line">│   │   │   └── (Kotlin源代码文件)</span><br><span class="line">│   │   ├── resources</span><br><span class="line">│   │   │   └── (资源文件)</span><br><span class="line">│   │   └── webapp</span><br><span class="line">│   │       ├── WEB-INF</span><br><span class="line">│   │       │   └── web.xml</span><br><span class="line">│   │       ├── css</span><br><span class="line">│   │       │   └── (CSS文件)</span><br><span class="line">│   │       ├── js</span><br><span class="line">│   │       │   └── (JavaScript文件)</span><br><span class="line">│   │       └── index.html</span><br><span class="line">│   └── test</span><br><span class="line">│       ├── java</span><br><span class="line">│       │   └── (Java测试代码文件)</span><br><span class="line">│       ├── kotlin</span><br><span class="line">│       │   └── (Kotlin测试代码文件)</span><br><span class="line">│       └── resources</span><br><span class="line">│           └── (测试资源文件)</span><br><span class="line">└── build</span><br><span class="line">    └── (构建输出文件)</span><br></pre></td></tr></tbody></table></figure>
 
 <h4 id="3-2编程语言"><a href="#3-2编程语言" class="headerlink" title="3.2编程语言"></a>3.2编程语言</h4><table>
 <thead>
@@ -86,116 +49,58 @@
 </tbody></table>
 <h4 id="3-3groovy"><a href="#3-3groovy" class="headerlink" title="3.3groovy"></a>3.3groovy</h4><ol>
 <li><p>定义变量：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> name = <span class="string">&quot;John&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> name = <span class="string">"John"</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>打印输出：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">println <span class="string">&quot;Hello, $&#123;name&#125;&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">println <span class="string">"Hello, ${name}"</span></span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>定义列表（数组）：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> colors = [<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;green&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> colors = [<span class="string">'red'</span>, <span class="string">'green'</span>, <span class="string">'blue'</span>]</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>定义映射（Map）：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> person = [<span class="attr">name:</span> <span class="string">&#x27;Alice&#x27;</span>, <span class="attr">age:</span> <span class="number">30</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> person = [<span class="attr">name:</span> <span class="string">'Alice'</span>, <span class="attr">age:</span> <span class="number">30</span>]</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>条件语句（if-else）：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (age &lt; <span class="number">18</span>) &#123;</span><br><span class="line">    println <span class="string">&quot;未成年&quot;</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    println <span class="string">&quot;成年人&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (age &lt; <span class="number">18</span>) {</span><br><span class="line">    println <span class="string">"未成年"</span></span><br><span class="line">} <span class="keyword">else</span> {</span><br><span class="line">    println <span class="string">"成年人"</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 </li>
 <li><p>循环语句（for-in）：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">for</span> (num <span class="keyword">in</span> numbers) &#123;</span><br><span class="line">    println num</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight groovy"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="keyword">for</span> (num <span class="keyword">in</span> numbers) {</span><br><span class="line">    println num</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure></li>
 </ol>
 <h4 id="3-4闭包"><a href="#3-4闭包" class="headerlink" title="3.4闭包"></a>3.4闭包</h4><h5 id="基础闭包"><a href="#基础闭包" class="headerlink" title="基础闭包"></a>基础闭包</h5><p>基础闭包是最简单的形式，它没有参数，并且只有一个执行代码块。下面是一个基础闭包的示例：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> basicClosure = &#123;</span><br><span class="line">    println <span class="string">&quot;This is a basic closure.&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">basicClosure()</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> basicClosure = {</span><br><span class="line">    println <span class="string">"This is a basic closure."</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">basicClosure()</span><br></pre></td></tr></tbody></table></figure>
 
 <p>输出：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This is a basic closure.</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This is a basic closure.</span><br></pre></td></tr></tbody></table></figure>
 
 <p>在这个示例中，<code>basicClosure</code> 是一个没有参数的闭包，它的执行代码块只是打印一条消息。</p>
 <h5 id="带参数闭包"><a href="#带参数闭包" class="headerlink" title="带参数闭包"></a>带参数闭包</h5><p>带参数的闭包允许你在闭包内部接收并使用参数。下面是一个带参数的闭包的示例：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> parameterizedClosure = &#123; name -&gt;</span><br><span class="line">    println <span class="string">&quot;Hello, $&#123;name&#125;!&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">parameterizedClosure(<span class="string">&quot;John&quot;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> parameterizedClosure = { name -&gt;</span><br><span class="line">    println <span class="string">"Hello, ${name}!"</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">parameterizedClosure(<span class="string">"John"</span>)</span><br></pre></td></tr></tbody></table></figure>
 
 <p>输出：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello, John!</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello, John!</span><br></pre></td></tr></tbody></table></figure>
 
 <p>在这个示例中，<code>parameterizedClosure</code> 是一个带有参数 <code>name</code> 的闭包。当你调用闭包时，传递的参数会在闭包内部使用。</p>
 <h5 id="方法调用"><a href="#方法调用" class="headerlink" title="方法调用"></a>方法调用</h5><p>除了直接调用闭包，你还可以将闭包作为方法的参数或将其赋值给变量。下面是一个将闭包作为方法参数的示例：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> performOperation(closure, a, b) &#123;</span><br><span class="line">    closure(a, b)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> add = &#123; x, y -&gt;</span><br><span class="line">    println x + y</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">performOperation(add, <span class="number">3</span>, <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> performOperation(closure, a, b) {</span><br><span class="line">    closure(a, b)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> add = { x, y -&gt;</span><br><span class="line">    println x + y</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">performOperation(add, <span class="number">3</span>, <span class="number">5</span>)</span><br></pre></td></tr></tbody></table></figure>
 
 <p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8</span><br></pre></td></tr></tbody></table></figure>
 
 <p>在这个示例中，<code>add</code> 是一个闭包，它接收两个参数并将它们相加。然后，我们通过将 <code>add</code> 闭包作为参数传递给 <code>performOperation</code> 方法来调用闭包。</p>
 <p>你还可以将闭包赋值给变量，并通过该变量调用闭包，就像调用普通的方法一样。下面是一个示例：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> closure = &#123; name -&gt;</span><br><span class="line">    println <span class="string">&quot;Hello, $&#123;name&#125;!&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> greet = closure</span><br><span class="line"></span><br><span class="line">greet(<span class="string">&quot;Alice&quot;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> closure = { name -&gt;</span><br><span class="line">    println <span class="string">"Hello, ${name}!"</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> greet = closure</span><br><span class="line"></span><br><span class="line">greet(<span class="string">"Alice"</span>)</span><br></pre></td></tr></tbody></table></figure>
 
 <p>输出：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello, Alice!</span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello, Alice!</span><br></pre></td></tr></tbody></table></figure>
 
 <p>在这个示例中，我们将闭包赋值给变量 <code>greet</code>，然后通过 <code>greet</code> 变量调用闭包。</p>
 <h4 id="3-5配置文件"><a href="#3-5配置文件" class="headerlink" title="3.5配置文件"></a>3.5配置文件</h4><p><a target="_blank" rel="noopener" href="https://mvnrepository.com/">https://mvnrepository.com/</a></p>
 <p>build.gradle进行仓库依赖的配置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">plugins &#123;</span><br><span class="line">    id &#x27;java&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">group &#x27;org.example&#x27;</span><br><span class="line">version &#x27;1.0-SNAPSHOT&#x27;</span><br><span class="line"></span><br><span class="line">sourceCompatibility = 1.8</span><br><span class="line"></span><br><span class="line">//指定所使用的仓库，默认是中央仓库 所有包都会从这里下载到本地</span><br><span class="line">//先在maven本地仓库寻找jar没有再去中央仓库</span><br><span class="line">repositories &#123;</span><br><span class="line">    mavenLocal()</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//gradle工程所有的jar包坐标都在dependencies属性内放置</span><br><span class="line">//group:group名 name:jar包名 version:版本号</span><br><span class="line">dependencies &#123;</span><br><span class="line">    testCompile group: &#x27;junit&#x27;, name: &#x27;junit&#x27;, version: &#x27;4.12&#x27;</span><br><span class="line">    implementation group: &#x27;org.springframework&#x27;, name: &#x27;spring-context&#x27;, version: &#x27;5.0.2.RELEASE&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">plugins {</span><br><span class="line">    id 'java'</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">group 'org.example'</span><br><span class="line">version '1.0-SNAPSHOT'</span><br><span class="line"></span><br><span class="line">sourceCompatibility = 1.8</span><br><span class="line"></span><br><span class="line">//指定所使用的仓库，默认是中央仓库 所有包都会从这里下载到本地</span><br><span class="line">//先在maven本地仓库寻找jar没有再去中央仓库</span><br><span class="line">repositories {</span><br><span class="line">    mavenLocal()</span><br><span class="line">    mavenCentral()</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">//gradle工程所有的jar包坐标都在dependencies属性内放置</span><br><span class="line">//group:group名 name:jar包名 version:版本号</span><br><span class="line">dependencies {</span><br><span class="line">    testCompile group: 'junit', name: 'junit', version: '4.12'</span><br><span class="line">    implementation group: 'org.springframework', name: 'spring-context', version: '5.0.2.RELEASE'</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 
 
 
-
-    </div>
-    </article>
-</div>
-
-    <div class="_toc">
-        <strong class="toc-title">
-        Contents
-        </strong>
-        <div class="toc-content">
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-text">1.环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1%E4%B8%8B%E8%BD%BDgradle"><span class="toc-text">1.1下载gradle</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-text">1.2配置环境变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-text">1.3测试环境配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-IDEA%E5%88%9B%E5%BB%BAGradle"><span class="toc-text">2.IDEA创建Gradle</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1%E5%88%9B%E5%BB%BAgradle%E9%A1%B9%E7%9B%AE"><span class="toc-text">2.1创建gradle项目</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-IDEA%E4%BD%BF%E7%94%A8Gradle"><span class="toc-text">3.IDEA使用Gradle</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-text">3.1目录结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80"><span class="toc-text">3.2编程语言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3groovy"><span class="toc-text">3.3groovy</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-4%E9%97%AD%E5%8C%85"><span class="toc-text">3.4闭包</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E9%97%AD%E5%8C%85"><span class="toc-text">基础闭包</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%A6%E5%8F%82%E6%95%B0%E9%97%AD%E5%8C%85"><span class="toc-text">带参数闭包</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8"><span class="toc-text">方法调用</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-5%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-text">3.5配置文件</span></a></li></ol></li></ol></li></ol>
-        </div>
-    </div>
-
-</section>
-
-
-    <nav class="post-nav">
-        
-            <div class="page-tags">
-                
-                    <a href="/Blackcat-loveBlog/tags/Gradle/">Gradle</a>
-                
-            </div>
-        
-    </nav>
-
-
-
-    <nav class="paginator clearfix">
-        
-            <a class="prev" href="/Blackcat-loveBlog/2019/10/18/Dos%E6%95%B4%E7%90%86/">
-                <i class="iconfont icon-left"></i>
-                <span class="prev-text">Dos操作指令</span>
-            </a>
-        
-        
-            <a class="next" href="/Blackcat-loveBlog/2019/10/18/hexo/">
-                
-                <span class="prev-text">部署hexo</span>
-                <i class="iconfont icon-right"></i>
-            </a>
-        
-    </nav>
-
-
-            </main>
-            <div class="copyright">
-  <div class="text">Powered By
-    <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/zjx137/hexo-theme-Tsu">Tsu</a> &copy 2019
-  </div>
-</div>
-
-        </div>
-    <div class="back-to-top" id="back-to-top">
-            <i class="iconfont icon-up"></i>
-    </div>
-        
-    <!-- hexo injector body_end start --><script data-pjax src="https://registry.npmmirror.com/oh-my-live2d/latest/files"></script><script>const oml2d = OML2D.loadOml2d({libraryUrls:{"complete":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/complete.js","cubism2":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism2.js","cubism5":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism5.js"},mobileDisplay:true,models:[{"path":"/Blackcat-loveBlog/live2d/波奇酱2.0/波奇酱2.0.model3.json","mobilePosition":[0,0],"mobileScale":0.1,"mobileStageStyle":{"width":180,"height":250},"motionPreloadStrategy":"IDLE","position":[-100,-100],"scale":0.15,"stageStyle":{"width":250,"height":250}},{"path":"/Blackcat-loveBlog/live2d/liang_vts/liang.model3.json","scale":0.12,"position":[0,60],"stageStyle":{"width":250},"mobileScale":0.1,"mobilePosition":[0,0],"mobileStageStyle":{"width":180}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/Blackcat-loveBlog/2019/10/18/Dos%E6%95%B4%E7%90%86/" title="Dos操作指令"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">上一页: Dos操作指令</span></a><a class="button is-default" href="/Blackcat-loveBlog/2019/10/18/hexo/" title="部署hexo"><span class="has-text-weight-semibold">下一页: 部署hexo</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Blackcat-love"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> 天明 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/Blackcat-loveBlog/js/jquery-3.6.1.min.js"></script><script src="/Blackcat-loveBlog/js/jquery-fancybox.min.js"></script><script src="/Blackcat-loveBlog/js/img_zoom.js"></script><script src="/Blackcat-loveBlog/js/post.js"></script><!-- hexo injector body_end start --><script data-pjax src="https://registry.npmmirror.com/oh-my-live2d/latest/files"></script><script>const oml2d = OML2D.loadOml2d({libraryUrls:{"complete":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/complete.js","cubism2":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism2.js","cubism5":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism5.js"},mobileDisplay:true,models:[{"path":"/Blackcat-loveBlog/live2d/波奇酱2.0/波奇酱2.0.model3.json","mobilePosition":[0,0],"mobileScale":0.1,"mobileStageStyle":{"width":180,"height":250},"motionPreloadStrategy":"IDLE","position":[-100,-100],"scale":0.15,"stageStyle":{"width":250,"height":250}},{"path":"/Blackcat-loveBlog/live2d/liang_vts/liang.model3.json","scale":0.12,"position":[0,60],"stageStyle":{"width":250},"mobileScale":0.1,"mobilePosition":[0,0],"mobileStageStyle":{"width":180}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
   return axios.get('https://v1.hitokoto.cn?c=i')
     .then(function (response) {
       return response.data.hitokoto ;
@@ -204,51 +109,4 @@
       console.error(error);
     });
 }
-}}});</script><!-- hexo injector body_end end --></body>
-    
-<script src="/Blackcat-loveBlog/js/jquery-3.3.1.min.js"></script>
-
-    
-<script src="/Blackcat-loveBlog/js/back-to-top.js"></script>
-
-    
-<script src="/Blackcat-loveBlog/js/scroll.js"></script>
-
-    <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": { 
-        preferredFont: "TeX", 
-        availableFonts: ["STIX","TeX"], 
-        linebreaks: { automatic:true }, 
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) 
-    },
-    tex2jax: { 
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ], 
-        processEscapes: true, 
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {  
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
-        Macros: { href: "{}" } 
-    },
-    messageStyle: "none"
-    }); 
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-</html>
+}}});</script><!-- hexo injector body_end end --></body></html>

@@ -1,128 +1,28 @@
-<!DOCTYPE html>
-<html>
-    <head>
-    <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>Stylish插件自定义网页CSS</title><meta name="description" content="每个人都是被人所爱才诞生到这个世界上的"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/Blackcat-loveBlog/images/favicon.ico"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/bulma.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/base.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/helper.css"><script src="/Blackcat-loveBlog/js/common.js"></script><link rel="stylesheet" href="/Blackcat-loveBlog/style/post.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/jquery.fancybox.min.css"><script src="/Blackcat-loveBlog/js/highlight.pack.js"></script><meta name="description" content="使用Stylish插件可以实现对网站客制化的需求，其原理是当加载网页的时候插件会自动检测网页的代码如果符合插入CSS的要求将自动插入编写好的CSS
+比如我的目标网站是百度首页的按钮
+1&amp;lt;input type=&quot;submit&quot; value=&quot;百度一下&quot; id=&quot;su&quot; class=&quot;btn self-btn bg s_btn&quot;&amp;gt;
 
+这是源代码，我需要定制化的是删除按钮，那么我需要修改style
+1&amp;lt;input type=&quot;submit&quot; value=&quot;百度一下&quot; id=&quot;su&quot; class=&quot;btn self-btn bg s_btn&quot; style=&quot;display:none&quot;&amp;gt;
 
-<title>Stylish插件自定义网页CSS | Bocchi the blog&#39;s</title>
-
-
-<link rel="stylesheet" href="/Blackcat-loveBlog/styles/main.css">
-
-
-    <meta name="generator" content="Hexo 7.2.0"></head>
-    <body>
-        <div class="container">
-            <header>
-<div class="main">
-<div class="title">
-    <a href="#" class="logo">Bocchi the blog&#39;s</a>
-</div>
-<div class="site-nav">
-    <ul id="menu" class="menu">
-    
-        <li class="menu-item text-underline">
-            <a href="/Blackcat-loveBlog/">Home</a>
-        </li>
-    
-        <li class="menu-item text-underline">
-            <a href="/Blackcat-loveBlog/archives">Archives</a>
-        </li>
-    
-        <li class="menu-item text-underline">
-            <a href="/Blackcat-loveBlog/about/about">About</a>
-        </li>
-    
-        <li class="menu-item text-underline">
-            <a href="/Blackcat-loveBlog/friends/friends">Menu.友链</a>
-        </li>
-            
-    </ul>
-</div>
-</div>
-</header>
-            <main class="main">
-                <section class="posts clearfix">
-<div class="post-wrapper">
-    <article class="post article-entry">
-    <div class="post-title">
-        Stylish插件自定义网页CSS
-    </div>
-    <p class="sub">Jan 14 2024</p>
-    <div class="post-content">
-        <p>使用Stylish插件可以实现对网站客制化的需求，其原理是当加载网页的时候插件会自动检测网页的代码如果符合插入CSS的要求将自动插入编写好的CSS</p>
+如果我每次都按F12去更改，那么未免也太麻烦，所以通过插件我直接使用唯一标识符去更改默认值即可
+inpu.."><meta name="generator" content="Hexo 7.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/Blackcat-loveBlog/">天明's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Stylish插件自定义网页CSS</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/">首页</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/">首页</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile is-hidden"></div><div class="column is-9"><header class="my-4"><a href="/Blackcat-loveBlog/tags/Stylish"><i class="tag post-item-tag">Stylish</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Stylish插件自定义网页CSS</h1><time class="has-text-grey" datetime="2024-01-14T14:35:09.000Z">2024-01-14</time><article class="mt-2 post-content"><p>使用Stylish插件可以实现对网站客制化的需求，其原理是当加载网页的时候插件会自动检测网页的代码如果符合插入CSS的要求将自动插入编写好的CSS</p>
 <p>比如我的目标网站是百度首页的按钮</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;百度一下&quot;</span> <span class="attr">id</span>=<span class="string">&quot;su&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn self-btn bg s_btn&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"百度一下"</span> <span class="attr">id</span>=<span class="string">"su"</span> <span class="attr">class</span>=<span class="string">"btn self-btn bg s_btn"</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 
 <p>这是源代码，我需要定制化的是删除按钮，那么我需要修改style</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;百度一下&quot;</span> <span class="attr">id</span>=<span class="string">&quot;su&quot;</span> <span class="attr">class</span>=<span class="string">&quot;btn self-btn bg s_btn&quot;</span> <span class="attr">style</span>=<span class="string">&quot;display:none&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"百度一下"</span> <span class="attr">id</span>=<span class="string">"su"</span> <span class="attr">class</span>=<span class="string">"btn self-btn bg s_btn"</span> <span class="attr">style</span>=<span class="string">"display:none"</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
 
 <p>如果我每次都按F12去更改，那么未免也太麻烦，所以通过插件我直接使用唯一标识符去更改默认值即可</p>
 <p>input的ID是su，所以我使用</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#su</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>:none</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#su</span> {</span><br><span class="line">  <span class="attribute">display</span>:none</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 
 <p>这样它会在访问对应网址的时候将写好的CSS添加到网页中，实现改变样式</p>
 <p><img src="/Blackcat-loveBlog/png/styles01.png"></p>
-
-    </div>
-    </article>
-</div>
-
-    <div class="_toc">
-        <strong class="toc-title">
-        Contents
-        </strong>
-        <div class="toc-content">
-            
-        </div>
-    </div>
-
-</section>
-
-
-    <nav class="post-nav">
-        
-            <div class="page-tags">
-                
-                    <a href="/Blackcat-loveBlog/tags/Stylish/">Stylish</a>
-                
-            </div>
-        
-    </nav>
-
-
-
-    <nav class="paginator clearfix">
-        
-            <a class="prev" href="/Blackcat-loveBlog/2024/01/22/Shiro%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-                <i class="iconfont icon-left"></i>
-                <span class="prev-text">Shiro框架学习笔记</span>
-            </a>
-        
-        
-            <a class="next" href="/Blackcat-loveBlog/2024/01/14/Go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-                
-                <span class="prev-text">Go语言学习笔记</span>
-                <i class="iconfont icon-right"></i>
-            </a>
-        
-    </nav>
-
-
-            </main>
-            <div class="copyright">
-  <div class="text">Powered By
-    <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/zjx137/hexo-theme-Tsu">Tsu</a> &copy 2019
-  </div>
-</div>
-
-        </div>
-    <div class="back-to-top" id="back-to-top">
-            <i class="iconfont icon-up"></i>
-    </div>
-        
-    <!-- hexo injector body_end start --><script data-pjax src="https://registry.npmmirror.com/oh-my-live2d/latest/files"></script><script>const oml2d = OML2D.loadOml2d({libraryUrls:{"complete":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/complete.js","cubism2":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism2.js","cubism5":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism5.js"},mobileDisplay:true,models:[{"path":"/Blackcat-loveBlog/live2d/波奇酱2.0/波奇酱2.0.model3.json","mobilePosition":[0,0],"mobileScale":0.1,"mobileStageStyle":{"width":180,"height":250},"motionPreloadStrategy":"IDLE","position":[-100,-100],"scale":0.15,"stageStyle":{"width":250,"height":250}},{"path":"/Blackcat-loveBlog/live2d/liang_vts/liang.model3.json","scale":0.12,"position":[0,60],"stageStyle":{"width":250},"mobileScale":0.1,"mobilePosition":[0,0],"mobileStageStyle":{"width":180}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/Blackcat-loveBlog/2024/01/22/Shiro%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Shiro框架学习笔记"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">上一页: Shiro框架学习笔记</span></a><a class="button is-default" href="/Blackcat-loveBlog/2024/01/14/Go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="Go语言学习笔记"><span class="has-text-weight-semibold">下一页: Go语言学习笔记</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Blackcat-love"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> 天明 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/Blackcat-loveBlog/js/jquery-3.6.1.min.js"></script><script src="/Blackcat-loveBlog/js/jquery-fancybox.min.js"></script><script src="/Blackcat-loveBlog/js/img_zoom.js"></script><script src="/Blackcat-loveBlog/js/post.js"></script><!-- hexo injector body_end start --><script data-pjax src="https://registry.npmmirror.com/oh-my-live2d/latest/files"></script><script>const oml2d = OML2D.loadOml2d({libraryUrls:{"complete":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/complete.js","cubism2":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism2.js","cubism5":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism5.js"},mobileDisplay:true,models:[{"path":"/Blackcat-loveBlog/live2d/波奇酱2.0/波奇酱2.0.model3.json","mobilePosition":[0,0],"mobileScale":0.1,"mobileStageStyle":{"width":180,"height":250},"motionPreloadStrategy":"IDLE","position":[-100,-100],"scale":0.15,"stageStyle":{"width":250,"height":250}},{"path":"/Blackcat-loveBlog/live2d/liang_vts/liang.model3.json","scale":0.12,"position":[0,60],"stageStyle":{"width":250},"mobileScale":0.1,"mobilePosition":[0,0],"mobileStageStyle":{"width":180}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
   return axios.get('https://v1.hitokoto.cn?c=i')
     .then(function (response) {
       return response.data.hitokoto ;
@@ -131,51 +31,4 @@
       console.error(error);
     });
 }
-}}});</script><!-- hexo injector body_end end --></body>
-    
-<script src="/Blackcat-loveBlog/js/jquery-3.3.1.min.js"></script>
-
-    
-<script src="/Blackcat-loveBlog/js/back-to-top.js"></script>
-
-    
-<script src="/Blackcat-loveBlog/js/scroll.js"></script>
-
-    <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": { 
-        preferredFont: "TeX", 
-        availableFonts: ["STIX","TeX"], 
-        linebreaks: { automatic:true }, 
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) 
-    },
-    tex2jax: { 
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ], 
-        processEscapes: true, 
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {  
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
-        Macros: { href: "{}" } 
-    },
-    messageStyle: "none"
-    }); 
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-</html>
+}}});</script><!-- hexo injector body_end end --></body></html>

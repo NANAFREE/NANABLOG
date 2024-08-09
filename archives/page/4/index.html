@@ -1,254 +1,166 @@
-<!DOCTYPE html>
-<html>
-    <head>
-    <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>天明's blog</title><meta name="description" content="每个人都是被人所爱才诞生到这个世界上的"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/Blackcat-loveBlog/images/favicon.ico"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/bulma.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/base.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/helper.css"><script src="/Blackcat-loveBlog/js/common.js"></script><link rel="stylesheet" href="/Blackcat-loveBlog/style/widget-post-list.css"><meta name="generator" content="Hexo 7.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/Blackcat-loveBlog/">天明's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><span>归档 · 全部</span></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/">首页</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/">首页</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/archives">归档</a></h3></header><main><article class="post-container is-flex is-justify-content-center section container is-max-widescreen pt-4 px-2"><div class="columns is-variable is-1-tablet is-3-desktop-only is-2-widescreen is-full-width"><section class="column"><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/Blackcat-loveBlog/tags/Go"><i class="tag post-item-tag">Go</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/Blackcat-loveBlog/2024/01/14/Go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Go语言学习笔记</a></h2><time class="has-text-grey" datetime="2024-01-14T06:59:27.000Z">2024-01-14</time><p class="is-flex-grow-2 mt-2">参考资料:
+https://www.topgoer.com/
+https://github.com/talkgo/read
+什么是Go语言Go语言，又称Golang，是Google公司开发的一种静态强类型、编译型、并发型、并具有垃圾回收功能的编程语言。它是一种简洁而强大的编程语言，适用于各种类型的应用开发，包括Web开发、服务器端开发、移动应用开发等。
+Go语言的优点包括：
+
+高效的编译速度：Go语言采用了独特的编译模型，能够在极短的时间内编译大量代码，这使得开发效率大大提高。
+强大的并发处理能力：Go语言天生支持并发，它采用了协程（goroutine）的概念来实现并发执行，这使得在处理高并发请求时性能更佳。
+简洁的语法：Go语言的语法简单明了，易于学习，使得编写代码更加快速且易于维护。
+丰富的标准库：Go..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/Blackcat-loveBlog/2024/01/14/Go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="/Blackcat-loveBlog/png/mysun.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/Blackcat-loveBlog/2024/01/08/%E6%9C%AC%E6%89%80%E4%B8%83%E5%A4%A7%E4%B8%8D%E5%8F%AF%E6%80%9D%E8%AE%AE%E6%B8%B8%E7%8E%A9%E6%84%9F%E6%83%B3/"><img class="post-cover-img js-img-fadeIn" src="/Blackcat-loveBlog/png/mysun.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/Blackcat-loveBlog/tags/GalGame"><i class="tag post-item-tag">GalGame</i></a><a href="/Blackcat-loveBlog/tags/%E6%81%90%E6%80%96%E6%82%AC%E7%96%91"><i class="tag post-item-tag">恐怖悬疑</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/Blackcat-loveBlog/2024/01/08/%E6%9C%AC%E6%89%80%E4%B8%83%E5%A4%A7%E4%B8%8D%E5%8F%AF%E6%80%9D%E8%AE%AE%E6%B8%B8%E7%8E%A9%E6%84%9F%E6%83%B3/">本所七大不可思议游玩感想</a></h2><time class="has-text-grey" datetime="2024-01-08T07:04:36.000Z">2024-01-08</time><p class="is-flex-grow-2 mt-2">
+这是我第一次玩悬疑恐怖类的galgame
+本所的故事在我看来并不复杂，但是里面的设定和剧情却很有趣，我一直对打破第四面墙的游戏很感兴趣，不同于修改游戏文件才能通关的《心跳文学俱乐部》，直面内心保持决心的群像《传说之下》，还有ARG类型的游戏，早些年的，孔明的陷阱，还有这几年因为虚拟Vtb出现而掀起的悬疑解密ARG企划，都具有此特性。
+我们所扮演的人物，在一开始看来是兴家，虽然我们对游戏一无所知，但却要为游戏的进度去做出重大选择，这让我们如果想要通关，则需要不断存档和了解故事，以达到最终HappyEnd的结局。
+这也是GalGame核心的玩法，本所则是利用了这个玩法本身，我们要扮演的角色不是游戏中的任何一个人，而是我们自己，而游戏在很多时候都会无意间的和屏幕后面的我们做出互动。
+“为什么？明明不知道为什么，..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/Blackcat-loveBlog/2024/01/08/%E6%9C%AC%E6%89%80%E4%B8%83%E5%A4%A7%E4%B8%8D%E5%8F%AF%E6%80%9D%E8%AE%AE%E6%B8%B8%E7%8E%A9%E6%84%9F%E6%83%B3/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="/Blackcat-loveBlog/png/springcloud.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><img class="post-cover-img js-img-fadeIn" src="/Blackcat-loveBlog/png/springcloud.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/Blackcat-loveBlog/tags/%E6%A1%86%E6%9E%B6"><i class="tag post-item-tag">框架</i></a><a href="/Blackcat-loveBlog/tags/Spring"><i class="tag post-item-tag">Spring</i></a><a href="/Blackcat-loveBlog/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1"><i class="tag post-item-tag">微服务</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">springcloud学习笔记</a></h2><time class="has-text-grey" datetime="2024-01-03T11:22:40.000Z">2024-01-03</time><p class="is-flex-grow-2 mt-2">
+Spring Cloud是一个基于Spring Boot的微服务架构，它提供了一整套的开发工具包，包括服务治理、服务注册与发现、负载均衡、数据监控、REST API发布等，基本涵盖了分布式框架所需要的所有功能。
+使用Spring Cloud的原因主要有以下几点：
+
+简化开发：Spring Cloud利用Spring Boot的开发便利性，简化了分布式系统基础设施的开发。它提供了一系列的工具，如配置管理、服务发现、断路器、路由、微代理、事件总线等，这些都可以用Spring Boot的开发风格做到一键启动和部署。
+易于维护：Spring Cloud的各个组件都是高度抽象和封装的，这使得它在处理复杂系统时能够提供更清晰、更易于维护的代码结构。
+快速部署：由于Spring Cloud是基于微服务架构的，因此每个服..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/Blackcat-loveBlog/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93"><i class="tag post-item-tag">年终总结</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/Blackcat-loveBlog/2023/12/31/2023%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">2023年终总结</a></h2><time class="has-text-grey" datetime="2023-12-31T13:34:14.000Z">2023-12-31</time><p class="is-flex-grow-2 mt-2">再有几个小时就是2024年了，刚看完其他UP主做的年终总结，有了自己也要写一个的想法，便有了这篇文章。
+对我而言，我很在乎自己对于时间投入的产出比，在这个年纪，这是我们唯一的资产，所以最终总结为，这一年收获了什么，有什么遗憾，和下一年的目标。
+关于收获，这一年学会了更多有关编程的知识，对网络了解也提高了不少。
+看书方面，由于还是不够自律，看的零零散散，今年看完了瑞达利欧写的《原则》，让我明白，在做人做事上，原则的重要性会影响我们的一生，我们应该为自己设立三个原则，生活原则，工作原则，自身原则，并且不断改善原则，让原则顺其自然帮助你成长，一个好的习惯可以受益终生就是这个说法。
+另外在2022年看完了《小狗钱钱》后，就想去看后续的故事，所以今年看了《富爸爸和穷爸爸》,这是一个系列的书籍，一共有五本，目前只看了一..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/Blackcat-loveBlog/2023/12/31/2023%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="/Blackcat-loveBlog/png/jNmXrp.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/Blackcat-loveBlog/2023/12/28/renpy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><img class="post-cover-img js-img-fadeIn" src="/Blackcat-loveBlog/png/jNmXrp.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/Blackcat-loveBlog/tags/GalGame"><i class="tag post-item-tag">GalGame</i></a><a href="/Blackcat-loveBlog/tags/Ren'py"><i class="tag post-item-tag">Ren'py</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/Blackcat-loveBlog/2023/12/28/renpy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">renpy学习笔记</a></h2><time class="has-text-grey" datetime="2023-12-28T05:49:05.000Z">2023-12-28</time><p class="is-flex-grow-2 mt-2">
+基本命令
+</p><a class="button is-default mt-2 has-text-weight-semibold" href="/Blackcat-loveBlog/2023/12/28/renpy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="/Blackcat-loveBlog/png/springBoot_Redis.png" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/Blackcat-loveBlog/2023/12/26/SpringBoot-Redis%E6%95%B4%E5%90%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><img class="post-cover-img js-img-fadeIn" src="/Blackcat-loveBlog/png/springBoot_Redis.png" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/Blackcat-loveBlog/tags/Spring"><i class="tag post-item-tag">Spring</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/Blackcat-loveBlog/2023/12/26/SpringBoot-Redis%E6%95%B4%E5%90%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">SpringBoot_Redis整合学习笔记</a></h2><time class="has-text-grey" datetime="2023-12-26T01:43:04.000Z">2023-12-26</time><p class="is-flex-grow-2 mt-2">配置Redis在SpringBoot项目中配置Redis
+
+添加依赖1234567891011&amp;lt;dependency&amp;gt;     &amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;     &amp;lt;artifactId&amp;gt;spring-boot-starter-data-redis&amp;lt;/artifactId&amp;gt;     &amp;lt;version&amp;gt;3.0.4&amp;lt;/version&amp;gt; &amp;lt;/dependency&amp;gt;  &amp;lt;!-- spring2.X集成redis所需common-pool2 如果上面引入的依赖是2.x则加--&amp;gt;  &amp;lt;dependency&amp;gt;      &amp;lt;groupId&amp;..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/Blackcat-loveBlog/2023/12/26/SpringBoot-Redis%E6%95%B4%E5%90%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/Blackcat-loveBlog/2023/12/22/%E6%B6%B2%E9%87%91%E5%81%8F%E7%A7%BB%E6%A3%80%E6%B5%8B%E8%BD%AF%E4%BB%B6/">液金偏移检测软件</a></h2><time class="has-text-grey" datetime="2023-12-22T06:05:09.000Z">2023-12-22</time><p class="is-flex-grow-2 mt-2">说是液金偏移检测软件，其实也只是通过监控不同的核心温度温差来做一个是否偏移的判断
+oshi是一个用于获取系统信息的Java库，可以用来获取关于硬件、操作系统和进程的详细信息。它提供了一组简单易用的API，使得获取系统信息变得非常方便。
+oshi库的主要功能包括：
+
+获取硬件信息：包括CPU、内存、磁盘、网络接口等硬件相关信息。
+获取操作系统信息：包括操作系统类型、版本、文件系统等信息。
+获取进程信息：包括进程列表、资源利用率、线程数等信息。
+
+通过oshi库，你可以轻松地编写Java代码来获取系统的各种信息，从而实现一些系统管理、性能监控或诊断工具等应用程序。oshi库还在不断更新和改进中，以适应不同操作系统和硬件平台的需求。
+总之，oshi库为Java开发者提供了一个强大且易用的工具，用于获取系统信息并进..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/Blackcat-loveBlog/2023/12/22/%E6%B6%B2%E9%87%91%E5%81%8F%E7%A7%BB%E6%A3%80%E6%B5%8B%E8%BD%AF%E4%BB%B6/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><h2 class="mt-4 mb-0 is-family-serif"><a href="/Blackcat-loveBlog/2023/12/22/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">linux常用命令</a></h2><time class="has-text-grey" datetime="2023-12-22T00:49:58.000Z">2023-12-22</time><p class="is-flex-grow-2 mt-2">
 
 
-<title>Archives | Bocchi the blog&#39;s</title>
-
-
-<link rel="stylesheet" href="/Blackcat-loveBlog/styles/main.css">
-
-
-    <meta name="generator" content="Hexo 7.2.0"></head>
-    <body>
-        <div class="container">
-            <header>
-<div class="main">
-<div class="title">
-    <a href="#" class="logo">Bocchi the blog&#39;s</a>
-</div>
-<div class="site-nav">
-    <ul id="menu" class="menu">
-    
-        <li class="menu-item text-underline">
-            <a href="/Blackcat-loveBlog/">Home</a>
-        </li>
-    
-        <li class="menu-item text-underline">
-            <a href="/Blackcat-loveBlog/archives">Archives</a>
-        </li>
-    
-        <li class="menu-item text-underline">
-            <a href="/Blackcat-loveBlog/about/about">About</a>
-        </li>
-    
-        <li class="menu-item text-underline">
-            <a href="/Blackcat-loveBlog/friends/friends">Menu.友链</a>
-        </li>
-            
-    </ul>
-</div>
-</div>
-</header>
-            <main class="main">
-                <section class="archive">
-
-
-    <div class="post-archive">
-        
-        
-                       
-                
-                    
-                    
-                        
-                        <div class="collect-year">
-                            <h2>2024</h2>  
-                        </div>
-                                            
-                    
-                    
-                
-                <div class="collect-item">
-                
-                    <div class="time">01-14</div>
-                    <a href="/Blackcat-loveBlog/2024/01/14/Go%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="title">Go语言学习笔记</a>
-                
-                
-                </div>
-                
-                
-
-
-        
-                       
-                
-                <div class="collect-item">
-                
-                    <div class="time">01-08</div>
-                    <a href="/Blackcat-loveBlog/2024/01/08/%E6%9C%AC%E6%89%80%E4%B8%83%E5%A4%A7%E4%B8%8D%E5%8F%AF%E6%80%9D%E8%AE%AE%E6%B8%B8%E7%8E%A9%E6%84%9F%E6%83%B3/" class="title">本所七大不可思议游玩感想</a>
-                
-                
-                </div>
-                
-                
-
-
-        
-                       
-                
-                <div class="collect-item">
-                
-                    <div class="time">01-03</div>
-                    <a href="/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="title">springcloud学习笔记</a>
-                
-                
-                </div>
-                
-                
-
-
-        
-                       
-                
-                    
-                    
-                        
-                        <div class="collect-year">
-                            <h2>2023</h2>  
-                        </div>
-                                            
-                    
-                    
-                
-                <div class="collect-item">
-                
-                    <div class="time">12-31</div>
-                    <a href="/Blackcat-loveBlog/2023/12/31/2023%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" class="title">2023年终总结</a>
-                
-                
-                </div>
-                
-                
-
-
-        
-                       
-                
-                <div class="collect-item">
-                
-                    <div class="time">12-28</div>
-                    <a href="/Blackcat-loveBlog/2023/12/28/renpy%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="title">renpy学习笔记</a>
-                
-                
-                </div>
-                
-                
-
-
-        
-                       
-                
-                <div class="collect-item">
-                
-                    <div class="time">12-26</div>
-                    <a href="/Blackcat-loveBlog/2023/12/26/SpringBoot-Redis%E6%95%B4%E5%90%88%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="title">SpringBoot_Redis整合学习笔记</a>
-                
-                
-                </div>
-                
-                
-
-
-        
-                       
-                
-                <div class="collect-item">
-                
-                    <div class="time">12-22</div>
-                    <a href="/Blackcat-loveBlog/2023/12/22/%E6%B6%B2%E9%87%91%E5%81%8F%E7%A7%BB%E6%A3%80%E6%B5%8B%E8%BD%AF%E4%BB%B6/" class="title">液金偏移检测软件</a>
-                
-                
-                </div>
-                
-                
-
-
-        
-                       
-                
-                <div class="collect-item">
-                
-                    <div class="time">12-22</div>
-                    <a href="/Blackcat-loveBlog/2023/12/22/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="title">linux常用命令</a>
-                
-                
-                </div>
-                
-                
-
-
-        
-                       
-                
-                <div class="collect-item">
-                
-                    <div class="time">12-22</div>
-                    <a href="/Blackcat-loveBlog/2023/12/22/Redis/" class="title">Redis</a>
-                
-                
-                </div>
-                
-                
-
-
-        
-                       
-                
-                <div class="collect-item">
-                
-                    <div class="time">12-21</div>
-                    <a href="/Blackcat-loveBlog/2023/12/21/Termux%E7%BB%88%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="title">Termux终端学习笔记</a>
-                
-                
-                </div>
-                
-                
-
-
-        
-
-    </div>
-
-</section>
-
-    <nav class="page-nav">
-    
-        <a class="prev" href="/Blackcat-loveBlog/archives/page/3/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text">Prev</span>
-        </a>
-    
-    
-        <a class="next" href="/Blackcat-loveBlog/archives/page/5/">
-            <span class="next-text">Next</span>
-            <i class="iconfont icon-right"></i>
-        </a>
-    
-    </nav>
-
-
-    <nav class="post-nav">
-        
-    </nav>
+命令
+描述
 
 
 
-            </main>
-            <div class="copyright">
-  <div class="text">Powered By
-    <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> | Theme <a target="_blank" rel="noopener" href="https://github.com/zjx137/hexo-theme-Tsu">Tsu</a> &copy 2019
-  </div>
-</div>
+ls
+列出目录内容
 
-        </div>
-    <div class="back-to-top" id="back-to-top">
-            <i class="iconfont icon-up"></i>
-    </div>
-        
-    <!-- hexo injector body_end start --><script data-pjax src="https://registry.npmmirror.com/oh-my-live2d/latest/files"></script><script>const oml2d = OML2D.loadOml2d({libraryUrls:{"complete":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/complete.js","cubism2":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism2.js","cubism5":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism5.js"},mobileDisplay:true,models:[{"path":"/Blackcat-loveBlog/live2d/波奇酱2.0/波奇酱2.0.model3.json","mobilePosition":[0,0],"mobileScale":0.1,"mobileStageStyle":{"width":180,"height":250},"motionPreloadStrategy":"IDLE","position":[-100,-100],"scale":0.15,"stageStyle":{"width":250,"height":250}},{"path":"/Blackcat-loveBlog/live2d/liang_vts/liang.model3.json","scale":0.12,"position":[0,60],"stageStyle":{"width":250},"mobileScale":0.1,"mobilePosition":[0,0],"mobileStageStyle":{"width":180}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
+
+cd
+切换目录
+
+
+pwd
+显示当前工作目录
+
+
+cp
+复制文件或目录
+
+
+mv
+移动/重命名文件或目录
+
+
+rm
+删除文件或目录
+
+
+mkdir
+创建新目录
+
+
+rmdir
+删除空目录
+
+
+touch
+创建空文件
+
+
+cat
+查看或连接文件
+
+
+grep
+在文件中查找指定文本
+
+
+chmod
+修改文件或目录的权限
+
+
+chown
+修改文件或目录的所有者
+
+
+ps
+显示进程信息
+
+
+top
+显示系统中各个进程的资源占用情况
+
+
+kill
+终止进程
+
+
+ifconfig
+显示网络接口信息
+
+
+ping
+测试与另一台主机的连通性
+
+
+ssh
+远程登录到另一台计算机
+
+
+scp
+在两台计算机之间安全地传输文件
+
+
+tar
+打包/解包文件
+
+
+find
+查找文件
+
+
+..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/Blackcat-loveBlog/2023/12/22/linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">更多</a></section></article><article class="post-item-card"><header class="is-relative is-flex"><div class="post-cover-backdrop is-hidden"><img src="/Blackcat-loveBlog/png/redis.jpg" alt="loading.."></div><a class="post-cover-link has-text-centered skeleton" href="/Blackcat-loveBlog/2023/12/22/Redis/"><img class="post-cover-img js-img-fadeIn" src="/Blackcat-loveBlog/png/redis.jpg" alt="loading.." data-backdrop="true"></a></header><section class="content post-card-content p-4 pb-5"><header><a href="/Blackcat-loveBlog/tags/%E6%95%B0%E6%8D%AE%E5%BA%93"><i class="tag post-item-tag">数据库</i></a><a href="/Blackcat-loveBlog/tags/Redis"><i class="tag post-item-tag">Redis</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/Blackcat-loveBlog/2023/12/22/Redis/">Redis</a></h2><time class="has-text-grey" datetime="2023-12-22T00:18:16.000Z">2023-12-22</time><p class="is-flex-grow-2 mt-2">Redis是一个开源的使用ANSI C编写、支持网络、基于内存、可选持久性的键值对存储数据库。它通常被用作缓存、消息代理和排行榜等应用中。Redis支持多种类型的数据结构，如字符串、列表、集合、哈希表等，提供了丰富的功能和命令来操作这些数据结构。由于其高性能和灵活性，Redis被广泛应用于大型互联网应用系统中。
+
+Win本地安装解压win包
+添加redis服务
+到解压文件目录下 运行cmd
+1redis-server --service-install redis.windows.conf --loglevel verbose
+
+启动服务 redis
+本地链接填入 本地ip 127.0.0.1
+</p><a class="button is-default mt-2 has-text-weight-semibold" href="/Blackcat-loveBlog/2023/12/22/Redis/">更多</a></section></article><article class="post-item-card"><section class="content post-card-content p-4 pb-5"><header><a href="/Blackcat-loveBlog/tags/linux"><i class="tag post-item-tag">linux</i></a></header><h2 class="mt-4 mb-0 is-family-serif"><a href="/Blackcat-loveBlog/2023/12/21/Termux%E7%BB%88%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Termux终端学习笔记</a></h2><time class="has-text-grey" datetime="2023-12-21T10:58:10.000Z">2023-12-21</time><p class="is-flex-grow-2 mt-2">Termux 是一个 Android 下一个高级的终端模拟器，开源且不需要 root，支持 apt 管理软件包，十分方便安装软件包，完美支持 Python、 PHP、 Ruby、 Nodejs、 MySQL 等。随着智能设备的普及和性能的不断提升，如今的手机、平板等的硬件标准已达到了初级桌面计算机的硬件标准，用心去打造 DIY 的话完全可以把手机变成一个强大的极客工具。
+官方学习文档:https://www.sqlsec.com/2018/05/termux.html
+本笔记是个人学习记录，参考多个文档，感谢所有人的努力付出
+下载可以通过F-droid获取到最新版本:https://f-droid.org/en/
+Github开源:https://github.com/termux
+基础操作基础命令apt1..</p><a class="button is-default mt-2 has-text-weight-semibold" href="/Blackcat-loveBlog/2023/12/21/Termux%E7%BB%88%E7%AB%AF%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">更多</a></section></article><section class="paginator is-flex is-justify-content-flex-end is-flex-wrap-wrap mt-5"><a class="extend prev" rel="prev" href="/Blackcat-loveBlog/archives/page/3/"><i class="iconfont icon-prev has-text-grey"></i></a><a class="page-number" href="/Blackcat-loveBlog/archives/">1</a><a class="page-number" href="/Blackcat-loveBlog/archives/page/2/">2</a><a class="page-number" href="/Blackcat-loveBlog/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/Blackcat-loveBlog/archives/page/5/">5</a><a class="page-number" href="/Blackcat-loveBlog/archives/page/6/">6</a><a class="page-number" href="/Blackcat-loveBlog/archives/page/7/">7</a><a class="extend next" rel="next" href="/Blackcat-loveBlog/archives/page/5/"><i class="iconfont icon-next has-text-grey"></i></a></section></section><aside class="column is-hidden-mobile is-4-tablet is-3-widescreen"><div style="position: sticky; top: 50px;"><main class="aside-card-container archives-widget is-in-archive-page"><h3>归档</h3><section><ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/Blackcat-loveBlog/archives/2024/07/">七月 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/Blackcat-loveBlog/archives/2024/06/">六月 2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/Blackcat-loveBlog/archives/2024/05/">五月 2024</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/Blackcat-loveBlog/archives/2024/04/">四月 2024</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/Blackcat-loveBlog/archives/2024/03/">三月 2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/Blackcat-loveBlog/archives/2024/02/">二月 2024</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/Blackcat-loveBlog/archives/2024/01/">一月 2024</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/Blackcat-loveBlog/archives/2023/12/">十二月 2023</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/Blackcat-loveBlog/archives/2023/11/">十一月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/Blackcat-loveBlog/archives/2023/10/">十月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/Blackcat-loveBlog/archives/2022/10/">十月 2022</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/Blackcat-loveBlog/archives/2022/09/">九月 2022</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/Blackcat-loveBlog/archives/2021/12/">十二月 2021</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/Blackcat-loveBlog/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/Blackcat-loveBlog/archives/2019/10/">十月 2019</a><span class="archive-list-count">3</span></li></ul></section></main></div></aside></div></article><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+
+window.addEventListener('resize', $claudia.throttle(function () {
+    var images = document.querySelectorAll('.js-img-fadeIn')
+
+    images.forEach($claudia.blurBackdropImg)
+}, 150))</script></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Blackcat-love"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> 天明 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script>$claudia.fadeInImage(null, $claudia.blurBackdropImg)
+
+window.addEventListener('resize', $claudia.throttle(function () {
+    var images = document.querySelectorAll('.js-img-fadeIn')
+
+    images.forEach($claudia.blurBackdropImg)
+}, 150))</script><!-- hexo injector body_end start --><script data-pjax src="https://registry.npmmirror.com/oh-my-live2d/latest/files"></script><script>const oml2d = OML2D.loadOml2d({libraryUrls:{"complete":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/complete.js","cubism2":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism2.js","cubism5":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism5.js"},mobileDisplay:true,models:[{"path":"/Blackcat-loveBlog/live2d/波奇酱2.0/波奇酱2.0.model3.json","mobilePosition":[0,0],"mobileScale":0.1,"mobileStageStyle":{"width":180,"height":250},"motionPreloadStrategy":"IDLE","position":[-100,-100],"scale":0.15,"stageStyle":{"width":250,"height":250}},{"path":"/Blackcat-loveBlog/live2d/liang_vts/liang.model3.json","scale":0.12,"position":[0,60],"stageStyle":{"width":250},"mobileScale":0.1,"mobilePosition":[0,0],"mobileStageStyle":{"width":180}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
   return axios.get('https://v1.hitokoto.cn?c=i')
     .then(function (response) {
       return response.data.hitokoto ;
@@ -257,51 +169,4 @@
       console.error(error);
     });
 }
-}}});</script><!-- hexo injector body_end end --></body>
-    
-<script src="/Blackcat-loveBlog/js/jquery-3.3.1.min.js"></script>
-
-    
-<script src="/Blackcat-loveBlog/js/back-to-top.js"></script>
-
-    
-<script src="/Blackcat-loveBlog/js/scroll.js"></script>
-
-    <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    "HTML-CSS": { 
-        preferredFont: "TeX", 
-        availableFonts: ["STIX","TeX"], 
-        linebreaks: { automatic:true }, 
-        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) 
-    },
-    tex2jax: { 
-        inlineMath: [ ["$", "$"], ["\\(","\\)"] ], 
-        processEscapes: true, 
-        ignoreClass: "tex2jax_ignore|dno",
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {  
-        equationNumbers: { autoNumber: "AMS" },
-        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
-        Macros: { href: "{}" } 
-    },
-    messageStyle: "none"
-    }); 
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-</html>
+}}});</script><!-- hexo injector body_end end --></body></html>
