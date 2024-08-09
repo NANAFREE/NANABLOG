@@ -1,5 +1,5 @@
 <!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>sqlserver基础语句</title><meta name="description" content="编程"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
-<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/Blackcat-loveBlog/images/favicon.ico"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/bulma.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/base.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/helper.css"><script src="/Blackcat-loveBlog/js/common.js"></script><link rel="stylesheet" href="/Blackcat-loveBlog/style/post.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/jquery.fancybox.min.css"><script src="/Blackcat-loveBlog/js/highlight.pack.js"></script><meta name="description" content="select * from Demo
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.ico"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/common/jquery.fancybox.min.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="select * from Demo
 
 --获取系统时间
 select GETDATE()
@@ -14,182 +14,175 @@ select DATEDIFF(yy,'2003-06-01',GETDATE())
  select DATEDIFF(yy,birthady,GETDATE()) as '计算结果' from Demo;  --如果没有from 表格 那么就无法定位到 名为 birthady的列 所以就会失败
 -- 查询 [DATAEIFF() 函数返回两个日期的间隔 里面是 birthady日期 和 GETDATE 当前日期获取] 来自 Demo 表格
 
---.."><meta name="generator" content="Hexo 7.2.0">
+--.."><meta name="generator" content="Hexo 5.1.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/Blackcat-loveBlog/">天明's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">sqlserver基础语句</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/">首页</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/">首页</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile is-hidden"></div><div class="column is-9"><header class="my-4"><a href="/Blackcat-loveBlog/tags/sql"><i class="tag post-item-tag">sql</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">sqlserver基础语句</h1><time class="has-text-grey" datetime="2020-09-03T11:22:40.000Z">2020-09-03</time><article class="mt-2 post-content"><pre><code class="highlight sql"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> Demo
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">天明's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">sqlserver基础语句</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile is-hidden"></div><div class="column is-9"><header class="my-4"><a href="/tags/sql"><i class="tag post-item-tag">sql</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">sqlserver基础语句</h1><time class="has-text-grey" datetime="2020-09-03T11:22:40.000Z">2020-09-03</time><article class="mt-2 post-content"><pre><code class="sql">select * from Demo
 
-<span class="comment">--获取系统时间</span>
-<span class="keyword">select</span> GETDATE()
+--获取系统时间
+select GETDATE()
 
-<span class="comment">--读取表里的生日</span>
-<span class="keyword">select</span> birthady <span class="keyword">from</span> Demo
+--读取表里的生日
+select birthady from Demo
 
-<span class="comment">--计算年龄</span>
-<span class="keyword">select</span> DATEDIFF(yy,<span class="string">'2003-06-01'</span>,GETDATE())
+--计算年龄
+select DATEDIFF(yy,'2003-06-01',GETDATE())
 
-<span class="comment">--读取表里的生日                      -- as 别名</span>
- <span class="keyword">select</span> DATEDIFF(yy,birthady,GETDATE()) <span class="keyword">as</span> <span class="string">'计算结果'</span> <span class="keyword">from</span> Demo;  <span class="comment">--如果没有from 表格 那么就无法定位到 名为 birthady的列 所以就会失败</span>
-<span class="comment">-- 查询 [DATAEIFF() 函数返回两个日期的间隔 里面是 birthady日期 和 GETDATE 当前日期获取] 来自 Demo 表格</span>
+--读取表里的生日                      -- as 别名
+ select DATEDIFF(yy,birthady,GETDATE()) as '计算结果' from Demo;  --如果没有from 表格 那么就无法定位到 名为 birthady的列 所以就会失败
+-- 查询 [DATAEIFF() 函数返回两个日期的间隔 里面是 birthady日期 和 GETDATE 当前日期获取] 来自 Demo 表格
 
-<span class="comment">--全部查询</span>
-<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> student
+--全部查询
+select * from student
 
-<span class="comment">--条件查询</span>
+--条件查询
 
-<span class="keyword">select</span> name,age <span class="keyword">from</span> student
-<span class="keyword">where</span> age<span class="operator">&gt;</span><span class="number">30</span>
-<span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">desc</span>
+select name,age from student
+where age&gt;30
+order by age desc
 
-<span class="comment">--起别名</span>
-                 <span class="comment">--注意，as 可写可不写</span>
-<span class="keyword">select</span> name <span class="keyword">as</span> <span class="string">'姓名'</span> ,age <span class="keyword">as</span> <span class="string">'年龄'</span>  <span class="keyword">from</span> student
-<span class="keyword">where</span> age<span class="operator">&gt;</span><span class="number">30</span>
-<span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">desc</span>
+--起别名
+                 --注意，as 可写可不写
+select name as '姓名' ,age as '年龄'  from student
+where age&gt;30
+order by age desc
 
-<span class="comment">--加top</span>
-<span class="keyword">select</span> top <span class="number">2</span>  name <span class="keyword">as</span> <span class="string">'姓名'</span> ,age <span class="keyword">as</span> <span class="string">'年龄'</span>  <span class="keyword">from</span> student
-<span class="keyword">where</span> age<span class="operator">&gt;</span><span class="number">30</span>
-<span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">desc</span>
+--加top
+select top 2  name as '姓名' ,age as '年龄'  from student
+where age&gt;30
+order by age desc
 
-<span class="comment">--加常量列</span>
-<span class="keyword">select</span> top <span class="number">2</span>  name <span class="keyword">as</span> <span class="string">'姓名'</span> ,age <span class="keyword">as</span> <span class="string">'年龄'</span> , <span class="string">'你好'</span> <span class="keyword">as</span> <span class="string">'还好'</span>  <span class="keyword">from</span> student
-<span class="keyword">where</span> age<span class="operator">&gt;</span><span class="number">30</span>
-<span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">desc</span>
+--加常量列
+select top 2  name as '姓名' ,age as '年龄' , '你好' as '还好'  from student
+where age&gt;30
+order by age desc
 
-<span class="comment">--加百分比查询 top</span>
-<span class="keyword">select</span> top <span class="number">50</span> <span class="keyword">percent</span>  name <span class="keyword">as</span> <span class="string">'姓名'</span> ,age <span class="keyword">as</span> <span class="string">'年龄'</span> , <span class="string">'你好'</span> <span class="keyword">as</span> <span class="string">'还好'</span>  <span class="keyword">from</span> student
-<span class="keyword">where</span> age<span class="operator">&gt;</span><span class="number">30</span>
-<span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">desc</span>
+--加百分比查询 top
+select top 50 percent  name as '姓名' ,age as '年龄' , '你好' as '还好'  from student
+where age&gt;30
+order by age desc
 
-<span class="comment">--加百分比查询 加减操作</span>
-<span class="keyword">select</span> top <span class="number">50</span> <span class="keyword">percent</span>  name <span class="keyword">as</span> <span class="string">'姓名'</span> ,age <span class="operator">+</span> <span class="number">50</span> <span class="keyword">as</span> <span class="string">'年龄'</span> , <span class="string">'你好'</span> <span class="keyword">as</span> <span class="string">'还好'</span>  <span class="keyword">from</span> student
-<span class="keyword">where</span> age<span class="operator">&gt;</span><span class="number">30</span>
-<span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">desc</span>
+--加百分比查询 加减操作
+select top 50 percent  name as '姓名' ,age + 50 as '年龄' , '你好' as '还好'  from student
+where age&gt;30
+order by age desc
 
-<span class="comment">-- is NULL 和 为空不一样</span>
-<span class="comment">-- 查询条件为 值为NULL 或者 值为'空'</span>
-<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> student
-<span class="keyword">where</span> phone <span class="keyword">is</span> <span class="keyword">null</span> <span class="keyword">or</span> phone <span class="operator">=</span> <span class="string">''</span>
-
-
-<span class="comment">-- 检索 所有 学生表 as 别名Stu</span>
-<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> Student <span class="keyword">as</span> Stu
-<span class="keyword">inner</span> <span class="keyword">join</span> score <span class="keyword">as</span> Sco <span class="comment">-- inner join 关联 成绩表 别名 as Sco</span>
-<span class="keyword">on</span> Stu.Sid <span class="operator">=</span> Sco.id <span class="comment">-- 关联条件 学生表的 Sid 和 成绩表的 id 进行关联 查询</span>
-
-<span class="comment">--挑选结果</span>
-<span class="keyword">select</span> Stu.name,Sco.name,Sco.age,Sco.sex,Sco.id <span class="keyword">from</span> Student <span class="keyword">as</span> Stu
-<span class="keyword">inner</span> <span class="keyword">join</span> score <span class="keyword">as</span> Sco
-<span class="keyword">on</span> Stu.Sid <span class="operator">=</span> Sco.id 
-<span class="comment">--还可以写条件</span>
-<span class="keyword">where</span> Sco.age<span class="operator">=</span><span class="number">20</span>
-
-<span class="comment">--------------</span>
-<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> score <span class="keyword">as</span> Sco <span class="comment">-- 查询</span>
-<span class="keyword">left</span> <span class="keyword">join</span> Student <span class="keyword">as</span> Stu   <span class="comment">-- 左边查询 没有显示NULL</span>
-<span class="keyword">on</span> Stu.Sid <span class="operator">=</span> Sco.id 
-<span class="comment">--右链接 取反</span>
-
-<span class="comment">--求和</span>
-<span class="keyword">select</span> <span class="built_in">SUM</span>(age) <span class="keyword">as</span> <span class="string">'学生年龄和'</span> <span class="keyword">from</span> Student
-
-<span class="comment">--最大值 最小值</span>
-<span class="keyword">select</span> <span class="built_in">SUM</span>(age) <span class="keyword">as</span> <span class="string">'学生年龄和'</span> <span class="keyword">from</span> Student
-<span class="keyword">select</span> <span class="built_in">avg</span>(age) <span class="keyword">as</span> <span class="string">'学生平均值'</span> <span class="keyword">from</span> Student
-<span class="keyword">select</span> <span class="built_in">max</span>(age) <span class="keyword">as</span> <span class="string">'男同学的最大年龄'</span> 
-<span class="keyword">from</span> score <span class="keyword">where</span> sex <span class="operator">=</span> <span class="string">'男'</span>
-
-<span class="comment">--个数</span>
-<span class="keyword">select</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">as</span> <span class="string">'男同学个数'</span>  <span class="comment">-- 一般来说括号里是 * 或者是 1</span>
-<span class="keyword">from</span> score <span class="keyword">where</span> sex <span class="operator">=</span> <span class="string">'男'</span>
-
-<span class="keyword">select</span> <span class="built_in">max</span>(age) <span class="keyword">as</span> <span class="string">'男同学的最大年龄'</span> 
-<span class="keyword">from</span> score <span class="keyword">where</span> sex <span class="operator">=</span> <span class="string">'男'</span>
-<span class="comment">----------------</span>
-<span class="keyword">select</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">as</span> <span class="string">'女同学的个数'</span> 
-<span class="keyword">from</span> score <span class="keyword">where</span> sex <span class="operator">=</span> <span class="string">'女'</span>
-<span class="comment">----------------</span>
-<span class="keyword">select</span> <span class="keyword">distinct</span>(age) <span class="keyword">as</span> <span class="string">'男同学的年龄都有那些'</span> 
-<span class="keyword">from</span> score <span class="keyword">where</span> sex <span class="operator">=</span> <span class="string">'男'</span>
-
-<span class="comment">--聚合函数 分组</span>
-<span class="keyword">select</span>  sex,<span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">as</span> <span class="string">'个数'</span> <span class="keyword">from</span> score <span class="comment">-- group by 为分组判断 他会把不一样的分组判断 计算个数出来 其中 group by 只负责分组 而 count负责计算</span>
-<span class="keyword">group</span> <span class="keyword">by</span> sex
-
-<span class="comment">--where  是分组前的条件</span>
-<span class="comment">--having 是分组后的条件</span>
-<span class="keyword">select</span>  sex,<span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">as</span> <span class="string">'个数'</span> <span class="keyword">from</span> score
-<span class="keyword">where</span> age <span class="operator">&gt;</span> <span class="number">1</span> <span class="comment">-- 为前</span>
-<span class="keyword">group</span> <span class="keyword">by</span> sex
-<span class="keyword">having</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="operator">&lt;</span> <span class="number">1</span> <span class="comment">-- 为后</span>
-<span class="comment">--运行结果 满足此条件为 0</span>
-
-<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> Usersinfo
-<span class="keyword">where</span> LoginName <span class="keyword">in</span> (<span class="string">'lilei@163.com'</span>)
-
-<span class="comment">--使用连接查询登录名为 lilei@163.com 的用户所记笔记的笔记标题 内容和用户姓名</span>
-<span class="keyword">select</span> Note.Title,Note.Content,Usr.UserName <span class="keyword">from</span> Usersinfo <span class="keyword">as</span> Usr
-<span class="keyword">inner</span> <span class="keyword">join</span> NoteInfo <span class="keyword">as</span> Note
-<span class="keyword">on</span> Usr.UserId <span class="operator">=</span> Note.NoteId 
-<span class="keyword">where</span> Usr.LoginName <span class="operator">=</span> <span class="string">'lilei@163.com'</span>
-
-<span class="comment">--使用聚合函数查询登录名为 zhangtao@163.com 的用户且笔记分类名称是 工作 的笔记记录数</span>
-<span class="comment">--聚合函数 分组</span>
-<span class="keyword">select</span>  CategoryName,<span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">as</span> <span class="string">'个数'</span> <span class="keyword">from</span> NoteCategory <span class="comment">-- group by 为分组判断 他会把不一样的分组判断 计算个数出来 其中 group by 只负责分组 而 count负责计算</span>
-<span class="keyword">group</span> <span class="keyword">by</span> CategoryName
-
-<span class="comment">--使用模糊查询 查询登录名为 lilei.163.com 的用户 且笔记标题里包含 邮件 的笔记标题和内容</span>
-<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> Usersinfo
-<span class="keyword">where</span> LoginName <span class="keyword">like</span> <span class="string">'%lilei.163.com%'</span>
-
-<span class="comment">--按照创建时间降序排序 查询登录名为 lilei@163.com 的前10条笔记的标题和内容</span>
+-- is NULL 和 为空不一样
+-- 查询条件为 值为NULL 或者 值为'空'
+select * from student
+where phone is null or phone = ''
 
 
-<span class="comment">--查询所有用户的姓名 登录名 笔记标题和笔记内容</span>
+-- 检索 所有 学生表 as 别名Stu
+select * from Student as Stu
+inner join score as Sco -- inner join 关联 成绩表 别名 as Sco
+on Stu.Sid = Sco.id -- 关联条件 学生表的 Sid 和 成绩表的 id 进行关联 查询
+
+--挑选结果
+select Stu.name,Sco.name,Sco.age,Sco.sex,Sco.id from Student as Stu
+inner join score as Sco
+on Stu.Sid = Sco.id 
+--还可以写条件
+where Sco.age=20
+
+--------------
+select * from score as Sco -- 查询
+left join Student as Stu   -- 左边查询 没有显示NULL
+on Stu.Sid = Sco.id 
+--右链接 取反
+
+--求和
+select SUM(age) as '学生年龄和' from Student
+
+--最大值 最小值
+select SUM(age) as '学生年龄和' from Student
+select avg(age) as '学生平均值' from Student
+select max(age) as '男同学的最大年龄' 
+from score where sex = '男'
+
+--个数
+select COUNT(*) as '男同学个数'  -- 一般来说括号里是 * 或者是 1
+from score where sex = '男'
+
+select max(age) as '男同学的最大年龄' 
+from score where sex = '男'
+----------------
+select count(*) as '女同学的个数' 
+from score where sex = '女'
+----------------
+select distinct(age) as '男同学的年龄都有那些' 
+from score where sex = '男'
+
+--聚合函数 分组
+select  sex,COUNT(*) as '个数' from score -- group by 为分组判断 他会把不一样的分组判断 计算个数出来 其中 group by 只负责分组 而 count负责计算
+group by sex
+
+--where  是分组前的条件
+--having 是分组后的条件
+select  sex,COUNT(*) as '个数' from score
+where age &gt; 1 -- 为前
+group by sex
+having COUNT(*) &lt; 1 -- 为后
+--运行结果 满足此条件为 0
+
+select * from Usersinfo
+where LoginName in ('lilei@163.com')
+
+--使用连接查询登录名为 lilei@163.com 的用户所记笔记的笔记标题 内容和用户姓名
+select Note.Title,Note.Content,Usr.UserName from Usersinfo as Usr
+inner join NoteInfo as Note
+on Usr.UserId = Note.NoteId 
+where Usr.LoginName = 'lilei@163.com'
+
+--使用聚合函数查询登录名为 zhangtao@163.com 的用户且笔记分类名称是 工作 的笔记记录数
+--聚合函数 分组
+select  CategoryName,COUNT(*) as '个数' from NoteCategory -- group by 为分组判断 他会把不一样的分组判断 计算个数出来 其中 group by 只负责分组 而 count负责计算
+group by CategoryName
+
+--使用模糊查询 查询登录名为 lilei.163.com 的用户 且笔记标题里包含 邮件 的笔记标题和内容
+select * from Usersinfo
+where LoginName like '%lilei.163.com%'
+
+--按照创建时间降序排序 查询登录名为 lilei@163.com 的前10条笔记的标题和内容
 
 
-<span class="comment">--查询记录笔记数大于 1 的用户姓名 登录名和性别</span>
+--查询所有用户的姓名 登录名 笔记标题和笔记内容
+
+
+--查询记录笔记数大于 1 的用户姓名 登录名和性别
 
 use school
-<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> student;
- <span class="comment">--添加语句</span>
- <span class="keyword">insert</span> <span class="keyword">into</span> student <span class="keyword">values</span>(<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>);
- <span class="comment">--添加语句</span>
- <span class="keyword">insert</span> <span class="keyword">into</span> student (name,sex,age)
- <span class="keyword">values</span>
- (<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>)
- <span class="comment">--运行结果失败，是因为不允许为NULL 不然则可以</span>
+select * from student;
+ --添加语句
+ insert into student values(2,3,4,5,6,7);
+ --添加语句
+ insert into student (name,sex,age)
+ values
+ (4,5,6)
+ --运行结果失败，是因为不允许为NULL 不然则可以
  
- <span class="comment">--多行插入</span>
- <span class="keyword">insert</span> <span class="keyword">into</span> student <span class="keyword">values</span>
- (<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>), <span class="comment">--如果报红要加一个逗号 </span>
- (<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>)
+ --多行插入
+ insert into student values
+ (4,5,6,7,8), --如果报红要加一个逗号 
+ (5,6,7,8,9)
 
- <span class="keyword">insert</span> <span class="keyword">into</span> Patient (password,BirthDate,Gender,PatientName,PhoneNum,Email,IndentityNum,Address)
- <span class="keyword">values</span>(<span class="number">123456</span>,<span class="string">'1985-06-07'</span>,<span class="string">'女'</span>,<span class="string">'夏颖'</span>,<span class="number">13800000001</span>,<span class="string">'ying.xia@qq.com'</span>,<span class="number">110000198506071100</span>,<span class="string">'厦门市'</span>),
- (<span class="number">234567</span>,<span class="string">'1985-06-08'</span>,<span class="string">'男'</span>,<span class="string">'李政'</span>,<span class="number">1380000002</span>,<span class="string">'lizheng@163.com'</span>,<span class="number">210000198506082100</span>,<span class="string">'长春市'</span>)
+ insert into Patient (password,BirthDate,Gender,PatientName,PhoneNum,Email,IndentityNum,Address)
+ values(123456,'1985-06-07','女','夏颖',13800000001,'ying.xia@qq.com',110000198506071100,'厦门市'),
+ (234567,'1985-06-08','男','李政',1380000002,'lizheng@163.com',210000198506082100,'长春市')
  
-<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> Patient;
+select * from Patient;
  
- <span class="comment">--更新语句</span>
- <span class="keyword">UPDATE</span> Patient <span class="keyword">set</span> Password<span class="operator">=</span><span class="string">'11111'</span>
+ --更新语句
+ UPDATE Patient set Password='11111'
  
- <span class="comment">--删除语句  范围是 id = 1;</span>
- <span class="keyword">delete</span> <span class="keyword">from</span> Patient <span class="keyword">where</span> Patient<span class="operator">=</span><span class="number">1</span>;
- <span class="comment">--直接删除全部</span>
- <span class="keyword">delete</span> <span class="keyword">from</span> Patient 
- <span class="comment">--但是序号都在 </span>
+ --删除语句  范围是 id = 1;
+ delete from Patient where Patient=1;
+ --直接删除全部
+ delete from Patient 
+ --但是序号都在 
  
- <span class="comment">--用清除会连序号全部彻底删除</span>
+ --用清除会连序号全部彻底删除
  
- <span class="comment">--去重 加入 distinct后 sex展示相同的只会显示一次</span>
- <span class="keyword">select</span> <span class="keyword">distinct</span> sex <span class="keyword">from</span> Student</code></pre></article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/Blackcat-loveBlog/2021/12/11/JS%20/" title="JavaScript学习笔记"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">上一页: JavaScript学习笔记</span></a><a class="button is-default" href="/Blackcat-loveBlog/2019/10/18/Dos%E6%95%B4%E7%90%86/" title="Dos操作指令"><span class="has-text-weight-semibold">下一页: Dos操作指令</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Blackcat-love"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> 天明 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/Blackcat-loveBlog/js/jquery-3.6.1.min.js"></script><script src="/Blackcat-loveBlog/js/jquery-fancybox.min.js"></script><script src="/Blackcat-loveBlog/js/img_zoom.js"></script><script src="/Blackcat-loveBlog/js/post.js"></script><!-- hexo injector body_end start --><script data-pjax src="https://registry.npmmirror.com/oh-my-live2d/latest/files"></script><script>const oml2d = OML2D.loadOml2d({libraryUrls:{"complete":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/complete.js","cubism2":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism2.js","cubism5":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism5.js"},mobileDisplay:true,models:[{"path":"/Blackcat-loveBlog/live2d/波奇酱2.0/波奇酱2.0.model3.json","mobilePosition":[0,0],"mobileScale":0.1,"mobileStageStyle":{"width":180,"height":250},"motionPreloadStrategy":"IDLE","position":[-100,-100],"scale":0.15,"stageStyle":{"width":250,"height":250}},{"path":"/Blackcat-loveBlog/live2d/liang_vts/liang.model3.json","scale":0.12,"position":[0,60],"stageStyle":{"width":250},"mobileScale":0.1,"mobilePosition":[0,0],"mobileStageStyle":{"width":180}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
-  return axios.get('https://v1.hitokoto.cn?c=i')
-    .then(function (response) {
-      return response.data.hitokoto ;
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-}
-}}});</script><!-- hexo injector body_end end --></body></html>
+ --去重 加入 distinct后 sex展示相同的只会显示一次
+ select distinct sex from Student
+</code></pre>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2021/12/11/JS%20/" title="JavaScript学习笔记"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">上一页: JavaScript学习笔记</span></a><a class="button is-default" href="/2019/10/18/Dos%E6%95%B4%E7%90%86/" title="Dos操作指令"><span class="has-text-weight-semibold">下一页: Dos操作指令</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Blackcat-love"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> 天明 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>

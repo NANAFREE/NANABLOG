@@ -1,47 +1,46 @@
 <!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>godot横板移动平台游戏学习笔记</title><meta name="description" content="编程"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
-<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/Blackcat-loveBlog/images/favicon.ico"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/bulma.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/base.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/helper.css"><script src="/Blackcat-loveBlog/js/common.js"></script><link rel="stylesheet" href="/Blackcat-loveBlog/style/post.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/jquery.fancybox.min.css"><script src="/Blackcat-loveBlog/js/highlight.pack.js"></script><meta name="description" content="2D战斗基础移动extends Area2D
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.ico"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/common/jquery.fancybox.min.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="2D战斗基础移动extends Area2D
 @onready var icon = $Icon
 
 #移动速率
 @export var speed = 100
 
 func _ready():
-	pass
+    pass
 
 func _process(delta):
-	var direction = Vector2.ZERO
-	if Input.is_action_pressed(&quot;move_right&quot;):
-		direction.x = 1
-	if Input.is_action_pressed(&quot;move_left&quot;):
-		direction.x = -1
-	if Input.is_action_pressed(&quot;move_up&quot;):
-		direction.y = -1
-	if Input.is_action_pr.."><meta name="generator" content="Hexo 7.2.0">
+    var direction = Vector2.ZERO
+    if Input.is_action_pressed(&quot;move_right&quot;):
+        direction.x = 1
+    if Input.is_action_pressed(&quot;move_left&quot;):
+        direction.x = -1
+    if Input.is_action_pressed(&quot;move_up&quot;):
+        direct.."><meta name="generator" content="Hexo 5.1.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/Blackcat-loveBlog/">天明's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">godot横板移动平台游戏学习笔记</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/">首页</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/">首页</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2D%E6%88%98%E6%96%97"><span class="toc-text">2D战斗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%A7%BB%E5%8A%A8"><span class="toc-text">基础移动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%8A%9B%E7%A2%B0%E6%92%9E%E6%A3%80%E6%B5%8B%E5%92%8C%E5%8A%A8%E7%94%BB%E6%92%AD%E6%94%BE"><span class="toc-text">重力碰撞检测和动画播放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%B0%BA%E5%AF%B8%E9%97%AE%E9%A2%98"><span class="toc-text">窗口尺寸问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%8F%98%E9%80%9F%E7%A7%BB%E5%8A%A8"><span class="toc-text">实现变速移动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LimboAI"><span class="toc-text">LimboAI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%93%E5%85%B7%E8%8C%83%E5%9B%B4%E6%8B%BE%E5%8F%96%E6%A3%80%E6%B5%8B"><span class="toc-text">道具范围拾取检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tween"><span class="toc-text">Tween</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E5%88%87%E6%8D%A2"><span class="toc-text">场景切换</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/Blackcat-loveBlog/tags/godot"><i class="tag post-item-tag">godot</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">godot横板移动平台游戏学习笔记</h1><time class="has-text-grey" datetime="2024-07-01T11:01:26.000Z">2024-07-01</time><article class="mt-2 post-content"><h1 id="2D战斗"><a href="#2D战斗" class="headerlink" title="2D战斗"></a>2D战斗</h1><h2 id="基础移动"><a href="#基础移动" class="headerlink" title="基础移动"></a>基础移动</h2><pre><code class="highlight plaintext">extends Area2D
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">天明's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">godot横板移动平台游戏学习笔记</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2D%E6%88%98%E6%96%97"><span class="toc-text">2D战斗</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E7%A7%BB%E5%8A%A8"><span class="toc-text">基础移动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%8A%9B%E7%A2%B0%E6%92%9E%E6%A3%80%E6%B5%8B%E5%92%8C%E5%8A%A8%E7%94%BB%E6%92%AD%E6%94%BE"><span class="toc-text">重力碰撞检测和动画播放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%B0%BA%E5%AF%B8%E9%97%AE%E9%A2%98"><span class="toc-text">窗口尺寸问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%8F%98%E9%80%9F%E7%A7%BB%E5%8A%A8"><span class="toc-text">实现变速移动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LimboAI"><span class="toc-text">LimboAI</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%81%93%E5%85%B7%E8%8C%83%E5%9B%B4%E6%8B%BE%E5%8F%96%E6%A3%80%E6%B5%8B"><span class="toc-text">道具范围拾取检测</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tween"><span class="toc-text">Tween</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%BA%E6%99%AF%E5%88%87%E6%8D%A2"><span class="toc-text">场景切换</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/godot"><i class="tag post-item-tag">godot</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">godot横板移动平台游戏学习笔记</h1><time class="has-text-grey" datetime="2024-07-01T11:01:26.000Z">2024-07-01</time><article class="mt-2 post-content"><h1 id="2D战斗"><a href="#2D战斗" class="headerlink" title="2D战斗"></a>2D战斗</h1><h2 id="基础移动"><a href="#基础移动" class="headerlink" title="基础移动"></a>基础移动</h2><pre><code>extends Area2D
 @onready var icon = $Icon
 
 #移动速率
 @export var speed = 100
 
 func _ready():
-	pass
+    pass
 
 func _process(delta):
-	var direction = Vector2.ZERO
-	if Input.is_action_pressed("move_right"):
-		direction.x = 1
-	if Input.is_action_pressed("move_left"):
-		direction.x = -1
-	if Input.is_action_pressed("move_up"):
-		direction.y = -1
-	if Input.is_action_pressed("move_down"):
-		direction.y = 1
-	position += direction * delta * speed</code></pre>
-
+    var direction = Vector2.ZERO
+    if Input.is_action_pressed("move_right"):
+        direction.x = 1
+    if Input.is_action_pressed("move_left"):
+        direction.x = -1
+    if Input.is_action_pressed("move_up"):
+        direction.y = -1
+    if Input.is_action_pressed("move_down"):
+        direction.y = 1
+    position += direction * delta * speed
+</code></pre>
 <p>通过每帧获取当前节点二位向量位置，根据Input按键输入判断移动当当前节点位置</p>
 <p>然后然后* delta是为了稳定帧率下的运行 *speed是为了灵活的调节移动速度</p>
-<h2 id="重力碰撞检测和动画播放"><a href="#重力碰撞检测和动画播放" class="headerlink" title="重力碰撞检测和动画播放"></a>重力碰撞检测和动画播放</h2><pre><code class="highlight plaintext">extends CharacterBody2D
+<h2 id="重力碰撞检测和动画播放"><a href="#重力碰撞检测和动画播放" class="headerlink" title="重力碰撞检测和动画播放"></a>重力碰撞检测和动画播放</h2><pre><code>extends CharacterBody2D
 @onready var animation_player = $AnimationPlayer
 @onready var sprite_2d = $Sprite2D
 const GRAVITY = 2000.0
@@ -52,52 +51,51 @@ const JUMP_FORCE = 750
 var is_jumping = false
 
 func _physics_process(delta):
-	print(velocity.y)
-	#物体和墙壁发生了碰撞
-	if is_on_wall():
-		print("撞墙")
-	#没有上下的撞墙判断 只有一个力
-	if is_on_wall_only():
-		print("空中撞墙撞墙")
-	if velocity.y == -JUMP_FORCE:
-		print("jump")
-		is_jumping = false
-	velocity.y += delta * GRAVITY
-	if Input.is_action_pressed("move_left"):
-		velocity.x = -WALK_SPEED
-		sprite_2d.flip_h = true
-		animation_player.play("walk")
-	elif Input.is_action_pressed("move_right"):
-		velocity.x =  WALK_SPEED
-		sprite_2d.flip_h = false
-		animation_player.play("walk")
-	else:
-		velocity.x = 0
-	move_and_slide()
-	
-	
+    print(velocity.y)
+    #物体和墙壁发生了碰撞
+    if is_on_wall():
+        print("撞墙")
+    #没有上下的撞墙判断 只有一个力
+    if is_on_wall_only():
+        print("空中撞墙撞墙")
+    if velocity.y == -JUMP_FORCE:
+        print("jump")
+        is_jumping = false
+    velocity.y += delta * GRAVITY
+    if Input.is_action_pressed("move_left"):
+        velocity.x = -WALK_SPEED
+        sprite_2d.flip_h = true
+        animation_player.play("walk")
+    elif Input.is_action_pressed("move_right"):
+        velocity.x =  WALK_SPEED
+        sprite_2d.flip_h = false
+        animation_player.play("walk")
+    else:
+        velocity.x = 0
+    move_and_slide()
+    
+    
 func _process(delta):
-	var direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	if is_jumping:
-		#animation_player.play("jump")
-		pass
-	elif direction == 0:
-		animation_player.play("idle")
+    var direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+    if is_jumping:
+        #animation_player.play("jump")
+        pass
+    elif direction == 0:
+        animation_player.play("idle")
 
 func _input(event):
-	if event.is_action_pressed("move_up") and not is_jumping and velocity.y == 0:
-		velocity.y = -JUMP_FORCE
-		is_jumping = true
-		
+    if event.is_action_pressed("move_up") and not is_jumping and velocity.y == 0:
+        velocity.y = -JUMP_FORCE
+        is_jumping = true
+        
 
 
 </code></pre>
-
 <p>使用move_and_slide()时，会检测碰撞并且滑动，从而实现了任意位置放置后，根据重力下落，然后进行移动</p>
 <p>播放动画则是根据不同时机的判断完成</p>
 <h2 id="窗口尺寸问题"><a href="#窗口尺寸问题" class="headerlink" title="窗口尺寸问题"></a>窗口尺寸问题</h2><p>如果出现运行场景后，窗口的尺寸会随着放大缩小发生改变，通过修改项目设置—-窗口—–模式—–canvas_items来让他自适应</p>
 <p>教学视频:<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Se411k7kS/?spm_id_from=333.337.search-card.all.click&amp;vd_source=adbd70f3395ed4825cbab1afe7aa152e">https://www.bilibili.com/video/BV1Se411k7kS/?spm_id_from=333.337.search-card.all.click&amp;vd_source=adbd70f3395ed4825cbab1afe7aa152e</a></p>
-<h2 id="实现变速移动"><a href="#实现变速移动" class="headerlink" title="实现变速移动"></a>实现变速移动</h2><pre><code class="highlight plaintext">extends CharacterBody2D
+<h2 id="实现变速移动"><a href="#实现变速移动" class="headerlink" title="实现变速移动"></a>实现变速移动</h2><pre><code>extends CharacterBody2D
 
 @onready var animation_player = $AnimationPlayer
 @onready var sprite_2d = $Sprite2D
@@ -166,11 +164,10 @@ func _input(event):
         print("向右冲刺")
         velocity.x = -600
 </code></pre>
-
 <p>通过每帧判断，然后时间到了归0</p>
 <h2 id="LimboAI"><a href="#LimboAI" class="headerlink" title="LimboAI"></a>LimboAI</h2><p>使用这个插件来快速构建项目的状态机，状态机也可以依靠纯手写脚本构建，但是为了追求效率，目前先使用轮子，之后为了更加详细的了解状态机，会自己从头在造轮子。</p>
 <p>使用LimboAI自带的函数可以快速创建各种状态，通过使用start 和 update 来控制状态之间的切换。</p>
-<pre><code class="highlight plaintext">extends CharacterBody2D
+<pre><code>extends CharacterBody2D
 
 @onready var animation_player = $AnimationPlayer
 @onready var sprite_2d = $Sprite2D
@@ -194,201 +191,202 @@ var walk_timer = 0.0
 const WALK_ACCELERATION_TIME = 0.5
 
 func _ready():
-	initate_start_machine()
+    initate_start_machine()
 
 func _physics_process(delta):
-	label.text = "speed:" + str(speed) + "\n" + "Player状态:" + str(main_sm.get_active_state())
-	
-	if is_on_wall():
-		print("撞墙")
-		state = "落地后检测到碰撞"
-	
-	if is_on_wall_only():
-		print("空中撞墙撞墙")
-		state = "浮空下检测到碰撞"
-		
-	
-	if velocity.y == -JUMP_FORCE:
-		print("jump")
-		is_jumping = false
-	
-	velocity.y += delta * GRAVITY
-	
-	if Input.is_action_pressed("move_left"):
-		if walk_timer &gt;= WALK_ACCELERATION_TIME:
-			walk_acceleration = 2.0  # 例如：超过2秒后加倍加速度
-		else:
-			walk_acceleration = 1.0  # 正常加速度
-		speed = -WALK_SPEED * walk_acceleration
-		velocity.x = speed
-		#print(-WALK_SPEED * walk_acceleration)
-		sprite_2d.flip_h = true
-		animation_player.play("walk")
-	elif Input.is_action_pressed("move_right"):
-		if walk_timer &gt;= WALK_ACCELERATION_TIME:
-			walk_acceleration = 2.0  # 例如：超过2秒后加倍加速度
-		else:
-			walk_acceleration = 1.0  # 正常加速度
-		velocity.x = WALK_SPEED * walk_acceleration
-		#print(WALK_SPEED * walk_acceleration)
-		sprite_2d.flip_h = false
-		animation_player.play("walk")
-	else:
-		velocity.x = 0
-		walk_acceleration = 0.0
-	move_and_slide()
+    label.text = "speed:" + str(speed) + "\n" + "Player状态:" + str(main_sm.get_active_state())
+    
+    if is_on_wall():
+        print("撞墙")
+        state = "落地后检测到碰撞"
+    
+    if is_on_wall_only():
+        print("空中撞墙撞墙")
+        state = "浮空下检测到碰撞"
+        
+    
+    if velocity.y == -JUMP_FORCE:
+        print("jump")
+        is_jumping = false
+    
+    velocity.y += delta * GRAVITY
+    
+    if Input.is_action_pressed("move_left"):
+        if walk_timer &gt;= WALK_ACCELERATION_TIME:
+            walk_acceleration = 2.0  # 例如：超过2秒后加倍加速度
+        else:
+            walk_acceleration = 1.0  # 正常加速度
+        speed = -WALK_SPEED * walk_acceleration
+        velocity.x = speed
+        #print(-WALK_SPEED * walk_acceleration)
+        sprite_2d.flip_h = true
+        animation_player.play("walk")
+    elif Input.is_action_pressed("move_right"):
+        if walk_timer &gt;= WALK_ACCELERATION_TIME:
+            walk_acceleration = 2.0  # 例如：超过2秒后加倍加速度
+        else:
+            walk_acceleration = 1.0  # 正常加速度
+        velocity.x = WALK_SPEED * walk_acceleration
+        #print(WALK_SPEED * walk_acceleration)
+        sprite_2d.flip_h = false
+        animation_player.play("walk")
+    else:
+        velocity.x = 0
+        walk_acceleration = 0.0
+    move_and_slide()
 
 func _process(delta):
-	var direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	
-	if is_jumping:
-		# animation_player.play("jump")
-		pass
-	elif direction == 0:
-		animation_player.play("idle")
-	#通过帧率对加速度进行计时判断
-	if Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"):
-		walk_timer += delta
-	else:
-		walk_timer = 0.0
-	#调用反转函数
-	flip_sprite(direction)
+    var direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
+    
+    if is_jumping:
+        # animation_player.play("jump")
+        pass
+    elif direction == 0:
+        animation_player.play("idle")
+    #通过帧率对加速度进行计时判断
+    if Input.is_action_pressed("move_right") or Input.is_action_pressed("move_left"):
+        walk_timer += delta
+    else:
+        walk_timer = 0.0
+    #调用反转函数
+    flip_sprite(direction)
 
 func _input(event):
-	if event.is_action_pressed("move_up") and not is_jumping and velocity.y == 0:
-		velocity.y = -JUMP_FORCE
-		is_jumping = true
-	
-	if event.is_action_pressed("Sprint"):
-		print("冲刺")
-	elif event.is_action_released("Sprint"):
-		print("释放冲刺")
-		
+    if event.is_action_pressed("move_up") and not is_jumping and velocity.y == 0:
+        velocity.y = -JUMP_FORCE
+        is_jumping = true
+    
+    if event.is_action_pressed("Sprint"):
+        print("冲刺")
+    elif event.is_action_released("Sprint"):
+        print("释放冲刺")
+        
 
 func _on_trail_timer_timeout():
-	if velocity.x == 0:
-		return
-	var trail = preload("res://effects/trail.tscn").instantiate()
-	get_parent().add_child(trail)
-	get_parent().move_child(trail,get_index())
-	var properties = [
-		"hframes",
-		"vframes",
-		"frame",
-		"texture",
-		"global_position",
-		"flip_h",
-	]
-	for name in properties:
-		trail.set(name,sprite_2d.get(name))
-		
+    if velocity.x == 0:
+        return
+    var trail = preload("res://effects/trail.tscn").instantiate()
+    get_parent().add_child(trail)
+    get_parent().move_child(trail,get_index())
+    var properties = [
+        "hframes",
+        "vframes",
+        "frame",
+        "texture",
+        "global_position",
+        "flip_h",
+    ]
+    for name in properties:
+        trail.set(name,sprite_2d.get(name))
+        
 func flip_sprite(dir):
-	if dir == 1:
-		#人物反转
-		#print("人物右转")
-		pass
-	elif  dir == -1:
-		#print("人物左转")
-		pass
+    if dir == 1:
+        #人物反转
+        #print("人物右转")
+        pass
+    elif  dir == -1:
+        #print("人物左转")
+        pass
 
 func _unhandled_input(event):
-	if event.is_action_pressed("move_up"):
-		main_sm.dispatch(&amp;"to_jump")
-	elif event.is_action_pressed("Sprint"):
-		#冲刺
-		pass
-	elif event.is_action_pressed("attack"):
-		main_sm.dispatch(&amp;"to_attack")
+    if event.is_action_pressed("move_up"):
+        main_sm.dispatch(&amp;"to_jump")
+    elif event.is_action_pressed("Sprint"):
+        #冲刺
+        pass
+    elif event.is_action_pressed("attack"):
+        main_sm.dispatch(&amp;"to_attack")
 
 func initate_start_machine():
-	#实例化状态机
-	main_sm = LimboHSM.new()
-	#添加状态机
-	add_child(main_sm)
-	
-	#创建idle状态 设置默认状态的启动方法 on_enter 首次启动调用方法 update 更新后调用方法
-	var idle_state = LimboState.new().named("idle").call_on_enter(idle_start).call_on_update(idle_update)
-	#创建walk状态
-	var walk_state = LimboState.new().named("walk").call_on_enter(walk_start).call_on_update(walk_update)
-	#创建jump状态 设置默认状态的启动方法 on_enter 首次启动调用方法 update 更新后调用方法
-	var jump_state = LimboState.new().named("jump").call_on_enter(jump_start).call_on_update(jump_update)
-	#创建walk状态
-	var attack_state = LimboState.new().named("attack").call_on_enter(attack_start).call_on_update(attack_update)
-	
-	#加入状态机
-	main_sm.add_child(idle_state)
-	main_sm.add_child(walk_state)
-	main_sm.add_child(jump_state)
-	main_sm.add_child(attack_state)
-	
-	#设置初始状态
-	main_sm.initial_state = idle_state
-	
-	#状态机切换
-	#从闲置状态切换到行走状态
-	main_sm.add_transition(idle_state,walk_state,&amp;"to_walk")
-	#从任意状态都可以回到闲置状态 这也符合游戏人物移动逻辑
-	main_sm.add_transition(main_sm.ANYSTATE,idle_state,&amp;"state_ended")
-	#两个转换，公用一个调用方法 实现更灵活的调用
-	main_sm.add_transition(idle_state,jump_state,&amp;"to_jump")
-	main_sm.add_transition(walk_state,jump_state,&amp;"to_jump")
-	#任何状态都可以进行攻击的切换
-	main_sm.add_transition(main_sm.ANYSTATE,attack_state,&amp;"to_attack")
-	
-	#初始化状态机
-	main_sm.initialize(self)
-	#设置状态机激活状态 活动状态机
-	main_sm.set_active(true)
-	
+    #实例化状态机
+    main_sm = LimboHSM.new()
+    #添加状态机
+    add_child(main_sm)
+    
+    #创建idle状态 设置默认状态的启动方法 on_enter 首次启动调用方法 update 更新后调用方法
+    var idle_state = LimboState.new().named("idle").call_on_enter(idle_start).call_on_update(idle_update)
+    #创建walk状态
+    var walk_state = LimboState.new().named("walk").call_on_enter(walk_start).call_on_update(walk_update)
+    #创建jump状态 设置默认状态的启动方法 on_enter 首次启动调用方法 update 更新后调用方法
+    var jump_state = LimboState.new().named("jump").call_on_enter(jump_start).call_on_update(jump_update)
+    #创建walk状态
+    var attack_state = LimboState.new().named("attack").call_on_enter(attack_start).call_on_update(attack_update)
+    
+    #加入状态机
+    main_sm.add_child(idle_state)
+    main_sm.add_child(walk_state)
+    main_sm.add_child(jump_state)
+    main_sm.add_child(attack_state)
+    
+    #设置初始状态
+    main_sm.initial_state = idle_state
+    
+    #状态机切换
+    #从闲置状态切换到行走状态
+    main_sm.add_transition(idle_state,walk_state,&amp;"to_walk")
+    #从任意状态都可以回到闲置状态 这也符合游戏人物移动逻辑
+    main_sm.add_transition(main_sm.ANYSTATE,idle_state,&amp;"state_ended")
+    #两个转换，公用一个调用方法 实现更灵活的调用
+    main_sm.add_transition(idle_state,jump_state,&amp;"to_jump")
+    main_sm.add_transition(walk_state,jump_state,&amp;"to_jump")
+    #任何状态都可以进行攻击的切换
+    main_sm.add_transition(main_sm.ANYSTATE,attack_state,&amp;"to_attack")
+    
+    #初始化状态机
+    main_sm.initialize(self)
+    #设置状态机激活状态 活动状态机
+    main_sm.set_active(true)
+    
 #idle的首次启动调用方法
 func idle_start():
-	print("idle start")
-	#可以播放闲置动画
+    print("idle start")
+    #可以播放闲置动画
 #idle的每帧更新调用方法
 func idle_update(delta: float):
-	if velocity.x != 0:
-		main_sm.dispatch(&amp;"to_walk")
+    if velocity.x != 0:
+        main_sm.dispatch(&amp;"to_walk")
 #walk的首次启动调用方法
 func walk_start():
-	print("角色行走中")
+    print("角色行走中")
 #walk的每帧更新调用方法
 func walk_update(delta: float):
-	if velocity.x == 0:
-		main_sm.dispatch(&amp;"state_ended")
-		print("角色行走结束")
+    if velocity.x == 0:
+        main_sm.dispatch(&amp;"state_ended")
+        print("角色行走结束")
 #jump的首次启动调用方法
 func jump_start():
-	#调用动画播放Jump动画
-	#改变velocity.y = jump_power 来实现跳跃
-	pass
+    #调用动画播放Jump动画
+    #改变velocity.y = jump_power 来实现跳跃
+    pass
 #jump的每帧更新调用方法
 func jump_update(delta: float):
-	#判断跳跃是否落地
-	if is_on_floor():
-		#落地后切换闲置状态
-		main_sm.dispatch(&amp;"state_ended")
+    #判断跳跃是否落地
+    if is_on_floor():
+        #落地后切换闲置状态
+        main_sm.dispatch(&amp;"state_ended")
 #attack的首次启动调用方法
 func attack_start():
-	#播放攻击动画
-	pass
+    #播放攻击动画
+    pass
 #attack的每帧更新调用方法
 func attack_update(delta: float):
-	#当播放动画结束后，切换状态机回到闲置状态
-	#由于目前没有这个动画所以只用注释解释 后续可以根据情况修改
-	pass</code></pre>
-
+    #当播放动画结束后，切换状态机回到闲置状态
+    #由于目前没有这个动画所以只用注释解释 后续可以根据情况修改
+    pass		
+    
+</code></pre>
 <p>视频教学:<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Y6421Z7sV/?spm_id_from=333.1007.top_right_bar_window_default_collection.content.click&amp;vd_source=adbd70f3395ed4825cbab1afe7aa152e">https://www.bilibili.com/video/BV1Y6421Z7sV/?spm_id_from=333.1007.top_right_bar_window_default_collection.content.click&amp;vd_source=adbd70f3395ed4825cbab1afe7aa152e</a></p>
 <p>里面的一些状态我并没有用上，因为之前我就是直接在脚本里判断写的移动，不好桥接，所以只是做了一些演示。实际代码都用注释去讲了。</p>
 <p>但还是一个很好的学习项目</p>
 <h2 id="道具范围拾取检测"><a href="#道具范围拾取检测" class="headerlink" title="道具范围拾取检测"></a>道具范围拾取检测</h2><p>实现碰撞检测需要的关键节点是Area2D，它可以检测进入到区域的所有同类</p>
 <p>这是我的Player场景构成</p>
-<p><img src="/Blackcat-loveBlog/%5Cpng%5CQQ%E6%88%AA%E5%9B%BE20240630164451.png" alt="QQ截图20240630164451"></p>
+<p><img src="/%5Cpng%5CQQ%E6%88%AA%E5%9B%BE20240630164451.png" alt="QQ截图20240630164451"></p>
 <p>其中有两个CollisionShape2D，但作用完全不一样，Player下的Col节点是为了实现地面的碰撞，可以实现基础的移动，跳跃。</p>
 <p>而Area2D，本质上不会达成碰撞，而是一个检测区域的作用。</p>
 <p>这是我的道具场景构成：</p>
-<p><img src="/Blackcat-loveBlog/%5Cpng%5CQQ%E6%88%AA%E5%9B%BE20240630164700.png" alt="QQ截图20240630164700"></p>
+<p><img src="/%5Cpng%5CQQ%E6%88%AA%E5%9B%BE20240630164700.png" alt="QQ截图20240630164700"></p>
 <p>可以看到，我使用Area2D的信号返回给了Boom节点，然后当Area2D的Coll检测到同类Arrea2D碰撞后，也就是进入这个区域内，会启动这个信号。</p>
-<p><img src="/Blackcat-loveBlog/%5Cpng%5CQQ%E6%88%AA%E5%9B%BE20240630164818.png" alt="QQ截图20240630164818"></p>
+<p><img src="/%5Cpng%5CQQ%E6%88%AA%E5%9B%BE20240630164818.png" alt="QQ截图20240630164818"></p>
 <p>就这样，我们实现了基础的道具拾取检测，也可以用来完成其他的功能</p>
 <h2 id="Tween"><a href="#Tween" class="headerlink" title="Tween"></a>Tween</h2><p>使用Tween可以通过代码直接创建动画，无需创建节点</p>
 <p>学习视频:<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Cy411z7xE/?spm_id_from=333.1007.tianma.1-1-1.click&amp;vd_source=adbd70f3395ed4825cbab1afe7aa152e">https://www.bilibili.com/video/BV1Cy411z7xE/?spm_id_from=333.1007.tianma.1-1-1.click&amp;vd_source=adbd70f3395ed4825cbab1afe7aa152e</a></p>
@@ -398,36 +396,26 @@ func attack_update(delta: float):
 <p>AnimationPlayer子节点 用来进行切换的动画效果</p>
 <p>首先用ColorRect制作一个黑幕动画，画面从透明变成黑色</p>
 <p>父节点脚本:</p>
-<pre><code class="highlight plaintext">extends CanvasLayer
+<pre><code>extends CanvasLayer
 
 @onready var animation_player = $AnimationPlayer
 
 
 func _ready():
-	#隐藏自身
-	self.hide()
+    #隐藏自身
+    self.hide()
 
 
 func changer_scene(path):
-	self.show()
-	self.set_layer(999)
-	animation_player.play("changer")
-	await  animation_player.animation_finished
-	get_tree().change_scene_to_file(path)
-	animation_player.play_backwards("changer")
-	await animation_player.animation_finished
-	self.set_layer(-1)
-	self.hide()
-	pass
+    self.show()
+    self.set_layer(999)
+    animation_player.play("changer")
+    await  animation_player.animation_finished
+    get_tree().change_scene_to_file(path)
+    animation_player.play_backwards("changer")
+    await animation_player.animation_finished
+    self.set_layer(-1)
+    self.hide()
+    pass
 </code></pre>
-
-</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/Blackcat-loveBlog/2024/07/01/godot%E5%BC%80%E5%8F%91%E4%B9%8BLive2D%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" title="godot开发之Live2D插件使用教程"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">上一页: godot开发之Live2D插件使用教程</span></a><a class="button is-default" href="/Blackcat-loveBlog/2024/06/17/godot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="godot学习笔记"><span class="has-text-weight-semibold">下一页: godot学习笔记</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Blackcat-love"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> 天明 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/Blackcat-loveBlog/js/jquery-3.6.1.min.js"></script><script src="/Blackcat-loveBlog/js/jquery-fancybox.min.js"></script><script src="/Blackcat-loveBlog/js/img_zoom.js"></script><script src="/Blackcat-loveBlog/js/post.js"></script><!-- hexo injector body_end start --><script data-pjax src="https://registry.npmmirror.com/oh-my-live2d/latest/files"></script><script>const oml2d = OML2D.loadOml2d({libraryUrls:{"complete":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/complete.js","cubism2":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism2.js","cubism5":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism5.js"},mobileDisplay:true,models:[{"path":"/Blackcat-loveBlog/live2d/波奇酱2.0/波奇酱2.0.model3.json","mobilePosition":[0,0],"mobileScale":0.1,"mobileStageStyle":{"width":180,"height":250},"motionPreloadStrategy":"IDLE","position":[-100,-100],"scale":0.15,"stageStyle":{"width":250,"height":250}},{"path":"/Blackcat-loveBlog/live2d/liang_vts/liang.model3.json","scale":0.12,"position":[0,60],"stageStyle":{"width":250},"mobileScale":0.1,"mobilePosition":[0,0],"mobileStageStyle":{"width":180}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
-  return axios.get('https://v1.hitokoto.cn?c=i')
-    .then(function (response) {
-      return response.data.hitokoto ;
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-}
-}}});</script><!-- hexo injector body_end end --></body></html>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2024/07/01/godot%E5%BC%80%E5%8F%91%E4%B9%8BLive2D%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" title="godot开发之Live2D插件使用教程"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">上一页: godot开发之Live2D插件使用教程</span></a><a class="button is-default" href="/2024/06/17/godot%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="godot学习笔记"><span class="has-text-weight-semibold">下一页: godot学习笔记</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Blackcat-love"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> 天明 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>

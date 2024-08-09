@@ -1,50 +1,48 @@
 <!DOCTYPE html><html class="appearance-auto" lang="zh-CN"><head><meta charset="UTF-8"><title>Jquery学习笔记</title><meta name="description" content="编程"><meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1"><!-- Google Analytics --><!-- End Google Analytics -->
-<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/Blackcat-loveBlog/images/favicon.ico"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/bulma.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/base.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/helper.css"><script src="/Blackcat-loveBlog/js/common.js"></script><link rel="stylesheet" href="/Blackcat-loveBlog/style/post.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/Blackcat-loveBlog/style/common/jquery.fancybox.min.css"><script src="/Blackcat-loveBlog/js/highlight.pack.js"></script><meta name="description" content="jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀的JavaScript代码库（框架）于2006年1月由[John Resig](https://baike.baidu.com/item/John Resig/6336344?fromModule=lemma_inlink)发布。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。
-jQuery的核心特性可以总结为：具有独特的链式语法和短小清晰的多功能接口；具有高效灵活的CSS选择器，并且可对CSS选择器进行扩展；拥有便捷的插件扩.."><meta name="generator" content="Hexo 7.2.0">
+<!-- Baidu Analytics --><!-- End Baidu Analytics --><link rel="icon" href="/images/favicon.ico"><link rel="stylesheet" href="/style/common/bulma.css"><link rel="stylesheet" href="/style/base.css"><link rel="stylesheet" href="/style/common/helper.css"><script src="/js/common.js"></script><link rel="stylesheet" href="/style/post.css"><link rel="stylesheet" href="/style/themes/highlight-theme-light.css"><link rel="stylesheet" href="/style/common/jquery.fancybox.min.css"><script src="/js/highlight.pack.js"></script><meta name="description" content="jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀的JavaScript代码库（框架）于2006年1月由[John Resig](https://baike.baidu.com/item/John Resig/6336344?fromModule=lemma_inlink)发布。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。
+jQuery的核心特性可以总结为：具有独特的链式语法和短小清晰的多功能接口；具有高效灵活的CSS选择器，并且可对CSS选择器进行扩展；拥有便捷的插件扩.."><meta name="generator" content="Hexo 5.1.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/Blackcat-loveBlog/">天明's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Jquery学习笔记</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/">首页</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/">首页</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/Blackcat-loveBlog/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E7%A1%80%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">1.基础选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B1%82%E7%BA%A7%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">2.层级选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AD%90%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88child-selector%EF%BC%89"><span class="toc-text">1.子元素选择器（child selector）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%90%8E%E4%BB%A3%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88descendant-selector%EF%BC%89"><span class="toc-text">2.后代元素选择器（descendant selector）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%9B%B8%E9%82%BB%E5%85%84%E5%BC%9F%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88adjacent-sibling-selector%EF%BC%89"><span class="toc-text">3.相邻兄弟元素选择器（adjacent sibling selector）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%85%A8%E9%83%A8%E5%85%84%E5%BC%9F%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88general-sibling-selector%EF%BC%89%EF%BC%9A"><span class="toc-text">4.全部兄弟元素选择器（general sibling selector）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E7%88%B6%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88parent-selector%EF%BC%89"><span class="toc-text">5.父元素选择器（parent selector）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E7%A5%96%E5%85%88%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88ancestor-selector%EF%BC%89%EF%BC%9A"><span class="toc-text">6.祖先元素选择器（ancestor selector）：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">3.过滤选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-JQueryDOM%E6%93%8D%E4%BD%9C"><span class="toc-text">4.JQueryDOM操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%A0%E9%99%A4"><span class="toc-text">1.删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%BF%BD%E5%8A%A0%EF%BC%8C%E7%A7%BB%E9%99%A4%E6%A0%B7%E5%BC%8F"><span class="toc-text">2.追加，移除样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%AF%BB%E5%8F%96"><span class="toc-text">3.读取</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%BA%8B%E4%BB%B6%E5%92%8C%E5%8A%A8%E7%94%BB"><span class="toc-text">5.事件和动画</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6"><span class="toc-text">1.鼠标事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6"><span class="toc-text">2.键盘事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6%E5%92%8C%E7%A7%BB%E9%99%A4%E4%BA%8B%E4%BB%B6"><span class="toc-text">3.绑定事件和移除事件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6"><span class="toc-text">绑定事件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A7%BB%E9%99%A4%E4%BA%8B%E4%BB%B6"><span class="toc-text">移除事件</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%A4%8D%E5%90%88%E4%BA%8B%E4%BB%B6"><span class="toc-text">4.复合事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%B8%B8%E7%94%A8%E5%8A%A8%E7%94%BB%E6%96%B9%E6%B3%95"><span class="toc-text">5.常用动画方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E8%87%AA%E4%B9%89%E5%AE%9A%E5%8A%A8%E7%94%BB%E6%96%B9%E6%B3%95"><span class="toc-text">6.自义定动画方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C"><span class="toc-text">6.表单校验</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%A1%A8%E5%8D%95%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">1.表单选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C"><span class="toc-text">2.表单校验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">3.正则表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-HTML5%E8%A1%A8%E5%8D%95%E6%96%B0%E5%A2%9E%E5%B1%9E%E6%80%A7"><span class="toc-text">4.HTML5表单新增属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-validity%E5%B1%9E%E6%80%A7%E5%BA%94%E7%94%A8"><span class="toc-text">5.validity属性应用</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/Blackcat-loveBlog/tags/JQuery"><i class="tag post-item-tag">JQuery</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Jquery学习笔记</h1><time class="has-text-grey" datetime="2023-12-11T10:33:08.000Z">2023-12-11</time><article class="mt-2 post-content"><p>jQuery是一个快速、简洁的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/JavaScript/321142?fromModule=lemma_inlink">JavaScript</a>框架，是继Prototype之后又一个优秀的JavaScript<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BB%A3%E7%A0%81%E5%BA%93/969653?fromModule=lemma_inlink">代码库</a>（框架）于2006年1月由[John Resig](<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/John">https://baike.baidu.com/item/John</a> Resig/6336344?fromModule=lemma_inlink)发布。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/HTML/97049?fromModule=lemma_inlink">HTML</a>文档操作、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/9582185?fromModule=lemma_inlink">事件处理</a>、动画设计和<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Ajax/8425?fromModule=lemma_inlink">Ajax</a>交互。</p>
+</head><body class="is-flex is-flex-direction-column"><header class="header-widget is-flex-shrink-0 is-hidden-mobile"><div class="container is-fullhd is-flex is-justify-content-space-between is-align-items-center is-full-height"><section class="is-hidden-mobile is-flex-shrink-0"><h2><a href="/">天明's blog</a></h2></section><h3 class="is-hidden-mobile is-family-serif is-full-height is-flex is-align-items-center is-flex-shrink-0"><div class="is-full-height" id="postTopic"><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">Jquery学习笔记</p><p class="is-full-height is-flex-shrink-0 is-flex is-align-items-center is-justify-content-center">点击返回顶部</p></div></h3><aside class="is-flex-shrink-0"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></aside></div></header><header class="is-flex header-widget is-flex-shrink-0 is-align-items-center is-justify-content-center is-hidden-tablet"><h3 class="is-inline-block"><a href="/">首页</a></h3><h3 class="is-inline-block"><a href="/about/about">关于</a></h3><h3 class="is-inline-block"><a href="/archives">归档</a></h3></header><main><main class="container is-max-widescreen content section post-page pt-4 px-4"><div class="columns is-flex-desktop is-justify-content-center is-flex-direction-row-reverse"><div class="column is-3 is-hidden-mobile"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E7%A1%80%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">1.基础选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B1%82%E7%BA%A7%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">2.层级选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AD%90%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88child-selector%EF%BC%89"><span class="toc-text">1.子元素选择器（child selector）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%90%8E%E4%BB%A3%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88descendant-selector%EF%BC%89"><span class="toc-text">2.后代元素选择器（descendant selector）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%9B%B8%E9%82%BB%E5%85%84%E5%BC%9F%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88adjacent-sibling-selector%EF%BC%89"><span class="toc-text">3.相邻兄弟元素选择器（adjacent sibling selector）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%85%A8%E9%83%A8%E5%85%84%E5%BC%9F%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88general-sibling-selector%EF%BC%89%EF%BC%9A"><span class="toc-text">4.全部兄弟元素选择器（general sibling selector）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E7%88%B6%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88parent-selector%EF%BC%89"><span class="toc-text">5.父元素选择器（parent selector）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E7%A5%96%E5%85%88%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8%EF%BC%88ancestor-selector%EF%BC%89%EF%BC%9A"><span class="toc-text">6.祖先元素选择器（ancestor selector）：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">3.过滤选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-JQueryDOM%E6%93%8D%E4%BD%9C"><span class="toc-text">4.JQueryDOM操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%A0%E9%99%A4"><span class="toc-text">1.删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%BF%BD%E5%8A%A0%EF%BC%8C%E7%A7%BB%E9%99%A4%E6%A0%B7%E5%BC%8F"><span class="toc-text">2.追加，移除样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%AF%BB%E5%8F%96"><span class="toc-text">3.读取</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%BA%8B%E4%BB%B6%E5%92%8C%E5%8A%A8%E7%94%BB"><span class="toc-text">5.事件和动画</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6"><span class="toc-text">1.鼠标事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6"><span class="toc-text">2.键盘事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6%E5%92%8C%E7%A7%BB%E9%99%A4%E4%BA%8B%E4%BB%B6"><span class="toc-text">3.绑定事件和移除事件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6"><span class="toc-text">绑定事件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A7%BB%E9%99%A4%E4%BA%8B%E4%BB%B6"><span class="toc-text">移除事件</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%A4%8D%E5%90%88%E4%BA%8B%E4%BB%B6"><span class="toc-text">4.复合事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%B8%B8%E7%94%A8%E5%8A%A8%E7%94%BB%E6%96%B9%E6%B3%95"><span class="toc-text">5.常用动画方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E8%87%AA%E4%B9%89%E5%AE%9A%E5%8A%A8%E7%94%BB%E6%96%B9%E6%B3%95"><span class="toc-text">6.自义定动画方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C"><span class="toc-text">6.表单校验</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E8%A1%A8%E5%8D%95%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">1.表单选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%A1%A8%E5%8D%95%E6%A0%A1%E9%AA%8C"><span class="toc-text">2.表单校验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">3.正则表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-HTML5%E8%A1%A8%E5%8D%95%E6%96%B0%E5%A2%9E%E5%B1%9E%E6%80%A7"><span class="toc-text">4.HTML5表单新增属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-validity%E5%B1%9E%E6%80%A7%E5%BA%94%E7%94%A8"><span class="toc-text">5.validity属性应用</span></a></li></ol></li></ol></div><div class="column is-9"><header class="my-4"><a href="/tags/JQuery"><i class="tag post-item-tag">JQuery</i></a></header><h1 class="mt-0 mb-1 is-family-serif" id="postTitle">Jquery学习笔记</h1><time class="has-text-grey" datetime="2023-12-11T10:33:08.000Z">2023-12-11</time><article class="mt-2 post-content"><p>jQuery是一个快速、简洁的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/JavaScript/321142?fromModule=lemma_inlink">JavaScript</a>框架，是继Prototype之后又一个优秀的JavaScript<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BB%A3%E7%A0%81%E5%BA%93/969653?fromModule=lemma_inlink">代码库</a>（框架）于2006年1月由[John Resig](<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/John">https://baike.baidu.com/item/John</a> Resig/6336344?fromModule=lemma_inlink)发布。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/HTML/97049?fromModule=lemma_inlink">HTML</a>文档操作、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/9582185?fromModule=lemma_inlink">事件处理</a>、动画设计和<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Ajax/8425?fromModule=lemma_inlink">Ajax</a>交互。</p>
 <p>jQuery的核心特性可以总结为：具有独特的链式语法和短小清晰的多功能接口；具有高效灵活的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/CSS%E9%80%89%E6%8B%A9%E5%99%A8/2819686?fromModule=lemma_inlink">CSS选择器</a>，并且可对<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/CSS/5457?fromModule=lemma_inlink">CSS</a>选择器进行扩展；拥有便捷的插件扩展机制和丰富的插件。jQuery兼容各种主流浏览器，如<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/IE/69103?fromModule=lemma_inlink">IE</a> 6.0+、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/FF/3053609?fromModule=lemma_inlink">FF</a> 1.5+、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Safari/597?fromModule=lemma_inlink">Safari</a> 2.0+、Opera 9.0+等。</p>
 <p>[TOC]</p>
-<h3 id="1-基础选择器"><a href="#1-基础选择器" class="headerlink" title="1.基础选择器"></a>1.基础选择器</h3><pre><code class="highlight html"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span>
-<span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>
-<span class="tag">&lt;<span class="name">head</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span>
-    <span class="tag">&lt;<span class="name">title</span>&gt;</span>引入<span class="tag">&lt;/<span class="name">title</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">head</span>&gt;</span>
-<span class="tag">&lt;<span class="name">body</span>&gt;</span>
-<span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span>ID点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span>
-<span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"btn"</span>&gt;</span>类点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span>
-<span class="tag">&lt;<span class="name">p</span>&gt;</span>标签点击<span class="tag">&lt;/<span class="name">p</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">body</span>&gt;</span>
-<span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/jquery.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-<span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span>
-<span class="language-javascript">    $(<span class="variable language_">document</span>).<span class="title function_">ready</span>(<span class="keyword">function</span> (<span class="params"></span>) {<span class="comment">//加载函数</span></span>
-<span class="language-javascript">        <span class="title function_">alert</span>(<span class="string">"hello world"</span>);</span>
-<span class="language-javascript">    });</span>
-<span class="language-javascript"></span>
-<span class="language-javascript">    $(<span class="keyword">function</span> (<span class="params"></span>) {</span>
-<span class="language-javascript">        $(<span class="string">"#btn"</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) {</span>
-<span class="language-javascript">            <span class="title function_">alert</span>(<span class="string">"这是用ID选中的"</span>)</span>
-<span class="language-javascript">        });</span>
-<span class="language-javascript">        $(<span class="string">".btn"</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) {</span>
-<span class="language-javascript">            <span class="title function_">alert</span>(<span class="string">"这是用类选中的"</span>)</span>
-<span class="language-javascript">        });</span>
-<span class="language-javascript">        $(<span class="string">"p"</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) {</span>
-<span class="language-javascript">            <span class="title function_">alert</span>(<span class="string">"这是用标签选中的"</span>)</span>
-<span class="language-javascript">        });</span>
-<span class="language-javascript">        $(<span class="string">"*"</span>).<span class="title function_">ready</span>(<span class="keyword">function</span> (<span class="params"></span>) {</span>
-<span class="language-javascript">            <span class="title function_">alert</span>(<span class="string">"这是选择所有的"</span>)</span>
-<span class="language-javascript">        });</span>
-<span class="language-javascript">        $(<span class="string">"#btn,.btn,p"</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) {</span>
-<span class="language-javascript">            <span class="title function_">alert</span>(<span class="string">"这是并集选择器"</span>)</span>
-<span class="language-javascript">        })</span>
-<span class="language-javascript">        }</span>
-<span class="language-javascript">    );</span>
-<span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>
-<span class="tag">&lt;/<span class="name">html</span>&gt;</span></code></pre>
+<h3 id="1-基础选择器"><a href="#1-基础选择器" class="headerlink" title="1.基础选择器"></a>1.基础选择器</h3><pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;引入&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;button id="btn"&gt;ID点击&lt;/button&gt;
+&lt;button class="btn"&gt;类点击&lt;/button&gt;
+&lt;p&gt;标签点击&lt;/p&gt;
+&lt;/body&gt;
+&lt;script src="js/jquery.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    $(document).ready(function () {//加载函数
+        alert("hello world");
+    });
 
-
-
+    $(function () {
+        $("#btn").click(function () {
+            alert("这是用ID选中的")
+        });
+        $(".btn").click(function () {
+            alert("这是用类选中的")
+        });
+        $("p").click(function () {
+            alert("这是用标签选中的")
+        });
+        $("*").ready(function () {
+            alert("这是选择所有的")
+        });
+        $("#btn,.btn,p").click(function () {
+            alert("这是并集选择器")
+        })
+        }
+    );
+&lt;/script&gt;
+&lt;/html&gt;
+</code></pre>
 <h3 id="2-层级选择器"><a href="#2-层级选择器" class="headerlink" title="2.层级选择器"></a>2.层级选择器</h3><p>JQuery的层次选择器可以帮助我们更精确地选择DOM元素。下面是一些常见的层次选择器的例子，希望能帮助新手更容易理解：</p>
 <ol>
 <li>子元素选择器（child selector）：选择某个元素的直接子元素。 例如：<code>$("ul &gt; li")</code> 选择ul元素下的所有直接子元素li。</li>
@@ -57,224 +55,228 @@ jQuery的核心特性可以总结为：具有独特的链式语法和短小清�
 <p>这些层次选择器可以根据具体的DOM结构和需求进行灵活的组合使用，帮助我们更准确地选择和操作DOM元素</p>
 <p>例子:</p>
 <h4 id="1-子元素选择器（child-selector）"><a href="#1-子元素选择器（child-selector）" class="headerlink" title="1.子元素选择器（child selector）"></a>1.子元素选择器（child selector）</h4><p>选择指定父元素下的直接子元素。</p>
-<pre><code class="highlight javascript"><span class="comment">// 选择id为parent的元素下的所有直接子元素为p的元素</span>
-$(<span class="string">"#parent &gt; p"</span>)</code></pre>
-
+<pre><code class="javascript">// 选择id为parent的元素下的所有直接子元素为p的元素
+$("#parent &gt; p")
+</code></pre>
 <h4 id="2-后代元素选择器（descendant-selector）"><a href="#2-后代元素选择器（descendant-selector）" class="headerlink" title="2.后代元素选择器（descendant selector）"></a>2.后代元素选择器（descendant selector）</h4><p>选择指定父元素下的所有后代元素。</p>
-<pre><code class="highlight javascript"><span class="comment">//选择id为parent的元素下的所有后代元素为p的元素</span>
-$(<span class="string">"#parent p"</span>)</code></pre>
-
+<pre><code class="javascript">//选择id为parent的元素下的所有后代元素为p的元素
+$("#parent p")
+</code></pre>
 <h4 id="3-相邻兄弟元素选择器（adjacent-sibling-selector）"><a href="#3-相邻兄弟元素选择器（adjacent-sibling-selector）" class="headerlink" title="3.相邻兄弟元素选择器（adjacent sibling selector）"></a>3.相邻兄弟元素选择器（adjacent sibling selector）</h4><p>选择指定元素后面紧邻的兄弟元素。</p>
-<pre><code class="highlight javascript"><span class="comment">// 选择id为sibling1的元素后面紧邻的兄弟元素为sibling2的元素</span>
-$(<span class="string">"#sibling1 + #sibling2"</span>)</code></pre>
-
+<pre><code class="javascript">// 选择id为sibling1的元素后面紧邻的兄弟元素为sibling2的元素
+$("#sibling1 + #sibling2")
+</code></pre>
 <h4 id="4-全部兄弟元素选择器（general-sibling-selector）："><a href="#4-全部兄弟元素选择器（general-sibling-selector）：" class="headerlink" title="4.全部兄弟元素选择器（general sibling selector）："></a>4.全部兄弟元素选择器（general sibling selector）：</h4><p>选择指定元素后面的所有兄弟元素。</p>
-<pre><code class="highlight javascript"><span class="comment">// 选择id为sibling1的元素后面的所有兄弟元素为sibling2的元素</span>
-$(<span class="string">"#sibling1 ~ #sibling2"</span>)</code></pre>
-
+<pre><code class="javascript">// 选择id为sibling1的元素后面的所有兄弟元素为sibling2的元素
+$("#sibling1 ~ #sibling2")
+</code></pre>
 <h4 id="5-父元素选择器（parent-selector）"><a href="#5-父元素选择器（parent-selector）" class="headerlink" title="5.父元素选择器（parent selector）"></a>5.父元素选择器（parent selector）</h4><p>选择指定元素的父元素。</p>
-<pre><code class="highlight javascript"><span class="comment">// 选择class为child的元素的父元素</span>
-$(<span class="string">".child"</span>).<span class="title function_">parent</span>()</code></pre>
-
+<pre><code class="javascript">// 选择class为child的元素的父元素
+$(".child").parent()
+</code></pre>
 <h4 id="6-祖先元素选择器（ancestor-selector）："><a href="#6-祖先元素选择器（ancestor-selector）：" class="headerlink" title="6.祖先元素选择器（ancestor selector）："></a>6.祖先元素选择器（ancestor selector）：</h4><p>选择指定元素的所有祖先元素。</p>
-<pre><code class="highlight javascript"><span class="comment">// 选择class为child的元素的所有祖先元素</span>
-$(<span class="string">".child"</span>).<span class="title function_">parents</span>()</code></pre>
-
+<pre><code class="javascript">// 选择class为child的元素的所有祖先元素
+$(".child").parents()
+</code></pre>
 <h3 id="3-过滤选择器"><a href="#3-过滤选择器" class="headerlink" title="3.过滤选择器"></a>3.过滤选择器</h3><p>JQuery是一个流行的JavaScript库，它提供了一种简化DOM操作的方式。JQuery选择器允许你使用类似CSS选择器的语法来选择DOM元素，并且可以根据需要组合使用多个选择器，以实现更精确的选择。</p>
 <p>下面是一些常见的JQuery过滤选择器及其用法示例：</p>
 <ol>
 <li><strong>元素选择器</strong>：通过元素名称来选择特定的DOM元素。</li>
 </ol>
-<pre><code class="highlight javascript">$(<span class="string">'p'</span>) <span class="comment">// 选择所有的&lt;p&gt;元素</span>
-$(<span class="string">'input'</span>) <span class="comment">// 选择所有的&lt;input&gt;元素</span></code></pre>
-
+<pre><code class="javascript">$('p') // 选择所有的&lt;p&gt;元素
+$('input') // 选择所有的&lt;input&gt;元素
+</code></pre>
 <ol>
 <li><strong>类选择器</strong>：通过类名来选择具有特定类的DOM元素。</li>
 </ol>
-<pre><code class="highlight javascript">$(<span class="string">'.myClass'</span>) <span class="comment">// 选择所有具有类名为"myClass"的元素</span>
-$(<span class="string">'#myId'</span>) <span class="comment">// 选择ID为"myId"的元素</span></code></pre>
-
+<pre><code class="javascript">$('.myClass') // 选择所有具有类名为"myClass"的元素
+$('#myId') // 选择ID为"myId"的元素
+</code></pre>
 <ol>
 <li><strong>属性选择器</strong>：通过元素的属性值来选择元素。</li>
 </ol>
-<pre><code class="highlight javascript">$(<span class="string">'input[type="text"]'</span>) <span class="comment">// 选择所有类型为"text"的&lt;input&gt;元素</span>
-$(<span class="string">'a[href^="https"]'</span>) <span class="comment">// 选择所有以"https"开头的&lt;a&gt;元素</span></code></pre>
-
+<pre><code class="javascript">$('input[type="text"]') // 选择所有类型为"text"的&lt;input&gt;元素
+$('a[href^="https"]') // 选择所有以"https"开头的&lt;a&gt;元素
+</code></pre>
 <ol>
 <li><strong>子元素选择器</strong>：通过父元素来选择其子元素。</li>
 </ol>
-<pre><code class="highlight javascript">$(<span class="string">'ul li'</span>) <span class="comment">// 选择所有&lt;ul&gt;下的&lt;li&gt;元素</span>
-$(<span class="string">'.myClass &gt; span'</span>) <span class="comment">// 选择具有类名为"myClass"的元素下的&lt;span&gt;元素</span></code></pre>
-
+<pre><code class="javascript">$('ul li') // 选择所有&lt;ul&gt;下的&lt;li&gt;元素
+$('.myClass &gt; span') // 选择具有类名为"myClass"的元素下的&lt;span&gt;元素
+</code></pre>
 <ol>
 <li><strong>过滤选择器</strong>：通过特定条件来选择元素。</li>
 </ol>
-<pre><code class="highlight javascript">$(<span class="string">'p:first'</span>) <span class="comment">// 选择第一个&lt;p&gt;元素</span>
-$(<span class="string">'li:last'</span>) <span class="comment">// 选择最后一个&lt;li&gt;元素</span>
-$(<span class="string">'tr:even'</span>) <span class="comment">// 选择所有偶数行的&lt;tr&gt;元素</span>
-$(<span class="string">'div:animated'</span>) <span class="comment">// 选择正在执行动画的&lt;div&gt;元素</span></code></pre>
-
+<pre><code class="javascript">$('p:first') // 选择第一个&lt;p&gt;元素
+$('li:last') // 选择最后一个&lt;li&gt;元素
+$('tr:even') // 选择所有偶数行的&lt;tr&gt;元素
+$('div:animated') // 选择正在执行动画的&lt;div&gt;元素
+</code></pre>
 <ol>
 <li><strong>内容过滤选择器</strong>：通过元素的文本内容来选择元素。</li>
 </ol>
-<pre><code class="highlight javascript">$(<span class="string">'p:contains("Hello")'</span>) <span class="comment">// 选择包含文本"Hello"的&lt;p&gt;元素</span>
-$(<span class="string">'p:empty'</span>) <span class="comment">// 选择没有子元素或文本内容的&lt;p&gt;元素</span>
-$(<span class="string">'p:has(span)'</span>) <span class="comment">// 选择包含&lt;span&gt;元素的&lt;p&gt;元素</span></code></pre>
-
+<pre><code class="javascript">$('p:contains("Hello")') // 选择包含文本"Hello"的&lt;p&gt;元素
+$('p:empty') // 选择没有子元素或文本内容的&lt;p&gt;元素
+$('p:has(span)') // 选择包含&lt;span&gt;元素的&lt;p&gt;元素
+</code></pre>
 <p>这些只是JQuery选择器的一小部分，但是它们代表了一些常见的选择器用法。希望这些示例能够帮助新手更好地理解和使用JQuery选择器。</p>
-<h3 id="4-JQueryDOM操作"><a href="#4-JQueryDOM操作" class="headerlink" title="4.JQueryDOM操作"></a>4.JQueryDOM操作</h3><pre><code class="highlight javascript">&lt;script&gt;
-    $(<span class="keyword">function</span> (<span class="params"></span>) {
-        <span class="comment">//查找节点</span>
-        <span class="variable language_">console</span>.<span class="title function_">log</span>($(<span class="string">"ul li"</span>));
-        <span class="comment">//创建节点</span>
-        <span class="keyword">var</span> li1 = $(<span class="string">"&lt;li&gt;大头儿子&lt;/li&gt;"</span>);
-        <span class="keyword">var</span> li2 = $(<span class="string">"&lt;li&gt;小魔仙&lt;/li&gt;"</span>);
-        <span class="comment">//插入节点</span>
-        $(<span class="string">"ul"</span>).<span class="title function_">after</span>(li1);
-        $(<span class="string">"ul"</span>).<span class="title function_">before</span>(li2);
-        <span class="comment">//删除元素</span>
-        <span class="comment">// $("ul li:eq(1)").remove();</span>
-        <span class="comment">// $("ul li").remove(":eq(1)");</span>
+<h3 id="4-JQueryDOM操作"><a href="#4-JQueryDOM操作" class="headerlink" title="4.JQueryDOM操作"></a>4.JQueryDOM操作</h3><pre><code class="javascript">&lt;script&gt;
+    $(function () {
+        //查找节点
+        console.log($("ul li"));
+        //创建节点
+        var li1 = $("&lt;li&gt;大头儿子&lt;/li&gt;");
+        var li2 = $("&lt;li&gt;小魔仙&lt;/li&gt;");
+        //插入节点
+        $("ul").after(li1);
+        $("ul").before(li2);
+        //删除元素
+        // $("ul li:eq(1)").remove();
+        // $("ul li").remove(":eq(1)");
 
-        <span class="comment">//为li绑定点击事件</span>
-        $(<span class="string">"ul li"</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) {
-            <span class="title function_">alert</span>(<span class="string">"li"</span>);
+        //为li绑定点击事件
+        $("ul li").click(function () {
+            alert("li");
         })
-        <span class="comment">//代码段1：使用remove()方法删除</span>
-        <span class="comment">// var delli1 = $("ul li:eq(1)").remove(); //删除指定元素</span>
-        <span class="comment">// $("ul").append(delli1); //恢复元素，click事件不存在</span>
-        <span class="comment">//代码段2：使用detach()方法删除</span>
-        <span class="comment">// var delli2 = $("ul li:eq(1)").detach(); //删除指定元素</span>
-        <span class="comment">// $("ul").append(delli2); //恢复元素,click事件仍存在</span>
-        <span class="comment">// $("ul li:eq(2)").empty();</span>
-        <span class="comment">//复制节点</span>
-        $(<span class="string">"ul li:eq(0)"</span>).<span class="title function_">clone</span>(<span class="literal">true</span>).<span class="title function_">appendTo</span>(<span class="string">".animationList"</span>);
-        $(<span class="string">"ul li:eq(0)"</span>).<span class="title function_">clone</span>(<span class="literal">false</span>).<span class="title function_">appendTo</span>(<span class="string">".animationList"</span>);
+        //代码段1：使用remove()方法删除
+        // var delli1 = $("ul li:eq(1)").remove(); //删除指定元素
+        // $("ul").append(delli1); //恢复元素，click事件不存在
+        //代码段2：使用detach()方法删除
+        // var delli2 = $("ul li:eq(1)").detach(); //删除指定元素
+        // $("ul").append(delli2); //恢复元素,click事件仍存在
+        // $("ul li:eq(2)").empty();
+        //复制节点
+        $("ul li:eq(0)").clone(true).appendTo(".animationList");
+        $("ul li:eq(0)").clone(false).appendTo(".animationList");
       
     })
-&lt;/script&gt;</code></pre>
-
-<h4 id="1-删除"><a href="#1-删除" class="headerlink" title="1.删除"></a>1.删除</h4><pre><code class="highlight javascript">$(<span class="keyword">function</span> (<span class="params"></span>) {
-       $(<span class="string">"ul li"</span>).<span class="title function_">click</span>(<span class="keyword">function</span> (<span class="params"></span>) {
-           <span class="title function_">alert</span>(<span class="string">"哈哈"</span>);
-       });
-       <span class="keyword">let</span> dt = $(<span class="string">"#a"</span>).<span class="title function_">remove</span>(); <span class="comment">//删除但是会保留事件</span>
-       $(<span class="string">".animationList"</span>).<span class="title function_">append</span>(dt); <span class="comment">//追加</span>
-   })</code></pre>
-
-<h4 id="2-追加，移除样式"><a href="#2-追加，移除样式" class="headerlink" title="2.追加，移除样式"></a>2.追加，移除样式</h4><pre><code class="highlight javascript">&lt;body&gt;
-    <span class="language-xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>热门动画排行<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span>
-    <span class="language-xml"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"animationList"</span>&gt;</span></span>
-<span class="language-xml">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"c"</span>&gt;</span>名侦探柯南<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>
-<span class="language-xml">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"a"</span>&gt;</span>阿拉蕾<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>
-<span class="language-xml">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">id</span>=<span class="string">"b"</span>&gt;</span>海贼王<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>
-<span class="language-xml">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span>
+&lt;/script&gt;
+</code></pre>
+<h4 id="1-删除"><a href="#1-删除" class="headerlink" title="1.删除"></a>1.删除</h4><pre><code class="javascript"> $(function () {
+        $("ul li").click(function () {
+            alert("哈哈");
+        });
+        let dt = $("#a").remove(); //删除但是会保留事件
+        $(".animationList").append(dt); //追加
+    })
+</code></pre>
+<h4 id="2-追加，移除样式"><a href="#2-追加，移除样式" class="headerlink" title="2.追加，移除样式"></a>2.追加，移除样式</h4><pre><code class="javascript">&lt;body&gt;
+    &lt;h2&gt;热门动画排行&lt;/h2&gt;
+    &lt;ul class="animationList"&gt;
+        &lt;li id="c"&gt;名侦探柯南&lt;/li&gt;
+        &lt;li id="a"&gt;阿拉蕾&lt;/li&gt;
+        &lt;li id="b"&gt;海贼王&lt;/li&gt;
+    &lt;/ul&gt;
 &lt;/body&gt;
-<span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span>
-<span class="language-javascript"><span class="language-xml">    $(<span class="string">"#a"</span>).<span class="title function_">siblings</span>().<span class="title function_">css</span>(<span class="string">"color"</span>,<span class="string">"blue"</span>);</span></span>
-<span class="language-javascript"><span class="language-xml">    $(<span class="string">"#b"</span>).<span class="title function_">parents</span>().<span class="title function_">css</span>(<span class="string">"color"</span>,<span class="string">"red"</span>);</span></span>
-<span class="language-javascript"><span class="language-xml">    $(<span class="string">"#c"</span>).<span class="title function_">parent</span>().<span class="title function_">css</span>(<span class="string">"color"</span>,<span class="string">"yellow"</span>);</span></span>
-<span class="language-javascript"><span class="language-xml">    $(<span class="string">"#c"</span>).<span class="title function_">parent</span>().<span class="title function_">css</span>(<span class="string">"font-size"</span>,<span class="number">5</span>);</span></span>
-<span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></code></pre>
-
+&lt;script&gt;
+    $("#a").siblings().css("color","blue");
+    $("#b").parents().css("color","red");
+    $("#c").parent().css("color","yellow");
+    $("#c").parent().css("font-size",5);
+&lt;/script&gt;
+</code></pre>
 <p>Query是一个JavaScript库，提供了方便操作HTML元素和属性的方法。在JQuery中，属性值操作可以通过以下方法进行：</p>
 <ol>
 <li><p><code>attr()</code>方法：用于获取或设置元素的属性值。如果传递一个参数，该方法返回匹配元素的属性值；如果传递两个参数，第一个参数表示属性名，第二个参数表示要设置的属性值。例如：</p>
-<pre><code class="highlight javascript"><span class="comment">// 获取src属性的值</span>
-<span class="keyword">var</span> srcValue = $(<span class="string">'img'</span>).<span class="title function_">attr</span>(<span class="string">'src'</span>);
+<pre><code class="javascript">// 获取src属性的值
+var srcValue = $('img').attr('src');
 
-<span class="comment">// 设置src属性的值</span>
-$(<span class="string">'img'</span>).<span class="title function_">attr</span>(<span class="string">'src'</span>, <span class="string">'new-image.jpg'</span>);</code></pre>
+// 设置src属性的值
+$('img').attr('src', 'new-image.jpg');
+</code></pre>
 </li>
 <li><p><code>prop()</code>方法：用于获取或设置元素的属性值。与<code>attr()</code>方法不同的是，<code>prop()</code>方法用于处理元素自身的属性，如<code>checked</code>、<code>disabled</code>等。用法与<code>attr()</code>方法类似。例如：</p>
-<pre><code class="highlight javascript"><span class="comment">// 获取checkbox是否选中</span>
-<span class="keyword">var</span> isChecked = $(<span class="string">'#myCheckbox'</span>).<span class="title function_">prop</span>(<span class="string">'checked'</span>);
+<pre><code class="javascript">// 获取checkbox是否选中
+var isChecked = $('#myCheckbox').prop('checked');
 
-<span class="comment">// 设置checkbox为选中</span>
-$(<span class="string">'#myCheckbox'</span>).<span class="title function_">prop</span>(<span class="string">'checked'</span>, <span class="literal">true</span>);</code></pre>
+// 设置checkbox为选中
+$('#myCheckbox').prop('checked', true);
+</code></pre>
 </li>
 <li><p><code>val()</code>方法：用于获取或设置表单元素的值（如<code>input</code>、<code>select</code>、<code>textarea</code>）。用法与<code>attr()</code>方法类似。例如：</p>
-<pre><code class="highlight javascript"><span class="comment">// 获取文本框的值</span>
-<span class="keyword">var</span> inputValue = $(<span class="string">'#myInput'</span>).<span class="title function_">val</span>();
+<pre><code class="javascript">// 获取文本框的值
+var inputValue = $('#myInput').val();
 
-<span class="comment">// 设置文本框的值</span>
-$(<span class="string">'#myInput'</span>).<span class="title function_">val</span>(<span class="string">'New value'</span>);</code></pre></li>
+// 设置文本框的值
+$('#myInput').val('New value');
+</code></pre>
+</li>
 </ol>
 <p>这些方法可以帮助新手轻松地操作和修改元素的属性值。通过选择元素并使用适当的方法，可以实现各种属性值的操作。</p>
-<h4 id="3-读取"><a href="#3-读取" class="headerlink" title="3.读取"></a>3.读取</h4><pre><code class="highlight javascript">&lt;script&gt;
-    <span class="keyword">let</span> name = $(<span class="string">"#name"</span>).<span class="title function_">val</span>();
-    <span class="keyword">let</span> val = $(<span class="string">"#password"</span>).<span class="title function_">val</span>();
-    <span class="keyword">if</span> (name ==<span class="string">"admin"</span> &amp;&amp; val==<span class="string">"admin"</span>){
-        <span class="title function_">alert</span>(<span class="string">"登录成功"</span>);
-    }<span class="keyword">else</span> {
-        <span class="title function_">alert</span>(<span class="string">"登录失败"</span>);
+<h4 id="3-读取"><a href="#3-读取" class="headerlink" title="3.读取"></a>3.读取</h4><pre><code class="javascript">&lt;script&gt;
+    let name = $("#name").val();
+    let val = $("#password").val();
+    if (name =="admin" &amp;&amp; val=="admin"){
+        alert("登录成功");
+    }else {
+        alert("登录失败");
     }
 
-&lt;/script&gt;</code></pre>
-
-<h3 id="5-事件和动画"><a href="#5-事件和动画" class="headerlink" title="5.事件和动画"></a>5.事件和动画</h3><h4 id="1-鼠标事件"><a href="#1-鼠标事件" class="headerlink" title="1.鼠标事件"></a>1.鼠标事件</h4><pre><code class="highlight javascript">$(<span class="string">"#phone"</span>).<span class="title function_">mouseover</span>(<span class="keyword">function</span> (<span class="params"></span>) {
-         $(<span class="string">"#ul01"</span>).<span class="title function_">css</span>(<span class="string">"display"</span>,<span class="string">"block"</span>);
-     }).<span class="title function_">mouseout</span>(<span class="keyword">function</span> (<span class="params"></span>) {
-         $(<span class="string">"#ul01"</span>).<span class="title function_">css</span>(<span class="string">"display"</span>,<span class="string">"none"</span>);
-     });
-     $(<span class="string">"#home"</span>).<span class="title function_">mouseenter</span>(<span class="keyword">function</span> (<span class="params"></span>) {
-         $(<span class="string">"#ul02"</span>).<span class="title function_">css</span>(<span class="string">"display"</span>,<span class="string">"block"</span>);
-     }).<span class="title function_">mouseleave</span>(<span class="keyword">function</span> (<span class="params"></span>) {
-         $(<span class="string">"#ul02"</span>).<span class="title function_">css</span>(<span class="string">"display"</span>,<span class="string">"none"</span>);
-     });
-     $(<span class="string">"#outer"</span>).<span class="title function_">mouseenter</span>(<span class="keyword">function</span> (<span class="params"></span>) {
-         $(<span class="string">"#ul03"</span>).<span class="title function_">css</span>(<span class="string">"display"</span>,<span class="string">"block"</span>);
-     }).<span class="title function_">mouseleave</span>(<span class="keyword">function</span> (<span class="params"></span>) {
-         $(<span class="string">"#ul03"</span>).<span class="title function_">css</span>(<span class="string">"display"</span>,<span class="string">"none"</span>);
-     });</code></pre>
-
+&lt;/script&gt;
+</code></pre>
+<h3 id="5-事件和动画"><a href="#5-事件和动画" class="headerlink" title="5.事件和动画"></a>5.事件和动画</h3><h4 id="1-鼠标事件"><a href="#1-鼠标事件" class="headerlink" title="1.鼠标事件"></a>1.鼠标事件</h4><pre><code class="javascript">   $("#phone").mouseover(function () {
+            $("#ul01").css("display","block");
+        }).mouseout(function () {
+            $("#ul01").css("display","none");
+        });
+        $("#home").mouseenter(function () {
+            $("#ul02").css("display","block");
+        }).mouseleave(function () {
+            $("#ul02").css("display","none");
+        });
+        $("#outer").mouseenter(function () {
+            $("#ul03").css("display","block");
+        }).mouseleave(function () {
+            $("#ul03").css("display","none");
+        });
+</code></pre>
 <p>JQuery是一个流行的JavaScript库，它简化了JavaScript代码的编写过程。JQuery提供了许多内置的方法和事件来处理用户与网页之间的交互，其中包括鼠标事件。</p>
 <p>下面是一些常用的JQuery鼠标事件及其说明：</p>
 <ol>
 <li>click事件：当用户点击（单击）元素时触发。例如，下面的代码会在用户单击按钮时显示一个提示框：</li>
 </ol>
-<pre><code class="highlight javascript">$(<span class="string">"button"</span>).<span class="title function_">click</span>(<span class="keyword">function</span>(<span class="params"></span>){
-  <span class="title function_">alert</span>(<span class="string">"Button clicked!"</span>);
-});</code></pre>
-
+<pre><code class="javascript">$("button").click(function(){
+  alert("Button clicked!");
+});
+</code></pre>
 <ol>
 <li>dblclick事件：当用户双击元素时触发。例如，下面的代码会在用户双击图片时显示一个提示框：</li>
 </ol>
-<pre><code class="highlight javascript">$(<span class="string">"img"</span>).<span class="title function_">dblclick</span>(<span class="keyword">function</span>(<span class="params"></span>){
-  <span class="title function_">alert</span>(<span class="string">"Image double-clicked!"</span>);
-});</code></pre>
-
+<pre><code class="javascript">$("img").dblclick(function(){
+  alert("Image double-clicked!");
+});
+</code></pre>
 <ol>
 <li>mouseenter事件：当鼠标进入元素时触发。例如，下面的代码会在鼠标进入指定区域时改变其背景颜色：</li>
 </ol>
-<pre><code class="highlight javascript">$(<span class="string">"#myDiv"</span>).<span class="title function_">mouseenter</span>(<span class="keyword">function</span>(<span class="params"></span>){
-  $(<span class="variable language_">this</span>).<span class="title function_">css</span>(<span class="string">"background-color"</span>, <span class="string">"yellow"</span>);
-});</code></pre>
-
+<pre><code class="javascript">$("#myDiv").mouseenter(function(){
+  $(this).css("background-color", "yellow");
+});
+</code></pre>
 <ol>
 <li>mouseleave事件：当鼠标离开元素时触发。例如，下面的代码会在鼠标离开指定区域时还原其背景颜色：</li>
 </ol>
-<pre><code class="highlight javascript">$(<span class="string">"#myDiv"</span>).<span class="title function_">mouseleave</span>(<span class="keyword">function</span>(<span class="params"></span>){
-  $(<span class="variable language_">this</span>).<span class="title function_">css</span>(<span class="string">"background-color"</span>, <span class="string">"white"</span>);
-});</code></pre>
-
+<pre><code class="javascript">$("#myDiv").mouseleave(function(){
+  $(this).css("background-color", "white");
+});
+</code></pre>
 <ol>
 <li>mouseover事件：当鼠标移动到元素上方时触发。例如，下面的代码会在鼠标移动到图片上方时显示一个提示框：</li>
 </ol>
-<pre><code class="highlight javascript">$(<span class="string">"img"</span>).<span class="title function_">mouseover</span>(<span class="keyword">function</span>(<span class="params"></span>){
-  <span class="title function_">alert</span>(<span class="string">"Mouse over image!"</span>);
-});</code></pre>
-
+<pre><code class="javascript">$("img").mouseover(function(){
+  alert("Mouse over image!");
+});
+</code></pre>
 <p>这些只是JQuery鼠标事件的一小部分，JQuery还提供了许多其他鼠标事件，如mousedown、mouseup、mousemove等。通过使用这些事件，你可以对用户与网页的交互进行更精确的控制。</p>
-<h4 id="2-键盘事件"><a href="#2-键盘事件" class="headerlink" title="2.键盘事件"></a>2.键盘事件</h4><pre><code class="highlight javascript">$(<span class="keyword">function</span> (<span class="params"></span>) {
-      $(<span class="string">"#message"</span>).<span class="title function_">keydown</span>(<span class="keyword">function</span> (<span class="params"></span>) {
-          <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">"按下键盘"</span>);
-      }).<span class="title function_">keyup</span>(<span class="keyword">function</span> (<span class="params"></span>) {
-          <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">"释放键盘"</span>)
-      }).<span class="title function_">keypress</span>(<span class="keyword">function</span> (<span class="params"></span>) {
-          <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">"产生可打印的字符"</span>)
-      });</code></pre>
-
+<h4 id="2-键盘事件"><a href="#2-键盘事件" class="headerlink" title="2.键盘事件"></a>2.键盘事件</h4><pre><code class="javascript"> $(function () {
+       $("#message").keydown(function () {
+           console.log("按下键盘");
+       }).keyup(function () {
+           console.log("释放键盘")
+       }).keypress(function () {
+           console.log("产生可打印的字符")
+       });
+</code></pre>
 <p>JQuery是一个流行的JavaScript库，提供了许多实用的功能和方法，其中包括处理键盘事件。键盘事件是在用户与网页交互时触发的事件，例如按下键盘上的按键或释放按键。</p>
 <p>JQuery提供了多个键盘事件，下面是一些常用的键盘事件及其说明：</p>
 <ul>
@@ -284,136 +286,136 @@ $(<span class="string">'#myInput'</span>).<span class="title function_">val</spa
 <li><code>keypress</code>和<code>keydown</code>的区别是<code>keydown</code>事件能够触发非字符键的按下事件。</li>
 </ul>
 <p>以下是一个简单的例子，展示如何使用JQuery处理键盘事件：</p>
-<pre><code class="highlight javascript">$(<span class="variable language_">document</span>).<span class="title function_">ready</span>(<span class="keyword">function</span>(<span class="params"></span>) {
-  $(<span class="variable language_">document</span>).<span class="title function_">keydown</span>(<span class="keyword">function</span>(<span class="params">event</span>) {
-    <span class="comment">// 获取按下的键码</span>
-    <span class="keyword">var</span> keyCode = event.<span class="property">keyCode</span>;
+<pre><code class="javascript">$(document).ready(function() {
+  $(document).keydown(function(event) {
+    // 获取按下的键码
+    var keyCode = event.keyCode;
 
-    <span class="comment">// 如果按下的是Enter键</span>
-    <span class="keyword">if</span> (keyCode === <span class="number">13</span>) {
-      <span class="title function_">alert</span>(<span class="string">"You pressed Enter key!"</span>);
+    // 如果按下的是Enter键
+    if (keyCode === 13) {
+      alert("You pressed Enter key!");
     }
   });
-});</code></pre>
-
+});
+</code></pre>
 <p>在这个例子中，我们使用<code>keydown</code>事件来监听整个文档上的键盘按下事件。当按下任意键时，会触发函数内的代码。在函数中，我们获取按下的键码，并检查是否是Enter键（键码为13）。如果是Enter键，就弹出一个提示框。</p>
 <p>这只是一个简单的例子，你可以根据需要使用其他键码或结合其他事件来编写更复杂的键盘事件处理逻辑。JQuery的键盘事件提供了很多灵活的选项，可以帮助你创建交互性强的网页应用程序。</p>
 <h4 id="3-绑定事件和移除事件"><a href="#3-绑定事件和移除事件" class="headerlink" title="3.绑定事件和移除事件"></a>3.绑定事件和移除事件</h4><p>JQuery是一个广泛应用于网页开发中的JavaScript库，它提供了许多简化DOM操作和处理事件的方法。绑定事件和移除事件是JQuery中常用的方法之一，可以用于在特定条件下执行相应的JavaScript代码。</p>
 <h5 id="绑定事件"><a href="#绑定事件" class="headerlink" title="绑定事件"></a>绑定事件</h5><p>绑定事件是指将一个特定的JavaScript函数与一个HTML元素的事件关联起来。当该事件被触发时，绑定的函数将被执行。JQuery通过<code>on()</code>方法来实现事件绑定。</p>
 <p>语法：</p>
-<pre><code class="highlight javascript">$(selector).<span class="title function_">on</span>(event, <span class="keyword">function</span>)</code></pre>
-
+<pre><code class="javascript">$(selector).on(event, function)
+</code></pre>
 <ul>
 <li><code>selector</code>表示要绑定事件的元素。可以是任何有效的CSS选择器，例如元素名、类名或ID。</li>
 <li><code>event</code>表示要绑定的事件的名称，例如<code>click</code>、<code>mouseover</code>等。</li>
 <li><code>function</code>是一个回调函数，当事件被触发时将执行其中的代码。</li>
 </ul>
 <p>示例：</p>
-<pre><code class="highlight javascript"><span class="comment">// 绑定一个按钮的点击事件</span>
-$(<span class="string">'#myButton'</span>).<span class="title function_">on</span>(<span class="string">'click'</span>, <span class="keyword">function</span>(<span class="params"></span>) {
-  <span class="title function_">alert</span>(<span class="string">'按钮被点击了！'</span>);
+<pre><code class="javascript">// 绑定一个按钮的点击事件
+$('#myButton').on('click', function() {
+  alert('按钮被点击了！');
 });
 
-<span class="comment">// 绑定多个元素的同一事件</span>
-$(<span class="string">'.myClass'</span>).<span class="title function_">on</span>(<span class="string">'mouseover'</span>, <span class="keyword">function</span>(<span class="params"></span>) {
-  $(<span class="variable language_">this</span>).<span class="title function_">css</span>(<span class="string">'background-color'</span>, <span class="string">'yellow'</span>);
-});</code></pre>
-
+// 绑定多个元素的同一事件
+$('.myClass').on('mouseover', function() {
+  $(this).css('background-color', 'yellow');
+});
+</code></pre>
 <h5 id="移除事件"><a href="#移除事件" class="headerlink" title="移除事件"></a>移除事件</h5><p>移除事件是指取消之前绑定的事件。JQuery提供了<code>off()</code>方法来移除已经绑定的事件。</p>
 <p>语法：</p>
-<pre><code class="highlight javascript">$(selector).<span class="title function_">off</span>(event)</code></pre>
-
+<pre><code class="javascript">$(selector).off(event)
+</code></pre>
 <ul>
 <li><code>selector</code>表示要移除事件的元素，与绑定事件时的选择器相同。</li>
 <li><code>event</code>表示要移除的事件的名称。</li>
 </ul>
 <p>示例：</p>
-<pre><code class="highlight javascript"><span class="comment">// 移除一个按钮的点击事件</span>
-$(<span class="string">'#myButton'</span>).<span class="title function_">off</span>(<span class="string">'click'</span>);
+<pre><code class="javascript">// 移除一个按钮的点击事件
+$('#myButton').off('click');
 
-<span class="comment">// 移除所有元素的同一事件</span>
-$(<span class="string">'.myClass'</span>).<span class="title function_">off</span>(<span class="string">'mouseover'</span>);</code></pre>
-
+// 移除所有元素的同一事件
+$('.myClass').off('mouseover');
+</code></pre>
 <p>通过绑定事件和移除事件，你可以方便地在网页中管理各种交互行为，并根据需要动态地添加或移除事件处理程序。这些方法在JQuery中非常常用且易于理解，适合新手入门。</p>
 <h4 id="4-复合事件"><a href="#4-复合事件" class="headerlink" title="4.复合事件"></a>4.复合事件</h4><p>JQuery复合事件是指将多个事件绑定到同一个元素上，以便在特定的条件下执行多个操作。通过复合事件，可以简化代码并提高交互性。下面是一个例子来说明如何使用JQuery复合事件。</p>
 <p>假设我们有一个按钮，当用户点击按钮时，会触发一个事件，同时按住Shift键并点击按钮时，会触发另一个事件。我们可以使用JQuery的<code>on()</code>方法来绑定这两个事件，并使用<code>shiftKey</code>属性来检查Shift键是否按下。</p>
-<pre><code class="highlight javascript">$(<span class="variable language_">document</span>).<span class="title function_">ready</span>(<span class="keyword">function</span>(<span class="params"></span>) {
-  <span class="comment">// 获取按钮元素</span>
-  <span class="keyword">var</span> button = $(<span class="string">"#myButton"</span>);
+<pre><code class="javascript">$(document).ready(function() {
+  // 获取按钮元素
+  var button = $("#myButton");
 
-  <span class="comment">// 绑定点击事件</span>
-  button.<span class="title function_">on</span>(<span class="string">"click"</span>, <span class="keyword">function</span>(<span class="params"></span>) {
-    <span class="title function_">alert</span>(<span class="string">"点击事件被触发！"</span>);
+  // 绑定点击事件
+  button.on("click", function() {
+    alert("点击事件被触发！");
   });
 
-  <span class="comment">// 绑定复合事件</span>
-  button.<span class="title function_">on</span>(<span class="string">"click"</span>, <span class="keyword">function</span>(<span class="params">event</span>) {
-    <span class="keyword">if</span> (event.<span class="property">shiftKey</span>) {
-      <span class="title function_">alert</span>(<span class="string">"Shift键 + 点击事件被触发！"</span>);
+  // 绑定复合事件
+  button.on("click", function(event) {
+    if (event.shiftKey) {
+      alert("Shift键 + 点击事件被触发！");
     }
   });
-});</code></pre>
-
+});
+</code></pre>
 <p>在这个例子中，我们先使用<code>on()</code>方法将点击事件绑定到按钮上。然后，我们再次使用<code>on()</code>方法来绑定一个复合事件。当用户点击按钮时，第一个事件会触发并弹出一个提示框。当用户按住Shift键并点击按钮时，第二个事件会触发并弹出另一个提示框。</p>
 <p>通过使用复合事件，我们可以根据不同的条件执行不同的操作，从而增强用户体验。这个例子展示了如何在按钮上实现不同事件的触发，但你可以根据自己的需求来定义和绑定复合事件。</p>
 <h4 id="5-常用动画方法"><a href="#5-常用动画方法" class="headerlink" title="5.常用动画方法"></a>5.常用动画方法</h4><p>JQuery是一个流行的JavaScript库，提供了许多强大的动画方法，用于创建交互性丰富的网页。下面是一些常用的JQuery动画方法以及它们的示例。</p>
 <ol>
 <li><code>hide()</code>和<code>show()</code>: 这些方法用于隐藏和显示元素。可以通过设置参数来指定动画的速度和完成后的回调函数。例如：</li>
 </ol>
-<pre><code class="highlight javascript">$(element).<span class="title function_">hide</span>(<span class="number">1000</span>); <span class="comment">// 将元素以1秒的速度隐藏</span>
-$(element).<span class="title function_">show</span>(<span class="number">2000</span>); <span class="comment">// 将元素以2秒的速度显示</span></code></pre>
-
+<pre><code class="javascript">$(element).hide(1000); // 将元素以1秒的速度隐藏
+$(element).show(2000); // 将元素以2秒的速度显示
+</code></pre>
 <ol start="2">
 <li><code>fadeIn()</code>和<code>fadeOut()</code>: 这些方法通过渐变效果淡入和淡出元素。可以通过设置参数指定动画的速度和完成后的回调函数。例如：</li>
 </ol>
-<pre><code class="highlight javascript">$(element).<span class="title function_">fadeIn</span>(<span class="number">1000</span>); <span class="comment">// 以1秒的速度淡入元素</span>
-$(element).<span class="title function_">fadeOut</span>(<span class="number">2000</span>); <span class="comment">// 以2秒的速度淡出元素</span></code></pre>
-
+<pre><code class="javascript">$(element).fadeIn(1000); // 以1秒的速度淡入元素
+$(element).fadeOut(2000); // 以2秒的速度淡出元素
+</code></pre>
 <ol start="3">
 <li><code>slideUp()</code>和<code>slideDown()</code>: 这些方法通过滑动效果向上或向下折叠元素。可以通过设置参数指定动画的速度和完成后的回调函数。例如：</li>
 </ol>
-<pre><code class="highlight javascript">$(element).<span class="title function_">slideUp</span>(<span class="number">1000</span>); <span class="comment">// 以1秒的速度向上折叠元素</span>
-$(element).<span class="title function_">slideDown</span>(<span class="number">2000</span>); <span class="comment">// 以2秒的速度向下展开元素</span></code></pre>
-
+<pre><code class="javascript">$(element).slideUp(1000); // 以1秒的速度向上折叠元素
+$(element).slideDown(2000); // 以2秒的速度向下展开元素
+</code></pre>
 <ol start="4">
 <li><code>animate()</code>: 这个方法可以通过指定CSS属性的变化来创建自定义动画。可以设置动画的持续时间、缓动效果和完成后的回调函数。例如：</li>
 </ol>
-<pre><code class="highlight javascript">$(element).<span class="title function_">animate</span>({ 
-  <span class="attr">opacity</span>: <span class="number">0.5</span>, <span class="comment">// 将元素透明度设置为0.5</span>
-  <span class="attr">left</span>: <span class="string">'+=100px'</span> <span class="comment">// 向右移动100像素</span>
-}, <span class="number">1000</span>); <span class="comment">// 在1秒内完成动画</span></code></pre>
-
+<pre><code class="javascript">$(element).animate({ 
+  opacity: 0.5, // 将元素透明度设置为0.5
+  left: '+=100px' // 向右移动100像素
+}, 1000); // 在1秒内完成动画
+</code></pre>
 <ol start="5">
 <li><code>toggleClass()</code>: 这个方法可以切换元素的类。通过设置参数来指定动画的速度和完成后的回调函数。例如：</li>
 </ol>
-<pre><code class="highlight javascript">$(element).<span class="title function_">toggleClass</span>(<span class="string">'active'</span>, <span class="number">1000</span>); <span class="comment">// 在1秒内切换元素的active类</span></code></pre>
-
+<pre><code class="javascript">$(element).toggleClass('active', 1000); // 在1秒内切换元素的active类
+</code></pre>
 <p>这些是JQuery中常用的动画方法，可以根据需要选择适合的方法来创建各种交互效果。在示例中，可以根据具体情况自定义元素和动画效果。</p>
 <h4 id="6-自义定动画方法"><a href="#6-自义定动画方法" class="headerlink" title="6.自义定动画方法"></a>6.自义定动画方法</h4><p>JQuery是一个广泛使用的JavaScript库，它提供了许多内置的动画函数和效果，可以方便地创建各种动画效果。除了内置的动画函数外，JQuery还允许开发者自定义动画方法。</p>
 <p>自定义动画方法允许您定义并使用自己的动画效果，将其与JQuery的其他功能结合使用。下面是一个简单的自定义动画方法的介绍和示例：</p>
 <h5 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h5><p>自定义动画方法是通过JQuery的<code>$.fn.extend()</code>函数来实现的。该函数允许我们向JQuery对象的原型（prototype）添加新的方法。</p>
-<pre><code class="highlight javascript">$.fn.<span class="title function_">extend</span>({
-  <span class="attr">customAnimation</span>: <span class="keyword">function</span>(<span class="params"></span>) {
-    <span class="comment">// 在这里编写自定义动画的代码</span>
+<pre><code class="javascript">$.fn.extend({
+  customAnimation: function() {
+    // 在这里编写自定义动画的代码
   }
-});</code></pre>
-
+});
+</code></pre>
 <p>在上面的代码中，我们使用<code>customAnimation</code>作为自定义动画方法的名称。使用<code>$.fn.extend()</code>函数可以向JQuery对象的原型添加任意数量的自定义方法。</p>
 <h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p>下面是一个简单的自定义动画方法的示例，它将元素平滑地从左到右移动：</p>
-<pre><code class="highlight javascript">$.fn.<span class="title function_">extend</span>({
-  <span class="attr">slideRight</span>: <span class="keyword">function</span>(<span class="params"></span>) {
-    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="title function_">each</span>(<span class="keyword">function</span>(<span class="params"></span>) {
-      $(<span class="variable language_">this</span>).<span class="title function_">animate</span>({
-        <span class="attr">marginLeft</span>: <span class="string">"+=200px"</span>
-      }, <span class="number">1000</span>);
+<pre><code class="javascript">$.fn.extend({
+  slideRight: function() {
+    return this.each(function() {
+      $(this).animate({
+        marginLeft: "+=200px"
+      }, 1000);
     });
   }
-});</code></pre>
-
+});
+</code></pre>
 <p>在上面的代码中，我们定义了一个名为<code>slideRight</code>的自定义动画方法。该方法使用<code>animate()</code>函数来实现动画效果。在这个例子中，我们将元素的<code>marginLeft</code>属性增加200像素，动画的持续时间为1秒。</p>
 <p>要使用该自定义动画方法，您只需将其应用到一个JQuery对象上，就像使用内置的动画方法一样：</p>
-<pre><code class="highlight javascript">$(<span class="string">"div"</span>).<span class="title function_">slideRight</span>();</code></pre>
-
+<pre><code class="javascript">$("div").slideRight();
+</code></pre>
 <p>上述代码将应用<code>slideRight</code>动画效果到所有的<code>&lt;div&gt;</code>元素上。</p>
 <p>自定义动画方法可以根据需求进行扩展，您可以使用JQuery的其他动画函数、属性或回调函数来创建更复杂的动画效果。</p>
 <p>希望这个简单的例子能帮助您更好地理解JQuery自定义动画方法。您可以根据自己的需求扩展和修改这些方法，以满足您的动画效果要求。</p>
@@ -506,58 +508,56 @@ $(element).<span class="title function_">slideDown</span>(<span class="number">2
 <td><strong>元素集合</strong></td>
 </tr>
 </tbody></table>
-<h4 id="2-表单校验"><a href="#2-表单校验" class="headerlink" title="2.表单校验"></a>2.表单校验</h4><pre><code class="highlight javascript"><span class="keyword">let</span> password = $(<span class="string">"#password"</span>).<span class="title function_">val</span>();
-           <span class="keyword">let</span> email = $(<span class="string">"#email"</span>).<span class="title function_">val</span>();
-           <span class="keyword">let</span> <span class="title class_">Se</span> = $(<span class="string">"#Semail"</span>);
-           <span class="keyword">let</span> <span class="title class_">Sp</span> = $(<span class="string">"#Spassword"</span>);
-           <span class="comment">// if (email == '' || email == null){</span>
-           <span class="comment">//     alert("邮箱不能为空");</span>
-           <span class="comment">//     Sp.html("邮箱不能为空");</span>
-           <span class="comment">//     return false;</span>
-           <span class="comment">// }</span>
-           <span class="comment">// if (email.indexOf(".") == -1){</span>
-           <span class="comment">//     alert("邮箱格式不正确");</span>
-           <span class="comment">//     return false;</span>
-           <span class="comment">// }</span>
-           <span class="comment">// if (email.indexOf("@") == -1){</span>
-           <span class="comment">//     alert("邮箱格式不正确");</span>
-           <span class="comment">//     return false;</span>
-           <span class="comment">// }</span>
-           <span class="comment">// if (email.indexOf("@") == 0){</span>
-           <span class="comment">//     alert("邮箱不能以@为开头");</span>
-           <span class="comment">//     return false;</span>
-           <span class="comment">// }</span>
-           <span class="comment">// if (password == '' || password == null){</span>
-           <span class="comment">//     alert("密码不能为空");</span>
-           <span class="comment">//     return false;</span>
-           <span class="comment">// }</span>
-           <span class="comment">// if (password.length &lt; 8){</span>
-           <span class="comment">//     alert("密码不能小于八位");</span>
-           <span class="comment">//     return false;</span>
-           <span class="comment">// }</span>
-       })</code></pre>
+<h4 id="2-表单校验"><a href="#2-表单校验" class="headerlink" title="2.表单校验"></a>2.表单校验</h4><pre><code class="javascript"> let password = $("#password").val();
+            let email = $("#email").val();
+            let Se = $("#Semail");
+            let Sp = $("#Spassword");
+            // if (email == '' || email == null){
+            //     alert("邮箱不能为空");
+            //     Sp.html("邮箱不能为空");
+            //     return false;
+            // }
+            // if (email.indexOf(".") == -1){
+            //     alert("邮箱格式不正确");
+            //     return false;
+            // }
+            // if (email.indexOf("@") == -1){
+            //     alert("邮箱格式不正确");
+            //     return false;
+            // }
+            // if (email.indexOf("@") == 0){
+            //     alert("邮箱不能以@为开头");
+            //     return false;
+            // }
+            // if (password == '' || password == null){
+            //     alert("密码不能为空");
+            //     return false;
+            // }
+            // if (password.length &lt; 8){
+            //     alert("密码不能小于八位");
+            //     return false;
+            // }
+        })
+</code></pre>
+<h4 id="3-正则表达式"><a href="#3-正则表达式" class="headerlink" title="3.正则表达式"></a>3.正则表达式</h4><pre><code class="javascript">  $("#form").submit(function () {
+            let password = $("#password").val();
+            let email = $("#email").val();
+            let Se = $("#Semail");
+            let Sp = $("#Spassword");
+            let emailExp = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+            if (emailExp.test(email) == false){
+                     Se.html("邮箱错误");
+            }
+            let passwordExp = /^[0-9]{6,18}$/;
+            if (passwordExp.test(password) == false){
+                Sp.html("密码错误");
+            }
+            alert("登录成功");
+            return true;
+        })
 
-
-
-<h4 id="3-正则表达式"><a href="#3-正则表达式" class="headerlink" title="3.正则表达式"></a>3.正则表达式</h4><pre><code class="highlight javascript">$(<span class="string">"#form"</span>).<span class="title function_">submit</span>(<span class="keyword">function</span> (<span class="params"></span>) {
-          <span class="keyword">let</span> password = $(<span class="string">"#password"</span>).<span class="title function_">val</span>();
-          <span class="keyword">let</span> email = $(<span class="string">"#email"</span>).<span class="title function_">val</span>();
-          <span class="keyword">let</span> <span class="title class_">Se</span> = $(<span class="string">"#Semail"</span>);
-          <span class="keyword">let</span> <span class="title class_">Sp</span> = $(<span class="string">"#Spassword"</span>);
-          <span class="keyword">let</span> emailExp = <span class="regexp">/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/</span>;
-          <span class="keyword">if</span> (emailExp.<span class="title function_">test</span>(email) == <span class="literal">false</span>){
-                   <span class="title class_">Se</span>.<span class="title function_">html</span>(<span class="string">"邮箱错误"</span>);
-          }
-          <span class="keyword">let</span> passwordExp = <span class="regexp">/^[0-9]{6,18}$/</span>;
-          <span class="keyword">if</span> (passwordExp.<span class="title function_">test</span>(password) == <span class="literal">false</span>){
-              <span class="title class_">Sp</span>.<span class="title function_">html</span>(<span class="string">"密码错误"</span>);
-          }
-          <span class="title function_">alert</span>(<span class="string">"登录成功"</span>);
-          <span class="keyword">return</span> <span class="literal">true</span>;
-      })
-
-  })</code></pre>
-
+    })
+</code></pre>
 <table>
 <thead>
 <tr>
@@ -710,8 +710,8 @@ $(element).<span class="title function_">slideDown</span>(<span class="number">2
 </tbody></table>
 <h4 id="5-validity属性应用"><a href="#5-validity属性应用" class="headerlink" title="5.validity属性应用"></a>5.validity属性应用</h4><p><strong>当表单元素添加验证属性required和pattern后，可以通过HTML5提供的validityState对象获取当前验证属性的验证状态</strong></p>
 <p>​    <strong>语法：</strong></p>
-<pre><code class="highlight javascript"><span class="keyword">var</span> validityState=<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">"user"</span>).<span class="property">validity</span></code></pre>
-
+<pre><code class="javascript">var validityState=document.getElementById("user").validity
+</code></pre>
 <p>​                                        <strong>validityState对象属性</strong></p>
 <table>
 <thead>
@@ -753,13 +753,4 @@ $(element).<span class="title function_">slideDown</span>(<span class="number">2
 <td><strong>使用自定义的验证错误提示信息时，当存在自定义错误信息时，****返回true: 否则，返回false</strong></td>
 </tr>
 </tbody></table>
-</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/Blackcat-loveBlog/2023/12/12/Springboot-vue%E6%A1%86%E6%9E%B6%E9%83%A8%E7%BD%B2/" title="Springboot+vue框架部署"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">上一页: Springboot+vue框架部署</span></a><a class="button is-default" href="/Blackcat-loveBlog/2023/12/11/html/" title="html学习笔记"><span class="has-text-weight-semibold">下一页: html学习笔记</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Blackcat-love"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> 天明 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/Blackcat-loveBlog/js/jquery-3.6.1.min.js"></script><script src="/Blackcat-loveBlog/js/jquery-fancybox.min.js"></script><script src="/Blackcat-loveBlog/js/img_zoom.js"></script><script src="/Blackcat-loveBlog/js/post.js"></script><!-- hexo injector body_end start --><script data-pjax src="https://registry.npmmirror.com/oh-my-live2d/latest/files"></script><script>const oml2d = OML2D.loadOml2d({libraryUrls:{"complete":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/complete.js","cubism2":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism2.js","cubism5":"https://registry.npmmirror.com/oh-my-live2d/latest/files/lib/cubism5.js"},mobileDisplay:true,models:[{"path":"/Blackcat-loveBlog/live2d/波奇酱2.0/波奇酱2.0.model3.json","mobilePosition":[0,0],"mobileScale":0.1,"mobileStageStyle":{"width":180,"height":250},"motionPreloadStrategy":"IDLE","position":[-100,-100],"scale":0.15,"stageStyle":{"width":250,"height":250}},{"path":"/Blackcat-loveBlog/live2d/liang_vts/liang.model3.json","scale":0.12,"position":[0,60],"stageStyle":{"width":250},"mobileScale":0.1,"mobilePosition":[0,0],"mobileStageStyle":{"width":180}}],parentElement:document.body,primaryColor:"var(--btn-bg)",sayHello:false,tips:{style: {"width":230,"height":120,"left":"calc(50% - 20px)","top":"-100px"},mobileStyle: {"width":180,"height":80,"left":"calc(50% - 30px)","top":"-100px"},idleTips:{interval:15000,message:function(){
-  return axios.get('https://v1.hitokoto.cn?c=i')
-    .then(function (response) {
-      return response.data.hitokoto ;
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-}
-}}});</script><!-- hexo injector body_end end --></body></html>
+</article><section class="jump-container is-flex is-justify-content-space-between my-6"><!-- em is empty placeholder--><a class="button is-default" href="/2023/12/12/Springboot-vue%E6%A1%86%E6%9E%B6%E9%83%A8%E7%BD%B2/" title="Springboot+vue框架部署"><i class="iconfont icon-prev mr-2 has-text-grey"></i><span class="has-text-weight-semibold">上一页: Springboot+vue框架部署</span></a><a class="button is-default" href="/2023/12/11/html/" title="html学习笔记"><span class="has-text-weight-semibold">下一页: html学习笔记</span><i class="iconfont icon-next ml-2 has-text-grey"></i></a></section></div></div></main></main><footer class="is-flex is-flex-direction-column is-align-items-center is-flex-shrink-0 is-family-serif"><section class="sns-container"><!-- Github--><a title="github" target="_blank" rel="noopener nofollow" href="//github.com/Blackcat-love"><i class="iconfont icon-github"></i></a><!-- Ins--><!-- RSS--><!-- 知乎--><!-- 领英--><!-- 脸书--></section><p><span>Copyright ©</span><span> 天明 2024</span></p><div class="is-flex is-justify-content-center is-flex-wrap-wrap"><p>Powered by Hexo &verbar;&nbsp;</p><p class="is-flex is-justify-content-center"><a title="Hexo theme author" target="_blank" rel="noopener" href="//github.com/haojen">Theme by Haojen&nbsp;</a></p><div style="margin-top: 2px"><a class="github-button" title="github-button" target="_blank" rel="noopener" href="https://github.com/haojen/hexo-theme-Claudia" data-color-scheme="no-preference: light; light: light; dark: dark;" data-show-count="true"></a></div></div><div><span></span></div></footer><script async defer src="https://buttons.github.io/buttons.js"></script><script src="/js/jquery-3.6.1.min.js"></script><script src="/js/jquery-fancybox.min.js"></script><script src="/js/img_zoom.js"></script><script src="/js/post.js"></script></body></html>
