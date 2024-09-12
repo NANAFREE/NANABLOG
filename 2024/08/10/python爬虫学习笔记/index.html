@@ -9,7 +9,7 @@
     <meta name="description" content="我记得当初刚接触编程的时候，就想要学习爬虫，因为那时候我对自己的定位是偏向黑客方面的23333，感觉很酷，但当时连一门编程语言都没有搞明白，所以也学的一塌糊涂。 这也说明了学习顺序的重要性，还记得之前学渗透的时候，提前搞明白了通信原理，学习的速度快了很多，反之则迟迟无法理解。 回到主题，这次我学习的是python爬虫。为什么选择python，因为python提供了很多的包，这让我们实现功能更加的方">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python爬虫学习笔记">
-<meta property="og:url" content="https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:url" content="https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="NANA">
 <meta property="og:description" content="我记得当初刚接触编程的时候，就想要学习爬虫，因为那时候我对自己的定位是偏向黑客方面的23333，感觉很酷，但当时连一门编程语言都没有搞明白，所以也学的一塌糊涂。 这也说明了学习顺序的重要性，还记得之前学渗透的时候，提前搞明白了通信原理，学习的速度快了很多，反之则迟迟无法理解。 回到主题，这次我学习的是python爬虫。为什么选择python，因为python提供了很多的包，这让我们实现功能更加的方">
 <meta property="og:locale" content="zh_CN">
@@ -23,17 +23,17 @@
     
       
         
-          <link rel="shortcut icon" href="/Blackcat-loveBlog/images/favicon.ico">
+          <link rel="shortcut icon" href="/NANA/images/favicon.ico">
         
       
       
         
-          <link rel="icon" type="image/png" href="/Blackcat-loveBlog/images/favicon-192x192.png" sizes="192x192">
+          <link rel="icon" type="image/png" href="/NANA/images/favicon-192x192.png" sizes="192x192">
         
       
       
         
-          <link rel="apple-touch-icon" sizes="180x180" href="/Blackcat-loveBlog/images/apple-touch-icon.png">
+          <link rel="apple-touch-icon" sizes="180x180" href="/NANA/images/apple-touch-icon.png">
         
       
     
@@ -48,7 +48,7 @@
 
     <!-- styles -->
     
-<link rel="stylesheet" href="/Blackcat-loveBlog/css/style.css">
+<link rel="stylesheet" href="/NANA/css/style.css">
 
     <!-- persian styles -->
     
@@ -71,11 +71,11 @@
     <span id="nav">
       <ul>
         <!--
-       --><li><a href="/Blackcat-loveBlog/">首页</a></li><!--
+       --><li><a href="/NANA/">首页</a></li><!--
      --><!--
-       --><li><a href="/Blackcat-loveBlog/about/about">关于</a></li><!--
+       --><li><a href="/NANA/about/about">关于</a></li><!--
      --><!--
-       --><li><a href="/Blackcat-loveBlog/archives/">归档</a></li><!--
+       --><li><a href="/NANA/archives/">归档</a></li><!--
      --><!--
        --><li><a target="_blank" rel="noopener" href="https://github.com/Blackcat-love">项目</a></li><!--
      -->
@@ -85,10 +85,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" aria-label="上一篇" href="/Blackcat-loveBlog/2024/08/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%B7%A7%E6%80%9D/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="上一篇" href="/NANA/2024/08/21/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%B7%A7%E6%80%9D/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" aria-label="下一篇" href="/Blackcat-loveBlog/2024/07/13/%E8%B5%8C%E5%BE%92%E7%9A%84%E5%BF%83%E7%90%86/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="下一篇" href="/NANA/2024/07/13/%E8%B5%8C%E5%BE%92%E7%9A%84%E5%BF%83%E7%90%86/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -101,17 +101,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&text=python爬虫学习笔记"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&is_video=false&description=python爬虫学习笔记"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=python爬虫学习笔记&body=Check out this article: https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&name=python爬虫学习笔记&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&t=python爬虫学习笔记"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&text=python爬虫学习笔记"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&is_video=false&description=python爬虫学习笔记"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=python爬虫学习笔记&body=Check out this article: https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&name=python爬虫学习笔记&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&t=python爬虫学习笔记"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -154,7 +154,7 @@
       
     <div class="article-tag">
         <i class="fa-solid fa-tag"></i>
-        <a class="p-category" href="/Blackcat-loveBlog/tags/python/" rel="tag">python</a>, <a class="p-category" href="/Blackcat-loveBlog/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a>
+        <a class="p-category" href="/NANA/tags/python/" rel="tag">python</a>, <a class="p-category" href="/NANA/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a>
     </div>
 
 
@@ -320,11 +320,11 @@
     <div id="nav-footer" style="display: none">
       <ul>
         
-          <li><a href="/Blackcat-loveBlog/">首页</a></li>
+          <li><a href="/NANA/">首页</a></li>
         
-          <li><a href="/Blackcat-loveBlog/about/about">关于</a></li>
+          <li><a href="/NANA/about/about">关于</a></li>
         
-          <li><a href="/Blackcat-loveBlog/archives/">归档</a></li>
+          <li><a href="/NANA/archives/">归档</a></li>
         
           <li><a target="_blank" rel="noopener" href="https://github.com/Blackcat-love">项目</a></li>
         
@@ -340,17 +340,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&text=python爬虫学习笔记"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&is_video=false&description=python爬虫学习笔记"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=python爬虫学习笔记&body=Check out this article: https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&name=python爬虫学习笔记&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blackcat-love.github.io/Blackcat-loveBlog/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&t=python爬虫学习笔记"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&text=python爬虫学习笔记"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&is_video=false&description=python爬虫学习笔记"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=python爬虫学习笔记&body=Check out this article: https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=python爬虫学习笔记"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&name=python爬虫学习笔记&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blackcat-love.github.io/NANA/2024/08/10/python%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&t=python爬虫学习笔记"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -380,11 +380,11 @@
     <nav>
       <ul>
         <!--
-       --><li><a href="/Blackcat-loveBlog/">首页</a></li><!--
+       --><li><a href="/NANA/">首页</a></li><!--
      --><!--
-       --><li><a href="/Blackcat-loveBlog/about/about">关于</a></li><!--
+       --><li><a href="/NANA/about/about">关于</a></li><!--
      --><!--
-       --><li><a href="/Blackcat-loveBlog/archives/">归档</a></li><!--
+       --><li><a href="/NANA/archives/">归档</a></li><!--
      --><!--
        --><li><a target="_blank" rel="noopener" href="https://github.com/Blackcat-love">项目</a></li><!--
      -->
@@ -434,7 +434,7 @@
   </script>
 
 
-<script src="/Blackcat-loveBlog/js/main.js"></script>
+<script src="/NANA/js/main.js"></script>
 
 <!-- search -->
 

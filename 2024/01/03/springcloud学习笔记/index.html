@@ -9,7 +9,7 @@
     <meta name="description" content="Spring Cloud是一个基于Spring Boot的微服务架构，它提供了一整套的开发工具包，包括服务治理、服务注册与发现、负载均衡、数据监控、REST API发布等，基本涵盖了分布式框架所需要的所有功能。 使用Spring Cloud的原因主要有以下几点：  简化开发：Spring Cloud利用Spring Boot的开发便利性，简化了分布式系统基础设施的开发。它提供了一系列的工具，如配">
 <meta property="og:type" content="article">
 <meta property="og:title" content="springcloud学习笔记">
-<meta property="og:url" content="https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:url" content="https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="NANA">
 <meta property="og:description" content="Spring Cloud是一个基于Spring Boot的微服务架构，它提供了一整套的开发工具包，包括服务治理、服务注册与发现、负载均衡、数据监控、REST API发布等，基本涵盖了分布式框架所需要的所有功能。 使用Spring Cloud的原因主要有以下几点：  简化开发：Spring Cloud利用Spring Boot的开发便利性，简化了分布式系统基础设施的开发。它提供了一系列的工具，如配">
 <meta property="og:locale" content="zh_CN">
@@ -28,17 +28,17 @@
     
       
         
-          <link rel="shortcut icon" href="/Blackcat-loveBlog/images/favicon.ico">
+          <link rel="shortcut icon" href="/NANA/images/favicon.ico">
         
       
       
         
-          <link rel="icon" type="image/png" href="/Blackcat-loveBlog/images/favicon-192x192.png" sizes="192x192">
+          <link rel="icon" type="image/png" href="/NANA/images/favicon-192x192.png" sizes="192x192">
         
       
       
         
-          <link rel="apple-touch-icon" sizes="180x180" href="/Blackcat-loveBlog/images/apple-touch-icon.png">
+          <link rel="apple-touch-icon" sizes="180x180" href="/NANA/images/apple-touch-icon.png">
         
       
     
@@ -53,7 +53,7 @@
 
     <!-- styles -->
     
-<link rel="stylesheet" href="/Blackcat-loveBlog/css/style.css">
+<link rel="stylesheet" href="/NANA/css/style.css">
 
     <!-- persian styles -->
     
@@ -76,11 +76,11 @@
     <span id="nav">
       <ul>
         <!--
-       --><li><a href="/Blackcat-loveBlog/">首页</a></li><!--
+       --><li><a href="/NANA/">首页</a></li><!--
      --><!--
-       --><li><a href="/Blackcat-loveBlog/about/about">关于</a></li><!--
+       --><li><a href="/NANA/about/about">关于</a></li><!--
      --><!--
-       --><li><a href="/Blackcat-loveBlog/archives/">归档</a></li><!--
+       --><li><a href="/NANA/archives/">归档</a></li><!--
      --><!--
        --><li><a target="_blank" rel="noopener" href="https://github.com/Blackcat-love">项目</a></li><!--
      -->
@@ -90,10 +90,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" aria-label="上一篇" href="/Blackcat-loveBlog/2024/01/08/%E6%9C%AC%E6%89%80%E4%B8%83%E5%A4%A7%E4%B8%8D%E5%8F%AF%E6%80%9D%E8%AE%AE%E6%B8%B8%E7%8E%A9%E6%84%9F%E6%83%B3/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="上一篇" href="/NANA/2024/01/08/%E6%9C%AC%E6%89%80%E4%B8%83%E5%A4%A7%E4%B8%8D%E5%8F%AF%E6%80%9D%E8%AE%AE%E6%B8%B8%E7%8E%A9%E6%84%9F%E6%83%B3/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" aria-label="下一篇" href="/Blackcat-loveBlog/2023/12/31/2023%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="下一篇" href="/NANA/2023/12/31/2023%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -106,17 +106,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&text=springcloud学习笔记"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&is_video=false&description=springcloud学习笔记"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=springcloud学习笔记&body=Check out this article: https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&name=springcloud学习笔记&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&t=springcloud学习笔记"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&text=springcloud学习笔记"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&is_video=false&description=springcloud学习笔记"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=springcloud学习笔记&body=Check out this article: https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&name=springcloud学习笔记&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&t=springcloud学习笔记"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -159,7 +159,7 @@
       
     <div class="article-tag">
         <i class="fa-solid fa-tag"></i>
-        <a class="p-category" href="/Blackcat-loveBlog/tags/Spring/" rel="tag">Spring</a>, <a class="p-category" href="/Blackcat-loveBlog/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a>, <a class="p-category" href="/Blackcat-loveBlog/tags/%E6%A1%86%E6%9E%B6/" rel="tag">框架</a>
+        <a class="p-category" href="/NANA/tags/Spring/" rel="tag">Spring</a>, <a class="p-category" href="/NANA/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag">微服务</a>, <a class="p-category" href="/NANA/tags/%E6%A1%86%E6%9E%B6/" rel="tag">框架</a>
     </div>
 
 
@@ -382,11 +382,11 @@
     <div id="nav-footer" style="display: none">
       <ul>
         
-          <li><a href="/Blackcat-loveBlog/">首页</a></li>
+          <li><a href="/NANA/">首页</a></li>
         
-          <li><a href="/Blackcat-loveBlog/about/about">关于</a></li>
+          <li><a href="/NANA/about/about">关于</a></li>
         
-          <li><a href="/Blackcat-loveBlog/archives/">归档</a></li>
+          <li><a href="/NANA/archives/">归档</a></li>
         
           <li><a target="_blank" rel="noopener" href="https://github.com/Blackcat-love">项目</a></li>
         
@@ -402,17 +402,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&text=springcloud学习笔记"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&is_video=false&description=springcloud学习笔记"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=springcloud学习笔记&body=Check out this article: https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&name=springcloud学习笔记&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blackcat-love.github.io/Blackcat-loveBlog/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&t=springcloud学习笔记"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&text=springcloud学习笔记"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&is_video=false&description=springcloud学习笔记"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=springcloud学习笔记&body=Check out this article: https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=springcloud学习笔记"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&name=springcloud学习笔记&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blackcat-love.github.io/NANA/2024/01/03/springcloud%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&t=springcloud学习笔记"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -442,11 +442,11 @@
     <nav>
       <ul>
         <!--
-       --><li><a href="/Blackcat-loveBlog/">首页</a></li><!--
+       --><li><a href="/NANA/">首页</a></li><!--
      --><!--
-       --><li><a href="/Blackcat-loveBlog/about/about">关于</a></li><!--
+       --><li><a href="/NANA/about/about">关于</a></li><!--
      --><!--
-       --><li><a href="/Blackcat-loveBlog/archives/">归档</a></li><!--
+       --><li><a href="/NANA/archives/">归档</a></li><!--
      --><!--
        --><li><a target="_blank" rel="noopener" href="https://github.com/Blackcat-love">项目</a></li><!--
      -->
@@ -496,7 +496,7 @@
   </script>
 
 
-<script src="/Blackcat-loveBlog/js/main.js"></script>
+<script src="/NANA/js/main.js"></script>
 
 <!-- search -->
 

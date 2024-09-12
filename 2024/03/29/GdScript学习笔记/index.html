@@ -9,7 +9,7 @@
     <meta name="description" content="介绍GdScript是一个弱类型语言，所以比较自由，在学习本语言前，建议学习一门强类型语言，在入门时更加容易上手和理解。 周期_init() 初始化调用 _ready() 开始调用一次 _process(delta) 每帧调用 delta参数是定义间隔 比如你要每三帧执行一次那么 delta就更改成3 发现在Godot中，我发现通过写脚本，可以控制你导入的素材属性，比如写一个方法改变素材的位置，你">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GdScript学习笔记">
-<meta property="og:url" content="https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:url" content="https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="NANA">
 <meta property="og:description" content="介绍GdScript是一个弱类型语言，所以比较自由，在学习本语言前，建议学习一门强类型语言，在入门时更加容易上手和理解。 周期_init() 初始化调用 _ready() 开始调用一次 _process(delta) 每帧调用 delta参数是定义间隔 比如你要每三帧执行一次那么 delta就更改成3 发现在Godot中，我发现通过写脚本，可以控制你导入的素材属性，比如写一个方法改变素材的位置，你">
 <meta property="og:locale" content="zh_CN">
@@ -22,17 +22,17 @@
     
       
         
-          <link rel="shortcut icon" href="/Blackcat-loveBlog/images/favicon.ico">
+          <link rel="shortcut icon" href="/NANA/images/favicon.ico">
         
       
       
         
-          <link rel="icon" type="image/png" href="/Blackcat-loveBlog/images/favicon-192x192.png" sizes="192x192">
+          <link rel="icon" type="image/png" href="/NANA/images/favicon-192x192.png" sizes="192x192">
         
       
       
         
-          <link rel="apple-touch-icon" sizes="180x180" href="/Blackcat-loveBlog/images/apple-touch-icon.png">
+          <link rel="apple-touch-icon" sizes="180x180" href="/NANA/images/apple-touch-icon.png">
         
       
     
@@ -47,7 +47,7 @@
 
     <!-- styles -->
     
-<link rel="stylesheet" href="/Blackcat-loveBlog/css/style.css">
+<link rel="stylesheet" href="/NANA/css/style.css">
 
     <!-- persian styles -->
     
@@ -70,11 +70,11 @@
     <span id="nav">
       <ul>
         <!--
-       --><li><a href="/Blackcat-loveBlog/">首页</a></li><!--
+       --><li><a href="/NANA/">首页</a></li><!--
      --><!--
-       --><li><a href="/Blackcat-loveBlog/about/about">关于</a></li><!--
+       --><li><a href="/NANA/about/about">关于</a></li><!--
      --><!--
-       --><li><a href="/Blackcat-loveBlog/archives/">归档</a></li><!--
+       --><li><a href="/NANA/archives/">归档</a></li><!--
      --><!--
        --><li><a target="_blank" rel="noopener" href="https://github.com/Blackcat-love">项目</a></li><!--
      -->
@@ -84,10 +84,10 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" aria-label="上一篇" href="/Blackcat-loveBlog/2024/03/30/%E7%94%9F%E5%91%BD%E4%B8%8E%E4%BB%B7%E5%80%BC/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="上一篇" href="/NANA/2024/03/30/%E7%94%9F%E5%91%BD%E4%B8%8E%E4%BB%B7%E5%80%BC/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" aria-label="下一篇" href="/Blackcat-loveBlog/2024/03/06/libGDX%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="下一篇" href="/NANA/2024/03/06/libGDX%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
@@ -100,17 +100,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&text=GdScript学习笔记"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&is_video=false&description=GdScript学习笔记"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=GdScript学习笔记&body=Check out this article: https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&name=GdScript学习笔记&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&t=GdScript学习笔记"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&text=GdScript学习笔记"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&is_video=false&description=GdScript学习笔记"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=GdScript学习笔记&body=Check out this article: https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&name=GdScript学习笔记&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&t=GdScript学习笔记"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -153,7 +153,7 @@
       
     <div class="article-tag">
         <i class="fa-solid fa-tag"></i>
-        <a class="p-category" href="/Blackcat-loveBlog/tags/GdScript/" rel="tag">GdScript</a>
+        <a class="p-category" href="/NANA/tags/GdScript/" rel="tag">GdScript</a>
     </div>
 
 
@@ -182,11 +182,11 @@
     <div id="nav-footer" style="display: none">
       <ul>
         
-          <li><a href="/Blackcat-loveBlog/">首页</a></li>
+          <li><a href="/NANA/">首页</a></li>
         
-          <li><a href="/Blackcat-loveBlog/about/about">关于</a></li>
+          <li><a href="/NANA/about/about">关于</a></li>
         
-          <li><a href="/Blackcat-loveBlog/archives/">归档</a></li>
+          <li><a href="/NANA/archives/">归档</a></li>
         
           <li><a target="_blank" rel="noopener" href="https://github.com/Blackcat-love">项目</a></li>
         
@@ -202,17 +202,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&text=GdScript学习笔记"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&is_video=false&description=GdScript学习笔记"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=GdScript学习笔记&body=Check out this article: https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&name=GdScript学习笔记&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blackcat-love.github.io/Blackcat-loveBlog/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&t=GdScript学习笔记"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&text=GdScript学习笔记"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&is_video=false&description=GdScript学习笔记"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=GdScript学习笔记&body=Check out this article: https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&title=GdScript学习笔记"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&name=GdScript学习笔记&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blackcat-love.github.io/NANA/2024/03/29/GdScript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/&t=GdScript学习笔记"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -242,11 +242,11 @@
     <nav>
       <ul>
         <!--
-       --><li><a href="/Blackcat-loveBlog/">首页</a></li><!--
+       --><li><a href="/NANA/">首页</a></li><!--
      --><!--
-       --><li><a href="/Blackcat-loveBlog/about/about">关于</a></li><!--
+       --><li><a href="/NANA/about/about">关于</a></li><!--
      --><!--
-       --><li><a href="/Blackcat-loveBlog/archives/">归档</a></li><!--
+       --><li><a href="/NANA/archives/">归档</a></li><!--
      --><!--
        --><li><a target="_blank" rel="noopener" href="https://github.com/Blackcat-love">项目</a></li><!--
      -->
@@ -296,7 +296,7 @@
   </script>
 
 
-<script src="/Blackcat-loveBlog/js/main.js"></script>
+<script src="/NANA/js/main.js"></script>
 
 <!-- search -->
 
