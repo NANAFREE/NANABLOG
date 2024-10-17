@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="version.plist&lt;key&gt;app_version&lt;&#x2F;key&gt;：应用程序的版本号，这里显示为2.1.0.3。&lt;key&gt;git_version&lt;&#x2F;key&gt;：Git版本号，这里显示为GIT_VERSION，这通常是一个占位符，实际值可能在构建过程中被替换。&lt;key&gt;loginServer&lt;&#x2F;key&gt; 和 &lt;key&amp;g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pokemon文档">
+<meta property="og:url" content="https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/index.html">
+<meta property="og:site_name" content="NANA">
+<meta property="og:description" content="version.plist&lt;key&gt;app_version&lt;&#x2F;key&gt;：应用程序的版本号，这里显示为2.1.0.3。&lt;key&gt;git_version&lt;&#x2F;key&gt;：Git版本号，这里显示为GIT_VERSION，这通常是一个占位符，实际值可能在构建过程中被替换。&lt;key&gt;loginServer&lt;&#x2F;key&gt; 和 &lt;key&amp;g">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-13T05:56:14.000Z">
+<meta property="article:modified_time" content="2024-10-13T19:55:36.692Z">
+<meta property="article:author" content="nana">
+<meta property="article:tag" content="网游">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/NANABLOG/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/NANABLOG/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/NANABLOG/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>pokemon文档</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/NANABLOG/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/NANABLOG/">首页</a></li><!--
+     --><!--
+       --><li><a href="/NANABLOG/about/about">关于</a></li><!--
+     --><!--
+       --><li><a href="/NANABLOG/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Blackcat-love">项目</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/NANABLOG/2024/10/08/pip%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86%E6%96%87%E6%A1%A3/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/&text=pokemon文档"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/&title=pokemon文档"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/&is_video=false&description=pokemon文档"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=pokemon文档&body=Check out this article: https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/&title=pokemon文档"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/&title=pokemon文档"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/&title=pokemon文档"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/&title=pokemon文档"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/&name=pokemon文档&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/&t=pokemon文档"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#version-plist"><span class="toc-number">1.</span> <span class="toc-text">version.plist</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E6%84%8F%E4%B9%89"><span class="toc-number"></span> <span class="toc-text">文件夹的意义</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%A3%E8%A2%8B%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">口袋前端工程文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cocos"><span class="toc-number">1.1.</span> <span class="toc-text">cocos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#res"><span class="toc-number">1.2.</span> <span class="toc-text">res</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#img"><span class="toc-number">1.2.1.</span> <span class="toc-text">img</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#resources"><span class="toc-number">1.2.2.</span> <span class="toc-text">resources</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#shader"><span class="toc-number">1.2.3.</span> <span class="toc-text">shader</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sound"><span class="toc-number">1.2.4.</span> <span class="toc-text">sound</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spine"><span class="toc-number">1.2.5.</span> <span class="toc-text">spine</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spine-dev"><span class="toc-number">1.2.6.</span> <span class="toc-text">spine_dev</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#town"><span class="toc-number">1.2.7.</span> <span class="toc-text">town</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#uijson"><span class="toc-number">1.2.8.</span> <span class="toc-text">uijson</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#video"><span class="toc-number">1.2.9.</span> <span class="toc-text">video</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#src"><span class="toc-number">1.3.</span> <span class="toc-text">src</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#updater"><span class="toc-number">1.4.</span> <span class="toc-text">updater</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x64"><span class="toc-number">1.5.</span> <span class="toc-text">x64</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#loading-jpg"><span class="toc-number">1.6.</span> <span class="toc-text">loading.jpg</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TivicloudSDK-xml"><span class="toc-number">1.7.</span> <span class="toc-text">TivicloudSDK.xml</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">后端工程文件</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        pokemon文档
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">nana</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-10-13T05:56:14.000Z" class="dt-published" itemprop="datePublished">2024-10-13</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/NANABLOG/tags/%E7%BD%91%E6%B8%B8/" rel="tag">网游</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="version-plist"><a href="#version-plist" class="headerlink" title="version.plist"></a>version.plist</h2><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">&lt;key&gt;app_version&lt;/key&gt;：应用程序的版本号，这里显示为2.1.0.3。</span><br><span class="line">&lt;key&gt;git_version&lt;/key&gt;：Git版本号，这里显示为GIT_VERSION，这通常是一个占位符，实际值可能在构建过程中被替换。</span><br><span class="line">&lt;key&gt;loginServer&lt;/key&gt; 和 &lt;key&gt;loginServer2&lt;/key&gt;：登录服务器的IP地址和端口，这里都是111.173.117.33:16666。</span><br><span class="line">&lt;key&gt;patch&lt;/key&gt;：补丁版本号，这里显示为4。</span><br><span class="line">&lt;key&gt;serverUrl&lt;/key&gt;、&lt;key&gt;versionUrl&lt;/key&gt;、&lt;key&gt;noticeUrl&lt;/key&gt;、&lt;key&gt;reportUrl&lt;/key&gt;、&lt;key&gt;disableWordCheckUrl&lt;/key&gt;、&lt;key&gt;feedBackUrl&lt;/key&gt;：这些都是服务器的URL地址，用于应用程序与后端服务通信。这些URL都指向了同一个IP地址111.173.117.33，但端口和路径不同，以提供不同的服务。</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="文件夹的意义"><a href="#文件夹的意义" class="headerlink" title="文件夹的意义"></a>文件夹的意义</h1><h2 id="口袋前端工程文件"><a href="#口袋前端工程文件" class="headerlink" title="口袋前端工程文件"></a>口袋前端工程文件</h2><h3 id="cocos"><a href="#cocos" class="headerlink" title="cocos"></a>cocos</h3><p>看不懂</p>
+<h3 id="res"><a href="#res" class="headerlink" title="res"></a>res</h3><p>资源文件</p>
+<h4 id="img"><a href="#img" class="headerlink" title="img"></a>img</h4><p>图片</p>
+<h4 id="resources"><a href="#resources" class="headerlink" title="resources"></a>resources</h4><p>资源文件，里面包含了actvicy(活动)，推测是游戏里所有活动的美术资源文件，battle(对战)，推测是游戏里所有战斗相关的美术资源文件，city(城市)，推测是主页里相关的美术资源文件，common(公共的)推测是在各个地方都可能被使用的美术资源，config(配置资源)，里面有表情包，活动图，宠物立绘，人物立绘，UP池活动图，图标等等，font(字体)，数字样式和字体文件,loading(加载界面图),login(登陆)，登陆界面相关的美术资源，lushi(？)，这名字啥意思，但里面是一些按钮和图标样式，难道是某一个新活动？炉石？,other(其他)，其他乱七八糟的美术素材,partcle(零件),里面有一些json文件和图片,暂时看不出来是干什么用的</p>
+<h4 id="shader"><a href="#shader" class="headerlink" title="shader"></a>shader</h4><p>着色器</p>
+<h4 id="sound"><a href="#sound" class="headerlink" title="sound"></a>sound</h4><p>音频</p>
+<h4 id="spine"><a href="#spine" class="headerlink" title="spine"></a>spine</h4><p>骨骼动画</p>
+<h4 id="spine-dev"><a href="#spine-dev" class="headerlink" title="spine_dev"></a>spine_dev</h4><p>特效</p>
+<h4 id="town"><a href="#town" class="headerlink" title="town"></a>town</h4><p>城镇 地图 墙 地板</p>
+<h4 id="uijson"><a href="#uijson" class="headerlink" title="uijson"></a>uijson</h4><p>通常指的是一种用于描述用户界面（UI）元素的 JSON 格式文件</p>
+<p>没看出来，问了AI</p>
+<h4 id="video"><a href="#video" class="headerlink" title="video"></a>video</h4><p>视频，里面只有开头动画</p>
+<h3 id="src"><a href="#src" class="headerlink" title="src"></a>src</h3><p>???</p>
+<h3 id="updater"><a href="#updater" class="headerlink" title="updater"></a>updater</h3><p>更新相关</p>
+<h3 id="x64"><a href="#x64" class="headerlink" title="x64"></a>x64</h3><p>64位兼容</p>
+<h3 id="loading-jpg"><a href="#loading-jpg" class="headerlink" title="loading.jpg"></a>loading.jpg</h3><p>载入防沉迷声明图</p>
+<h3 id="TivicloudSDK-xml"><a href="#TivicloudSDK-xml" class="headerlink" title="TivicloudSDK.xml"></a>TivicloudSDK.xml</h3><p>配置文件</p>
+<ol>
+<li>根元素 <code>&lt;TivicloudSDK&gt;</code>：<ul>
+<li>这是 XML 文件的根元素，表示该文件是与 Tivicloud SDK 相关的配置。</li>
+</ul>
+</li>
+<li><code>&lt;RunConfig&gt;</code> 元素：<ul>
+<li>这个元素包含了应用程序的运行配置，包括：<ul>
+<li><code>appId</code>：应用的唯一标识符。</li>
+<li><code>appKey</code>：用于身份验证的密钥。</li>
+<li><code>appName</code>：应用的名称。</li>
+<li><code>channelId</code>：渠道 ID，可能用于区分不同的发布渠道。</li>
+<li><code>platformId</code>：平台 ID，通常用于标识应用运行的平台（如 Android、iOS 等）。</li>
+<li><code>checkVersion</code>：是否检查版本更新的标志。</li>
+<li><code>debug</code>：是否启用调试模式的标志。</li>
+<li><code>extraSDK</code>：额外的 SDK 配置（如果有的话）。</li>
+<li><code>screenOrientation</code>：屏幕方向设置（如横屏或竖屏）。</li>
+<li><code>language</code>：应用的语言设置。</li>
+<li><code>hostAddress</code>：服务器地址，可能用于 API 调用或数据同步。</li>
+<li><code>openPermission</code>：是否开启权限请求。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><code>&lt;Permissions&gt;</code> 元素</strong>：<ul>
+<li>这个元素定义了应用所需的权限及其说明：<ul>
+<li><code>READ_PHONE_STATE</code>：允许游戏读取手机状态。</li>
+<li><code>PUSH</code>：允许游戏推送通知消息。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="后端工程文件"><a href="#后端工程文件" class="headerlink" title="后端工程文件"></a>后端工程文件</h2><p>后端里的游戏数据库路径</p>
+<p>D:\pokemon\原版后端\pokemon_server\pokemon_src\release\anti_cheat\game_config</p>
+<p>我目前的理解是，使用pokemon_server在服务器上运行后，开始自动创建数据库和相关的接口，然后前端也就是客户端要设置后端服务器的ip地址和端口，最后进行互连，数据交互。</p>
+<p>至于源码表只是用来让管理者阅读的，然后方便开启各种不同的活动和进行修改，管理员找到需要修改的表后，修改完成然后生成新的文件，按照规则放到对应的后端目录，通过重置后端会自动进行更新，然后客户端也会收到信号进行和后端的同步更新</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/NANABLOG/">首页</a></li>
+        
+          <li><a href="/NANABLOG/about/about">关于</a></li>
+        
+          <li><a href="/NANABLOG/archives/">归档</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="https://github.com/Blackcat-love">项目</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#version-plist"><span class="toc-number">1.</span> <span class="toc-text">version.plist</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%B9%E7%9A%84%E6%84%8F%E4%B9%89"><span class="toc-number"></span> <span class="toc-text">文件夹的意义</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%A3%E8%A2%8B%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">口袋前端工程文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cocos"><span class="toc-number">1.1.</span> <span class="toc-text">cocos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#res"><span class="toc-number">1.2.</span> <span class="toc-text">res</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#img"><span class="toc-number">1.2.1.</span> <span class="toc-text">img</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#resources"><span class="toc-number">1.2.2.</span> <span class="toc-text">resources</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#shader"><span class="toc-number">1.2.3.</span> <span class="toc-text">shader</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sound"><span class="toc-number">1.2.4.</span> <span class="toc-text">sound</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spine"><span class="toc-number">1.2.5.</span> <span class="toc-text">spine</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#spine-dev"><span class="toc-number">1.2.6.</span> <span class="toc-text">spine_dev</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#town"><span class="toc-number">1.2.7.</span> <span class="toc-text">town</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#uijson"><span class="toc-number">1.2.8.</span> <span class="toc-text">uijson</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#video"><span class="toc-number">1.2.9.</span> <span class="toc-text">video</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#src"><span class="toc-number">1.3.</span> <span class="toc-text">src</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#updater"><span class="toc-number">1.4.</span> <span class="toc-text">updater</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#x64"><span class="toc-number">1.5.</span> <span class="toc-text">x64</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#loading-jpg"><span class="toc-number">1.6.</span> <span class="toc-text">loading.jpg</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TivicloudSDK-xml"><span class="toc-number">1.7.</span> <span class="toc-text">TivicloudSDK.xml</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E7%AB%AF%E5%B7%A5%E7%A8%8B%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">后端工程文件</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/&text=pokemon文档"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/&title=pokemon文档"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/&is_video=false&description=pokemon文档"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=pokemon文档&body=Check out this article: https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/&title=pokemon文档"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/&title=pokemon文档"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/&title=pokemon文档"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/&title=pokemon文档"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/&name=pokemon文档&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blackcat-love.github.io/NANABLOG/2024/10/13/pokemon%E6%96%87%E6%A1%A3/&t=pokemon文档"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2024
+    nana
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/NANABLOG/">首页</a></li><!--
+     --><!--
+       --><li><a href="/NANABLOG/about/about">关于</a></li><!--
+     --><!--
+       --><li><a href="/NANABLOG/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/Blackcat-love">项目</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/NANABLOG/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
